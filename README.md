@@ -1,10 +1,10 @@
-# Projeto Recrutamento e Seleção
+# Projeto Recrutamento e Seleção 🧑‍💼
 
 Repositório relativo ao projeto da disciplina de Engenharia de Software 2 do Curso de Análise e Desenvolvimento de Sistemas da Fatec Sorocaba
 
 
 
-## Grupo de Trabalho
+## Grupo de Trabalho 🧑‍🎓 👨‍🎓
 
 Carlos Wagner Rodrigues da Silva 0030482011005 
 
@@ -16,7 +16,7 @@ Lucas Almada de Andrade 0030482011019
 
 Robson Ken Iti Arita 0030482011025 
 
-## Resumo
+## Resumo 📖
 
 A Indústria Farmacêutica “Euro” necessita criar um sistema para gerenciamento do processo de seleção de funcionários e, para isto, o stackholder me contactou apresentando a forma com que o processo é realizado na empresa, sendo que abaixo apresento o resumo das atividades que envolvem o processo: 
 
@@ -38,7 +38,7 @@ O setor de seleção informa o resultado do processo aos candidatos entrevistado
 
 
 
-## Links
+## Links 📎
 
 Protótipo no Figma
 
