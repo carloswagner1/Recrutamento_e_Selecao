@@ -36,7 +36,8 @@ O setor de seleção agenda datas para a realização dos testes para avaliaçã
 
 O setor de seleção informa o resultado do processo aos candidatos entrevistados, e agenda os exames admissionais ao(s) candidato(s) selecionado(s). Realizado os exames, o candidato encaminha os documentos para a efetivação da contratação. 
 
-
+## Informações Importantes
+O lavantamento de requisitos foi realizado em uma empresa real mediante entrevista com o responsável pela área, buscando agregar todas as fases do recrutamento e seleção. O nome, logo, marcas e demais informações documentos que vinculem ao nome real da empresa serão apresentados por um nome fantasia, por tratar-se de atividade acadêmica com o propósito de simulaão de uma situação real de projeto.
 
 ## Links 📎
 
