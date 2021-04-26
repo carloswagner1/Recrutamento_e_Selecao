@@ -6,15 +6,15 @@ Repositório relativo ao projeto da disciplina de Engenharia de Software 2 do Cu
 
 ## Grupo de Trabalho 🧑‍🎓 👨‍🎓
 
-Carlos Wagner Rodrigues da Silva 0030482011005 
+- Carlos Wagner Rodrigues da Silva 0030482011005 
 
-Jéssica Maria dos Santos 0030482011045 
+- Jéssica Maria dos Santos 0030482011045 
 
-Kelly Aiya Kanatani 0030482011017 
+- Kelly Aiya Kanatani 0030482011017 
 
-Lucas Almada de Andrade 0030482011019 
+- Lucas Almada de Andrade 0030482011019 
 
-Robson Ken Iti Arita 0030482011025 
+- Robson Ken Iti Arita 0030482011025 
 
 ## Resumo 📖
 
