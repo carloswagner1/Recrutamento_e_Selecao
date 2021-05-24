@@ -41,6 +41,6 @@ O levantamento de requisitos foi realizado em uma empresa real mediante entrevis
 
 ## Links 📎
 
-Protótipo no Figma
+https://www.figma.com/team_invite/redeem/sL3YhwnLmnhKot5C07jWca
 
 
