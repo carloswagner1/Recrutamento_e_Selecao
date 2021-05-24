@@ -41,6 +41,6 @@ O levantamento de requisitos foi realizado em uma empresa real mediante entrevis
 
 ## Links 📎
 
-https://www.figma.com/team_invite/redeem/sL3YhwnLmnhKot5C07jWca
+[Link fo Projeto no Figma](https://www.figma.com/files/team/971036497177839929/Engenharia-de-Software-II?fuid=900745395067673259)
 
 
