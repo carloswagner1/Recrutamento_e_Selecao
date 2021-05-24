@@ -18,7 +18,7 @@ Repositório relativo ao projeto da disciplina de Engenharia de Software 2 do Cu
 
 ## Resumo 📖
 
-A Indústria Farmacêutica “Euro” necessita criar um sistema para gerenciamento do processo de seleção de funcionários e, para isto, o stakeholder me contactou apresentando a forma com que o processo é realizado na empresa, sendo que abaixo apresento o resumo das atividades que envolvem o processo: 
+A Empresa Farmacêutica necessita criar um sistema para gerenciamento do processo de seleção de funcionários e, para isto, o stakeholder me contactou apresentando a forma com que o processo é realizado na empresa, sendo que abaixo apresento o resumo das atividades que envolvem o processo: 
 
  
 
