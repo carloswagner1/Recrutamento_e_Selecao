@@ -6,15 +6,15 @@ Repositório relativo ao projeto da disciplina de Engenharia de Software 2 do Cu
 
 ## Grupo de Trabalho 🧑‍🎓 👨‍🎓
 
-- Carlos Wagner Rodrigues da Silva 0030482011005 
+- [Carlos Wagner Rodrigues da Silva](https://github.com/carloswagner1) - 0030482011005
 
-- Jéssica Maria dos Santos 0030482011045 
+- [Jéssica Maria dos Santos](https://github.com/jessiemdsantos) - 0030482011045 
 
-- Kelly Aiya Kanatani 0030482011017 
+- [Kelly Aiya Kanatani](https://github.com/KellyKanatani) - 0030482011017 
 
-- Lucas Almada de Andrade 0030482011019 
+- [Lucas Almada de Andrade](https://github.com/AlmadaLucas) - 0030482011019
 
-- Robson Ken Iti Arita 0030482011025 
+- [Robson Ken Iti Arita](https://github.com/RobsonArita) - 0030482011025 
 
 ## Resumo 📖
 
@@ -41,6 +41,6 @@ O levantamento de requisitos foi realizado em uma empresa real mediante entrevis
 
 ## Links 📎
 
-[Link fo Projeto no Figma](https://www.figma.com/files/team/971036497177839929/Engenharia-de-Software-II?fuid=900745395067673259)
+[Link do Projeto no Figma](https://www.figma.com/files/team/971036497177839929/Engenharia-de-Software-II?fuid=900745395067673259)
 
 
