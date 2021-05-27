@@ -1,6 +1,7 @@
 # Projeto Recrutamento e Seleção 🧑‍💼
 
-Repositório relativo ao projeto da disciplina de Engenharia de Software 2 do Curso de Análise e Desenvolvimento de Sistemas da Fatec Sorocaba
+[Repositório relativo ao projeto da disciplina de Engenharia de Software 2 do Curso de Análise e Desenvolvimento de Sistemas da Fatec Sorocaba](https://github.com/carloswagner1/Recrutamento_e_Selecao/blob/main/img/recrutamento%20e%20sele%C3%A7%C3%A3o.png)
+
 
 
 
@@ -45,5 +46,5 @@ O levantamento de requisitos foi realizado em uma empresa real mediante entrevis
 
 [Documento de Concepção do Sistema](https://fatecspgov.sharepoint.com/:w:/s/GrupodeTrabalhos/EYzCWS7D8cRBpuHo2AUFUoIBFH_ftfwreMwgW3rgXa9JRg?e=dYLdr3)
 
-[Recrutamento e Seleção](https://github.com/carloswagner1/Recrutamento_e_Selecao/blob/main/img/recrutamento%20e%20sele%C3%A7%C3%A3o.png)
+
 
