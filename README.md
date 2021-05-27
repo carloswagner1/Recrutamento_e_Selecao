@@ -2,8 +2,9 @@
 
 Repositório relativo ao projeto da disciplina de Engenharia de Software 2 do Curso de Análise e Desenvolvimento de Sistemas da Fatec Sorocaba
 
- file:///home/carlos/Imagens/contratando.gif
 
+
+![contratando](https://user-images.githubusercontent.com/61124810/119904476-d8ace400-bf20-11eb-828b-8ed54b8e508f.gif)
 
 
 
