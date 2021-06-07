@@ -45,7 +45,11 @@ O levantamento de requisitos foi realizado em uma empresa real mediante entrevis
 
 ## Links 📎
 
-[Link do Projeto no Figma](https://www.figma.com/files/team/971036497177839929/Engenharia-de-Software-II?fuid=900745395067673259)
+[Link do Projeto no Figma - Versão Candidato/Navegador](https://www.figma.com/proto/Htu9VUBWhEUlelJZ1RKN3n/Vers%C3%A3o-Cliente-Computador-Navegador?node-id=7%3A6&scaling=min-zoom&page-id=0%3A1)
+
+[Link do Projeto no Figma - Versão Candidato/Mobile](https://www.figma.com/proto/jBBEs48VeDdrGyTH7KL38f/Vers%C3%A3o-Cliente-Mobile?scaling=scale-down&page-id=0%3A1&node-id=22%3A9)
+
+[Link do Projeto no Figma - Versão Deartamento](https://www.figma.com/proto/m8ZSqOP3JYyjPY9HutjlZ6/Vers%C3%A3o-Departamento-Computador?scaling=contain&page-id=0%3A1&node-id=7%3A2)
 
 [Documento de Concepção do Sistema](https://fatecspgov.sharepoint.com/:w:/s/GrupodeTrabalhos/EYzCWS7D8cRBpuHo2AUFUoIBFH_ftfwreMwgW3rgXa9JRg?e=dYLdr3)
 
