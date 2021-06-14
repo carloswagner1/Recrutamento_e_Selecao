@@ -26,19 +26,18 @@ A Empresa Farmacêutica necessita criar um sistema para gerenciamento do process
 
  
 
-O Gestor do Departamento com necessidade de contratação de funcionário encaminha solicitação para o gestor de Recursos Humanos justificando, com a indicação do cargo, pré-requisitos técnicos e comportamentais, bem como justificando a solicitação. O Gestor de RH avalia a adequação do pedido de seleção de funcionário. Se adequada, o Gestor de RH encaminha o processo de seleção para aprovação do departamento financeiro e da direção. A resposta destes setores é comunicada ao Gestor do Departamento. Caso aprovado o pedido, o Gestor de RH dá início ao processo de seleção, comunicando ao setor de seleção para a divulgação da vaga. 
+O Gestor do Departamento com necessidade de contratação de funcionário encaminha solicitação para o gestor de Recursos Humanos justificando, com a indicação do cargo e departamento, pré-requisitos técnicos e comportamentais, qualificações e o tipo de contratação. O Gestor de RH avalia a adequação do pedido de contratação de funcionário. Se adequada, o Gestor de RH dá início ao processo de Recrutamento e Seleção.
+ 
+
+Os candidatos enviam seus currículos ao Setor de Recrutamento e Seleção até a data final determinada na divulgação. O Setor de Recrutamento e Seleção avalia os currículos, descartando os recebidos fora do prazo e aqueles em que os candidatos não cumpram com os pré-requisitos do cargo. 
 
  
 
-Os candidatos enviam seus currículos ao setor de seleção até a data final determinada na divulgação. O setor de seleção avalia os currículos, descartando os recebidos fora do prazo e aqueles em que os candidatos não preencham os pré-requisitos do cargo. 
+O Setor de Recrutamento e Seleção agenda datas para a realização dos testes para avaliação das habilidades técnicas e comportamentais. Após a realização dos testes, o setor de seleção classifica os candidatos de acordo com as habilidades técnicas e adequação com a cultura da empresa, sendo que os melhores são convocados para uma entrevista com a presença do Gestor de Departamento. A escolha final cabe os Gestor de Departamento. 
 
  
 
-O setor de seleção agenda datas para a realização dos testes para avaliação das habilidades técnicas e comportamentais. Após a realização dos testes, o setor de seleção classifica os candidatos de acordo com as habilidades técnicas e adequação com a cultura da empresa, sendo que os melhores são convocados para uma entrevista com a presença do Gestor do Departamento. A escolha final cabe os Gestor de Departamento. 
-
- 
-
-O setor de seleção informa o resultado do processo aos candidatos entrevistados, e agenda os exames admissionais ao(s) candidato(s) selecionado(s). Realizado os exames, o candidato encaminha os documentos para a efetivação da contratação. 
+O Setor de Recrutamento e Seleção informa o resultado do processo aos candidatos entrevistados.
 
 ## Informações Importantes
 O levantamento de requisitos foi realizado em uma empresa real mediante entrevista com o responsável pela área, buscando agregar todas as fases do recrutamento e seleção. O nome, logo, marcas e demais informações/documentos que vinculem ao nome real da empresa serão apresentados por um nome fantasia, por tratar-se de atividade acadêmica com o propósito de simulaão de uma situação real de projeto.
