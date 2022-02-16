@@ -7,8 +7,6 @@ Repositório relativo ao projeto do Trabalho de Graduação do Curso de Análise
 <img src="https://user-images.githubusercontent.com/61124810/119904476-d8ace400-bf20-11eb-828b-8ed54b8e508f.gif"/>
 </div>
 
-![contratando](https://user-images.githubusercontent.com/61124810/119904476-d8ace400-bf20-11eb-828b-8ed54b8e508f.gif)
-
 
 
 ## Grupo de Trabalho 🧑‍🎓 👨‍🎓
