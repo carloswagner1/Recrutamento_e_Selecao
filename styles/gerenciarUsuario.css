@@ -1,0 +1,212 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+    color: var(--azul-escuro);
+    border: none;
+}
+
+:root{
+    --branco: #fff;
+    --amarelo: #ff9500;
+    --azul-escuro: #001533;
+    --azul-claro: #133463;
+    --cinza: #323232;
+}
+body{
+    background-image: url('/images/recrutamento-selecao-tech.jpg');
+    background-size: cover;
+}    
+
+.box-title{
+    background-color: var(--azul-claro);
+    border: 2px solid var(--azul-escuro);
+    border-radius: 5px;
+    width: 80%;
+    margin-left: 10%;    
+    color: var(--branco);
+}
+
+.btn{
+    margin-top: 1.5%;
+}
+
+.btn.btn-danger{
+    display: inline-block;
+}
+
+.btn.btn-success{
+    display: inline-block;
+}
+
+th{
+    color: var(--amarelo);
+}
+
+td{
+    color: var(--azul-claro);
+    font-weight: bold;
+}
+
+label{
+    font-weight: bold ;
+}
+
+input, select{
+    border-bottom: 1px solid var(--cinza);
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+input:focus{
+    border-color: var(--amarelo);
+}
+
+
+input[type="submit"]{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    margin-top: 30px;
+    border-radius: 20px;
+    color: var(--branco);
+    background-color: var(--azul-escuro);
+    cursor: pointer;
+}
+
+input[type="submit"]:hover{
+    background-color:var(--azul-claro);
+    transition: .5s;
+}
+
+#main-container{
+    background-color: var(--branco);
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+    margin-top: -2%;
+}
+
+.box{
+    box-shadow: 0px 1px 5px #001533;
+    border-radius: 4px;
+}
+
+form {
+    margin-top:  30px;
+    margin-bottom:  40px;
+
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+a, label{
+    font-size: .8rem;
+}
+
+a:hover{
+    color:var(--amarelo);
+}
+
+#form-user-create{
+    padding: 4%;
+    margin: auto;
+}
+
+label, input, select{
+    display: block;
+    width: 100%;
+    text-align: left;
+
+}
+
+h1{
+    padding-bottom: 5px;
+    padding-left: 20px;
+}
+
+.form-user-create{
+    background-color: var(--branco);
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+}
+
+#mensagem{
+    border: 2px solid var(--amarelo);
+    border-radius: 8px;
+    margin-bottom: 3%;
+    padding-left: 1%;
+    padding-top: 0.5%;
+    font-size: 15pt;
+}
+
+#mensagem-label{
+    font-size: 20pt;
+    padding-top: 4%;
+    padding-left: 3%;
+}
+
+li:hover{
+    background-color: var(--branco);
+    transition: 0.5s;
+    border-radius: 20px;
+}
+
+.nota{
+    border-radius: 10px;
+    width: 10%;
+    font-size: 20pt;
+    font-weight: bold;
+    color: var(--branco);
+    background-color: var(--azul-claro);
+}
+
+#nota-teste{
+    margin: auto;
+    border-radius: 10px;
+    width: 20%;
+    font-size: 30pt;
+    font-weight: bold;
+    color: var(--azul-escuro);
+    background-color: var(--amarelo);
+}
+
+#nota-entrevista{
+    border-radius: 10px;
+    width: 20%;
+    margin: auto;
+    font-size: 30pt;
+    font-weight: bold;
+    color: var(--azul-escuro);
+    background-color: var(--amarelo);
+}
+
+.nota-tabela{
+    border-radius: 100px;
+    width: 100%;
+    font-size: 18pt;
+    font-weight: bold;
+    color: var(--branco);
+    background-color: var(--azul-claro);
+}
+
+.text-ranking{
+    font-size: 20pt;
+    text-align: center;
+}

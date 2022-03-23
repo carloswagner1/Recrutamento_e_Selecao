@@ -17,40 +17,31 @@
     --linkedin-color: #0077b5;
 }
 
-@keyframes scale-in-center {
-    0% {
-      transform: scale(0);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-
-.scale-in-center {
-	animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-} 
-
 body{
-    padding-top: 5vh;
-    background-image: url('../images/recrutamento-selecao-tech.jpg');
+    background-image: url('/images/recrutamento-selecao-tech.jpg');
     background-size: cover; 
 }
 
-textarea:focus, input:focus{
+textarea:focus, input:focus, select:focus, textarea:focus, option:focus{
     outline: none;
 }
 
-a, label{
+a, label, select, textarea, option{
     font-size: .8rem;
+  
 }
 
- /* main container*/
+a:hover{
+    color:var(--amarelo);
+}
 
-#main-container {
+h1, .mensagem{
+    text-align: left;
+}
+
+#main-container{
     background-color: var(--branco);
-    width: 400px;
+    width: 1800px;
     margin-left: auto;
     margin-right: auto;
     padding: 20px 30px;
@@ -59,32 +50,41 @@ a, label{
     box-shadow: 0 0 15px black;
 }
 
+#descricao{
+    float: right;
+    width: 1000px;
+    margin: auto;
+}
+
+
 form {
-    margin-top:  30px;
-    margin-bottom:  40px;
+    margin-top:  auto;
+    margin-bottom:  auto;
 
 }
 
-label, input{
+label, input, select, textarea, option{
     display: block;
-    width: 100%;
+    width: 30%;
     text-align: left;
+    caret-color: #ff9500;
 
 }
 
-
-label{
-    font-weight: bold;
+label, select, h1, textarea, option{
+    font-weight: bold ;
 }
 
-input{
-    border-bottom: 2px solid var(--cinza);
+input, select, textarea, option{
+    border-bottom: 1px solid var(--cinza);
     padding: 10px;
     font-size: 1rem;
     margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: 0 0 1px var(--cinza);
 }
 
-input:focus{
+select:focus, input:focus, textarea:focus, option:focus{
     border-color: var(--amarelo);
 }
 
@@ -101,28 +101,10 @@ input[type="submit"]{
     background-color: var(--azul-escuro);
     cursor: pointer;
 }
-
-input, select{
-    border-bottom: 1px solid var(--cinza);
-    padding: 10px;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    box-shadow: 0 0 1px var(--cinza);
-}
-
-input[type="checkbox"]{
-    box-shadow: 0 0 0px;
-}
-
 input[type="submit"]:hover{
-    background-color:var(--azul-escuro);
+    background-color:var(--azul-claro);
     transition: .5s;
 }
 
-
-input.qualifications{
-    margin-top: 10px; 
-}
 
 

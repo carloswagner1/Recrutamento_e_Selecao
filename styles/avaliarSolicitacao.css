@@ -3,7 +3,7 @@
     padding:0;
     box-sizing: border-box;
     font-family: Helvetica;
-    color: var(--cinza);
+    color: var(--azul-escuro);
     border: none;
 }
 
@@ -14,76 +14,53 @@
     --azul-claro: #133463;
     --cinza: #323232;
 }
-
-.carousel-control-next-icon:after{
-    content: '>';
-    font-size: 70pt;
-    color: #001533;
-    margin: auto;
-}
-
-.carousel-control-prev-icon:after {
-    content: '<';
-    font-size: 70pt;
-    color: #001533;
-    margin: auto;
-}
-
-.carousel-control-prev-icon{
-    margin-left: auto;
-}
-
-.carousel-control-next-icon{
-    margin-right: auto;
-}
-
-#card1{
-    background-color: inherit;
-    margin: auto;
-    margin-top: 15%;
-    border: none;
-}
-
-#card2{
-    background-color: inherit;
-    margin: auto;
-    margin-top: 15%;
-    border: none;
-}
-
-
-#card3{
-    background-color: inherit;
-    margin: auto;
-    margin-top: 15%;
-    border: none;
-}
-
-.card-body{
-    background-color: var(--azul-escuro);
-    margin: auto;
-    border-radius: 10px;
-}
-
-.card{
-    width: auto;
-    margin: auto;
-
-}
-
-.card-title{
-    color: var(--azul-escuro);
-    font-style: bold;
-    font-size: 15pt;
-    background-color: var(--branco);
-    border:1px outset var(--branco);
-    width: 60%;
-    text-align: center;
-    border-radius: 4px;
-    margin: auto;
-}
-
 body{
-    background-image: url(../images/recrutamento-selecao-tech.jpg);
+    background-image: url('/images/recrutamento-selecao-tech.jpg');
     background-size: cover;
+}    
+
+.btn{
+    margin-top: 1.5%;
 }
+
+.btn.btn-danger{
+    display: inline-block;
+}
+
+.btn.btn-success{
+    display: inline-block;
+}
+
+th{
+    color: var(--amarelo);
+}
+
+td{
+    color: var(--azul-claro);
+    font-weight: bold;
+}
+
+#main-container{
+    background-color: var(--branco);
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+}
+
+form {
+    margin-top:  30px;
+    margin-bottom:  40px;
+
+}
+
+label, input, select{
+    display: block;
+    width: 100%;
+    text-align: left;
+
+}
+
