@@ -4,30 +4,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonte.googleapis.com/css2?family=Roboto:wght@400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/solicitarAberturaVaga.css">
+    <link rel="stylesheet" href="../styles/style.css">
     <title>Solicitação de Abertura de Vaga</title>
+    
 </head>
 <body>
-    <div class="scale-in-center" id="main-container">
+    <header class="header-area">
+        <div class="header-container">
+            <div class="site-logo">
+                <a href="#"><img src="../images/logo.png" alt="logo"></a>
+            </div>
+            <div class="mobile-nav">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="site-nav-menu">
+                <ul class="primary-menu">
+                    <li><a href="../view/gerenciarUsuario.html" class="">Gerenciar Usuários</a></li>
+                    <li><a href="#" class="active">Solicitar Vaga</a></li>
+                    <li><a href="#" class="">Mensagens</a></li>
+                    <li><a href="#" class="">Perfil</a></li>
+                </ul>
+            </div>
+        </div>
+    </header> 
+    <section class="hero-section"></section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".mobile-nav i").click(function(){
+                $(".site-nav-menu").toggleClass("mobile-menu");
+            });
+        })
+    </script>
+    <div id="main-container">
+        <div id="main-container2">
+            <form action="">
+                <h1><label for="descricao" id="descricao">Descrição da Vaga</label></h1>
+                <textarea id="descricao" style="resize: none" name="descricao" rows="25" cols="1" placeholder="Selecione um cargo para aparecer a descrição" disabled=""></textarea>           
+            </form>
+        </div>
         <h1>Solicitar Abertura de Vaga</h1>
-        <form id="register-form">
-            <div class="half-box spacing">
-                 <label for="cargo">Cargo</label>
-                 <input type="text" name="cargo" id="cargo" placeholder="Insira o cargo desejado aqui">
-             </div>
-             <div class="half-box">
-                 <label for="requisitos">Requisitos</label>
-                 <input type="text" name="requisitos" id="requisitos" placeholder="Insira o requisito desejado">
-             </div>
-             <div class="half-box spacing">
-                <label for="requisitos">Qualificações</label>
-                <input type="text name="highschool" class="qualifications" placeholder="Insira a qualificação desejada"/>
-             </div>
-             <div class="full-box">
-                <label for="btn-submit"></label>
-                <input type="submit" id="btn-submit" value="Solicitar">
-             </div>
+        <div class="mensagem"><p><br>Preencha os campos para abrir uma Solicitação de Abertura de Vaga</p></div><br>
+        <form action="">
+            <h1><label for="departamento">Departamento</label></h1>
+            <select departamento="select" id="departamento">
+                <option value="valor0"></option>
+                <option value="valor1">Almoxarifado</option>
+                <option value="valor2">Financeiro</option>
+                <option value="valor3">Administrativo</option>
+            </select>
+            <label for="cargo" class="cargo">Cargo</label>
+            <select cargo="select" id="cargo">
+                <option value="valor0"></option>
+                <option value="valor1">Programador</option>
+                <option value="valor2">Jogador de Vôlei</option>
+                <option value="valor3">Ninja</option>
+            </select>            
+            <h1><label for="requisitos">Requisitos</label></h1>
+            <textarea id="requisitos" style="resize: none" name="requisitos rows="2" cols="1" placeholder="Insira os requisitos desejados"></textarea>
+            <h1><label for="escolaridade">Grau de Escolaridade</label></h1>
+            <select escolaridade="select" id="escolaridade">
+                <option value="valor0"></option>
+                <option value="valor1">Fundamental</option>
+                <option value="valor2">Médio</option>
+                <option value="valor3">Superior (Graduação)</option>
+                <option value="valor4">Pós-graduação</option>
+                <option value="valor4">Mestrado</option>
+                <option value="valor4">Doutorado</option>
+            </select>
+            <input type="submit" value="Enviar Solicitação">
+        </div>
         </form>
-    </div> 
+    </div>
+      
 </body>
 </html>
