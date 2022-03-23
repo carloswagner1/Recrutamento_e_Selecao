@@ -34,13 +34,13 @@ class CadastroController{
     }
 
     onNext(){
-        document.querySelector("#formCad1 .btn-proximo").addEventListener("click", e=> {
+        this.formEl1.addEventListener("submit", e=> {
             e.preventDefault();            
             this.showCadastro2();
         })
     }
+ 
 
-    
     getValues(){
 
         let isValid = true;
@@ -98,3 +98,4 @@ class CadastroController{
     }
     
 }
+

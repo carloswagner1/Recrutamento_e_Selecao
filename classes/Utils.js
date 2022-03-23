@@ -4,28 +4,22 @@ class Utils {
     
         /*Validação do formulário*/
         let email = document.querySelector('#email');
-        let labelEmail = document.querySelector('#labelEmail')
-        let validEmail = false;
+        let labelEmail = document.querySelector('#labelEmail')        
     
         let nome = document.querySelector('#nome');
-        let labelNome = document.querySelector('#labelNome')
-        let validNome = false;
+        let labelNome = document.querySelector('#labelNome')        
 
         let senha = document.querySelector('#senha');
-        let labelSenha = document.querySelector('#labelSenha')
-        let validSenha = false;
+        let labelSenha = document.querySelector('#labelSenha')        
 
         let confirmSenha = document.querySelector('#passconfirmation');
-        let labelConfirmSenha = document.querySelector('#labelConfirmSenha')
-        let validConfirmSenha = false;
+        let labelConfirmSenha = document.querySelector('#labelConfirmSenha')        
 
         let cpf = document.querySelector('#cpf');
-        let labelCPF = document.querySelector('#labelCPF')
-        let validCPF = false;
+        let labelCPF = document.querySelector('#labelCPF')        
 
         let numCel = document.querySelector('#numCel');
         let labelCelular = document.querySelector('#labelCelular')
-        let validCelular = false;
 
         let pais = document.querySelector('#pais')
         
@@ -35,16 +29,13 @@ class Utils {
         email.addEventListener('keyup', () => {
             if(email.value ==""){
                 labelEmail.setAttribute('style', 'color: var(--cinza)');
-                labelEmail.innerHTML = 'E-mail'
-                validEmail = false;        
+                labelEmail.innerHTML = 'E-mail'                   
             }else if(!Utils.ValidarEmail(email.value)){
                 labelEmail.setAttribute('style', 'color: red', 'font-weight: bolder');
-                labelEmail.innerHTML = 'E-mail (email inválido)';               
-                validEmail = false;
+                labelEmail.innerHTML = 'E-mail (email inválido)';                               
             }else {
                 labelEmail.setAttribute('style', 'color: var(--cinza)');
-                labelEmail.innerHTML = 'E-mail'
-                validEmail = true;
+                labelEmail.innerHTML = 'E-mail'                
             }
         })
 
@@ -53,15 +44,12 @@ class Utils {
         nome.addEventListener('keyup', () => {
             if(nome.value == ""){
                 labelNome.setAttribute('style', 'color: var(--cinza)');
-                labelNome.innerHTML = 'Nome';
-                validNome = false;
+                labelNome.innerHTML = 'Nome';                
             }else if(nome.value.length <= 4){
-                labelNome.setAttribute('style', 'color: red', 'font-weight: bolder');     labelNome.innerHTML = 'Nome (mínimo 5 caracteres)';       
-                validNome = false;
+                labelNome.setAttribute('style', 'color: red', 'font-weight: bolder');     labelNome.innerHTML = 'Nome (mínimo 5 caracteres)';                       
             }else {
                 labelNome.setAttribute('style', 'color: var(--cinza)');
-                labelNome.innerHTML = 'Nome'    
-                validNome = true;
+                labelNome.innerHTML = 'Nome'                    
             }
         })
 
@@ -69,16 +57,13 @@ class Utils {
         senha.addEventListener('keyup', () => {
             if(senha.value == ""){
                 labelSenha.setAttribute('style', 'color: var(--cinza)');
-                labelSenha.innerHTML = 'Senha';
-                validSenha = false;
+                labelSenha.innerHTML = 'Senha';                
             }else if(senha.value.length <= 5){
                 labelSenha.setAttribute('style', 'color: red', 'font-weight: bolder');
-                labelSenha.innerHTML = 'Senha (mínimo 6 caracteres)';       
-                validSenha = false;
+                labelSenha.innerHTML = 'Senha (mínimo 6 caracteres)';                       
             }else {
                 labelSenha.setAttribute('style', 'color: var(--cinza)');
-                labelSenha.innerHTML = 'Senha'    
-                validSenha = true;
+                labelSenha.innerHTML = 'Senha'                    
             }
         })
 
@@ -86,16 +71,13 @@ class Utils {
         confirmSenha.addEventListener('keyup', () => {
             if(confirmSenha.value == ""){
                 labelConfirmSenha.setAttribute('style', 'color: var(--cinza)');
-                labelConfirmSenha.innerHTML = 'Confirme sua Senha';
-                validConfirmSenha = false;
+                labelConfirmSenha.innerHTML = 'Confirme sua Senha';                
             }else if(senha.value != confirmSenha.value){
                 labelConfirmSenha.setAttribute('style', 'color: red', 'font-weight: bolder');     
-                labelConfirmSenha.innerHTML = 'Confirme sua senha (as senhas não conferem)';
-                validConfirmSenha = false;
+                labelConfirmSenha.innerHTML = 'Confirme sua senha (as senhas não conferem)';                
             }else {
                 labelConfirmSenha.setAttribute('style', 'color: var(--cinza)');
-                labelConfirmSenha.innerHTML = 'Confirme sua Senha'    
-                validConfirmSenha = true;
+                labelConfirmSenha.innerHTML = 'Confirme sua Senha'                    
             }
         })
 
@@ -103,17 +85,14 @@ class Utils {
         cpf.addEventListener('keyup', () => {
             if(cpf.value == ""){
                 labelCPF.setAttribute('style', 'color: var(--cinza)');
-                labelCPF.innerHTML = 'CPF';
-                validCPF = false;
+                labelCPF.innerHTML = 'CPF';                
             }else if(!Utils.ValidarCPF(cpf.value)){
                 labelCPF.setAttribute('style', 'color: red', 'font-weight: bolder');
-                labelCPF.innerHTML = 'CPF (número inválido)'   
-                validCPF = false;
+                labelCPF.innerHTML = 'CPF (número inválido)'                   
             }else {
                 labelCPF.setAttribute('style', 'color: var(--cinza)');
                 labelCPF.innerHTML = 'CPF'
-                Utils.MascaraCPF(cpf)    
-                validCPF = true;
+                Utils.MascaraCPF(cpf)                    
             }
         })
         
@@ -123,17 +102,14 @@ class Utils {
             Utils.MascaraCelular(numCel);
             if(numCel.value.length != 15){
                 labelCelular.setAttribute('style', 'color: red', 'font-weight: bolder');
-                labelCelular.innerHTML = 'Celular (número inválido)' 
-                validCelular = false;  
+                labelCelular.innerHTML = 'Celular (número inválido)'                 
             }else {
                 labelCelular.setAttribute('style', 'color: var(--cinza)');
                 labelCelular.innerHTML = 'Celular'           
-                validCelular = true;
             }
         })
         
     }
-
 
     static ValidarEmail (email) {
         var emailPattern =  /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;

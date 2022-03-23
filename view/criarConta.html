@@ -12,7 +12,7 @@
     <div id="login-container">
         <h1>Cadastre-se!</h1>  
         <div id="msgSucesso"></div>      
-        <form id="formCad1" action="#formcad2" style="display: block;">
+        <form id="formCad1" class="needs-validation" action="#formcad2" style="display: block;">
             <label id="labelEmail" for="email">E-mail</label>
             <input type="email" name="email" id="email" placeholder="Informe seu e-mail" required>
             <label id="labelNome" for="nome">Nome Completo</label>
@@ -25,7 +25,7 @@
             <input type="submit" value="Próximo Passo" class="btn-proximo">
         </form>
 
-        <form id="formCad2" action="" style="display: none;">
+        <form id="formCad2" action="login.html" style="display: none;">
             <label id="labelPais" for="país">País de Origem </label>
              <select name="pais" id="pais">
                  <option value="Brasil">Brasil</option>
