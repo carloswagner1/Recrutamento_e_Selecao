@@ -1,0 +1,89 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+    color: var(--cinza);
+    border: none;
+}
+
+:root{
+    --branco: #fff;
+    --amarelo: #ff9500;
+    --azul-escuro: #001533;
+    --azul-claro: #133463;
+    --cinza: #323232;
+}
+
+.carousel-control-next-icon:after{
+    content: '>';
+    font-size: 70pt;
+    color: #001533;
+    margin: auto;
+}
+
+.carousel-control-prev-icon:after {
+    content: '<';
+    font-size: 70pt;
+    color: #001533;
+    margin: auto;
+}
+
+.carousel-control-prev-icon{
+    margin-left: auto;
+}
+
+.carousel-control-next-icon{
+    margin-right: auto;
+}
+
+#card1{
+    background-color: inherit;
+    margin: auto;
+    margin-top: 15%;
+    border: none;
+}
+
+#card2{
+    background-color: inherit;
+    margin: auto;
+    margin-top: 15%;
+    border: none;
+}
+
+
+#card3{
+    background-color: inherit;
+    margin: auto;
+    margin-top: 15%;
+    border: none;
+}
+
+.card-body{
+    background-color: var(--azul-escuro);
+    margin: auto;
+    border-radius: 10px;
+}
+
+.card{
+    width: auto;
+    margin: auto;
+
+}
+
+.card-title{
+    color: var(--azul-escuro);
+    font-style: bold;
+    font-size: 15pt;
+    background-color: var(--branco);
+    border:1px outset var(--branco);
+    width: 60%;
+    text-align: center;
+    border-radius: 4px;
+    margin: auto;
+}
+
+body{
+    background-image: url(../images/recrutamento-selecao-tech.jpg);
+    background-size: cover;
+}

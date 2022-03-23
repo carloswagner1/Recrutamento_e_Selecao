@@ -1,0 +1,128 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+    color: var(--cinza);
+    border: none;
+}
+
+:root{
+    --branco: #fff;
+    --amarelo: #ff9500;
+    --azul-escuro: #001533;
+    --azul-claro: #133463;
+    --cinza: #323232;
+    --facebook-color: #385998;
+    --linkedin-color: #0077b5;
+}
+
+@keyframes scale-in-center {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+.scale-in-center {
+	animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+} 
+
+body{
+    padding-top: 5vh;
+    background-image: url('../images/recrutamento-selecao-tech.jpg');
+    background-size: cover; 
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+a, label{
+    font-size: .8rem;
+}
+
+ /* main container*/
+
+#main-container {
+    background-color: var(--branco);
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+}
+
+form {
+    margin-top:  30px;
+    margin-bottom:  40px;
+
+}
+
+label, input{
+    display: block;
+    width: 100%;
+    text-align: left;
+
+}
+
+
+label{
+    font-weight: bold;
+}
+
+input{
+    border-bottom: 2px solid var(--cinza);
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+input:focus{
+    border-color: var(--amarelo);
+}
+
+
+input[type="submit"]{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    margin-top: 30px;
+    border-radius: 20px;
+    color: var(--branco);
+    background-color: var(--azul-escuro);
+    cursor: pointer;
+}
+
+input, select{
+    border-bottom: 1px solid var(--cinza);
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: 0 0 1px var(--cinza);
+}
+
+input[type="checkbox"]{
+    box-shadow: 0 0 0px;
+}
+
+input[type="submit"]:hover{
+    background-color:var(--azul-escuro);
+    transition: .5s;
+}
+
+
+input.qualifications{
+    margin-top: 10px; 
+}
+
+
