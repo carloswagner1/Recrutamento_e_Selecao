@@ -12,12 +12,104 @@
     --amarelo: #ff9500;
     --azul-escuro: #001533;
     --azul-claro: #133463;
-    --cinza: #323232;
+    --cinza: #323232; 
+    --fundo: #081c6b;
+    --amarelo-nav: #eab937;
 }
 body{
-    background-image: url('/images/recrutamento-selecao-tech.jpg');
+    background-image: url('/images/recrutamento-selecao-tech-op.jpg');
     background-size: cover;
 }    
+
+
+
+/*------ início header-----*/
+.header-area{
+  background-color:var(--fundo);
+  width: 100%;
+  height: 15vh;
+  z-index: 999;
+  border-bottom: var(--amarelo-nav);
+
+}
+
+.header-container{
+  width: 100%;
+  margin: auto;
+  display: table;
+}
+.site-logo{
+  float: left;
+  
+}
+
+.site-logo img{
+ 
+width: 60%;
+padding: 15px;
+
+}
+.mobile-nav{
+  display:none;
+}
+.site-nav-menu{
+ float: right;
+ margin-right: 5%;
+ margin-top: 10px;
+
+}
+
+
+.primary-menu{
+  list-style: none;
+}
+
+.primary-menu li{
+  display: inline-block;
+  margin: 25px 5px;
+}
+.primary-menu a{
+  color: #fff;
+  position: relative;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  padding: 10px 5px;
+  transition: .2s;
+
+}
+.primary-menu a:hover, .primary-menu .active{
+  color: var(--amarelo-nav);
+}
+
+.primary-menu li a:after{
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--amarelo-nav);
+  bottom:0px;
+  left:0;
+  transition: all .2s;
+}
+.primary-menu li a:hover:after{
+  width: 100%;
+}
+.primary-menu li .active:after{
+  width: 100%;
+}
+.mobile-nav{
+  float: right;
+ 
+  padding: 30px;
+  font-size: 24px;
+  color: var(--amarelo-nav);
+  outline: none;
+  cursor:pointer;
+
+}
+
+/*------ fim header-----*/ 
 
 .box-title{
     background-color: var(--azul-claro);
@@ -93,7 +185,7 @@ input[type="submit"]:hover{
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 15px black;
-    margin-top: -2%;
+    margin-top: 0;
 }
 
 .box{
@@ -209,4 +301,35 @@ li:hover{
 .text-ranking{
     font-size: 20pt;
     text-align: center;
+}
+@media only screen and (max-width: 900px){
+    .site-nav-menu{
+        float:none;
+        position: absolute;
+        background: var(--fundo);
+        width: 100%;
+        left:0;
+        top: 60px;
+        padding: 10px 0px 80px 0px;
+        border-top: 2px solid var(--amarelo-nav) ;
+        clip-path: circle(0% at 100% 0%);
+        transition: all .5s;
+    }
+    
+    .primary-menu li{
+        display: block;
+        text-align: center;
+        margin: 25px 2px;
+    
+    }
+    
+    .mobile-nav{
+        display: block;
+    }
+    .mobile-menu{
+        clip-path: circle(150% at 100% 0%);
+    }
+    .primary-menu li a:after{
+        display: none;
+    }
 }

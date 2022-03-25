@@ -26,6 +26,8 @@
     --amarelo: #eab937;
     --azul: #1b9dcc;
     --amarelo-fundo: rgba(230, 170, 7, 0.719);
+
+    /*------ início header-----*/
   }
   .header-area{
     background-color:var(--fundo);

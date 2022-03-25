@@ -26,6 +26,24 @@
         </form>
 
         <form id="formCad2" action="login.html" style="display: none;">
+            <label id="labelCPF" for="cpf">CPF </label>
+             <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
+             <label id="labelCelular" for="celular">Celular </label>
+             <select name="codcel" id="codcel">
+                 <option value="BR55">BR +55</option>
+             </select>
+
+             <input type="text" name="numCel" id="numCel" placeholder="(__)_____-____" required>
+            <label id="labelCEP" for="cep">CEP</label>
+            <input type="text" name="cep" id="cep" maxlength="8">
+            <label id="labelRua" for="rua">Rua</label>
+            <input type="text" name="rua" id="rua">
+            <label id="labelBairro" for="bairro">Bairro</label>
+            <input type="text" name="bairro" id="bairro">
+            <label id="labelCidade" for="cidade">Cidade</label>
+            <input type="text" name="cidade" id="cidade">
+            <label id="labelEstado" for="estado">Estado</label>
+            <input type="text" name="estado" id="estado">
             <label id="labelPais" for="país">País de Origem </label>
              <select name="pais" id="pais">
                  <option value="Brasil">Brasil</option>
@@ -58,6 +76,7 @@
         <a href="../view/login.html" rel="next">Entrar com e-mail e senha</a>
     </div>
     </div>
+    <script src="../model/gerenciarPerfil.js"></script>
     <script src="../classes/Utils.js"></script>
     <script src="../model/Candidato.js"></script>
     <script src="../controllers/CadastroController.js"></script>

@@ -22,6 +22,41 @@ body{
     background-size: cover;
   
 }
+
+.login-empresa{
+    text-align: end;
+    margin-right: 3%;
+    display: block;
+ 
+}
+
+.login-empresa p{
+     color: var(--cinza);
+     font-size: 1.2rem;
+     letter-spacing: 0.5px;
+     font-family: Geneva, Tahoma, sans-serif;
+}
+
+.login-empresa a{
+     text-decoration: none;
+     font-size: 14px;
+     color: var(--branco);
+     padding: 4px 10px;
+     border-radius: 10px;
+     background-color: var(--azul-escuro);
+     letter-spacing: 0.8px;
+     text-align: center;
+     text-transform: uppercase;
+     font-weight: bold;
+     
+}
+
+.login-empresa a:hover{
+     background-color:var(--azul-claro);
+     transition: .5s;
+     color: var(--branco)
+}
+
 textarea:focus, input:focus{
     outline: none;
 }
