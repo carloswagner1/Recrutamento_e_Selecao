@@ -369,18 +369,18 @@ h2{
       
   }
   
-  .genero-inputs {
+  .genero-inputs, .area-inputs {
       margin-top: 2rem;
      
      
   }
-  .genero-group {
+  .genero-group, .area-group {
       flex-direction: column;
   }
-  .genero-title h6 {
+  .genero-title h6, .area-title h6 {
       margin: 0;
   }
-  .genero-input {
+  .genero-input, .area-input {
       margin-top: 0.5rem;
   }
 }

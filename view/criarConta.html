@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/login.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Criar Conta</title>
 </head>
 <body>
@@ -48,18 +48,21 @@
              <select name="pais" id="pais">
                  <option value="Brasil">Brasil</option>
              </select>
-             <label id="labelCPF" for="cpf">CPF </label>
-             <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
-             <label id="labelCelular" for="celular">Celular </label>
-             <select name="codcel" id="codcel">
-                 <option value="BR55">BR +55</option>
+            <label id="labelarea" for="area">Area de Interesse</label>
+             <select name="area" id="area">
+                 <option value="ti">TI</option>
+                 <option value="comercial">Comercial</option>
+                 <option value="juridico">Jurídico</option>
+                 <option value="financeiro">Financeiro</option>
              </select>
-             <input type="text" name="numCel" id="numCel" placeholder="(__)_____-____" required>
-            
+             
+
              <input type="checkbox" name="termosdeuso" id="termosdeuso" required>
              <label for="termosdeuso" id="termosdeuso-label">Eu li e aceito os <a href="#">termos de uso da G5Tech</a></label>
              <input type="checkbox" name="politica-privacidade" id="politica-privacidade" required>
              <label for="politica-privacidade" id="privacidade-label">Eu li e concordo com a <a href="#">politica de privacidade da G5Tech</a></label>
+
+             
     
             
              <input type="submit" value="Criar Conta" class="btn-criar-conta">

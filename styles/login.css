@@ -102,6 +102,7 @@ label{
     font-weight: bold ;
 }
 
+
 input, select{
     border-bottom: 1px solid var(--cinza);
     padding: 10px;
