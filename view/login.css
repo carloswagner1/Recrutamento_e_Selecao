@@ -1,0 +1,205 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+    color: var(--cinza);
+    border: none;
+}
+:root{
+    --branco: #fff;
+    --amarelo: #ff9500;
+    --azul-escuro: #001533;
+    --azul-claro: #133463;
+    --cinza: #323232;
+    --facebook-color: #385998;
+    --linkedin-color: #0077b5;
+    --cinza-claro: #797979;    
+}
+body{
+    padding-top: 5vh;
+    background-image: url('../images/recrutamento-selecao-tech.jpg');
+    background-size: cover;
+  
+}
+
+.login-empresa{
+    text-align: end;
+    margin-right: 3%;
+    display: block;
+ 
+}
+
+.login-empresa p{
+     color: var(--cinza);
+     font-size: 1.2rem;
+     letter-spacing: 0.5px;
+     font-family: Geneva, Tahoma, sans-serif;
+}
+
+.login-empresa a{
+     text-decoration: none;
+     font-size: 14px;
+     color: var(--branco);
+     padding: 4px 10px;
+     border-radius: 10px;
+     background-color: var(--azul-escuro);
+     letter-spacing: 0.8px;
+     text-align: center;
+     text-transform: uppercase;
+     font-weight: bold;
+     
+}
+
+.login-empresa a:hover{
+     background-color:var(--azul-claro);
+     transition: .5s;
+     color: var(--branco)
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+a, label{
+    font-size: .8rem;
+  
+}
+
+a:hover{
+    color:var(--amarelo);
+}
+ /* container login*/
+
+#login-container {
+    background-color: var(--branco);
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+}
+
+/* formulario */
+
+form {
+    margin-top:  30px;
+    margin-bottom:  40px;
+
+}
+
+label, input, select{
+    display: block;
+    width: 100%;
+    text-align: left;
+    
+
+}
+
+label{
+    font-weight: bold ;
+}
+
+input, select{
+    border-bottom: 1px solid var(--cinza);
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-shadow: 0 0 1px var(--cinza);
+}
+
+input:focus{
+    border-color: var(--amarelo);
+}
+
+
+input[type="submit"]{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    margin-top: 30px;
+    border-radius: 20px;
+    color: var(--branco);
+    background-color: var(--azul-escuro);
+    cursor: pointer;
+}
+
+input[type="submit"]:hover{
+    background-color:var(--azul-claro);
+    transition: .5s;
+}
+    
+/*redes-sociais */
+#social-container, #social-container p{
+    margin-bottom:20px;
+}
+
+#social-container i {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    line-height: 40px;
+    color: var(--branco);
+    margin:0 5px;
+    cursor:pointer;
+}
+
+.fa-facebook-f {
+    background-color: var(--facebook-color);
+
+}
+.fa-linkedin {
+    background-color: var(--linkedin-color);
+
+}
+
+/*registro*/
+
+#registro p{
+    margin: 10px;
+}
+#termosdeuso{
+    position:absolute;
+    width: auto;
+    
+}
+
+#termosdeuso-label{
+    margin-left: 10%;
+    margin-top: 9%;
+    width: auto;
+   
+}
+#politica-privacidade{
+    
+    position: absolute;  
+    display: inline-block;
+    width: auto;
+    margin-top: 3%;
+}
+
+#privacidade-label{
+    display: inline-block;
+    width: auto;
+    margin-left: 10%;
+    margin-top: 9%;
+    
+    
+}
+.mensagem p{
+    margin-top: 10%;
+    text-align: left;
+    color: var(--cinza-claro);
+    
+}
+.mensagem02 p{
+    text-align: left;
+    color: var(--amarelo);
+    font-size: .8rem;
+    margin-bottom: 10%;
+}
