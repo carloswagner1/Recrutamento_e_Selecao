@@ -171,14 +171,14 @@ h2{
 
 }
 
-.input-group {
+.input-group  {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem 0;
 }
 
-.input-box {
+.input-box, .input-senha {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.1rem;
@@ -186,11 +186,23 @@ h2{
 
 .input-box input {
     margin: 0.6rem 0;
-    padding: .8rem 2.7rem;
+    padding: .8rem 2.8rem;
     border: none;
     border-radius: 3px;
     box-shadow: 1px 1px 6px #0000001c;
     font-size: 0.8rem;
+  
+}
+
+
+.input-senha input{
+  margin: 0.6rem 0;
+  padding: .8rem ;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 1px 1px 6px #0000001c;
+  font-size: 0.8rem;
+  
   
 }
 
@@ -213,7 +225,7 @@ h2{
 
 .input-box select{
   
-  padding: 6px 50px;
+  padding: 10px 85px;
   font-size: 1rem;
   margin-top: 10px;
   box-shadow: 0 0 1px var(--cinza);
@@ -228,7 +240,7 @@ h2{
   margin-top: 20px;
 }
 
-.genero-group {
+.genero-group, .area-group {
     display: flex;
     justify-content: space-between;
     margin-top: 0.62rem;
@@ -236,16 +248,16 @@ h2{
     margin-bottom: 4rem;
 }
 
-.genero-input {
+.genero-input, .area-input {
     display: flex;
     align-items: center;
 }
 
-.genero-input input {
+.genero-input input, .area-input input {
     margin-right: 0.35rem;
 }
 
-.genero-input label {
+.genero-input label,.area-input label {
     font-size: 0.81rem;
     font-weight: 600;
     color: #000000c0;
