@@ -25,6 +25,7 @@
           <li><a href="#" class="">Oportunidades</a></li>
           <li><a href="#" class="">Mensagens</a></li>
           <li><a href="#" class="active">Perfil</a></li>
+          <li><a href="#" class="">Sair</a></li>
         </ul>
       </div>
     </div>
@@ -67,23 +68,33 @@
                     <input type="text" name="numTel" id="numTel" placeholder="(__)____-____" required>
                 </div>
                 <div class="input-box">
+                    <label id="labelCEP" for="cep">CEP</label>
+                    <input type="text" name="cep" id="cep" maxlength="8">
+                </div>
+                <div class="input-box">
+                    <label id="labelRua" for="rua">Rua</label>
+                    <input type="text" name="rua" id="rua">
+                </div>
+                <div class="input-box">
+                    <label id="labelBairro" for="bairro">Bairro</label>
+                    <input type="text" name="bairro" id="bairro">
+                </div>
+                <div class="input-box">
+                    <label id="labelCidade" for="cidade">Cidade</label>
+                    <input type="text" name="cidade" id="cidade">
+                </div>
+                <div class="input-box">
+                    <label id="labelEstado" for="estado">Estado</label>
+                    <input type="text" name="estado" id="estado">
+                </div>
+               
+                <div class="input-box">
                     <label id="labelPais" for="país">País de Origem </label>
                     <select name="pais" id="pais">
                         <option value="Brasil">Brasil</option>
                     </select>
                 </div>
-                <div class="input-box">
-                    <label id="labelestado" for="estado">UF</label>
-                    <select name="estado" id="pais">
-                        <option value="SP">SP</option>
-                    </select>
-                </div>
-                <div class="input-box">
-                    <label id="labelCidade" for="cidade">Cidade </label>
-                    <select name="cidade" id="cidade">
-                        <option value="Sorocaba">Sorocaba</option>
-                    </select>
-                </div>
+                
                 
 
             </div>
@@ -114,17 +125,45 @@
                         <label for="nenhum">Prefiro não dizer</label>
                     </div>
                 </div>
-                
+            
+
+                <div class="area-inputs">
+                    <div class="area-title">
+                        <h6>Área de Interesse</h6>
+                    </div>
+    
+                    <div class="area-group">
+                        <div class="area-input">
+                            <input id="ti" type="radio" name="area">
+                            <label for="ti">TI</label>
+                        </div>
+    
+                        <div class="area-input">
+                            <input id="comercial" type="radio" name="area">
+                            <label for="comercial">Comercial</label>
+                        </div>
+    
+                        <div class="area-input">
+                            <input id="juridico" type="radio" name="area">
+                            <label for="juridico">Jurídico</label>
+                        </div>
+    
+                        <div class="area-input">
+                            <input id="financeiro" type="radio" name="area">
+                            <label for="financeiro">Financeiro</label>
+                        </div>
+                        
+                    </div>    
             </div>
             <div class="input-senha">
                 <h2>Alterar Senha</h2>
                 <div class="input-box">
                         <label for="password"> Senha Atual</label>
-                        <input id="password" type="password" name="password" placeholder="Digite sua senha atual" required>
+                        <input id="password" type="password" name="password" placeholder="Digite sua senha atual" >
                     </div>
                     <div class="input-box">
                         <label for="newPassword">Senha Nova</label>
-                        <input id="newPassword" type="password" name="newPassword" placeholder="Digite sua senha nova" required>
+                        <input id="newPassword" type="password" name="newPassword" placeholder="Digite sua senha nova" >
                     </div>
             </div>
             <div class="salvar-button">
@@ -137,7 +176,7 @@
     </div>
 </div>
 
-
+<script src="../model/gerenciarPerfil.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
