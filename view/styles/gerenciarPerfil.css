@@ -1,0 +1,386 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box ;
+    font-family: Helvetica, sans-serif;
+  }
+  body{
+    font-size:  18px;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('../images/recrutamento-selecao-tech-op.jpg') ;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center ;
+  
+    
+    
+  }
+  :root{
+    --branco: #fff;
+    --amarelo2: #ff9500;
+    --azul-escuro: #001533;
+    --azul-claro: #133463;
+    --cinza: #323232;
+     --cinza-claro: #797979;    
+    --fundo: #081c6b;
+    --amarelo: #eab937;
+    --azul: #1b9dcc;
+    --amarelo-fundo: rgba(230, 170, 7, 0.719);
+
+    /*------ início header-----*/
+  }
+  .header-area{
+    background-color:var(--fundo);
+    width: 100%;
+    height: 15vh;
+    z-index: 999;
+    border-bottom: var(--amarelo);
+  
+  }
+  
+  .header-container{
+    width: 100%;
+    margin: auto;
+    display: table;
+  }
+  .site-logo{
+    float: left;
+    
+  }
+  
+  .site-logo img{
+   
+  width: 60%;
+  padding: 15px;
+  
+  }
+  .mobile-nav{
+    display:none;
+  }
+  .site-nav-menu{
+   float: right;
+   margin-right: 5%;
+   margin-top: 10px;
+  
+  }
+  
+  
+  .primary-menu{
+    list-style: none;
+  }
+  
+  .primary-menu li{
+    display: inline-block;
+    margin: 25px 5px;
+  }
+  .primary-menu a{
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    padding: 10px 5px;
+    transition: .2s;
+  
+  }
+  .primary-menu a:hover, .primary-menu .active{
+    color: var(--amarelo);
+  }
+  
+  .primary-menu li a:after{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--amarelo);
+    bottom:0px;
+    left:0;
+    transition: all .2s;
+  }
+  .primary-menu li a:hover:after{
+    width: 100%;
+  }
+  .primary-menu li .active:after{
+    width: 100%;
+  }
+  .mobile-nav{
+    float: right;
+   
+    padding: 30px;
+    font-size: 24px;
+    color: var(--amarelo);
+    outline: none;
+    cursor:pointer;
+
+  }
+
+  /*----------fim header -----------*/
+
+  
+  /*----------container perfil -----------*/
+
+
+
+.container {
+    width: 100%;
+    justify-self: unset;
+    justify-content: center;
+    display: flex;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+    margin:auto;
+}
+
+
+.form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 5rem;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.966);
+    margin: auto;
+}
+
+.form-header {
+  margin:auto;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    color: var(--cinza);
+}
+
+
+.form-header h1::after {
+    content: ' ';
+    display: block;
+    width: 13rem;
+    height: 0.3rem;
+    background-color: var(--amarelo);
+    margin: 0 auto;
+    position: static;
+    border-radius: 10px;
+   
+  }
+
+h2{
+  
+  text-align: center;
+  color: var(--cinza);
+  font-size: 1.7rem;
+  
+
+}
+
+.input-group  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.input-box, .input-senha {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.input-box input {
+    margin: 0.6rem 0;
+    padding: .8rem 2.8rem;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+  
+}
+
+
+.input-senha input{
+  margin: 0.6rem 0;
+  padding: .8rem ;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 1px 1px 6px #0000001c;
+  font-size: 0.8rem;
+  
+  
+}
+
+
+.input-box input:hover {
+    background-color: #eeeeee75;
+}
+
+.input-box input:focus-visible {
+    outline: 1px solid var(--amarelo-fundo);
+}
+
+.input-box label,
+.gender-title h6 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--cinza);
+}
+
+
+.input-box select{
+  
+  padding: 10px 85px;
+  font-size: 1rem;
+  margin-top: 10px;
+  box-shadow: 0 0 1px var(--cinza);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+ 
+  margin-bottom: 1.1rem;
+  border: none;
+}
+.input-box label{
+  margin-top: 20px;
+}
+
+.genero-group, .area-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.62rem;
+    padding: 0 .5rem;
+    margin-bottom: 4rem;
+}
+
+.genero-input, .area-input {
+    display: flex;
+    align-items: center;
+}
+
+.genero-input input, .area-input input {
+    margin-right: 0.35rem;
+}
+
+.genero-input label,.area-input label {
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+.salvar-button button {
+    width: 100%;
+    margin-top: 2.5rem;
+    border: none;
+    background-color: var(--azul-escuro);
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.salvar-button button:hover {
+    background-color: var(--azul-claro);
+}
+
+.salvar-button button a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.excluir-button button {
+  width: 100%;
+  margin-top: 2.5rem;
+  border: none;
+  box-shadow: 1px 1px 3px 3px  rgba(12, 12, 12, 0.103);
+  background-color: #fff;
+  padding: 0.62rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.excluir-button button:hover {
+  background-color: rgba(158, 148, 148, 0.158);
+}
+
+.excluir-button button a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--azul-escuro);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 900px){
+.site-nav-menu{
+    float:none;
+    position: absolute;
+    background: var(--fundo);
+    width: 100%;
+    left:0;
+    top: 60px;
+    padding: 10px 0px 80px 0px;
+    border-top: 2px solid var(--amarelo) ;
+    clip-path: circle(0% at 100% 0%);
+    transition: all .5s;
+}
+
+.primary-menu li{
+    display: block;
+    text-align: center;
+    margin: 25px 2px;
+
+}
+
+.mobile-nav{
+    display: block;
+}
+.mobile-menu{
+    clip-path: circle(150% at 100% 0%);
+}
+.primary-menu li a:after{
+    display: none;
+}
+
+
+}
+@media screen and (max-width: 1330px) {
+  .form-image {
+      display: none;
+  }
+  .container {
+      width: 50%;
+  }
+  .form {
+      width: 100%;
+  }
+}
+
+@media screen and (max-width: 1064px) {
+  .container {
+      width: 90%;
+      height: auto;
+      
+  }
+  
+  .genero-inputs, .area-inputs {
+      margin-top: 2rem;
+     
+     
+  }
+  .genero-group, .area-group {
+      flex-direction: column;
+  }
+  .genero-title h6, .area-title h6 {
+      margin: 0;
+  }
+  .genero-input, .area-input {
+      margin-top: 0.5rem;
+  }
+}
