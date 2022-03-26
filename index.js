@@ -1,1 +1,1 @@
-let cadastroController = new CadastroController("formCad1", "formCad2")
+let cadastroController = new CadastroController("formCad1", "formCad2");
