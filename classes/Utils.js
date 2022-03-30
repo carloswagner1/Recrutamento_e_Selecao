@@ -6,32 +6,9 @@ class Utils {
 
     }
 
-    static validarPreenchimento(){
-    
-        /*Validação do formulário*/
-        let email = document.querySelector('#email');
-        let labelEmail = document.querySelector('#labelEmail')        
-    
-        let nome = document.querySelector('#nome');
-        let labelNome = document.querySelector('#labelNome')        
+    /*validação do email*/
 
-        let senha = document.querySelector('#senha');
-        let labelSenha = document.querySelector('#labelSenha')        
-
-        let confirmSenha = document.querySelector('#passconfirmation');
-        let labelConfirmSenha = document.querySelector('#labelConfirmSenha')        
-
-        let cpf = document.querySelector('#cpf');
-        let labelCPF = document.querySelector('#labelCPF')        
-
-        let numCel = document.querySelector('#numCel');
-        let labelCelular = document.querySelector('#labelCelular')
-
-        let pais = document.querySelector('#pais')
-        
-
-        /*validação do email*/
-
+    static validarCampoEmail(email, labelEmail){
         email.addEventListener('keyup', () => {
             if(email.value ==""){
                 labelEmail.setAttribute('style', 'color: var(--cinza)');
@@ -44,22 +21,35 @@ class Utils {
                 labelEmail.innerHTML = 'E-mail'                
             }
         })
+    }
 
+    static ValidarEmail (email) {
+        var emailPattern =  /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+         return emailPattern.test(email); 
+    }
 
-        /*validação do nome*/
+    /*validação do nome*/
+
+    static validarCampoNome(nome, labelNome){
         nome.addEventListener('keyup', () => {
             if(nome.value == ""){
                 labelNome.setAttribute('style', 'color: var(--cinza)');
                 labelNome.innerHTML = 'Nome';                
             }else if(nome.value.length <= 4){
-                labelNome.setAttribute('style', 'color: red', 'font-weight: bolder');     labelNome.innerHTML = 'Nome (mínimo 5 caracteres)';                       
+                labelNome.setAttribute('style', 'color: red', 'font-weight: bolder');     
+                labelNome.innerHTML = 'Nome (mínimo 5 caracteres)';                       
             }else {
                 labelNome.setAttribute('style', 'color: var(--cinza)');
-                labelNome.innerHTML = 'Nome'                    
+                labelNome.innerHTML = 'Nome';                    
             }
-        })
+        });
 
-        /*validação do senha*/
+    }
+
+    /*validação do senha*/
+
+    static validarCampoSenha(senha, labelSenha){
+        
         senha.addEventListener('keyup', () => {
             if(senha.value == ""){
                 labelSenha.setAttribute('style', 'color: var(--cinza)');
@@ -69,11 +59,14 @@ class Utils {
                 labelSenha.innerHTML = 'Senha (mínimo 6 caracteres)';                       
             }else {
                 labelSenha.setAttribute('style', 'color: var(--cinza)');
-                labelSenha.innerHTML = 'Senha'                    
+                labelSenha.innerHTML = 'Senha';                    
             }
-        })
+        });
+    }
 
-        /*confirmação de senha*/
+    /*confirmação de senha*/
+    static validarCampoConfirmSenha(confirmSenha, labelConfirmSenha){
+
         confirmSenha.addEventListener('keyup', () => {
             if(confirmSenha.value == ""){
                 labelConfirmSenha.setAttribute('style', 'color: var(--cinza)');
@@ -83,11 +76,14 @@ class Utils {
                 labelConfirmSenha.innerHTML = 'Confirme sua senha (as senhas não conferem)';                
             }else {
                 labelConfirmSenha.setAttribute('style', 'color: var(--cinza)');
-                labelConfirmSenha.innerHTML = 'Confirme sua Senha'                    
+                labelConfirmSenha.innerHTML = 'Confirme sua Senha';                    
             }
-        })
+        });
+    }
 
-        /*validação cpf*/
+    /*validação cpf*/
+
+    static validarCampoCPF(cpf, labelCPF){
         cpf.addEventListener('keyup', () => {
             if(cpf.value == ""){
                 labelCPF.setAttribute('style', 'color: var(--cinza)');
@@ -101,25 +97,7 @@ class Utils {
                 Utils.MascaraCPF(cpf)                    
             }
         })
-        
-        /*validação celular*/
-        numCel.addEventListener('keyup', () => {
-        
-            Utils.MascaraCelular(numCel);
-            if(numCel.value.length != 15){
-                labelCelular.setAttribute('style', 'color: red', 'font-weight: bolder');
-                labelCelular.innerHTML = 'Celular (número inválido)'                 
-            }else {
-                labelCelular.setAttribute('style', 'color: var(--cinza)');
-                labelCelular.innerHTML = 'Celular'           
-            }
-        })
-        
-    }
 
-    static ValidarEmail (email) {
-        var emailPattern =  /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-         return emailPattern.test(email); 
     }
 
     static ValidarCPF(cpf){
@@ -166,6 +144,22 @@ class Utils {
         elementoAlvo.value = cpfAtualizado; 
     }
 
+    /*validação celular*/
+
+    static validarCampoCelular(numCel, labelCelular){
+        numCel.addEventListener('keyup', () => {
+            Utils.MascaraCelular(numCel);
+            if(numCel.value.length != 15){
+                labelCelular.setAttribute('style', 'color: red', 'font-weight: bolder');
+                labelCelular.innerHTML = 'Celular (número inválido)'                 
+            }else {
+                labelCelular.setAttribute('style', 'color: var(--cinza)');
+                labelCelular.innerHTML = 'Celular'           
+            }
+        });                    
+        
+    }
+
     static MascaraCelular(numCel) {
         setTimeout(function() {
             var numero = FormatarCelular(numCel.value);
@@ -176,6 +170,7 @@ class Utils {
     }     
      
 }
+
 
 function FormatarCelular(numero) { 
     var num = numero.replace(/\D/g, "");

@@ -5,7 +5,7 @@ class CadastroController{
         this.formEl2 = document.getElementById(formCadastro2);
 
         this.onNext();
-        Utils.validarPreenchimento(); 
+        this.validarPreenchimento(); 
         this.onSubmit();
         
     }
@@ -95,6 +95,34 @@ class CadastroController{
     showCadastro2(){
         document.querySelector("#formCad1").style.display = "none";
         document.querySelector("#formCad2").style.display = "block";
+    }
+
+    validarPreenchimento(){
+        let email = document.querySelector('#email');
+        let labelEmail = document.querySelector('#labelEmail');
+        
+        let nome = document.querySelector('#nome');
+        let labelNome = document.querySelector('#labelNome');
+        
+        let senha = document.querySelector('#senha');
+        let labelSenha = document.querySelector('#labelSenha');  
+
+        let confirmSenha = document.querySelector('#passconfirmation');
+        let labelConfirmSenha = document.querySelector('#labelConfirmSenha') ;
+
+        let cpf = document.querySelector('#cpf');
+        let labelCPF = document.querySelector('#labelCPF');  
+
+        let numCel = document.querySelector('#numCel');
+        let labelCelular = document.querySelector('#labelCelular');
+
+        Utils.validarCampoEmail(email, labelEmail);
+        Utils.validarCampoNome(nome, labelNome);
+        Utils.validarCampoSenha(senha, labelSenha);
+        Utils.validarCampoConfirmSenha(confirmSenha, labelConfirmSenha);
+        Utils.validarCampoCPF(cpf, labelCPF);
+        Utils.validarCampoCelular(numCel, labelCelular);
+
     }
     
 }
