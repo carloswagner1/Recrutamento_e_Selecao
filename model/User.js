@@ -1,12 +1,11 @@
 class User{
-    constructor(name, cpf, email, celular, pais, senha, photo, admin){
+    constructor(name, cpf, email, celular, country, password, admin){
         this._name = name;
         this._cpf =cpf;
         this._email = email;
         this._celular = celular;
-        this._pais = pais;
-        this._senha =senha;
-        this._photo = photo;
+        this._country = country;
+        this._password =password;
         this._admin = admin;
         this._register = new Date();
     }
@@ -28,16 +27,12 @@ class User{
         return this._celular;
     }
 
-    get pais() {
-        return this._pais;
+    get country() {
+        return this._country;
     }
 
     get email() {
         return this._email;
-    }
-
-    get photo() {
-        return this._photo
     }
 
     get password() {
@@ -46,10 +41,6 @@ class User{
 
     get admin() {
         return this._admin;
-    }
-
-    set photo(value){
-        this._photo = value;
     }
 
     loadFromJSON(json){
