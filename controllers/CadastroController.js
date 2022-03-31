@@ -3,7 +3,8 @@ class CadastroController{
     constructor(formCadastro1, formCadastro2){
         this.formEl1 = document.getElementById(formCadastro1);
         this.formEl2 = document.getElementById(formCadastro2);
-
+        
+        Utils.buscaCep();
         this.onNext();
         this.validarPreenchimento(); 
         this.onSubmit();
@@ -57,7 +58,7 @@ class CadastroController{
 
         [...this.formEl2.elements].forEach(function(field, index){
 
-            if (["pais", "cpf", "numCel"].indexOf(field.name) > -1 && !field.value) {
+            if (["cpf", "numCel", "cep", "rua", "bairro","cidade", "estado", "pais", "area"].indexOf(field.name) > -1 && !field.value) {
 
                 field.parentElement.classList.add("has-error");
                 isValid = false
@@ -69,7 +70,7 @@ class CadastroController{
             return false;
         }
 
-        let candidato = new Candidato(nome.value, email.value, senha.value, pais.value, cpf.value, numCel.value);
+        let candidato = new Candidato(nome.value, email.value, senha.value, cpf.value, numCel.value, cep.value, rua.value, bairro.value, cidade.value, estado.value, pais.value, area.value);
 
         return candidato;
 
@@ -77,14 +78,11 @@ class CadastroController{
 
     insert(data){
 
-
         if(sessionStorage.getItem("candidatos")) {
 
             candidatos = JSON.parse(sessionStorage.getItem("candidatos"));
 
-        }
-
-        
+        }        
 
         candidatos.push(data);
 
