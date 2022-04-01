@@ -39,7 +39,6 @@
   }
   .site-logo{
     float: left;
-    
   }
   
   .site-logo img{
@@ -99,10 +98,9 @@
   }
   .mobile-nav{
     float: right;
-   
     padding: 30px;
     font-size: 24px;
-    color: var(--amarelo);
+    color: var(--amarelo-nav);
     outline: none;
     cursor:pointer;
    

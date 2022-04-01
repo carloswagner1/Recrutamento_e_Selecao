@@ -38,6 +38,11 @@ body{
   margin: auto;
   display: table;
 }
+
+.box{
+    width: 100%;
+}
+
 .site-logo{
   float: left;
   
@@ -87,7 +92,7 @@ padding: 15px;
   position: absolute;
   width: 0%;
   height: 2px;
-  background: var(--amarelo-nav);
+  background: var(--amarelo);
   bottom:0px;
   left:0;
   transition: all .2s;
@@ -150,6 +155,7 @@ input, select{
     font-size: 1rem;
     margin-bottom: 20px;
     margin-top: 10px;
+    width: 100%;
 }
 
 input:focus{
@@ -185,6 +191,10 @@ input[type="submit"]:hover{
     text-align: center;
     box-shadow: 0 0 15px black;
     margin-top: 0;
+}
+
+.btn.btn-primary{
+    background-color: var(--azul-claro);
 }
 
 .box{
@@ -245,6 +255,7 @@ h1{
     padding-left: 1%;
     padding-top: 0.5%;
     font-size: 15pt;
+    width: 90%;
 }
 
 #mensagem-label{
@@ -254,7 +265,6 @@ h1{
 }
 
 li:hover{
-    background-color: var(--branco);
     transition: 0.5s;
     border-radius: 20px;
 }
@@ -265,7 +275,6 @@ li:hover{
     font-size: 20pt;
     font-weight: bold;
     color: var(--branco);
-    background-color: var(--azul-claro);
 }
 
 #nota-teste{
@@ -290,7 +299,8 @@ li:hover{
 
 .nota-tabela{
     border-radius: 100px;
-    width: 100%;
+    width: 30%;
+    margin-left: 35%;
     font-size: 18pt;
     font-weight: bold;
     color: var(--branco);
@@ -300,7 +310,10 @@ li:hover{
 .text-ranking{
     font-size: 20pt;
     text-align: center;
+
+    
 }
+
 @media only screen and (max-width: 900px){
     .site-nav-menu{
         float:none;
@@ -331,4 +344,5 @@ li:hover{
     .primary-menu li a:after{
         display: none;
     }
+
 }
