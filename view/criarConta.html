@@ -9,7 +9,7 @@
     <title>Criar Conta</title>
 </head>
 <body>
-    <div id="login-container">
+    <div class="flip-scale-down-ver" id="login-container">
         <h1>Cadastre-se!</h1>  
         <div id="msgSucesso"></div>      
         <form id="formCad1" class="needs-validation" action="#formcad2" style="display: block;">
@@ -22,15 +22,20 @@
             <label id="labelConfirmSenha" for="passconfirmation">Confirme sua senha</label>
             <input type="password" name="passconfirmation" id="passconfirmation" placeholder="Confirme sua senha" required>
             
-            <input type="submit" value="Próximo Passo" class="btn-proximo">
+            <input  class="heartbeat"  type="submit" value="Próximo Passo" class="btn-proximo">
         </form>
 
+<<<<<<< Updated upstream
         <form id="formCad2" action="login.html" style="display: none;">
             <label id="labelPais" for="país">País de Origem </label>
              <select name="pais" id="pais">
                  <option value="Brasil">Brasil</option>
              </select>
              <label id="labelCPF" for="cpf">CPF </label>
+=======
+        <form  class="bounce-top" id="formCad2" action="login.html" style="display: none;">
+            <label id="labelCPF" for="cpf">CPF </label>
+>>>>>>> Stashed changes
              <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
              <label id="labelCelular" for="celular">Celular </label>
              <select name="codcel" id="codcel">
@@ -44,7 +49,7 @@
              <label for="politica-privacidade" id="privacidade-label">Eu li e concordo com a <a href="#">politica de privacidade da G5Tech</a></label>
     
             
-             <input type="submit" value="Criar Conta" class="btn-criar-conta">
+             <input type="submit" value="Criar Conta" class="btn-criar-conta heartbeat">
          </form>
          
         <div id="social-container">
