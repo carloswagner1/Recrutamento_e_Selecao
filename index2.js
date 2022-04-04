@@ -1,0 +1,1 @@
+let solicitacaoController = new SolicitacaoController("form-solicitacao1", "form-solicitacao2")
