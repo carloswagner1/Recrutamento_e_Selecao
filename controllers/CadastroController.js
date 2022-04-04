@@ -76,7 +76,7 @@ class CadastroController{
 
     }
 
-    insert(data){
+    /*insert(data){
 
         if(sessionStorage.getItem("candidatos")) {
 
@@ -88,7 +88,7 @@ class CadastroController{
 
         sessionStorage.setItem("candidatos", JSON.stringify(candidatos));
 
-    }
+    }*/
 
     showCadastro2(){
         document.querySelector("#formCad1").style.display = "none";

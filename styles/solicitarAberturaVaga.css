@@ -195,6 +195,15 @@ input[type="submit"]:hover{
     transition: .5s;
 }
 
+#mensagem{
+	color: red;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.invisivel{
+  display: none;
+}
 
 
 
