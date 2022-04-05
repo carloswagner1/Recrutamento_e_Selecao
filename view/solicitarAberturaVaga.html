@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--link href="https://fonte.googleapis.com/css2?family=Roboto:wght@400,500,700&display=swap" rel="stylesheet"-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/solicitarAberturaVaga.css">
     <title>Solicitação de Abertura de Vaga</title>
@@ -32,14 +31,15 @@
     </header> 
     
     <div id="main-container">
-        <div id="main-container2">
             <form id="form-solicitacao1" action="">
-                <h1><label for="descricao" id="descricao">Descrição da Vaga</label></h1>
-                <textarea id="descricao" style="resize: none" name="descricao" rows="25" cols="1" placeholder="Selecione um cargo para aparecer a descrição"></textarea>           
+                <h1 id="descricao">
+                    <br>Descrição da Vaga<br>
+                </h1>
+                <textarea id="descricao" style="resize: none" name="descricao" rows="10" cols="56" placeholder="Descreva sobre a vaga que será solicitada"></textarea>           
             </form>
-        </div>
         <h1>Solicitar Abertura de Vaga</h1>
-        <div class="mensagem"><p><br>Preencha os campos para abrir uma Solicitação de Abertura de Vaga</p></div><br>
+        <div class="mensagem">
+            <p><br>Preencha os campos para abrir uma Solicitação de Abertura de Vaga</p></div><br>
         <form id="form-solicitacao2" action="">
             <h1><label for="departamento">Departamento</label></h1>
             <select departamento="select" id="departamento" name="departamento">
@@ -68,7 +68,7 @@
                 <option value="valor4">Doutorado</option>
             </select>
 
-            <input type="submit" value="Enviar Solicitação">        
+            <input type="submit" id="teste" value="Enviar Solicitação">        
             <span id="mensagem" class="invisivel">Erro ao buscar pacientes</span>
         </form>
     </div>
