@@ -1,0 +1,67 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box ;
+    font-family: Helvetica, sans-serif;
+  }
+
+  :root{
+    --branco: #fff;
+    --azul-escuro: #001533;
+    --azul-claro: #133463;
+    --cinza: #8b8b8b; 
+    --fundo: #081c6b;
+    --amarelo: #eab937;
+}
+  .container{
+    padding: 10px;
+    width:90%;
+    justify-self: unset;
+    justify-content: center;
+ 
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgb(0, 0, 0);
+    margin: 0px 50px ;
+    background-color: #ffffff;
+    
+    
+  }
+  h1{
+    margin-top: 30px;
+    font-size: 1.7rem;
+    color:rgb(99, 96, 96);
+      text-align: center;
+
+  }
+  .mensagem-link{
+    width: 500px;
+    border-radius: 4px;
+    margin: 30px;
+   
+    border-left: 40px solid var(--azul-escuro);
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.815);
+    
+  
+  }
+  
+ .mensagem01 p{
+    padding: 20px;
+    margin: 0;
+    font-size: 16px; 
+    width: 430px;
+       
+    }
+
+.mensagem-container a{
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--amarelo);
+    padding: 8px 16px;
+    border-radius: 5px;
+    box-shadow: 0px .5px 4px 0.5px rgba(0, 0, 0, 0.781);display: flex;
+    
+    text-align: center;
+    background-color: #fff;
+    letter-spacing: 0.5px;
+    
+    }

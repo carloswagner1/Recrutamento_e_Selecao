@@ -4,17 +4,7 @@
     box-sizing: border-box ;
     font-family: Helvetica, sans-serif;
   }
-  body{
-    font-size:  18px;
-    font-family: 'Roboto', sans-serif;
-    background-image: url('../images/recrutamento-selecao-tech-op.jpg') ;
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: center ;
-  
-    
-    
-  }
+ 
   :root{
     --branco: #fff;
     --amarelo2: #ff9500;
@@ -27,94 +17,9 @@
     --azul: #1b9dcc;
     --amarelo-fundo: rgba(230, 170, 7, 0.719);
 
-    /*------ início header-----*/
-  }
-  .header-area{
-    background-color:var(--fundo);
-    width: 100%;
-    height: 15vh;
-    z-index: 999;
-    border-bottom: var(--amarelo);
   
   }
-  
-  .header-container{
-    width: 100%;
-    margin: auto;
-    display: table;
-  }
-  .site-logo{
-    float: left;
-    
-  }
-  
-  .site-logo img{
-   
-  width: 60%;
-  padding: 15px;
-  
-  }
-  .mobile-nav{
-    display:none;
-  }
-  .site-nav-menu{
-   float: right;
-   margin-right: 5%;
-   margin-top: 10px;
-  
-  }
-  
-  
-  .primary-menu{
-    list-style: none;
-  }
-  
-  .primary-menu li{
-    display: inline-block;
-    margin: 25px 5px;
-  }
-  .primary-menu a{
-    color: #fff;
-    position: relative;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    padding: 10px 5px;
-    transition: .2s;
-  
-  }
-  .primary-menu a:hover, .primary-menu .active{
-    color: var(--amarelo);
-  }
-  
-  .primary-menu li a:after{
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: var(--amarelo);
-    bottom:0px;
-    left:0;
-    transition: all .2s;
-  }
-  .primary-menu li a:hover:after{
-    width: 100%;
-  }
-  .primary-menu li .active:after{
-    width: 100%;
-  }
-  .mobile-nav{
-    float: right;
-   
-    padding: 30px;
-    font-size: 24px;
-    color: var(--amarelo);
-    outline: none;
-    cursor:pointer;
-
-  }
-
-  /*----------fim header -----------*/
+ 
 
   
   /*----------container perfil -----------*/
