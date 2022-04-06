@@ -171,7 +171,7 @@ class UserController {
 
     }
 
-    getTr(dataUser, tr = null) {
+    /*getTr(dataUser, tr = null) {
 
         if (tr === null) tr = document.createElement('tr');
 
@@ -192,7 +192,7 @@ class UserController {
 
         return tr
 
-    }
+    }*/
 
     addEventsTr(tr) {
 
