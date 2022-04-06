@@ -1,7 +1,7 @@
 class User{
     constructor(name, cpf, email, celular, country, password, admin){
         this._name = name;
-        this._cpf =cpf;
+        this._cpf = cpf;
         this._email = email;
         this._celular = celular;
         this._country = country;
