@@ -23,11 +23,11 @@ class SolicitacaoController{
                 mensagem.classList.remove("invisivel");
 
             }else{
-                let listaSolicitacoes = JSON.parse(localStorage.getItem('listaSolicitacoes') || '[]');
+                let solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');
 
-                listaSolicitacoes.push(values);
+                solicitacoes.push(values);
     
-                localStorage.setItem('listaSolicitacoes', JSON.stringify(listaSolicitacoes));
+                localStorage.setItem('solicitacoes', JSON.stringify(solicitacoes));
 
                 mensagem.innerHTML = "Cadastro efetuado com sucesso!"
                 mensagem.classList.remove("invisivel");
