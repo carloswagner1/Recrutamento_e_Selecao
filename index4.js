@@ -1,0 +1,1 @@
+let candidatarController = new CandidatarController("container-desc", "container-form");
