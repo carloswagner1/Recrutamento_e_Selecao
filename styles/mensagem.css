@@ -14,66 +14,45 @@
     --amarelo: #eab937;
 }
   .container{
-    padding: 10px;
-    width:90%;
-    justify-self: unset;
-    justify-content: center;
- 
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px 0px rgb(0, 0, 0);
-    margin: 0px 50px ;
-    background-color: #ffffff;
+    flex: 1 1;
+    padding: 32px 48px;
+    min-height: 500px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+    box-shadow: 1px 0px  6px 0px rgb(0, 0, 0);
+    margin-left:5%;
+    width: 90%;
     
     
   }
-  header.container{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    padding: 5rem;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.966);
-    margin: auto;
-  }
-  h1{
-    margin-top: 30px;
-    font-size: 1.7rem;
+  div {
+    display: block;
+}
+.titulo h1{
+    margin: 10px 0px 20px 0px;
+    padding: 0px 10px;
     color:rgb(99, 96, 96);
-      text-align: center;
+}
+.texto{
+  background-color: rgb(240, 230, 230);
+  border: 1px solid var(--azul-escuro);
+  border-left: 30px solid var(--azul-escuro);
+  max-width: 60%;
+  padding: 30px;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 3%;
 
-  }
-  .mensagem-link{
-    width: 500px;
-    border-radius: 4px;
-    margin: 30px;
-   
-    border-left: 40px solid var(--azul-escuro);
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.815);
-    
-  
-  }
-  
- .mensagem01 p{
-    padding: 20px;
-    margin: 0;
-    font-size: 16px; 
-    width: 430px;
-       
-    }
-
-.mensagem-container a{
-    text-decoration: none;
-    font-size: 16px;
-    color: var(--amarelo);
-    padding: 8px 16px;
-    border-radius: 5px;
-    box-shadow: 0px .5px 4px 0.5px rgba(0, 0, 0, 0.781);
-    display: flex;
-    
-    text-align: center;
-    background-color: #fff;
-    letter-spacing: 0.5px;
-    
-    }
+}
+a{
+  text-decoration: none;
+  font-size: 1.3rem; 
+  color: var(--amarelo);
+}
+@media only screen and (max-width:900px){
+ .texto{
+   max-width: 100%;
+   padding: 20px;
+   margin: 5%;
+ } 
+}
