@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensagens</title>
     <link href="https://fonte.googleapis.com/css2?family=Roboto:wght@400,500,700&display=swap" rel="stylesheet" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <link rel="stylesheet" href="../styles/header.css">
-    <link rel="stylesheet" href="../styles/mensagem.css">
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/minhasVagas.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <title>Minhas Vagas</title>
 </head>
 <body>
   <header class="header-area">
@@ -21,32 +21,39 @@
       </div>
       <div class="site-nav-menu">
         <ul class="primary-menu">
-          <li><a href="../view/minhasVagas.html" class="">Minhas Vagas</a></li>
-          <li><a href="../view/oportunidades.html" class="">Oportunidades</a></li>
-          <li><a href="#" class="active">Mensagens</a></li>
+          <li><a href="#" class="active">Minhas Vagas</a></li>
+          <li><a href="../view/oportunidades.html" class="#">Oportunidades</a></li>
+          <li><a href="../view/mensagem.html" class="">Mensagens</a></li>
           <li><a href="../view/gerenciarPerfil.html" class="">Perfil</a></li>
           <li><a href="../view/login.html" class="">Sair</a></li>
         </ul>
       </div>
     </div>
   </header> 
-    <div class="container">
-                <h1>Mensagens</h1>
-                
-        
-            <div class="mensagem-container">
-                <div class="mensagem-link">
-                    <a href="#">
-                        <div class="mensagem01">
-                            <p>Seja muito bem vindo(a)!</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-       
-    </div>
-
+  <div class="titulo" alt="titulo">
+    <h1>Minhas Vagas</h1>
+    <p>Acompanhe aqui as vagas em que se candidatou</p>
+  </div>
+ 
+  <div class="container">
     
+ 
+    <div class="cards">
+      <div class="image-section"></div>
+      <div class="content">
+          <h2>Desenvolvedor(a) Java JR</h2>
+          <p><img src="../images/pasta.png" alt=""> Efetivo
+          </p>
+          <p><img src="../images/local.png" alt=""> Florianópolis/SC</p> 
+          <a href="#" class="btn">Desistir</a>
+          <a href="#" class="btn">Detalhes </a>
+          
+      </div> 
+    </div>
+   
+</div>
+    
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function(){
@@ -54,6 +61,6 @@
           $(".site-nav-menu").toggleClass("mobile-menu");
       });
     })
-  </script>  
+  </script>     
 </body>
 </html>

@@ -74,52 +74,52 @@
             </p>
         </div>
         <div class="continuar-button">
-            <input  class="btn-continuar" id="btn-continuar" type="submit" value="continuar" onclick="showForm()">
+            <input class="btn-continuar" id="btn-continuar" type="button" value="continuar" onclick="showForm()">
         </div>
     </div>
     <div class="container-form" id="container-form" style="display: none;">
         <div class="form">
             <form>
-
-
                 <fieldset>
                     <legend>
                         <h2>Experiência Profissional</h2>
                     </legend>
-                    <div class="input-group-exp">
-                        <div class="input-box">
-                            <label id="labelempresa" for="empresa">Empresa</label>
-                            <input type="text" name="empresa" id="empresa">
-                        </div>
-                        <div class="input-box">
-                            <label id="labelcargo" for="cargo">Cargo</label>
-                            <input type="text" name="cargo" id="cargo">
-                        </div>
-                        <div class="input-box">
-                            <label id="dataAdimissao" for="dataAdimissao">Data de Admissão</label>
-                            <input id="dataAdimissao" type="date" name="dataAdimissao">
-                        </div>
-                        <div class="input-box">
-                            <label id="dataDesligamento" for="dataDesligamento">Data de Desligamento</label>
-                            <input id="dataDesligamento" type="date" name="dataDesligamento">
-                        </div>
+                    <div class="expProf" id="expProf">
+                        <div class="input-group-exp">
+                            <div class="input-box">
+                                <label id="labelempresa" for="empresa">Empresa</label>
+                                <input type="text" name="empresa" id="empresa">
+                            </div>
+                            <div class="input-box">
+                                <label id="labelcargo" for="cargo">Cargo</label>
+                                <input type="text" name="cargo" id="cargo">
+                            </div>
+                            <div class="input-box">
+                                <label id="dataAdimissao" for="dataAdimissao">Data de Admissão</label>
+                                <input id="dataAdimissao" type="date" name="dataAdimissao">
+                            </div>
+                            <div class="input-box">
+                                <label id="dataDesligamento" for="dataDesligamento">Data de Desligamento</label>
+                                <input id="dataDesligamento" type="date" name="dataDesligamento">
+                            </div>
 
-                        <div class="input-box-textarea">
-                            <label for="descricao">Descreva sua função dentro da empresa</label>
-                            <textarea name="descricao" id="descricao" rows="10"></textarea>
-                        </div>
+                            <div class="input-box-textarea">
+                                <label for="descricao">Descreva sua função dentro da empresa</label>
+                                <textarea name="descricao" id="descricao" rows="10"></textarea>
+                            </div>
 
-                        <div class="semExperiencia-inputs">
-                            <div class="semExperiencia-group">
-                                <div class="semExperiencia-input">
-                                    <input id="semExperiencia" type="radio" name="semExperiencia">
-                                    <label for="semExperiencia">Não possuo experiência profissional</label>
+                            <div class="semExperiencia-inputs">
+                                <div class="semExperiencia-group">
+                                    <div class="semExperiencia-input">
+                                        <input id="semExperiencia" type="radio" name="semExperiencia">
+                                        <label for="semExperiencia">Não possuo experiência profissional</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="adicionar-button">
-                            <button><a href="#">Adicionar</a> </button>
-                        </div>
+                    </div>
+                    <div class="adicionar-button">
+                        <button type="button" onclick="addExp()"><a href="#">Adicionar</a></button>
                     </div>
                 </fieldset>
                 <br>
@@ -127,48 +127,45 @@
                     <legend>
                         <h2>Formações Academicas</h2>
                     </legend>
-                    <div class="input-group-formacao">
-                        <div class="input-box-formacao">
-                            <label id="labelformacao" for="formacao"> Tipo de Formação</label>
-                            <select name="formacao" id="formacao">
-                                <option selected disabled value="">Selecione</option>
-                                <option value="fundamental">Ensino Fundamental</option>
-                                <option value="medio">Ensino Médio</option>
-                                <option value="graduacao">Graduação</option>
-                                <option value="pos-graduacao">Pós-Graduação</option>
-                                <option value="doutorado">Doutorado</option>
-                                <option value="mestrado">Mestrado</option>
-                                <option value="tecnico">Técnico</option>
-                                <option value="tecnologo">Tecnólogo</option>
-                            </select>
-
+                    <div class="formacao" id="formacao">
+                        <div class="input-group-formacao">
+                            <div class="input-box-formacao">
+                                <label id="labelformacao" for="formacao"> Tipo de Formação</label>
+                                <select name="formacao" id="formacao">
+                                    <option selected disabled value="">Selecione</option>
+                                    <option value="fundamental">Ensino Fundamental</option>
+                                    <option value="medio">Ensino Médio</option>
+                                    <option value="graduacao">Graduação</option>
+                                    <option value="pos-graduacao">Pós-Graduação</option>
+                                    <option value="doutorado">Doutorado</option>
+                                    <option value="mestrado">Mestrado</option>
+                                    <option value="tecnico">Técnico</option>
+                                    <option value="tecnologo">Tecnólogo</option>
+                                </select>
+                            </div>
+                            <div class="input-box">
+                                <label id="labelcurso" for="curso">Curso</label>
+                                <input type="text" name="curso" id="curso">
+                            </div>
+                            <div class="input-box">
+                                <label id="labelInstituicao" for="instituicao">Nome da Instituição</label>
+                                <input type="text" name="instituicao" id="instituicao">
+                            </div>
+                            <div class="input-box">
+                                <label id="datainicio" for="datainicio">Data de Início</label>
+                                <input id="datainicio" type="date" name="datainicio">
+                            </div>
+                            <div class="input-box">
+                                <label id="dataconclusao" for="dataconclusao">Data de Conclusão</label>
+                                <input id="dataconclusao" type="date" name="dataconclusao">
+                            </div>
                         </div>
-                        <div class="input-box">
-                            <label id="labelcurso" for="curso">Curso</label>
-                            <input type="text" name="curso" id="curso">
-                        </div>
-                        <div class="input-box">
-                            <label id="labelInstituicao" for="instituicao">Nome da Instituição</label>
-                            <input type="text" name="instituicao" id="instituicao">
-                        </div>
-                        <div class="input-box">
-                            <label id="datainicio" for="datainicio">Data de Início</label>
-                            <input id="datainicio" type="date" name="datainicio">
-                        </div>
-                        <div class="input-box">
-                            <label id="dataconclusao" for="dataconclusao">Data de Conclusão</label>
-                            <input id="dataconclusao" type="date" name="dataconclusao">
-                        </div>
-
-
-                        <div class="adicionar-button">
-                            <button><a href="#">Adicionar</a></button>
-                        </div>
+                    </div>
+                    <div class="adicionar-button">
+                        <button type="button" onclick="addFormacao()"><a href="#">Adicionar</a></button>
+                    </div>
 
                 </fieldset>
-
-
-
             </form>
             <div class="candidatar-button">
                 <button><a href="#">Candidatar</a></button>

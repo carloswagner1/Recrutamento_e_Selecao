@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/solicitarAberturaVaga.css">
     <title>Solicitação de Abertura de Vaga</title>
-    
+
 </head>
+
 <body>
     <header class="header-area">
         <div class="header-container">
@@ -23,24 +25,26 @@
                 <ul class="primary-menu">
                     <li><a href="../view/gerenciarUsuario.html" class="">Gerenciar Usuários</a></li>
                     <li><a href="#" class="active">Solicitar Vaga</a></li>
-                    <li><a href="#" class="">Mensagens</a></li>
-                    <li><a href="#" class="">Perfil</a></li>
-                    <li><a href="#" class="">Sair</a></li>
+                    <li><a href="../view/informarResultados.html" class="">Mensagens</a></li>
+                    <li><a href="../view/agendarTeste-Entrevista.html" class="">Agendar Testes/Entrevistas</a></li>
+                    <li><a href="../view/loginEmpresa.html" class="">Sair</a></li>
                 </ul>
             </div>
         </div>
-    </header> 
-    
+    </header>
+
     <div id="main-container">
-            <form id="form-solicitacao1" action="">
-                <h1 id="descricao">
-                    <br>Descrição da Vaga<br>
-                </h1>
-                <textarea id="descricao" style="resize: none" name="descricao" rows="10" cols="56" placeholder="Descreva sobre a vaga que será solicitada"></textarea>           
-            </form>
+        <form id="form-solicitacao1" action="">
+            <h1 id="descricao">
+                <br>Motivo da Solicitação<br>
+            </h1>
+            <textarea id="descricao" style="resize: none" name="descricao" rows="10" cols="56"
+                placeholder="Descreva sobre a vaga que será solicitada"></textarea>
+        </form>
         <h1>Solicitar Abertura de Vaga</h1>
         <div class="mensagem">
-            <p><br>Preencha os campos para abrir uma Solicitação de Abertura de Vaga</p></div><br>
+            <p><br>Preencha os campos para abrir uma Solicitação de Abertura de Vaga</p>
+        </div><br>
         <form id="form-solicitacao2" action="">
             <h1><label for="departamento">Departamento</label></h1>
             <select departamento="select" id="departamento" name="departamento">
@@ -55,9 +59,10 @@
                 <option value="valor1">Programador</option>
                 <option value="valor2">Jogador de Vôlei</option>
                 <option value="valor3">Ninja</option>
-            </select>            
-            <h1><label for="requisitos">Requisitos</label></h1>
-            <textarea id="requisitos" style="resize: none" name="requisitos" rows="2" cols="1" placeholder="Insira os requisitos desejados"></textarea>
+            </select>
+            <h1><label for="requisitos">Requisitos Desejados</label></h1>
+            <textarea id="requisitos" style="resize: none" name="requisitos" rows="2" cols="1"
+                placeholder="Insira os requisitos desejados"></textarea>
             <h1><label for="escolaridade">Grau de Escolaridade</label></h1>
             <select escolaridade="select" id="escolaridade" name="escolaridade">
                 <option value="valor0"></option>
@@ -71,20 +76,21 @@
                 <option value="valor8">Técnico</option>
             </select>
 
-            <input type="submit" id="teste" value="Enviar Solicitação">        
+            <input type="submit" id="teste" value="Enviar Solicitação">
             <span id="mensagem" class="invisivel">Erro ao buscar pacientes</span>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $(".mobile-nav i").click(function(){
+        $(document).ready(function () {
+            $(".mobile-nav i").click(function () {
                 $(".site-nav-menu").toggleClass("mobile-menu");
             });
         })
-    </script>      
+    </script>
     <script src="../model/Solicitacao.js"></script>
     <script src="../controllers/SolicitacaoController.js"></script>
     <script src="../index2.js"></script>
 </body>
+
 </html>
