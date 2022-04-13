@@ -20,11 +20,11 @@ class CadastroController{
 
             let values = this.getValues();
             
-            let listaCandidato = JSON.parse(localStorage.getItem('listaCandidato') || '[]');
+            let candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
 
-            listaCandidato.push(values);
+            candidatos.push(values);
 
-            localStorage.setItem('listaCandidato', JSON.stringify(listaCandidato));
+            localStorage.setItem('candidatos', JSON.stringify(candidatos));
 
             setTimeout(() => {
                 window.location.href = 'login.html'
