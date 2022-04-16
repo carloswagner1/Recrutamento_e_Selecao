@@ -172,7 +172,7 @@ class Utils {
     /*Buscar endereço pelo CEP */
     static buscaCep(){
         let cep = document.querySelector('#cep');
-        let rua = document.querySelector('#rua');
+        let logradouro = document.querySelector('#logradouro');
         let bairro = document.querySelector('#bairro');
         let cidade = document.querySelector('#cidade');
         let estado = document.querySelector('#estado');
@@ -210,7 +210,7 @@ function FormatarCelular(numero) {
 
 function popularForm(resposta){
    
-    rua.value =resposta.logradouro;
+    logradouro.value =resposta.logradouro;
     bairro.value =resposta.bairro;
     cidade.value =resposta.localidade;
     estado.value =resposta.uf;

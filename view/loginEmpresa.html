@@ -21,13 +21,15 @@
             <label for="password">Senha</label>
             <input type="password" name="password" id="senha" placeholder="Digite sua senha">
             <a href="../view/redefinir.html" id="esqueceu-senha">Esqueceu sua Senha?</a>
-            <input  class="heartbeat" type="submit" id="btn-empresa" value="Acessar Conta">
+            <input  class="heartbeat" type="submit" id="btn-empresa" onsubmit="entrar()" value="Acessar Conta">
         </form>
         <div id="registro">
         <p>Não possui uma conta?</p>
         <a href="../view/criarConta.html" rel="next">Criar Conta</a>
     </div>
     </div>
-    
+    <script src="../controllers/loginController.js"></script>
+    <script src="../controllers/loginController.js"></script>
+    <script src="../login.js"></script>
 </body>
 </html>

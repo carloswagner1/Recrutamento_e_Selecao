@@ -32,4 +32,68 @@ class xpProfissional {
         return this._dataDemissao
     }
 
+    loadFromJSON(json){
+        for (let name in json){
+            this[name] = json[name];
+        }   
+    }
+
+    static getUsersStorage() {
+
+        let xps = [];
+
+        if (localStorage.getItem("xps")) {
+
+            xps = JSON.parse(localStorage.getItem("xps"));
+
+        }
+
+        return xps;
+
+    }
+
+    getNewID(){
+
+        let xpsID = parseInt(localStorage.getItem("xpsID"));
+
+        if (!xpsID > 0) xpsID = 0;
+
+        xpsID++;
+
+        localStorage.setItem("xpsID", xpsID);
+
+        return xpsID;
+
+    }
+
+    save(){
+
+        let xps = User.getXpsStorage();
+
+        if (this.id > 0) {
+            
+            xps.map(u=>{
+
+                if (u._id == this.id) {
+
+                    Object.assign(u, this);
+
+                }
+
+                return u;
+
+            });
+
+        } else {
+
+            this._id = this.getNewID();
+
+            xps.push(this);
+
+        }
+
+        localStorage.setItem("xps", JSON.stringify(xps));
+
+    }
+
 }
