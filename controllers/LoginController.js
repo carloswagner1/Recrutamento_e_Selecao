@@ -1,13 +1,18 @@
 class LoginController {
     constructor(loginContainerId) {
         this.loginContainerEl = document.getElementById(loginContainerId);
-
+        
         this.onSubmit();
     }
 
-    onSubmit() {
+    onSubmit() {        
+
+        let tipo = this.loginContainerEl.dataset.tipo;
+
         this.loginContainerEl.addEventListener("submit", event => {
+
             event.preventDefault();
+          
             let email = document.querySelector('#email')
             let emailLabel = document.querySelector('#emailLabel')
 
@@ -16,40 +21,42 @@ class LoginController {
 
             let msgError = document.querySelector('#msgError')
 
-            let candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
+            if(this.loginContainerEl.dataset.tipo == 'empresa'){
+                var users = JSON.parse(localStorage.getItem('users') || '[]');
+            }else{
+                var users = JSON.parse(localStorage.getItem('candidatos') || '[]');
+            }
 
             let isValid = false;
-
-            console.log(candidatos)
-
-            let userValid = {
+            
+            let loginValid = {
                 email: '',
                 senha: ''
             }
 
-
-
-            candidatos.forEach((item) => {
-                if (email.value == item._email && senha.value == item._senha) {
-                    userValid = {
-                        user: item._email,
-                        senha: item._senha
+            users.forEach((item) => {
+                if (email.value == item._email && senha.value == item._password) {
+                    loginValid = {
+                        login: item._email,
+                        senha: item._password
                     }
                     isValid = true;
                 }
-
-                console.log(userValid)
             })
             
-
             if (isValid) {
-               window.location.href = '../view/minhasvagas.html'
 
+                if(tipo == 'empresa'){
+                    window.location.href = "../view/gerenciarProcessoSeletivo.html"
+                }else{
+                    window.location.href = '../view/minhasvagas.html'
+                }
+               
                 let mathRandom = Math.random().toString(16).substr(2)
                 let token = mathRandom + mathRandom
 
                 localStorage.setItem('token', token)
-                localStorage.setItem('userLogado', JSON.stringify(userValid))
+                localStorage.setItem('userLogado', JSON.stringify(loginValid))            
             } else {
                 emailLabel.setAttribute('style', 'color: red')
                 email.setAttribute('style', 'border-color: red')
@@ -58,12 +65,10 @@ class LoginController {
                 msgError.setAttribute('style', 'display: block')
                 msgError.setAttribute('style', 'color: red')
                 msgError.innerHTML = 'Usuário ou senha incorretos'
-                _email.focus()
+                email.focus()
             }
-
-        });
+        });        
     }
-
 }
 
 

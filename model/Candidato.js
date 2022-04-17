@@ -1,9 +1,9 @@
 class Candidato {
-    constructor(nome, email, senha, cpf, celular, cep, logradouro, bairro, cidade, estado, pais, area){
+    constructor(nome, email, password, cpf, celular, cep, logradouro, bairro, cidade, estado, pais, area){
         this._id;
         this._nome = nome;        
         this._email = email;
-        this._senha = senha;
+        this._password = password;
         this._cpf = cpf;
         this._celular = celular;
         this._cep = cep;
@@ -27,8 +27,8 @@ class Candidato {
         return this._email;
     }
 
-    get senha(){
-        return this._senha;
+    get password(){
+        return this._password;
     }
 
     get cpf(){
