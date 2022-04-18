@@ -1,72 +1,19 @@
 class Candidato {
     constructor(nome, email, senha, cpf, celular, cep, rua, bairro, cidade, estado, pais, area){
-        this._id;
-        this._nome = nome;        
-        this._email = email;
-        this._senha = senha;
-        this._cpf = cpf;
-        this._celular = celular;
-        this._cep = cep;
-        this._rua = rua;
-        this._bairro = bairro;
-        this._cidade = cidade;
-        this._estado = estado;
-        this._pais = pais;
-        this._area = area;
+        this.id;
+        this.nome = nome;        
+        this.email = email;
+        this.senha = senha;
+        this.cpf = cpf;
+        this.celular = celular;
+        this.cep = cep;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+        this.area = area;
     }
-
-    get id(){
-        return this._id;
-    }
-    
-    get nome(){
-        return this._nome;
-    }
-
-    get email(){
-        return this._email;
-    }
-
-    get senha(){
-        return this._senha;
-    }
-
-    get cpf(){
-        return this._cpf;        
-    }
-
-    get celular(){
-        return this._celular;
-    }
-
-    get cep(){
-        return this._cep;
-    }
-    
-    get rua(){
-        return this._rua;
-    }
-
-    get bairro(){
-        return this._bairro;
-    }
-     
-    get cidade(){
-        return this._cidade;
-    }
-    
-    get estado(){
-        return this._estado;
-    }
-    
-    get pais(){
-        return this._pais;
-    }
-    
-    get area(){
-        return this._area;
-    }
-
 }
 
 
