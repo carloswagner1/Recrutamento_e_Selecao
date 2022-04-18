@@ -12,7 +12,9 @@ class FormacaoAcademica{
         return this._id;
     }
 
-    get
+    get tipoFormacao(){
+        return this._tipoFormacao;
+    }
 
 }
 

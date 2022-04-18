@@ -126,21 +126,21 @@ body{
   
 }
 
-.login-empresa{
+.login-form{
     text-align: end;
     margin-right: 3%;
     display: block;
  
 }
 
-.login-empresa p{
+.login-form p{
      color: var(--cinza);
      font-size: 1.2rem;
      letter-spacing: 0.5px;
      font-family: Geneva, Tahoma, sans-serif;
 }
 
-.login-empresa a{
+.login-form a{
      text-decoration: none;
      font-size: 14px;
      color: var(--branco);
@@ -154,7 +154,7 @@ body{
      
 }
 
-.login-empresa a:hover{
+.login-form a:hover{
      background-color:var(--azul-claro);
      transition: .5s;
      color: var(--branco)
