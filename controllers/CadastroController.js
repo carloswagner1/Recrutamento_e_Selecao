@@ -1,4 +1,4 @@
-class CadastroController{
+class CadastroController {
 
     constructor(formCadastro1, formCadastro2){
         this.formEl1 = document.getElementById(formCadastro1);
@@ -10,7 +10,6 @@ class CadastroController{
         this.onSubmit();
         
     }
-
     
     onSubmit(){
        
@@ -19,12 +18,15 @@ class CadastroController{
             event.preventDefault();         
 
             let values = this.getValues();
-            
-            let candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
 
-            candidatos.push(values);
+            // setting the url
+            const url = "http://localhost:8080/candidatos";
 
-            localStorage.setItem('candidatos', JSON.stringify(candidatos));
+            let responsePromise = this.postData(url, values);
+
+            responsePromise.then(response => 
+                console.log(response)
+            );
 
             setTimeout(() => {
                 window.location.href = 'login.html'
@@ -32,6 +34,36 @@ class CadastroController{
                     
         })
 
+    }
+
+    // Recebe uma url para chamar e um objeto para enviar
+    async postData(url, data) {
+
+        // Setando headers da chamada
+        let headers = new Headers({
+            "Content-Type": "application/json",
+            "Content-Length": data.toString().length.toString()
+        });
+
+        // Logando para debugar
+        console.log(url);
+        console.log(data);
+        console.log(headers.get("Content-Type"));
+        console.log(headers.get("Content-Length"));
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                mode: 'cors',
+                body: JSON.stringify(data), // string or object
+                headers: headers
+            })
+
+            return await response.json();
+
+        } catch (error) {
+            return response;
+        }  
     }
 
     onNext(){
