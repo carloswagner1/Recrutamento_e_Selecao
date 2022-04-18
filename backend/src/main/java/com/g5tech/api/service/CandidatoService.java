@@ -1,12 +1,18 @@
 package com.g5tech.api.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.g5tech.api.dto.CandidatoDTO;
 import com.g5tech.api.model.Candidato;
 import com.g5tech.api.repository.CandidatoRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+@Log4j2
 @Service
 public class CandidatoService {
+
+    ObjectMapper mapper = new ObjectMapper();
 
     private final CandidatoRepository candidatoRepository;
 
@@ -14,11 +20,15 @@ public class CandidatoService {
         this.candidatoRepository = candidatoRepository;
     }
 
-    public Long save(CandidatoDTO dto) {
+    public Long save(CandidatoDTO dto) throws JsonProcessingException {
+
+        log.info("CandidatoDTO: {}", mapper.writeValueAsString(dto));
 
         Candidato candidato = this.build(dto);
 
         Candidato candidatoSalvo = candidatoRepository.save(candidato);
+
+        log.info("Candidato id: {}", candidatoSalvo.getId());
 
         return candidatoSalvo.getId();
     }
