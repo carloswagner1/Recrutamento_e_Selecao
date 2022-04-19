@@ -284,14 +284,14 @@ input[type="submit"]:hover{
     position: absolute;  
     display: inline-block;
     width: auto;
-    margin-top: 3%;
+    margin-top: 12%;
 }
 
 #privacidade-label{
     display: inline-block;
     width: auto;
     margin-left: 10%;
-    margin-top: 9%;
+    margin-top: 12%;
     
     
 }
