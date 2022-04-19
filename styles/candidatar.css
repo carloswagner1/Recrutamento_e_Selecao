@@ -16,111 +16,19 @@
     
   }
   :root{
+    --primary-color: #FFBA00;
+    --secundary-color: #FFF1CC;
+    --shadow-color: #CCC;
+    --text-color: #FFF;
     --branco: #fff;
-    --amarelo2: #ff9500;
+    --amarelo: #fdb824;
     --azul-escuro: #001533;
     --azul-claro: #133463;
-    --cinza: #323232;
-    --cinza-claro: #797979;    
+    --cinza: #323232; 
     --fundo: #081c6b;
     --amarelo: #eab937;
-    --azul: #1b9dcc;
-    --amarelo-fundo: rgba(230, 170, 7, 0.719);
 
-    /*------ início header-----*/
-  }
-  .header-area{
-    background-color:var(--fundo);
-    width: 100%;
-    height: 15vh;
-    z-index: 999;
-    border-bottom: var(--amarelo);
-  
-  }
-  
-  .header-container{
-    width: 100%;
-    margin: auto;
-    display: table;
-  }
-  .site-logo{
-    float: left;
-    
-  }
-  
-  .site-logo img{
-   
-  width: 60%;
-  padding: 15px;
-  
-  }
-  .mobile-nav{
-    display:none;
-  }
-  .site-nav-menu{
-   float: right;
-   margin-right: 5%;
-   margin-top: 10px;
-  
-  }
-  
-  
-  .primary-menu{
-    list-style: none;
-  }
-  
-  .primary-menu li{
-    display: inline-block;
-    margin: 25px 5px;
-  }
-  .primary-menu a{
-    color: #fff;
-    position: relative;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    padding: 10px 5px;
-    transition: .2s;
-  
-  }
-  .primary-menu a:hover, .primary-menu .active{
-    color: var(--amarelo);
-  }
-  
-  .primary-menu li a:after{
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: var(--amarelo);
-    bottom:0px;
-    left:0;
-    transition: all .2s;
-  }
-  .primary-menu li a:hover:after{
-    width: 100%;
-  }
-  .primary-menu li .active:after{
-    width: 100%;
-  }
-  .mobile-nav{
-    float: right;
-   
-    padding: 30px;
-    font-size: 24px;
-    color: var(--amarelo);
-    outline: none;
-    cursor:pointer;
-
-  }
-
-  /*----------fim header -----------*/
-
-  
-  /*---------- descrição -----------*/
-
-
-
+  }  
 .container, .container-desc {
     width: 100%;
     justify-self: unset;
@@ -151,49 +59,222 @@ h1, h3, h4{
  
 } 
 p{
-  color: var(--cinza);
-
- }
+  font-size: 1.5rem;
+  color:var(--cinza);
+  margin-left: 10px;
+  padding: 4px;
+}
 
 li{
   margin-left: 35px;
 }
 
-.continuar-button{
-  text-align: center;
-}
-.continuar-button .btn-continuar {
+.continuar-button button {
  
   margin-top: 4.5rem;
   border: none;
   background-color: var(--azul-escuro);
   padding: 0.62rem;
   border-radius: 5px;
-  cursor: pointer; 
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: bold;
+  cursor: pointer;
+  
   
 }
 
-.continuar-button .btn-continuar:hover {
+.continuar-button button:hover {
     background-color: var(--azul-claro);
     color:#323232;
 }
- 
 
- /*---------- fim descrição -----------*/
+.continuar-button button a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
 
  
- 
- /*---------- formulários -----------*/
+}
+main{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  width: 90%;
+  margin: 5vh auto;
+  padding: 50px;
+ box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+  gap: 20px;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
 
+}
+
+fieldset h2{
+  color:#323232;
+}
+table{
+  margin-top: 3%;
+  margin-bottom: 2%;
+
+}
+.modal label{
+  display: block;
+  width: 30%;
+  text-align: left;
+  color: #323232;
+}
+select{
+  padding: 2%;
+  width: 49%;
+}
+
+.button{
+  border-style: none;
+  height: 40px;
+  padding: 6px 12px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: box-shadow .6s ease;
+}
+
+.button.blue{
+  background-color: #1FB6FF;
+}
+
+button.green{
+  background-color: #13CE66;
+}
+
+button.red{
+  background-color: #FF4949;
+}
+.modal{
+  position: fixed;
+  top:50px;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: #00000090;
+  opacity: 0;
+  z-index: -1;
+}
+
+.modal.active{
+  opacity: 1;
+  z-index: 1;
+}
+
+.modal-content{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  width: 50vw;
+  margin: 15vh auto;
+  padding-bottom: 20px;
+  background-color: white;
+  box-shadow: 1px 1px 10px black;
+}
+
+.modal-header{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1rem;
+  background-color: var(--fundo);
+  }
+
+
+
+.modal-close{
+  position: absolute;
+  right: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.modal-close:hover{
+  background-color: #FF4949;
+  color: white;
+}
+
+.modal-form{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.modal-field{
+  width: calc(50% - 10px);
+  height: 40px;
+  outline-style: none;
+  border-style: none;
+  box-shadow: 0 0 2px black;
+  padding: 0 10px;
+  font-size:1rem;
+}
+
+.modal-field:focus{
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 3px var(--primary-color);
+}
+
+
+.modal-footer{
+  background-color: inherit;
+  text-align: right;
+  padding: 0 20px;
+}
+
+.records{
+  width: 100%;
+  user-select: none;
+  text-align: left;
+}
+
+.records th{
+  height: 50px;
+  background-color: var(--fundo);
+
+  font-size: 1.2rem;  
+  text-align: center;  
+  width: 200px;
+  color: #CCC;
+  border-radius: 3px;
+}
+.records td{
+  height: 50px;
+
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+
+  
+}
+
+.records th:last-child,
+.records td:last-child{
+  padding: 0;
+  min-width: 140px;
+  text-align: center;
+}
+
+.records tr:hover{
+  background-color: var(--secundary-color);
+}
 
 fieldset {
-  border: 1px solid var(--amarelo-fundo);
+  border: 1px solid var(--amarelo);
   padding: 50px;
  
  
@@ -335,8 +416,6 @@ h2{
   font-weight: bold;
 }
 
- /*---------- fim formulário -----------*/
-
 .candidatar-button button {
  
   margin-top: 4.5rem;
@@ -363,6 +442,63 @@ h2{
 
  
 }
+@media (max-width:480px){
+
+  main{
+    padding: 0;
+    margin: 20px 0 0 0;
+    width:100%;
+    box-shadow: none;  
+  }
+
+}
+@media (max-width:480px){
+  .modal{
+      top:100%;
+      transition: all 1s ease;
+  }
+  .modal.active{
+      top:0;
+  }
+  .modal-content{
+      margin:0;
+      width:100%;
+      position:fixed;
+  }
+  .modal-field{
+      width:100%;
+  }
+  th{
+      width: 100px;
+  }
+}
+
+@media(max-width:480px){
+  .records{
+      border-spacing: 5px;
+  }
+  .records thead{
+      display:none;
+  }
+  .records tr{
+      box-shadow: 0 1px 3px var(--shadow-color);
+  }
+  .records td:not(:first-child){
+      display:flex;
+      justify-content: space-between;
+      padding: 0 20px;
+  }
+
+  .records td{
+      margin:10px 0;
+  }
+
+  .records tr:hover{
+      background-color: inherit;
+  }
+}
+
+
 
 
 
@@ -399,6 +535,242 @@ h2{
     display: none;
 }
 
+main{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  width: 90%;
+  margin: 5vh auto;
+  padding: 50px;
+ box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+  gap: 20px;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+
+}
+p{
+  font-size: 1.5rem;
+  color:var(--cinza);
+  margin-left: 10px;
+  padding: 4px;
+}
+fieldset h2{
+  color:#323232;
+}
+table{
+  margin-top: 3%;
+  margin-bottom: 2%;
+
+}
+.modal label{
+  display: block;
+  width: 30%;
+  text-align: left;
+  color: #323232;
+}
+select{
+  padding: 2%;
+  width: 49%;
+}
+@media (max-width:480px){
+
+
+  main{
+      padding: 0;
+      margin: 20px 0 0 0;
+      width:100%;
+      box-shadow: none;
+  }
+}
+.button{
+  border-style: none;
+  height: 40px;
+  padding: 6px 12px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: box-shadow .6s ease;
+}
+
+.button.blue{
+  background-color: #1FB6FF;
+}
+
+button.green{
+  background-color: #13CE66;
+}
+
+button.red{
+  background-color: #FF4949;
+}
+.modal{
+  position: fixed;
+  top:50px;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: #00000090;
+  opacity: 0;
+  z-index: -1;
+}
+
+.modal.active{
+  opacity: 1;
+  z-index: 1;
+}
+
+.modal-content{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  width: 50vw;
+  margin: 15vh auto;
+  padding-bottom: 20px;
+  background-color: white;
+  box-shadow: 1px 1px 10px black;
+}
+
+.modal-header{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1rem;
+  background-color: var(--fundo);
+  }
+
+
+
+.modal-close{
+  position: absolute;
+  right: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.modal-close:hover{
+  background-color: #FF4949;
+  color: white;
+}
+
+.modal-form{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.modal-field{
+  width: calc(50% - 10px);
+  height: 40px;
+  outline-style: none;
+  border-style: none;
+  box-shadow: 0 0 2px black;
+  padding: 0 10px;
+  font-size:1rem;
+}
+
+.modal-field:focus{
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 3px var(--primary-color);
+}
+
+
+.modal-footer{
+  background-color: inherit;
+  text-align: right;
+  padding: 0 20px;
+}
+
+.records{
+  width: 100%;
+  user-select: none;
+  text-align: left;
+}
+
+.records th{
+  height: 50px;
+  background-color: var(--fundo);
+
+  font-size: 1.2rem;  
+  text-align: center;  
+  width: 200px;
+  color: #CCC;
+  border-radius: 3px;
+}
+.records td{
+  height: 50px;
+
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+
+  
+}
+
+.records th:last-child,
+.records td:last-child{
+  padding: 0;
+  min-width: 140px;
+  text-align: center;
+}
+
+.records tr:hover{
+  background-color: var(--secundary-color);
+}
+
+@media (max-width:480px){
+  .modal{
+      top:100%;
+      transition: all 1s ease;
+  }
+  .modal.active{
+      top:0;
+  }
+  .modal-content{
+      margin:0;
+      width:100%;
+      position:fixed;
+  }
+  .modal-field{
+      width:100%;
+  }
+  th{
+      width: 100px;
+  }
+}
+
+@media(max-width:480px){
+  .records{
+      border-spacing: 5px;
+  }
+  .records thead{
+      display:none;
+  }
+  .records tr{
+      box-shadow: 0 1px 3px var(--shadow-color);
+  }
+  .records td:not(:first-child){
+      display:flex;
+      justify-content: space-between;
+      padding: 0 20px;
+  }
+
+  .records td{
+      margin:10px 0;
+  }
+
+  .records tr:hover{
+      background-color: inherit;
+  }
+}
 
 }
 @media screen and (max-width: 1330px) {
