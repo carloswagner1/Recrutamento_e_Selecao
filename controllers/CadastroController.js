@@ -20,11 +20,11 @@ class CadastroController{
 
             let values = this.getValues();
             
-            let listaCandidato = JSON.parse(localStorage.getItem('listaCandidato') || '[]');
+            let candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
 
-            listaCandidato.push(values);
+            candidatos.push(values);
 
-            localStorage.setItem('listaCandidato', JSON.stringify(listaCandidato));
+            localStorage.setItem('candidatos', JSON.stringify(candidatos));
 
             setTimeout(() => {
                 window.location.href = 'login.html'
@@ -58,7 +58,7 @@ class CadastroController{
 
         [...this.formEl2.elements].forEach(function(field, index){
 
-            if (["cpf", "numCel", "cep", "rua", "bairro","cidade", "estado", "pais", "area"].indexOf(field.name) > -1 && !field.value) {
+            if (["cpf", "numCel", "cep", "logradouro", "bairro","cidade", "estado", "pais", "area"].indexOf(field.name) > -1 && !field.value) {
 
                 field.parentElement.classList.add("has-error");
                 isValid = false
@@ -70,7 +70,7 @@ class CadastroController{
             return false;
         }
 
-        let candidato = new Candidato(nome.value, email.value, senha.value, cpf.value, numCel.value, cep.value, rua.value, bairro.value, cidade.value, estado.value, pais.value, area.value);
+        let candidato = new Candidato(nome.value, email.value, senha.value, cpf.value, numCel.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value);
 
         return candidato;
 

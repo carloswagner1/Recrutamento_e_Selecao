@@ -13,13 +13,14 @@ Repositório relativo ao projeto do Trabalho de Graduação do Curso de Análise
 
 - [Carlos Wagner Rodrigues da Silva](https://github.com/carloswagner1) - 0030482011005
 
+- [Diego da Silva Lourenço](https://github.com/Diegoslourenco) - 0030482011037 
+
 - [Jéssica Maria dos Santos](https://github.com/jessiemdsantos) - 0030482011045 
 
 - [Kelly Aiya Kanatani](https://github.com/KellyKanatani) - 0030482011017 
 
 - [Lucas Almada de Andrade](https://github.com/AlmadaLucas) - 0030482011019
 
-- [Robson Ken Iti Arita](https://github.com/RobsonArita) - 0030482011025 
 
 ## Resumo 📖
 
