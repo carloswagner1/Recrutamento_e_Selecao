@@ -84,7 +84,7 @@ div {
     background-color: rgb(255, 255, 255);
     border: 1px solid rgba(0, 0, 0, 0.199);
     margin-left: 35px;
-    padding: 30px;
+    padding: 25px;
     border-radius: 10px;
 }
 .bs-vertical ul>li {
@@ -128,16 +128,13 @@ div {
 .bs-vertical ul>li> .texto  {
     display: block;
     color: #011138;
-    font-size: 3rem;
-    font-weight: 400;
-    line-height: 1.8;
-    letter-spacing: .4px;
+    font-size: 2.8rem;
+    
 }
 .bs-vertical ul>li> .texto span{
     color: #3f3f41;
-    font-size: 1.2rem;
+    font-size: .9rem;
     margin-left: 10px;
-    line-height: 1.2;   
 }
 .bs-vertical ul>li.complete>a:before {
     background-color: #5cb85c;
@@ -159,7 +156,7 @@ div {
 }
 .bs-vertical ul>li>a .ico.ico-green {
     color: #5cb85c;
-    top:20%;  
+    top:30%;  
 }
 .bs-vertical ul>li>a .ico.ico-muted {
     color: #bdc2ce;   
