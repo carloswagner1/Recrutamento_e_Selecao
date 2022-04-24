@@ -14,7 +14,8 @@
     --cinza: #323232;
     --facebook-color: #385998;
     --linkedin-color: #0077b5;
-    --cinza-claro: #797979;    
+    --cinza-claro: #797979;
+    --cor-aviso: #df2525;    
 }
 
 @keyframes scale-up-center {
@@ -291,4 +292,8 @@ input[type="submit"]:hover{
 
 h1#empresa{
   color: var(--amarelo);
+}
+
+.input-mensagem-erro {   
+  color: var(--cor-aviso);
 }
