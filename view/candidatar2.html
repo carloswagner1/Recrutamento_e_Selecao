@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../styles/candidatar.css">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="formacao.js" defer></script>
-    <script src="experiencia.js" defer></script>
     <title>Candidatar</title>
 </head>
+
 <body>
     <header class="header-area">
         <div class="header-container">
@@ -32,136 +33,139 @@
             </ul>
           </div>
         </div>
-      </header> 
-      <div class="container-desc"  id="container-desc" style="display: block;">
+    </header>
+    <div class="container-desc" id="container-desc" style="display: block;">
         <div class="descricao">
-                 <h1>Desenvolvedor(a) Java Jr</h1>
-                 <h3>Descrição da vaga</h3>
-                 <p>Desenvolvimento focado em manutenibilidade, performance e boas práticas de desenvolvimento de software para sistemas de utilities.
-   
-   
-                   <h3>Responsabilidades e atribuições</h3>
-                   
-                   Leitura de especificação; Programação front-end (Javascript, Bootstrap) e back-end (Java, Spring Boot, Spring Data).
-                   
-                   
-                   <h3>Requisitos e qualificações</h3>
-   
-                   
-                   Java, Spring MVC; Webservice RESTFUL, Banco de dados relacional
-                   
-                   Conhecimento em algoritmos e linguagem de programação Java
-                   
-                   Vontade de aprender novas tecnologias e ferramentas; Ser responsável, auto gerenciável e comprometido; Gostar de trabalhar em equipe.
-                   
-                   
-                   <h3>Informações adicionais</h3>
-                   
-                   <h4>✔ O que Temos?</h4>
-                   
-                   <ul>
-                       <li>Flexibilidade no horário de trabalho;</li>
-                       <li>Modelo de trabalho híbrido;</li>
-                       <li>Programa de Capacitação;</li>
-                       <li>Ambiente inovador e projetos desafiadores;</li>
-                       <li>Auxílio Home Office;</li>
-                   </ul>
-                 </p>
-             </div>
-             <div class="continuar-button">
-               <button><a href="#">Continuar</a></button>
-           </div>
+            <h1>Desenvolvedor(a) Java Jr</h1>
+            <h3>Descrição da vaga</h3>
+            <p>Desenvolvimento focado em manutenibilidade, performance e boas práticas de desenvolvimento de software
+                para sistemas de utilities.
+
+
+            <h3>Responsabilidades e atribuições</h3>
+
+            Leitura de especificação; Programação front-end (Javascript, Bootstrap) e back-end (Java, Spring Boot,
+            Spring Data).
+
+
+            <h3>Requisitos e qualificações</h3>
+
+
+            Java, Spring MVC; Webservice RESTFUL, Banco de dados relacional
+
+            Conhecimento em algoritmos e linguagem de programação Java
+
+            Vontade de aprender novas tecnologias e ferramentas; Ser responsável, auto gerenciável e comprometido;
+            Gostar de trabalhar em equipe.
+
+
+            <h3>Informações adicionais</h3>
+
+            <h4>✔ O que Temos?</h4>
+
+            <ul>
+                <li>Flexibilidade no horário de trabalho;</li>
+                <li>Modelo de trabalho híbrido;</li>
+                <li>Programa de Capacitação;</li>
+                <li>Ambiente inovador e projetos desafiadores;</li>
+                <li>Auxílio Home Office;</li>
+            </ul>
+            </p>
+        </div>
+        <div class="continuar-button">
+            <button onclick="showForm()"><a href="#">Continuar</a></button>
+        </div>
     </div>
-    <main>
+    <main class="container-form" id="container-form" style="display: none;">
         <div class="dados-pessoais">
             <h1>Dino da Silva Sauro</h1>
             <p>Celular: (11)99987-2212</p>
             <p>E-mail:dino_s_s@gmail.com</p>
         </div>
-        <fieldset> 
+        <fieldset>
             <legend>
                 <h2>Experiências Profissional</h2>
             </legend>
-        <button type="button" class="button blue mobile" id="adicionarExperiencia">Adicionar Experiência</button>
-        <table id="tableExperiencia" class="records">
-            <thead>
-                <tr>
-                    <th>Empresa</th>
-                    <th>Cargo</th>
-                    <th>Data de Admissão</th>
-                    <th>Data de Desligamento</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-               
-            </tbody>
-        </table>
-        <div class="semExperiencia-inputs">
-            <div class="semExperiencia-group">
-                <div class="semExperiencia-input">
-                    <input id="semExperiencia" type="radio" name="semExperiencia">
-                    <label for="semExperiencia">Não possuo experiência profissional</label>
+            <button type="button" class="button blue mobile" id="adicionarExperiencia">Adicionar Experiência</button>
+            <table id="tableExperiencia" class="records">
+                <thead>
+                    <tr>
+                        <th>Empresa</th>
+                        <th>Cargo</th>
+                        <th>Data de Admissão</th>
+                        <th>Data de Desligamento</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="semExperiencia-inputs">
+                <div class="semExperiencia-group">
+                    <div class="semExperiencia-input">
+                        <input id="semExperiencia" type="radio" name="semExperiencia">
+                        <label for="semExperiencia">Não possuo experiência profissional</label>
+                    </div>
                 </div>
+            </div>
+        </fieldset>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h2>Experiência Profissional</h2>
+                    <span class="modal-close" id="modalClose">&#10006;</span>
+                </header>
+                <form id="form" class="modal-form">
+                    <label for="nomeEmpresa">Nome da Empresa</label>
+                    <input type="text" id="nomeEmpresa" data-index="new" class="modal-field"
+                        placeholder="Nome da Empresa">
+                    <label for="cargo">Cargo</label>
+                    <input type="text" id="cargo" class="modal-field" placeholder="Cargo">
+                    <label for="dataAdmissao">Data de Admissão</label>
+                    <input type="date" id="dataAdmissao" class="modal-field">
+                    <label for="nomeDesligamento">Data de Desligamento</label>
+                    <input type="month" id="dataDesligamento" class="modal-field">
+                </form>
+                <footer class="modal-footer">
+                    <button id="salvar" class="button green">Salvar</button>
+                    <button id="cancelar" class="button blue">Cancelar</button>
+                </footer>
             </div>
         </div>
-    </fieldset>
-    <div class="modal" id="modal">
-                <div class="modal-content">
-                    <header class="modal-header">
-                        <h2>Experiência Profissional</h2>
-                        <span class="modal-close" id="modalClose">&#10006;</span>
-                    </header>
-                    <form id="form" class="modal-form">
-                        <label for="nomeEmpresa">Nome da Empresa</label>
-                        <input type="text" id="nomeEmpresa" data-index="new" class="modal-field" placeholder="Nome da Empresa">
-                        <label for="cargo">Cargo</label>
-                        <input type="text" id="cargo" class="modal-field" placeholder="Cargo">
-                        <label for="dataAdmissao">Data de Admissão</label>
-                        <input type="date" id="dataAdmissao"
-                        class="modal-field" >
-                        <label for="nomeDesligamento">Data de Desligamento</label>
-                        <input type="month" id="dataDesligamento" class="modal-field" >
-                    </form>
-                    <footer class="modal-footer">
-                        <button id="salvar" class="button green">Salvar</button>
-                        <button id="cancelar" class="button blue">Cancelar</button>
-                    </footer>
-                </div>
-            </div>
-    <fieldset> 
-        <legend>
-            <h2>Formações Acadêmicas</h2>
-        </legend>
-        <button type="button" class="button blue mobile" id="adicionarFormacao">Adicionar Formação</button>
-        <table id="tableformacao" class="records">
-            <thead>
-                <tr>
-                    <th>Tipo de Formação</th>
-                    <th>Curso</th>
-                    <th>Nome da Instituição</th>
-                    <th>Data de Início</th>
-                    <th>Data de Conclusão</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Tecnológo</td>
-                    <td>ADS</td>
-                    <td>Fatec SO</td>
-                    <td>02/2020</td>
-                    <td>12/2022</td>
-                    <td>
-                        <button type="button" class="button green">editar</button>
-                        <button type="button" class="button red">excluir</button>
-                    </td>
-                </tr>
-                
-            </tbody>
-        </table>
-    </fieldset>
-        
+        <fieldset>
+            <legend>
+                <h2>Formações Acadêmicas</h2>
+            </legend>
+            <button type="button" class="button blue mobile" id="adicionarFormacao">Adicionar Formação</button>
+            <table id="tableformacao" class="records">
+                <thead>
+                    <tr>
+                        <th>Tipo de Formação</th>
+                        <th>Curso</th>
+                        <th>Nome da Instituição</th>
+                        <th>Data de Início</th>
+                        <th>Data de Conclusão</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tecnológo</td>
+                        <td>ADS</td>
+                        <td>Fatec SO</td>
+                        <td>02/2020</td>
+                        <td>12/2022</td>
+                        <td>
+                            <button type="button" class="button green">editar</button>
+                            <button type="button" class="button red">excluir</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </fieldset>
+
         <div class="modal" id="modal-formacao">
             <div class="modal-content">
                 <header class="modal-header">
@@ -184,32 +188,34 @@
                     </select>
                     <label for="curso">Curso</label>
                     <input type="text" id="curso" class="modal-field" placeholder="Curso">
-                    <label for="instituicao" >Instituição</label>
+                    <label for="instituicao">Instituição</label>
                     <input type="text" id="instituicao" class="modal-field" placeholder="Nome da Insituição">
                     <label for="dataAdimissao">Data de Início</label>
-                    <input type="date" id="dataInicio"
-                    class="modal-field" >
+                    <input type="date" id="dataInicio" class="modal-field">
                     <label for="dataConclusao">Data de Conclusão</label>
-                    <input type="date" id="dataConclusao" class="modal-field" >
+                    <input type="date" id="dataConclusao" class="modal-field">
                 </form>
                 <footer class="modal-footer">
                     <button id="salvar2" class="button green">Salvar</button>
                     <button id="cancelar2" class="button blue">Cancelar</button>
                 </footer>
             </div>
-            </div>
+        </div>
         <div class="candidatar-button">
             <button><a href="#">Candidatar</a></button>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-    $(document).ready(function(){
-        $(".mobile-nav i").click(function(){
-            $(".site-nav-menu").toggleClass("mobile-menu");
-        });
-    })
-</script>    
+        $(document).ready(function () {
+            $(".mobile-nav i").click(function () {
+                $(".site-nav-menu").toggleClass("mobile-menu");
+            });
+        })
+    </script>
+    <script src="../controllers/CandidatarController.js"></script>
+    <!--script src="formacao.js" defer></script-->
+    <!--script src="experiencia.js" defer></script-->
 </body>
 
 </html>
