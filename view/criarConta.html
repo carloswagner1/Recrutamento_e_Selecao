@@ -38,21 +38,21 @@
             </select>
             <input type="text" name="numCel" id="numCel" placeholder="(__)_____-____" data-tipo="celular" required>
             <label id="labelCEP" for="cep">CEP</label>
-            <input type="text" name="cep" id="cep" maxlength="8">
+            <input type="text" name="cep" id="cep" maxlength="8" data-tipo="cep">
             <label id="labelLogradouro" for="logradouro">Logradouro</label>
-            <input type="text" name="logradouro" id="logradouro">
+            <input type="text" name="logradouro" id="logradouro" data-tipo="logradouro">
             <label id="labelBairro" for="bairro">Bairro</label>
-            <input type="text" name="bairro" id="bairro">
+            <input type="text" name="bairro" id="bairro" data-tipo="bairro">
             <label id="labelCidade" for="cidade">Cidade</label>
-            <input type="text" name="cidade" id="cidade">
+            <input type="text" name="cidade" id="cidade" data-tipo="cidade">
             <label id="labelEstado" for="estado">Estado</label>
-            <input type="text" name="estado" id="estado">
+            <input type="text" name="estado" id="estado" data-tipo="estado">
             <label id="labelPais" for="pais">País de Origem </label>
             <select name="pais" id="pais">
                 <option value="Brasil">Brasil</option>
             </select>
             <label id="labelgenero" for="genero">Gênero</label>
-            <select name="genero" id="genero">
+            <select name="genero" id="genero" required>
                 <option selected disabled value="">Selecione</option>
 
                 <option value="feminino">Feminino</option>
@@ -61,7 +61,7 @@
                 <option value="prefiro não dizer">Prefiro não dizer</option>
             </select>
             <label id="labelarea" for="area">Area de Interesse</label>
-            <select name="area" id="area">
+            <select name="area" id="area" required>
                 <option selected disabled value="">Selecione</option>
                 <option value="ti">TI</option>
                 <option value="comercial">Comercial</option>
