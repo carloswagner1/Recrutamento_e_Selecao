@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CandidatoDTO {
+public class UsuarioCandidatoDTO {
     private String nome;
     private String cpf;
     private String celular;

@@ -48,9 +48,8 @@ public class Candidato {
     @Column(name = "pais")
     private String pais;
 
-    // TODO : PODE SER UM ENUM? ASSIM SABEMOS QUAIS AREA TEREMOS, NAO FICA TÃO EM ABERTO
     @Column(name = "area")
-    private String area;
+    private AreaVaga area;
 
     @Column(name = "email")
     private String email;

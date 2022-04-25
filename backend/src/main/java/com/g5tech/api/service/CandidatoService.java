@@ -2,9 +2,13 @@ package com.g5tech.api.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.g5tech.api.dto.CandidatoDTO;
+import com.g5tech.api.builder.CandidatoBuilder;
+import com.g5tech.api.builder.UsuarioBuilder;
+import com.g5tech.api.dto.UsuarioCandidatoDTO;
 import com.g5tech.api.model.Candidato;
+import com.g5tech.api.model.Usuario;
 import com.g5tech.api.repository.CandidatoRepository;
+import com.g5tech.api.repository.UsuarioRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -15,45 +19,39 @@ public class CandidatoService {
     ObjectMapper mapper = new ObjectMapper();
 
     private final CandidatoRepository candidatoRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public CandidatoService(CandidatoRepository candidatoRepository) {
+    public CandidatoService(CandidatoRepository candidatoRepository,
+                            UsuarioRepository usuarioRepository) {
         this.candidatoRepository = candidatoRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
-    public Long save(CandidatoDTO dto) throws JsonProcessingException {
+    public Long save(UsuarioCandidatoDTO dto) throws JsonProcessingException {
 
-        log.info("CandidatoDTO: {}", mapper.writeValueAsString(dto));
+        log.info("CandidatoService save UserCandidatoDTO: {}", mapper.writeValueAsString(dto));
 
-        Candidato candidato = this.build(dto);
+        Candidato candidatoSalvo = this.saveNewCandidato(dto);
 
-        Candidato candidatoSalvo = candidatoRepository.save(candidato);
+        Usuario usuarioSalvo = this.saveNewUsuario(dto.getEmail(), dto.getHashSenha(), candidatoSalvo);
 
-        log.info("Candidato id: {}", candidatoSalvo.getId());
+        log.info("CandidatoService save Candidato id: {}, Usuario id: {}", candidatoSalvo.getId(), usuarioSalvo.getId());
 
         return candidatoSalvo.getId();
     }
 
-    /**
-     * Instancia um objeto Candidato a partir dos dados enviados dentro de um candidatoDTO
-     *
-     * @param dto DTO com os dados de um Candidato
-     * @return Candidato
-     */
-    private Candidato build(CandidatoDTO dto) {
-        Candidato candidato = new Candidato();
+    private Candidato saveNewCandidato(UsuarioCandidatoDTO dto) {
 
-        candidato.setNome(dto.getNome());
-        candidato.setCpf(dto.getCpf());
-        candidato.setCelular(dto.getCelular());
-        candidato.setCep(dto.getCep());
-        candidato.setRua(dto.getRua());
-        candidato.setBairro(dto.getBairro());
-        candidato.setCidade(dto.getCidade());
-        candidato.setEstado(dto.getEstado());
-        candidato.setPais(dto.getPais());
-        candidato.setArea(dto.getArea());
-        candidato.setEmail(dto.getEmail());
+        Candidato candidato = CandidatoBuilder.build(dto);
 
-        return candidato;
+        return candidatoRepository.save(candidato);
     }
+
+    private Usuario saveNewUsuario(String email, String hashSenha, Candidato candidato) {
+
+        Usuario usuario = UsuarioBuilder.buildUsuarioCandidato(email, hashSenha, candidato);
+
+        return usuarioRepository.save(usuario);
+    }
+
 }
