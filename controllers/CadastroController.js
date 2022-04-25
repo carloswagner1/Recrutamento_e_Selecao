@@ -65,6 +65,7 @@ class CadastroController{
     showCadastro2(){
         document.querySelector("#formCad1").style.display = "none";
         document.querySelector("#formCad2").style.display = "block";
+        document.getElementById('cpf').focus();
     }
 }
 

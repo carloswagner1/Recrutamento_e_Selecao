@@ -4,80 +4,14 @@ export function valida(input) {
     if(validadores[tipoDeInput]) {
         validadores[tipoDeInput](input)
     }
-
-    /*if(input.validity.valid) {
-        input.parentElement.querySelector('.input-mensagem-erro').innerHTML = ''
-    } else {
-        input.parentElement.querySelector('.input-mensagem-erro').innerHTML = mostraMensagemDeErro(tipoDeInput, input);
-        input.parentElement.querySelector('.input-mensagem-erro').setAttribute('style', "display: ");
-        input.focus();
-    }*/
 }
-
-/*const tiposDeErro = [
-    'valueMissing',
-    'typeMismatch',
-    'patternMismatch',
-    'customError',
-]
-
-const mensagensDeErro = {
-    email: {
-        valueMissing: ' (*campo obrigatório)',
-        customError: ' (email inválido)',
-    },
-    nome: {
-        valueMissing: ' (*campo obrigatório)',
-        customError: ' (nome inválido)',
-    },
-    senha: {
-        valueMissing: 'O campo de senha não pode estar vazio.',
-        customError: ' (email inválido)',
-    },
-    dataNascimento: {
-        valueMissing: 'O campo de data de nascimento não pode estar vazio.',
-        customError: 'Você deve ser maior que 18 anos para se cadastrar.'
-    },
-    cpf: {
-        valueMissing: 'O campo de CPF não pode estar vazio.',
-        customError: 'O CPF digitado não é válido.' 
-    },
-    cep: {
-        valueMissing: 'O campo de CEP não pode estar vazio.',
-        patternMismatch: 'O CEP digitado não é válido.',
-        customError: 'Não foi possível buscar o CEP.'
-    },
-    logradouro: {
-        valueMissing: 'O campo de logradouro não pode estar vazio.'
-    },
-    cidade: {
-        valueMissing: 'O campo de cidade não pode estar vazio.'
-    },
-    estado: {
-        valueMissing: 'O campo de estado não pode estar vazio.'
-    },
-    preco: {
-        valueMissing: 'O campo de preço não pode estar vazio.'
-    }
-}*/
-
 const validadores = {
     nome:input => validarCampoNome(input),
     email:input => validarCampoEmail(input),
     senha:input => validarCampoSenha(input),
     confirmaSenha:input => validarCampoConfirmSenha(input),    
     cpf:input => validarCampoCPF(input),
-    celular:input => validarCampoCelular(input),
-    cep:input => recuperarCEP(input)
-}
-function mostraMensagemDeErro(tipoDeInput, input) {
-    let mensagem = ''
-    tiposDeErro.forEach(erro => {
-        if(input.validity[erro]) {
-            mensagem = mensagensDeErro[tipoDeInput][erro]
-        }
-    })    
-    return mensagem;
+    celular:input => validarCampoCelular(input),    
 }
 function validarCampoEmail(input){
     const email = input.value;
@@ -259,4 +193,3 @@ function FormatarCelular(numero) {
     }
     return num;
 }
-
