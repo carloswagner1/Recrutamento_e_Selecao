@@ -1,5 +1,6 @@
 package com.g5tech.api.model;
 
+import com.g5tech.api.model.indicator.Perfil;
 import lombok.Getter;
 import lombok.Setter;
 

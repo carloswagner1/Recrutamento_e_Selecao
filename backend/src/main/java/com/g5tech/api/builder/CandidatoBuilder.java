@@ -1,7 +1,7 @@
 package com.g5tech.api.builder;
 
 import com.g5tech.api.dto.UsuarioCandidatoDTO;
-import com.g5tech.api.model.AreaVaga;
+import com.g5tech.api.model.indicator.AreaVaga;
 import com.g5tech.api.model.Candidato;
 
 public class CandidatoBuilder {

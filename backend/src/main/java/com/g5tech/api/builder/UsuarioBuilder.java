@@ -1,7 +1,7 @@
 package com.g5tech.api.builder;
 
 import com.g5tech.api.model.Candidato;
-import com.g5tech.api.model.Perfil;
+import com.g5tech.api.model.indicator.Perfil;
 import com.g5tech.api.model.Usuario;
 
 public class UsuarioBuilder {
