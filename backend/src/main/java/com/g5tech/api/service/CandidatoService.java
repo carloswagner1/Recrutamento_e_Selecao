@@ -5,14 +5,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.g5tech.api.builder.CandidatoBuilder;
 import com.g5tech.api.builder.UsuarioBuilder;
 import com.g5tech.api.dto.UsuarioCandidatoDTO;
+import com.g5tech.api.dto.UsuarioDTO;
+import com.g5tech.api.exception.ValidateException;
 import com.g5tech.api.model.Candidato;
 import com.g5tech.api.model.Usuario;
 import com.g5tech.api.repository.CandidatoRepository;
 import com.g5tech.api.repository.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 @Log4j2
+@RequiredArgsConstructor
 @Service
 public class CandidatoService {
 
@@ -20,12 +24,7 @@ public class CandidatoService {
 
     private final CandidatoRepository candidatoRepository;
     private final UsuarioRepository usuarioRepository;
-
-    public CandidatoService(CandidatoRepository candidatoRepository,
-                            UsuarioRepository usuarioRepository) {
-        this.candidatoRepository = candidatoRepository;
-        this.usuarioRepository = usuarioRepository;
-    }
+    private final UsuarioService usuarioService;
 
     public Long save(UsuarioCandidatoDTO dto) throws JsonProcessingException {
 
@@ -33,7 +32,7 @@ public class CandidatoService {
 
         Candidato candidatoSalvo = this.saveNewCandidato(dto);
 
-        Usuario usuarioSalvo = this.saveNewUsuario(dto.getEmail(), dto.getHashSenha(), candidatoSalvo);
+        Usuario usuarioSalvo = usuarioService.saveNewUsuario(dto.getEmail(), dto.getHashSenha(), candidatoSalvo);
 
         log.info("CandidatoService save Candidato id: {}, Usuario id: {}", candidatoSalvo.getId(), usuarioSalvo.getId());
 
@@ -47,11 +46,16 @@ public class CandidatoService {
         return candidatoRepository.save(candidato);
     }
 
-    private Usuario saveNewUsuario(String email, String hashSenha, Candidato candidato) {
+    public Long getIdByUsuario(UsuarioDTO dto) throws ValidateException {
 
-        Usuario usuario = UsuarioBuilder.buildUsuarioCandidato(email, hashSenha, candidato);
+        Usuario usuario = usuarioService.getByEmail(dto.getEmail());
 
-        return usuarioRepository.save(usuario);
+        if (usuario.getHashSenha().equals(dto.getHashSenha())) {
+            throw new ValidateException("Senha está incorreta");
+        }
+
+        return usuario.getCandidato().getId();
     }
+
 
 }

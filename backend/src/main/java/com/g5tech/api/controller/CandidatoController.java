@@ -1,6 +1,8 @@
 package com.g5tech.api.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.g5tech.api.dto.UsuarioDTO;
+import com.g5tech.api.exception.ValidateException;
 import com.g5tech.api.service.CandidatoService;
 import com.g5tech.api.dto.UsuarioCandidatoDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,6 +26,12 @@ public class CandidatoController {
     @PostMapping
     public ResponseEntity<Long> create(@Valid @RequestBody UsuarioCandidatoDTO dto) throws JsonProcessingException {
         return new ResponseEntity<>(candidatoService.save(dto), HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Busca id do candidato a partir de seu email e senha")
+    @PostMapping("/usuario")
+    public ResponseEntity<Long> getCandidatoIdByUsuario(@Valid @RequestBody UsuarioDTO dto) throws ValidateException {
+        return new ResponseEntity<>(candidatoService.getIdByUsuario(dto), HttpStatus.OK);
     }
 
 }
