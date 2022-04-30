@@ -21,7 +21,7 @@ class Utils {
             let script = document.createElement('script');
             script.src ='https://viacep.com.br/ws/'+cep+'/json/?callback=popularForm';
             document.body.appendChild(script);
-        });        
+        });       
 
     }
      
