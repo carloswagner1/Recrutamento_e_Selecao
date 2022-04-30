@@ -24,12 +24,25 @@
   font-size: 1rem;
   margin-top: 10px;
   }
+
+
+ .filtrar i{
+ 
+ margin-left: 5px;
+ font-size: 1.5rem;
+ color: #323232;
+ 
+
+}
+
+
   form {
      
     font-size: 1rem;
     color: rgb(99, 96, 96);
     margin-top: 20px;
     margin-left: 60px;
+    
   }
  
   

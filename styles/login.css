@@ -14,7 +14,8 @@
     --cinza: #323232;
     --facebook-color: #385998;
     --linkedin-color: #0077b5;
-    --cinza-claro: #797979;    
+    --cinza-claro: #797979;
+    --cor-aviso: #df2525;    
 }
 
 @keyframes scale-up-center {
@@ -126,21 +127,21 @@ body{
   
 }
 
-.login-empresa{
+.login-form{
     text-align: end;
     margin-right: 3%;
     display: block;
  
 }
 
-.login-empresa p{
+.login-form p{
      color: var(--cinza);
      font-size: 1.2rem;
      letter-spacing: 0.5px;
      font-family: Geneva, Tahoma, sans-serif;
 }
 
-.login-empresa a{
+.login-form a{
      text-decoration: none;
      font-size: 14px;
      color: var(--branco);
@@ -154,7 +155,7 @@ body{
      
 }
 
-.login-empresa a:hover{
+.login-form a:hover{
      background-color:var(--azul-claro);
      transition: .5s;
      color: var(--branco)
@@ -260,14 +261,14 @@ input[type="submit"]:hover{
     position: absolute;  
     display: inline-block;
     width: auto;
-    margin-top: 3%;
+    margin-top: 12%;
 }
 
 #privacidade-label{
     display: inline-block;
     width: auto;
     margin-left: 10%;
-    margin-top: 9%;
+    margin-top: 12%;
     
     
 }
@@ -291,4 +292,8 @@ input[type="submit"]:hover{
 
 h1#empresa{
   color: var(--amarelo);
+}
+
+.input-mensagem-erro {   
+  color: var(--cor-aviso);
 }

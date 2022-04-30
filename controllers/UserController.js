@@ -6,7 +6,7 @@ class UserController {
         this.formUpdateEl = document.getElementById(formIdUpdate);
         this.tableEl = document.getElementById(tableId);
 
-        this.validarPreenchimento();
+        //this.validarPreenchimento();
         this.onSubmit();
         this.onEdit();
         this.selectAll();
@@ -91,7 +91,7 @@ class UserController {
 
         [...formEl.elements].forEach(function (field, index) {
 
-            if (['name', 'cpf', 'email', 'celular', 'country', 'password'].indexOf(field.name) > -1 && !field.value) {
+            if (['name', 'cpf', 'email', 'numCel', 'country', 'password'].indexOf(field.name) > -1 && !field.value) {
 
                 field.parentElement.classList.add('has-error');
                 isValid = false;
@@ -116,7 +116,7 @@ class UserController {
             user.name,
             user.cpf,
             user.email,
-            user.celular,
+            user.numCel,
             user.country,
             user.password,
             user.admin
@@ -245,7 +245,7 @@ class UserController {
 
     }
 
-    validarPreenchimento(){        
+    /*validarPreenchimento(){        
         let nome = document.querySelector('#exampleInputName');
         let labelNome = document.querySelector('#labelName');
 
@@ -267,6 +267,8 @@ class UserController {
         Utils.validarCampoCelular(numCel, labelCelular);
         Utils.validarCampoSenha(senha, labelSenha);
 
-    }
+    }*/
 
 }
+
+let userController = new UserController("form-user-create", "form-user-update", "table-users");

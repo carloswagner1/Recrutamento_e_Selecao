@@ -1,1 +1,0 @@
-let processoController = new ProcessoController("form-process-create", "form-process-update", "table-process");
