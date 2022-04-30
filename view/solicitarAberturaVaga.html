@@ -60,22 +60,49 @@
                 <option value="valor2">Jogador de Vôlei</option>
                 <option value="valor3">Ninja</option>
             </select>
+            <label for="tipoVaga" class="tipoVaga">Tipo de Vaga</label>
+            <select cargo="select" id="tipoVaga" name="tipoVaga">
+                <option value="valor0"></option>
+                <option value="valor1">Estágio</option>
+                <option value="valor2">CLT</option>
+                <option value="valor3">Contratação PJ</option>
+            </select>
+            <label for="localVaga" class="localVaga">Local da Vaga</label>
+            <select cargo="select" id="tipoVaga" name="tipoVaga">
+                <option value="valor0"></option>
+                <option value="valor1">Acre</option>
+                <option value="valor2">Alagoas</option>
+                <option value="valor3">Amapá</option>
+                <option value="valor3">Amazonas</option>
+                <option value="valor3">Bahia</option>
+                <option value="valor3">Ceará</option>
+                <option value="valor3">Espírito Santo</option>
+                <option value="valor3">Goiás</option>
+                <option value="valor3">Maranhão</option>
+                <option value="valor3">Mato Grosso</option>
+                <option value="valor3">Minas Gerais</option>
+                <option value="valor3">Pará</option>
+                <option value="valor3">Paraíba</option>
+                <option value="valor3">Paraná</option>
+                <option value="valor3">Pernambuco</option>
+                <option value="valor3">Piauí</option>
+                <option value="valor3">Rio de Janeiro</option>
+                <option value="valor3">Rio Grande do Norte</option>
+                <option value="valor3">Rio Grande do Sul</option>
+                <option value="valor3">Rondônia</option>
+                <option value="valor3">Roraima</option>
+                <option value="valor3">Santa Catarina</option>
+                <option value="valor3">São Paulo</option>
+                <option value="valor3">Segipe</option>
+                <option value="valor3">Tocantins</option>
+                <option value="valor3">Distrito Federal</option>
+            </select>
+            <label id="lblNumVaga" for="lblNumVaga">Quantidade de Vagas</label>
+            <input name="qtdvagas" id="qtdvagas" class="input" placeholder="Insira a quantidade de Vagas" data-tipo="qtdvaga">
             <h1><label for="requisitos">Requisitos Desejados</label></h1>
             <textarea id="requisitos" style="resize: none" name="requisitos" rows="2" cols="1"
                 placeholder="Insira os requisitos desejados"></textarea>
-            <h1><label for="escolaridade">Grau de Escolaridade</label></h1>
-            <select escolaridade="select" id="escolaridade" name="escolaridade">
-                <option value="valor0"></option>
-                <option value="valor1">Fundamental</option>
-                <option value="valor2">Médio</option>
-                <option value="valor3">Graduação</option>
-                <option value="valor4">Pós-graduação</option>
-                <option value="valor5">Mestrado</option>
-                <option value="valor6">Doutorado</option>
-                <option value="valor7">Tecnólogo</option>
-                <option value="valor8">Técnico</option>
-            </select>
-
+            
             <input type="submit" id="teste" value="Enviar Solicitação">
             <span id="mensagem" class="invisivel">Erro ao buscar pacientes</span>
         </form>
