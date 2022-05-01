@@ -4,7 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.g5tech.api.builder.CandidatoBuilder;
 import com.g5tech.api.dto.UsuarioCandidatoDTO;
-import com.g5tech.api.exception.CandidatoNotFoundException;
+import com.g5tech.api.exception.CandidatoCpfNotUniqueException;
+import com.g5tech.api.exception.CandidatoEmailNotUniqueException;
 import com.g5tech.api.model.Candidato;
 import com.g5tech.api.model.UsuarioCandidato;
 import com.g5tech.api.repository.CandidatoRepository;
@@ -27,6 +28,8 @@ public class CandidatoService {
 
     public Long save(UsuarioCandidatoDTO dto) throws JsonProcessingException {
 
+        this.checkFields(dto);
+
         log.info("CandidatoService save UserCandidatoDTO: {}", mapper.writeValueAsString(dto));
 
         Candidato candidatoSalvo = this.saveNewCandidato(dto);
@@ -40,6 +43,29 @@ public class CandidatoService {
         log.info("CandidatoService save Candidato id: {}, Usuario id: {}", candidatoSalvo.getId(), usuarioCandidatoSalvo.getId());
 
         return candidatoSalvo.getId();
+    }
+
+    private void checkFields(UsuarioCandidatoDTO dto) {
+
+        this.checkByEmail(dto.getEmail());
+        this.checkByCpf(dto.getCpf());
+    }
+
+    private void checkByEmail(String email) {
+
+        Optional<Candidato> candidatoOptional = candidatoRepository.findByEmail(email);
+
+        if (candidatoOptional.isPresent()) {
+            throw new CandidatoEmailNotUniqueException();
+        }
+    }
+
+    private void checkByCpf(String cpf) {
+        Optional<Candidato> candidatoOptional = candidatoRepository.findByCpf(cpf);
+
+        if (candidatoOptional.isPresent()) {
+            throw new CandidatoCpfNotUniqueException();
+        }
     }
 
     private Candidato saveNewCandidato(UsuarioCandidatoDTO dto) {

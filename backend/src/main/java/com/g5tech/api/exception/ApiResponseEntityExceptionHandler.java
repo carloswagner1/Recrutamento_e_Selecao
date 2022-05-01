@@ -36,4 +36,20 @@ public class ApiResponseEntityExceptionHandler extends ResponseEntityExceptionHa
         return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
+    @ExceptionHandler({ CandidatoEmailNotUniqueException.class })
+    public ResponseEntity<Object> handleCandidatoEmailNotUniqueException(CandidatoEmailNotUniqueException ex, WebRequest request) {
+
+        ErrorDTO error = new ErrorDTO("Email já cadastrado para outra conta");
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler({ CandidatoCpfNotUniqueException.class })
+    public ResponseEntity<Object> handleCandidatoCpfNotUniqueException(CandidatoCpfNotUniqueException ex, WebRequest request) {
+
+        ErrorDTO error = new ErrorDTO("CPF já cadastrado em outra conta");
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
 }
