@@ -61,6 +61,15 @@
 		</dependency>
 		<!-- SPRINGDOC -->
 
+		<!-- SPRINGDOC -->
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt-spring31</artifactId>
+			<version>1.9.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- SPRINGDOC -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
