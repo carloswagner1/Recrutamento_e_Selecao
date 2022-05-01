@@ -28,7 +28,7 @@ public class EmailService {
         message.setSubject("Solicitação de nova senha");
         message.setText("Olá, " + candidato.getNome() + "!\n"
                 +"\nSegue nova senha provisória conforme solicitado:\n"
-                + "\nNova senha:" + senhaNova + "\n"
+                + "\nNova senha: " + senhaNova + "\n"
                 + "\nEquipe G5 Tech");
 
         try {
@@ -49,7 +49,7 @@ public class EmailService {
         message.setSubject("Solicitação de nova senha");
         message.setText("Olá!\n"
                 +"\nSegue nova senha provisória conforme solicitado:\n"
-                + "\nNova senha:" + senhaNova + "\n"
+                + "\nNova senha: " + senhaNova + "\n"
                 + "\nEquipe G5 Tech");
 
         try {
