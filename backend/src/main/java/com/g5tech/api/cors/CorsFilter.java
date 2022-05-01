@@ -13,7 +13,7 @@ import java.io.IOException;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
 
-    private String originPermitida = "null";
+    private String originPermitida = "http://127.0.0.1:5500";
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
