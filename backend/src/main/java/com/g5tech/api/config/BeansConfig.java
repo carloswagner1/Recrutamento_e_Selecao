@@ -28,7 +28,7 @@ public class BeansConfig {
         mailSender.setPort(587);
 
         mailSender.setUsername("g5tech.fatec@gmail.com");
-        mailSender.setPassword("TG2022");
+        mailSender.setPassword("*TG2022*");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

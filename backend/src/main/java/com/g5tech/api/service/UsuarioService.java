@@ -17,6 +17,7 @@ import com.g5tech.api.repository.UsuarioCandidatoRepository;
 import com.g5tech.api.repository.UsuarioFuncionarioRepository;
 import lombok.RequiredArgsConstructor;
 import net.bytebuddy.utility.RandomString;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.jasypt.util.text.StrongTextEncryptor;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +51,7 @@ public class UsuarioService {
         return this.getPerfilByUsuario(dto);
     }
 
-    public void redefinirSenha(UsuarioRedefineSenhaDTO dto) throws MessagingException {
+    public void redefinirSenha(UsuarioRedefineSenhaDTO dto) {
 
         String senhaNova = this.generateRandom();
 
@@ -84,7 +85,7 @@ public class UsuarioService {
         return UsuarioResponseDTOBuilder.build(usuarioCandidato.getId(), null);
     }
 
-    private UsuarioCandidato getUsuarioCandidatoByEmail(String email) {
+    public UsuarioCandidato getUsuarioCandidatoByEmail(String email) {
 
         Optional<UsuarioCandidato> usuarioOptional= usuarioCandidatoRepository.findByEmail(email);
 
@@ -120,8 +121,7 @@ public class UsuarioService {
     }
 
     private String generateRandom() {
-        RandomString randomString = new RandomString(6, ThreadLocalRandom.current());
-        return randomString.toString();
+        return RandomStringUtils.random(6, true, true);
     }
 
     public Candidato getCandidatoByEmail(String email) {

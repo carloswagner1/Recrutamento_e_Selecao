@@ -94,4 +94,25 @@ public class CandidatoService {
 
         return candidatoOptional.get();
     }
+
+    public UsuarioCandidatoDTO update(Long id, UsuarioCandidatoDTO dto) {
+
+        Candidato candidato = this.getById(id);
+        UsuarioCandidato usuarioCandidato = usuarioService.getUsuarioCandidatoByEmail(dto.getEmail());
+
+        return new UsuarioCandidatoDTO();
+
+
+
+
+    }
+
+    public void delete(Long id) {
+
+        // deletar inscricao
+        // deletar form academica
+        // deletar exp profissional
+
+        candidatoRepository.deleteById(id);
+    }
 }

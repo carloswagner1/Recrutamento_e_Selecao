@@ -33,4 +33,21 @@ public class CandidatoController {
         return new ResponseEntity<>(candidatoService.getOne(id), HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Busca um candidato pelo seu id")
+    @PutMapping("/{id}")
+    public ResponseEntity<UsuarioCandidatoDTO> update(
+            @PathVariable Long id,
+            @Valid @RequestBody UsuarioCandidatoDTO dto) {
+        return new ResponseEntity<>(candidatoService.update(id, dto), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Busca um candidato pelo seu id")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
+
+        candidatoService.delete(id);
+
+        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.NO_CONTENT);
+    }
+
 }
