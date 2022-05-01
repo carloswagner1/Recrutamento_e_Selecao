@@ -25,7 +25,7 @@ public class BeansConfig {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
         mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(465);
+        mailSender.setPort(587);
 
         mailSender.setUsername("g5tech.fatec@gmail.com");
         mailSender.setPassword("TG2022");
