@@ -1,5 +1,6 @@
 package com.g5tech.api.builder;
 
+import com.g5tech.api.dto.CandidatoDTO;
 import com.g5tech.api.dto.UsuarioCandidatoDTO;
 import com.g5tech.api.model.indicator.AreaVaga;
 import com.g5tech.api.model.Candidato;
@@ -29,5 +30,24 @@ public class CandidatoBuilder {
         candidato.setEmail(dto.getEmail());
 
         return candidato;
+    }
+
+    public static CandidatoDTO buildDTO(Candidato candidato) {
+
+        CandidatoDTO dto = new CandidatoDTO();
+
+        dto.setNome(candidato.getNome());
+        dto.setCpf(candidato.getCpf());
+        dto.setCelular(candidato.getCelular());
+        dto.setCep(candidato.getCep());
+        dto.setRua(candidato.getRua());
+        dto.setBairro(candidato.getBairro());
+        dto.setCidade(candidato.getCidade());
+        dto.setEstado(candidato.getEstado());
+        dto.setPais(candidato.getPais());
+        dto.setArea(candidato.getArea().getName());
+        dto.setEmail(candidato.getEmail());
+
+        return dto;
     }
 }

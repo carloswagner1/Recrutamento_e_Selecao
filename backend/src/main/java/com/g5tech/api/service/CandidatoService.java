@@ -3,9 +3,11 @@ package com.g5tech.api.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.g5tech.api.builder.CandidatoBuilder;
+import com.g5tech.api.dto.CandidatoDTO;
 import com.g5tech.api.dto.UsuarioCandidatoDTO;
 import com.g5tech.api.exception.CandidatoCpfNotUniqueException;
 import com.g5tech.api.exception.CandidatoEmailNotUniqueException;
+import com.g5tech.api.exception.CandidatoNotFoundException;
 import com.g5tech.api.model.Candidato;
 import com.g5tech.api.model.UsuarioCandidato;
 import com.g5tech.api.repository.CandidatoRepository;
@@ -75,4 +77,21 @@ public class CandidatoService {
         return candidatoRepository.save(candidato);
     }
 
+    public CandidatoDTO getOne(Long id) {
+
+        Candidato candidato = this.getById(id);
+
+        return CandidatoBuilder.buildDTO(candidato);
+    }
+
+    private Candidato getById(Long id) {
+
+        Optional<Candidato> candidatoOptional = candidatoRepository.findById(id);
+
+        if (!candidatoOptional.isPresent()) {
+            throw  new CandidatoNotFoundException();
+        }
+
+        return candidatoOptional.get();
+    }
 }
