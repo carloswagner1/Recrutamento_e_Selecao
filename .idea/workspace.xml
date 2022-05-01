@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="61613e5c-fc59-47a9-9b41-ffda79c3ef4b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/config/BeansConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/controller/InscricaoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/dto/InscricaoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/Departamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/Inscricao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/ProcessoSeletivo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/UsuarioFuncionario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/indicator/Situacao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/repository/InscricaoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/repository/UsuarioFuncionarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/InscricaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/builder/CandidatoBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/builder/CandidatoBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/builder/UsuarioBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/builder/UsuarioBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/cors/CorsFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/cors/CorsFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/dto/UsuarioCandidatoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/dto/UsuarioCandidatoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/UsuarioCandidato.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/indicator/AreaVaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/indicator/AreaVaga.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/indicator/Perfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/indicator/Perfil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/repository/UsuarioCandidatoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/CandidatoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/CandidatoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/UsuarioCandidatoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/CadastroController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/CandidatarController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/LoginController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/ProcessController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/SolicitacaoController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/UserController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/boxed-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/card.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/iconAprovar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/iconExcluir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/local.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/pasta.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/recrutamento-selecao-tech-op.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/recrutamento-selecao-tech.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Candidato.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ProcessoSeletivo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Solicitacao.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/User.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/formacaoAcademica.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/xpProfissional.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/acompanharProgresso.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/avaliarSolicitacao.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/candidatar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/contato.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/gerenciarPerfil.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/gerenciarUsuario.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/header.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/minhasVagas.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/oportunidades.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/solicitarAberturaVaga.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/Utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/validacao.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/acompanharProgresso.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/agendarTeste-Entrevista.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/avaliarSolicitacao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/candidatar2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/classificarCandidatos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/contato.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/criarConta.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/gerenciarPerfil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/gerenciarProcessoSeletivo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/gerenciarUsuario.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/informarResultados.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/loginEmpresa.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/minhasVagas.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/oportunidades.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/redefinir.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/solicitacoesEnviadas.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/solicitarAberturaVaga.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="27try6LmfaK4Kt3Tgm8tkQc3sgi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="61613e5c-fc59-47a9-9b41-ffda79c3ef4b" name="Default Changelist" comment="" />
+      <created>1650150475336</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650150475336</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

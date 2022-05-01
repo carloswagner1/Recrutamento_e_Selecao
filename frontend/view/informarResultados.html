@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Informar Resultados</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/gerenciarUsuario.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <header class="header-area">
+    <div class="header-container">
+        <div class="site-logo">
+            <a href="#"><img src="../images/logo.png" alt="logo"></a>
+        </div>
+        <div class="mobile-nav">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="site-nav-menu">
+            <ul class="primary-menu">
+              <li><a href="../view/gerenciarUsuario.html" class="">Gerenciar Usuários</a></li>
+              <li><a href="../view/solicitarAberturaVaga.html" class="">Solicitar Vaga</a></li>
+              <li><a href="../view/informarResultados.html" class="active">Mensagens</a></li>
+              <li><a href="../view/agendarTeste-Entrevista.html" class="">Agendar Testes/Entrevistas</a></li>
+              <li><a href="../view/loginEmpresa.html" class="">Sair</a></li>
+            </ul>
+        </div>
+    </div>
+</header> 
+
+  <div id="main-container">
+      <h1>Resultados do Candidato</h1>  
+      <div class="row">
+        <div class="col-md-8">
+
+          <div class="box">
+            <div class="box-header">
+              <br><h3 class="box-title">Mensagem para o Candidato</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+                <h1><label for="mensagem" id="mensagem-label">Mensagem</label></h1>
+                <textarea id="mensagem" style="resize: none" name="mensagem" rows="15" cols="85" placeholder="Insira a mensagem">(Esta é uma mensagem padrão, fique a vontade para editar!)                   
+
+Olá Godofredo!
+Gostaríamos de informar que você foi CONVOCADO em nosso processo seletivo!
+
+Você receberá orientações de como proceder daqui a diante!
+                                        
+Estamos felizes em receber mais um novo membro na G5Tech!
+                    
+Tenha um bom dia e PARABÉNS!
+                                        
+Atenciosamente,
+Equipe G5Tech.</textarea>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+        </div>
+        <div class="col-md-4">
+
+          <div class="row">
+          
+            <!-- ./col -->
+
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <br><h3 class="box-title">Etapas e Resultados</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" id="form-user-create">
+              <div class="box-body">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="exampleInputNotaTeste">Nota do Teste</label>
+                        <div class="nota" id="nota-teste">
+                            7.6
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <br><label for="exampleInputNotaEntrevista">Nota da Entrevista</label>
+                        <div class="nota" id="nota-entrevista">
+                            7.6
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <br><button type="submit" class="btn btn-success">Convocado</button>
+                        <br><button type="submit" class="btn btn-danger">Não Aprovado</button>
+                    </div>
+                </div>    
+                </div>
+              </div>
+              </div>
+              <!-- ./col -->
+            </div>
+            
+            </form>
+          </div>
+
+        </div>
+      </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".mobile-nav i").click(function(){
+            $(".site-nav-menu").toggleClass("mobile-menu");
+        });
+    })
+</script>
+</body>
+</html>

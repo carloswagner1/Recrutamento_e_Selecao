@@ -1,0 +1,160 @@
+Index: backend/src/main/java/com/g5tech/api/model/Inscricao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/g5tech/api/model/Inscricao.java b/backend/src/main/java/com/g5tech/api/model/Inscricao.java
+new file mode 100644
+--- /dev/null	(date 1650933441931)
++++ b/backend/src/main/java/com/g5tech/api/model/Inscricao.java	(date 1650933441931)
+@@ -0,0 +1,37 @@
++package com.g5tech.api.model;
++
++import com.g5tech.api.model.indicator.Situacao;
++import lombok.Getter;
++import lombok.Setter;
++
++import javax.persistence.*;
++import java.util.Date;
++
++/**
++ * Inscricao --- representa uma Inscricao no sistema.
++ */
++
++@Entity
++@Table(name = "tb_inscricao")
++@Getter
++@Setter
++public class Inscricao {
++
++    @Id
++    @GeneratedValue(strategy = GenerationType.IDENTITY)
++    @Column(name = "id")
++    private Long id;
++
++    @Column(name = "id_candidato")
++    private Candidato candidato;
++
++    @Column(name = "id_processo_seletivo")
++    private ProcessoSeletivo processoSeletivo;
++
++    @Column(name = "data_criacao")
++    private Date dataCriacao;
++
++    @Column(name = "situacao")
++    private Situacao situacao;
++
++}
+Index: backend/src/main/java/com/g5tech/api/repository/InscricaoRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/g5tech/api/repository/InscricaoRepository.java b/backend/src/main/java/com/g5tech/api/repository/InscricaoRepository.java
+new file mode 100644
+--- /dev/null	(date 1650931087482)
++++ b/backend/src/main/java/com/g5tech/api/repository/InscricaoRepository.java	(date 1650931087482)
+@@ -0,0 +1,9 @@
++package com.g5tech.api.repository;
++
++import com.g5tech.api.model.Inscricao;
++import org.springframework.data.jpa.repository.JpaRepository;
++import org.springframework.stereotype.Repository;
++
++@Repository
++public interface InscricaoRepository extends JpaRepository<Inscricao, Long> {
++}
+Index: backend/src/main/java/com/g5tech/api/model/indicator/Situacao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/g5tech/api/model/indicator/Situacao.java b/backend/src/main/java/com/g5tech/api/model/indicator/Situacao.java
+new file mode 100644
+--- /dev/null	(date 1650933441946)
++++ b/backend/src/main/java/com/g5tech/api/model/indicator/Situacao.java	(date 1650933441946)
+@@ -0,0 +1,4 @@
++package com.g5tech.api.model.indicator;
++
++public enum Situacao {
++}
+Index: backend/src/main/java/com/g5tech/api/dto/InscricaoDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/g5tech/api/dto/InscricaoDTO.java b/backend/src/main/java/com/g5tech/api/dto/InscricaoDTO.java
+new file mode 100644
+--- /dev/null	(date 1650931892829)
++++ b/backend/src/main/java/com/g5tech/api/dto/InscricaoDTO.java	(date 1650931892829)
+@@ -0,0 +1,9 @@
++package com.g5tech.api.dto;
++
++import lombok.Getter;
++import lombok.Setter;
++
++@Getter
++@Setter
++public class InscricaoDTO {
++}
+Index: backend/src/main/java/com/g5tech/api/controller/InscricaoController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/g5tech/api/controller/InscricaoController.java b/backend/src/main/java/com/g5tech/api/controller/InscricaoController.java
+new file mode 100644
+--- /dev/null	(date 1650931892793)
++++ b/backend/src/main/java/com/g5tech/api/controller/InscricaoController.java	(date 1650931892793)
+@@ -0,0 +1,26 @@
++package com.g5tech.api.controller;
++
++import com.g5tech.api.dto.InscricaoDTO;
++import com.g5tech.api.service.InscricaoService;
++import io.swagger.v3.oas.annotations.Operation;
++import org.springframework.http.HttpStatus;
++import org.springframework.http.ResponseEntity;
++import org.springframework.web.bind.annotation.GetMapping;
++import org.springframework.web.bind.annotation.PathVariable;
++import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.RestController;
++
++import java.util.List;
++
++@RestController
++@RequestMapping("/inscricoes")
++public class InscricaoController {
++
++    private InscricaoService inscricaoService;
++
++    @Operation(summary = "Busca lista de inscricoes para um candidato")
++    @GetMapping("/candidato/{id}")
++    public ResponseEntity<List<InscricaoDTO>> create(@PathVariable Long candidatoId) {
++        return new ResponseEntity<>(inscricaoService.getByCandidatoId(candidatoId), HttpStatus.OK);
++    }
++}
+Index: backend/src/main/java/com/g5tech/api/service/InscricaoService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/g5tech/api/service/InscricaoService.java b/backend/src/main/java/com/g5tech/api/service/InscricaoService.java
+new file mode 100644
+--- /dev/null	(date 1650931892763)
++++ b/backend/src/main/java/com/g5tech/api/service/InscricaoService.java	(date 1650931892763)
+@@ -0,0 +1,15 @@
++package com.g5tech.api.service;
++
++import com.g5tech.api.dto.InscricaoDTO;
++import lombok.extern.log4j.Log4j2;
++import org.springframework.stereotype.Service;
++
++import java.util.List;
++
++@Log4j2
++@Service
++public class InscricaoService {
++
++    public List<InscricaoDTO> getByCandidatoId(Long candidatoId) {
++    }
++}

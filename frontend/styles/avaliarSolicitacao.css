@@ -1,0 +1,66 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+    color: var(--azul-escuro);
+    border: none;
+}
+
+:root{
+    --branco: #fff;
+    --amarelo: #ff9500;
+    --azul-escuro: #001533;
+    --azul-claro: #133463;
+    --cinza: #323232;
+}
+body{
+    background-image: url('/images/recrutamento-selecao-tech.jpg');
+    background-size: cover;
+}    
+
+.btn{
+    margin-top: 1.5%;
+}
+
+.btn.btn-danger{
+    display: inline-block;
+}
+
+.btn.btn-success{
+    display: inline-block;
+}
+
+th{
+    color: var(--amarelo);
+}
+
+td{
+    color: var(--azul-claro);
+    font-weight: bold;
+}
+
+#main-container{
+    background-color: var(--branco);
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+}
+
+form {
+    margin-top:  30px;
+    margin-bottom:  40px;
+
+}
+
+label, input, select{
+    display: block;
+    width: 100%;
+    text-align: left;
+
+}
+

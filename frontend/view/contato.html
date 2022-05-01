@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonte.googleapis.com/css2?family=Roboto:wght@400,500,700&display=swap" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/contato.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <title>Contato</title>
+</head>
+<body>
+  <header class="header-area">
+    <div class="header-container">
+      <div class="site-logo">
+        <a href="#"><img src="../images/logo.png" alt="logo"></a>
+      </div>
+      <div class="mobile-nav">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="site-nav-menu">
+        <ul class="primary-menu">
+            <li><a href="../view/minhasVagas.html" class="">Minhas Vagas</a></li>
+            <li><a href="../view/oportunidades.html" class="">Oportunidades</a></li> 
+            <li><a href="../view/gerenciarPerfil.html" class="">Perfil</a></li>
+            <li><a href="../view/contato.html" class="active">Contato</a></li>
+           <li><a href="../view/login.html" class="">Sair</a></li>
+        </ul>
+      </div>
+    </div>
+  </header> 
+  <div class="container">
+    <div class="content">
+      <div class="left-side">
+            <div class="telefone detalhes">
+                <i class="fas fa-phone-alt"></i>
+                <div class="topico">Telefone</div>
+                <div class="contato">+55 (15) 3322-3322</div>
+                <div class="contato">+55 (15) 99999-1234</div>
+            </div>
+            <div class="email detalhes">
+                <i class="fas fa-envelope"></i>
+                <div class="topico">Email</div>
+                    <div class="contato">contato@g5tech.com.br</div>
+            </div>
+      </div>
+      <div class="right-side">
+        <div class="topico-texto">Contate-nos</div>
+        <p>
+          Caso tenha dúvidas ou sugestões, poderá entrar em contato com nossa equipe. Será um prazer ajudá-lo.
+        </p>
+        <form action="#">
+          <div class="input-box">
+            <input type="text" placeholder="Digite seu nome" />
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="Digite seu email" />
+          </div>
+          <div class="input-box message-box">
+            <textarea placeholder="Digite sua mensagem"></textarea>
+          </div>
+          <div class="button">
+            <input type="button" value="Enviar" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".mobile-nav i").click(function(){
+          $(".site-nav-menu").toggleClass("mobile-menu");
+      });
+    })
+  </script>     
+</body>
+</html>
