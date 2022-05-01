@@ -2,8 +2,11 @@ package com.g5tech.api.model.indicator;
 
 public enum AreaVaga {
 
-    FINANCEIRO(1L, "Financeiro"),
-    TI(2L, "Tecnologia"),
+    TI          (1L, "ti"),
+    COMERCIAL   (2L, "comercial"),
+    JURIDICO    (3L, "juridico"),
+    FINANCEIRO  (4L, "financeiro"),
+    TODAS       (5L, "todas")
     ;
 
     private Long value;
@@ -20,5 +23,15 @@ public enum AreaVaga {
 
     public String getName() {
         return name;
+    }
+
+    public static AreaVaga getAreaVagaFromName(String areaVagaEscolhida) {
+        for (AreaVaga areaVaga : AreaVaga.values()) {
+            if (areaVaga.name.equalsIgnoreCase(areaVagaEscolhida)) {
+                return areaVaga;
+            }
+        }
+
+        return null;
     }
 }
