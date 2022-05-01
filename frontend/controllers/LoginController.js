@@ -1,4 +1,7 @@
+import { sendRequest } from "../utils/ApiUtils.js";
+
 class LoginController {
+    
     constructor(loginContainerId) {
         this.loginContainerEl = document.getElementById(loginContainerId);
         
@@ -13,62 +16,74 @@ class LoginController {
 
             event.preventDefault();
           
-            let email = document.querySelector('#email')
-            let emailLabel = document.querySelector('#emailLabel')
+            let email = document.querySelector('#email');
+            let emailLabel = document.querySelector('#emailLabel');
 
-            let senha = document.querySelector('#senha')
-            let senhaLabel = document.querySelector('#senhaLabel')
+            let senha = document.querySelector('#senha');
+            let senhaLabel = document.querySelector('#senhaLabel');
 
-            let msgError = document.querySelector('#msgError')
+            let msgError = document.querySelector('#msgError');
 
-            if(this.loginContainerEl.dataset.tipo == 'empresa'){
-                var users = JSON.parse(localStorage.getItem('users') || '[]');
-            }else{
-                var users = JSON.parse(localStorage.getItem('candidatos') || '[]');
-            }
+            console.log(email.value);
+            console.log(senha.value);
 
-            let isValid = false;
-            
-            let loginValid = {
-                email: '',
-                senha: ''
-            }
+            var body = new Object();
+            body.email = email.value;
+            body.senha = senha.value;
+            body.tipo = tipo;
 
-            users.forEach((item) => {
-                if (email.value == item._email && senha.value == item._password) {
-                    loginValid = {
-                        login: item._email,
-                        senha: item._password
+            // setting the url
+            const url = "/usuarios";
+
+            // enviando a request e salvando a promise
+            const responsePromise = sendRequest('POST', url, body);
+
+            responsePromise.then(response => {
+
+                // log para debuggar
+                console.log(response);
+
+                // salvando o body da resposta
+                let responseBody = response.body;
+
+                if (response.status != 200) {
+                    emailLabel.setAttribute('style', 'color: red');
+                    email.setAttribute('style', 'border-color: red');
+                    senhaLabel.setAttribute('style', 'color: red');
+                    senha.setAttribute('style', 'border-color: red');
+                    msgError.setAttribute('style', 'display: block');
+                    msgError.setAttribute('style', 'color: red');
+                    msgError.innerHTML = responseBody.message;
+                    email.focus();
+                }
+                else {
+
+                    if (tipo == 'empresa') {
+                        // salvando id do usuario no local storage para mandar nas proximas requests
+                        localStorage.setItem('id_usuario', JSON.stringify(responseBody.id));
+                        localStorage.setItem('perfil', JSON.stringify(responseBody.perfil));
+                        window.location.href = "../view/gerenciarProcessoSeletivo.html"
                     }
-                    isValid = true;
-                }
-            })
-            
-            if (isValid) {
+                    else {
+                        // salvando id do candidato no local storage para mandar nas proximas requests
+                        localStorage.setItem('id_candidato', JSON.stringify(responseBody.id));
+                        window.location.href = '../view/minhasvagas.html'
+                    }
+    
+                    let mathRandom = Math.random().toString(16).substr(2);
+                    let token = mathRandom + mathRandom;
+    
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('userLogado', JSON.stringify(true));
 
-                if(tipo == 'empresa'){
-                    window.location.href = "../view/gerenciarProcessoSeletivo.html"
-                }else{
-                    window.location.href = '../view/minhasvagas.html'
                 }
-               
-                let mathRandom = Math.random().toString(16).substr(2)
-                let token = mathRandom + mathRandom
-
-                localStorage.setItem('token', token)
-                localStorage.setItem('userLogado', JSON.stringify(loginValid))            
-            } else {
-                emailLabel.setAttribute('style', 'color: red')
-                email.setAttribute('style', 'border-color: red')
-                senhaLabel.setAttribute('style', 'color: red')
-                senha.setAttribute('style', 'border-color: red')
-                msgError.setAttribute('style', 'display: block')
-                msgError.setAttribute('style', 'color: red')
-                msgError.innerHTML = 'Usuário ou senha incorretos'
-                email.focus()
-            }
+            }).catch(error => {
+                // log para debuggar
+                console.log(error);
+            });
         });        
     }
+
 }
 
 let loginController = new LoginController("login-container");

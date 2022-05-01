@@ -1,6 +1,5 @@
 import { sendRequest } from "../utils/ApiUtils.js";
 
-
 class CadastroController{
     constructor(formCadastro1, formCadastro2){
         this.formEl1 = document.getElementById(formCadastro1);
@@ -13,6 +12,7 @@ class CadastroController{
     
     onSubmit(){
         this.formEl2.addEventListener("submit", (event) => {
+
             event.preventDefault();         
 
             let body = this.getValues();
@@ -20,19 +20,20 @@ class CadastroController{
             // setting the url
             const url = "/candidatos";
         
+            // enviando a request e salvando a promise
             const responsePromise = sendRequest('POST', url, body);
 
-            responsePromise.then(response => console.log(response))
+            responsePromise.then(response => {
 
-            responsePromise.then(
-                response => {
-                    localStorage.setItem('id_candidato', JSON.stringify(response));
+                // log para debuggar
+                console.log(response);
                     
-                    setTimeout(() => {
-                        window.location.href = 'login.html'
-                    }, 1000);
-                }
-            )
+                // trocando de pagina
+                setTimeout(() => {
+                    window.location.href = 'login.html'
+                }, 1000);
+
+            }) 
         })
     }
 

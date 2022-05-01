@@ -17,5 +17,5 @@ public class UsuarioCandidatoDTO {
     private String pais;
     private String area;
     private String email;
-    private String hashSenha;
+    private String senha;
 }

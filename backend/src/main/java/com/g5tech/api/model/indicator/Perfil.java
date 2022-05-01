@@ -2,10 +2,9 @@ package com.g5tech.api.model.indicator;
 
 public enum Perfil {
 
-    CANDIDATO(1L),
-    FUNCIONARIO(2L),
-    GERENTE_DEPTO(3L),
-    GERENTE_RH(4L),
+    FUNCIONARIO(1L),
+    GERENTE_DEPTO(2L),
+    GERENTE_RH(3L),
     ;
 
     private Long value;

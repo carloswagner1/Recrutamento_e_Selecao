@@ -2,7 +2,7 @@ package com.g5tech.api.builder;
 
 import com.g5tech.api.model.Candidato;
 import com.g5tech.api.model.indicator.Perfil;
-import com.g5tech.api.model.Usuario;
+import com.g5tech.api.model.UsuarioCandidato;
 
 public class UsuarioBuilder {
 
@@ -12,15 +12,14 @@ public class UsuarioBuilder {
      * @param email, hashSenha, candidatoId
      * @return Usuario
      */
-    public static Usuario buildUsuarioCandidato(String email, String hashSenha, Candidato candidato) {
+    public static UsuarioCandidato buildUsuarioCandidato(String email, String hashSenha, Candidato candidato) {
 
-        Usuario usuario = new Usuario();
+        UsuarioCandidato usuarioCandidato = new UsuarioCandidato();
 
-        usuario.setCandidato(candidato);
-        usuario.setEmail(email);
-        usuario.setHashSenha(hashSenha);
-        usuario.setPerfil(Perfil.CANDIDATO);
+        usuarioCandidato.setCandidato(candidato);
+        usuarioCandidato.setEmail(email);
+        usuarioCandidato.setHashSenha(hashSenha);
 
-        return usuario;
+        return usuarioCandidato;
     }
 }

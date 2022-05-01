@@ -7,14 +7,14 @@ import lombok.Setter;
 import javax.persistence.*;
 
 /**
- * Usuario --- representa um usuario com acesso ao sistema.
+ * UsuarioFuncionario --- representa um usuario funcionário com acesso ao sistema.
  */
 
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "tb_usuario_funcionario")
 @Getter
 @Setter
-public class Usuario {
+public class UsuarioFuncionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +30,7 @@ public class Usuario {
     @Column(name = "perfil")
     private Perfil perfil;
 
-    @Column(name = "id_candidato")
-    private Candidato candidato;
+    @OneToOne
+    @JoinColumn(name = "id_departamento")
+    private Departamento departamento;
 }

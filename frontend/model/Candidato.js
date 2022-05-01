@@ -1,4 +1,5 @@
 class Candidato {
+
     constructor(nome, email, senha, cpf, celular, cep, rua, bairro, cidade, estado, pais, area) {
         this.nome = nome;
         this.email = email;
@@ -13,4 +14,5 @@ class Candidato {
         this.pais = pais;
         this.area = area;
     }
+
 }

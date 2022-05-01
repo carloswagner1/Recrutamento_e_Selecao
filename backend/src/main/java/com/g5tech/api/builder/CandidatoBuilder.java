@@ -25,7 +25,7 @@ public class CandidatoBuilder {
         candidato.setCidade(dto.getCidade());
         candidato.setEstado(dto.getEstado());
         candidato.setPais(dto.getPais());
-        candidato.setArea(AreaVaga.valueOf(dto.getArea()));
+        candidato.setArea(AreaVaga.getAreaVagaFromName(dto.getArea()));
         candidato.setEmail(dto.getEmail());
 
         return candidato;

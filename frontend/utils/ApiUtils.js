@@ -22,15 +22,15 @@ export async function sendRequest(method, url, body) {
             headers: headers
         })
 
-        const data = await response.json()
+        const data = response.json().then(body => ({
+            body: body,
+            status: response.status
+        }));
 
-        return await JSON.parse(data);
+        return data;
 
     } catch (error) {
-
-        const data = await error.json()
-
-        return await JSON.parse(data);
+        return await error;
     }  
 
 }
