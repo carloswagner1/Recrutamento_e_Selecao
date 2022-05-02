@@ -59,7 +59,7 @@ function validarCampoNome(input) {
           
     }else {
         labelNome.setAttribute('style', 'color: var(--cinza)');
-        labelNome.innerHTML = 'Nome';                    
+        labelNome.innerHTML = 'Nome Completo';                    
     }    
 }
 function validarCampoSenha(input){

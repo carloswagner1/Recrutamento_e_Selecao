@@ -44,36 +44,45 @@
             <div class="input-group">
                 <div class="input-box">
                     <label id="labelNome" for="nome">Nome Completo</label>
-                    <input type="text" name="nome" id="nome" placeholder="Insira seu nome aqui" required>
+                    <input type="text" name="nome" id="nome" placeholder="Insira seu nome aqui" data-tipo="nome" required>
                 </div>
 
-                <!--div class="input-box">
-                    <label id="dataNasc" for="dataNasc">Data de Nascimento</label>
+
+                <div class="input-box">
+                    <label id="labeldataNasc" for="dataNasc">Data de Nascimento</label>
+
                     <input id="dataNasc" type="date" name="dataNasc"  required>
-                </div-->
+                </div>
                 <div class="input-box">
                     <label id="labelEmail" for="email">E-mail</label>
-                    <input type="email" name="email" id="email" placeholder="Informe seu e-mail" required>
+                    <input type="email" name="email" id="email" placeholder="Informe seu e-mail" data-tipo="email" required>
                 </div>
                 <div class="input-box">
                     <label id="labelCPF" for="cpf">CPF </label>
-                    <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required> 
+                    <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" data-tipo="cpf" required> 
                 </div>     
                 <div class="input-box">
                     <label id="labelCelular" for="celular">Celular </label>
-                    <input type="text" name="numCel" id="numCel" placeholder="(__)_____-____" required>
+                    <input type="text" name="celular" id="celular" placeholder="(__)_____-____" data-tipo="celular" required>
                 </div>
                 <div class="input-box">
-                    <label id="labeltel" for="telefone">Telefone Fixo </label>
-                    <input type="text" name="numTel" id="numTel" placeholder="(__)____-____" required>
+                    <label id="labelarea" for="area">Área de interesse </label>
+                    <select name="area" id="area">
+                        <option value="todas">Todas</option>
+                        <option value="administrativo">Administrativo</option>
+                        <option value="financeiro">Financeiro</option>
+                        <option value="humano">Humano</option>
+                        <option value="juridico">Jurídico</option>
+                        <option value="producao">Produção</option>
+                    </select>
                 </div>
                 <div class="input-box">
                     <label id="labelCEP" for="cep">CEP</label>
                     <input type="text" name="cep" id="cep" maxlength="8">
                 </div>
                 <div class="input-box">
-                    <label id="labelRua" for="rua">Rua</label>
-                    <input type="text" name="rua" id="rua">
+                    <label id="labelLogradouro" for="logradouro">Rua</label>
+                    <input type="text" name="logradouro" id="logradouro">
                 </div>
                 <div class="input-box">
                     <label id="labelBairro" for="bairro">Bairro</label>
@@ -127,44 +136,11 @@
                 </div>
             
 
-                <div class="area-inputs">
-                    <div class="area-title">
-                        <h6>Área de Interesse</h6>
-                    </div>
-    
-                    <div class="area-group">
-                        <div class="area-input">
-                            <input id="ti" type="radio" name="area">
-                            <label for="ti">TI</label>
-                        </div>
-    
-                        <div class="area-input">
-                            <input id="comercial" type="radio" name="area">
-                            <label for="comercial">Comercial</label>
-                        </div>
-    
-                        <div class="area-input">
-                            <input id="juridico" type="radio" name="area">
-                            <label for="juridico">Jurídico</label>
-                        </div>
-    
-                        <div class="area-input">
-                            <input id="financeiro" type="radio" name="area">
-                            <label for="financeiro">Financeiro</label>
-                        </div>
-
-                        <div class="area-input">
-                            <input id="todas" type="radio" name="area">
-                            <label for="todas">Todas</label>
-                        </div>
-                        
-                    </div>    
-            </div>
             <div class="input-senha">
                 <h2>Alterar Senha</h2>
                 <div class="input-box">
-                        <label for="password"> Senha Atual</label>
-                        <input id="password" type="password" name="password" placeholder="Digite sua senha atual" >
+                        <label id="labelSenha" for="password"> Senha Atual</label>
+                        <input id="password" type="password" name="password" placeholder="Digite sua senha atual" data-tipo="senha">
                     </div>
                     <div class="input-box">
                         <label for="newPassword">Senha Nova</label>
@@ -190,7 +166,10 @@
         $(".site-nav-menu").toggleClass("mobile-menu");
     });
   })
-</script> 
+</script>
+<script src="../app.js" type="module"></script> 
+<script src="../utils/Utils.js"></script>
+<script src="../model/Candidato.js"></script>
 <script src="../controllers/GerenciarPerfilController.js"></script>    
 </body>
 </html>

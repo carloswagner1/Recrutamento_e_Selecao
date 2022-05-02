@@ -6,8 +6,7 @@ class CadastroController{
         Utils.buscaCep();
         this.onNext();
         this.onSubmit();        
-    }
-    
+    }    
     onSubmit(){       
         this.formEl2.addEventListener("submit", (event) => {
             event.preventDefault();         
@@ -20,15 +19,12 @@ class CadastroController{
             }, 1000)                    
         })
     }
-
     onNext(){
         this.formEl1.addEventListener("submit", e=> {
             e.preventDefault();            
             this.showCadastro2();
         })
     }
- 
-
     getValues(){
         let isValid = true;
         [...this.formEl1.elements].forEach(function(field, index){
@@ -52,7 +48,6 @@ class CadastroController{
         let candidato = new Candidato(nome.value, email.value, senha.value, cpf.value, numCel.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value, genero.value);
         return candidato;
     }
-
     insert(data){
         if(sessionStorage.getItem("candidatos")) {
             candidatos = JSON.parse(sessionStorage.getItem("candidatos"));
@@ -61,7 +56,6 @@ class CadastroController{
         candidatos.push(data);
         sessionStorage.setItem("candidatos", JSON.stringify(candidatos));
     }
-
     showCadastro2(){
         document.querySelector("#formCad1").style.display = "none";
         document.querySelector("#formCad2").style.display = "block";

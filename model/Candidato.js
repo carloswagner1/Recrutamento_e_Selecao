@@ -57,6 +57,13 @@ class Candidato {
     get genero(){
         return this._genero;
     }
+    loadFromJSON(json){
+        for (let name in json){
+            this[name] = json[name];            
+        }
+    }
+
+
 
 }
 
