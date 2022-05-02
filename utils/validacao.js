@@ -11,23 +11,23 @@ const validadores = {
     senha:input => validarCampoSenha(input),
     confirmaSenha:input => validarCampoConfirmSenha(input),    
     cpf:input => validarCampoCPF(input),
-    celular:input => validarCampoCelular(input),    
+    celular:input => validarCampoCelular(input),        
 }
 function validarCampoEmail(input){
     const email = input.value;
-        if(email ==""){
-            labelEmail.setAttribute('style', 'color: red');
-            labelEmail.innerHTML = 'E-mail (*campo obrigatório)';
-            input.focus();            
-        }else if(!ValidarEmail(email)){
-            labelEmail.setAttribute('style', 'color: red', 'font-weight: bolder');
-            labelEmail.innerHTML = 'E-mail (email inválido)';
-            input.focus();                               
-        }else {
-            labelEmail.setAttribute('style', 'color: var(--cinza)');
-            labelEmail.innerHTML = 'E-mail'                
-        }
-    
+    if(email ==""){
+        labelEmail.setAttribute('style', 'color: red');
+        labelEmail.innerHTML = 'E-mail (*campo obrigatório)';
+        ;            
+    }else if(!ValidarEmail(email)){
+        labelEmail.setAttribute('style', 'color: red', 'font-weight: bolder');
+        labelEmail.innerHTML = 'E-mail (email inválido)';
+        ;
+
+    }else {
+        labelEmail.setAttribute('style', 'color: var(--cinza)');
+        labelEmail.innerHTML = 'E-mail'                
+    }    
 }
 function ValidarEmail (email) {
     var emailPattern =  /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
@@ -52,11 +52,11 @@ function validarCampoNome(input) {
     if (nomeRecebido == ''){
         labelNome.setAttribute('style', 'color: red');
         labelNome.innerHTML = 'Nome Completo (*campo obrigatório)';  
-        input.focus();      ;
+        ;      ;
     } else if(novoNomeLimpo.length < 5 ||nomeArray.length < 2){
         labelNome.setAttribute('style', 'color: red', 'font-weight: bolder');     
         labelNome.innerHTML = 'Nome Completo (insira seu nome completo)';
-        input.focus()  
+          
     }else {
         labelNome.setAttribute('style', 'color: var(--cinza)');
         labelNome.innerHTML = 'Nome';                    
@@ -68,11 +68,11 @@ function validarCampoSenha(input){
     if(senha == ""){
         labelSenha.setAttribute('style', 'color: red');
         labelSenha.innerHTML = 'Senha (*campo obrigatório)';
-        input.focus();                
+        ;                
     }else if(senha.length <= 5){
         labelSenha.setAttribute('style', 'color: red', 'font-weight: bolder');
         labelSenha.innerHTML = 'Senha (mínimo 6 caracteres)';
-        input.focus();                       
+        ;                       
     }else {
         labelSenha.setAttribute('style', 'color: var(--cinza)');
         labelSenha.innerHTML = 'Senha';                    
@@ -85,11 +85,11 @@ function validarCampoConfirmSenha(input){
     if(confirmeSenha == ""){
         labelConfirmSenha.setAttribute('style', 'color: red');
         labelConfirmSenha.innerHTML = 'Confirme sua Senha (*campo obrigatório)';
-        input.focus();                
+        ;                
     }else if(senha != confirmeSenha){
         labelConfirmSenha.setAttribute('style', 'color: red', 'font-weight: bolder');     
         labelConfirmSenha.innerHTML = 'Confirme sua senha (as senhas não conferem)';                
-        input.focus();
+        ;
     }else {
         labelConfirmSenha.setAttribute('style', 'color: var(--cinza)');
         labelConfirmSenha.innerHTML = 'Confirme sua Senha';                    
@@ -100,11 +100,11 @@ function validarCampoCPF(input){
     if(cpf == ""){
         labelCPF.setAttribute('style', 'color: red');
         labelCPF.innerHTML = 'CPF (*campo obrigatório)';
-        input.focus();                
+        ;                
     }else if(!ValidarCPF(cpf)){
         labelCPF.setAttribute('style', 'color: red', 'font-weight: bolder');
         labelCPF.innerHTML = 'CPF (número inválido)'
-        input.focus();
+        ;
        }else {
         labelCPF.setAttribute('style', 'color: var(--cinza)');
         labelCPF.innerHTML = 'CPF'
@@ -160,12 +160,12 @@ function validarCampoCelular(input){
     if(numCel.value == ''){
         labelCelular.setAttribute('style', 'color: red');
         labelCelular.innerHTML = 'Celular (*campo obrigatório)';
-        input.focus();
+        ;
     }else if(numCel.value.length != 15){
         labelCelular.setAttribute('style', 'color: red');
         labelCelular.innerHTML = 'Celular (número inválido)'
-        input.focus();
-        input.focus();
+        ;
+        ;
     }else {
         labelCelular.setAttribute('style', 'color: var(--cinza)');
         labelCelular.innerHTML = 'Celular'           
