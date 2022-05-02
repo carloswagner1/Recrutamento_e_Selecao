@@ -32,4 +32,17 @@ class Solicitacao{
         return this._status;
     }
 
-}    
+    getNewID(){
+
+        let solicitacoesID = parseInt(localStorage.getItem("solicitacoesID"));
+
+        if (!solicitacoesID > 0) solicitacoesID = 0;
+
+        solicitacoesID++;
+
+        localStorage.setItem("solicitacoesID", solicitacoesID);
+
+        return solicitacoesID;
+
+    }
+}

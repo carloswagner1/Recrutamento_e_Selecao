@@ -139,6 +139,20 @@ p{
   background: var(--amarelo);
 }
 
+.button-submit{
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: rgb(40, 40, 109);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+
 @media (max-width: 950px) {
   .container{
     width: 90%;

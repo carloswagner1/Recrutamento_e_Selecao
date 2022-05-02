@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,169 +9,200 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="../styles/gerenciarUsuario.css">
   <link rel="stylesheet" href="../styles/header.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
-
   <header class="header-area">
     <div class="header-container">
-        <div class="site-logo">
-            <a href="#"><img src="../images/logo.png" alt="logo"></a>
-        </div>
-        <div class="mobile-nav">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="site-nav-menu">
-            <ul class="primary-menu">
-                <li><a href="#" class="active">Gerenciar Processos Seletivos</a></li>
-                <li><a href="../view/solicitarAberturaVaga.html" class="">Solicitar Vaga</a></li>
-                <li><a href="#" class="">Mensagens</a></li>
-                <li><a href="#" class="">Perfil</a></li>
-                <li><a href="#" class="">Sair</a></li>
-            </ul>
-        </div>
+      <div class="site-logo">
+        <a href="#"><img src="../images/logo.png" alt="logo"></a>
+      </div>
+      <div class="mobile-nav">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="site-nav-menu">
+        <ul class="primary-menu">
+          <li><a href="#" class="active">Gerenciar Processos Seletivos</a></li>
+          <li><a href="../view/solicitarAberturaVaga.html" class="">Solicitar Vaga</a></li>
+          <li><a href="#" class="">Mensagens</a></li>
+          <li><a href="#" class="">Perfil</a></li>
+          <li><a href="#" class="">Sair</a></li>
+        </ul>
+      </div>
     </div>
-</header> 
-<div id="main-container">
-      <h1>Gerenciar Processos Seletivos</h1>
-      <div class="row">
-        <div class="col-md-8">
+  </header>
+  <div id="main-container">
+    <h1>Gerenciar Processos Seletivos</h1>
+    <div class="row">
+      <div class="col-md-8">
 
-          <div class="box">
-            <div class="box-header">
-              <br><h3 class="box-title">Processos Seletivos Abertos</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Departamento</th>
-                    <th>Cargo</th>
-                    <th>Requisitos</th>
-                    <th>Data de Início</th>
-                    <th>Data Final</th>
-                    <th>Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                  <tr>
-                    <td>Almoxarifado</td>
-                    <td>Jogador de Volêi</td>
-                    <td>Requisito Teste 1</td>
-                    <td>02/04/2018</td>
-                    <td>02/04/2018</td>
-                    <td>
-                      <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
-                      <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Almoxarifado</td>
-                    <td>Jogador de Volêi</td>
-                    <td>Requisito Teste 2</td>
-                    <td>02/04/2018</td>
-                    <td>02/04/2018</td>
-                    <td>
-                      <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
-                      <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Almoxarifado</td>
-                    <td>Jogador de Volêi</td>
-                    <td>Requisito Teste 3</td>
-                    <td>02/04/2018</td>
-                    <td>02/04/2018</td>
-                    <td>
-                      <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
-                      <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
-                    </td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
+        <div class="box">
+          <div class="box-header">
+            <br>
+            <h3 class="box-title">Processos Seletivos Abertos</h3>
           </div>
-
+          <!-- /.box-header -->
+          <div class="box-body no-padding">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Departamento</th>
+                  <th>Cargo</th>
+                  <th>Data de Início</th>
+                  <th>Data Final</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="table-process">
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
         </div>
-        <div class="col-md-4">
-
-          <div class="row">
-          
-            <!-- ./col -->
-
-          <div class="box box-success">
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <!-- ./col -->
+          <div class="box box-success" id="box-process-create">
             <div class="box-header with-border">
-              <br><h3 class="box-title">Criar Processo Seletivo</h3>
+              <br>
+              <h3 class="box-title">Criar Processo Seletivo</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" id="form-user-create">
+            <form role="form" id="form-process-create" style="display: block">
               <div class="box-body">
                 <div class="form-group">
-                    <label for="exampleInputDept">Departamento</label>
-                    <select departamento="select" id="departamento">
-                        <option value="valor0"></option>
-                        <option value="valor1">Almoxarifado</option>
-                        <option value="valor2">Financeiro</option>
-                        <option value="valor3">Administrativo</option>
-                    </select>
+                  <label for="departamento">Departamento</label>
+                  <select departamento="select" id="departamento" name="departamento">
+                    <option value=""></option>
+                    <option value="Almoxarifado">Almoxarifado</option>
+                    <option value="Financeiro">Financeiro</option>
+                    <option value="Administrativo">Administrativo</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                  <br><label for="exampleInputCargo">Cargo</label>
-                  <select cargo="select" id="cargo">
-                    <option value="valor0"></option>
-                    <option value="valor1">Programador</option>
-                    <option value="valor2">Jogador de Vôlei</option>
-                    <option value="valor3">Ninja</option>
-                </select> 
+                  <br><label for="cargo">Cargo</label>
+                  <select cargo="select" id="cargo" name="cargo">
+                    <option value=""></option>
+                    <option value="Programador">Programador</option>
+                    <option value="Jogador de Vôlei">Jogador de Vôlei</option>
+                    <option value="Ninja">Ninja</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                    <br><label for="exampleInputRequisitos">Requisitos</label>
-                    <input type="text" class="form-control" id="exampleInputRequisitos" placeholder="Digite os requisitos" name="requisitos">
-                  </div>
+                  <br><label for="area">Área</label>
+                  <select area="select" id="area" name="area">
+                    <option value=""></option>
+                    <option value="Comercial">Comercial</option>
+                    <option value="Financeiro">Financeiro</option>
+                    <option value="Jurídico">Jurídico</option>
+                    <option value="TI">TI</option>
+                  </select>
+                </div>
                 <div class="form-group">
                   <br><label id="dataInicio" for="dataInicio">Data Início</label>
                   <br><input type="date" name="dataInicio" id="dataInicio">
                 </div>
                 <div class="form-group">
-                    <br><label id="dataFinal" for="dataFinal">Data Final</label>
-                    <br><input type="date" name="dataFinal" id="dataFinal">
-                  </div>
+                  <br><label id="dataFinal" for="dataFinal">Data Final</label>
+                  <br><input type="date" name="dataFinal" id="dataFinal">
+                </div>
+                <div class="form-group">
+                  <br><label for="requisitos">Requisitos</label>
+                  <input type="text" class="form-control" id="requisitos" placeholder="Digite os requisitos"
+                    name="requisitos">
+                </div>
+
               </div>
-              <!-- /.box-body -->          
+              <!-- /.box-body -->
               <div class="box-footer">
                 <button type="submit" class="btn btn-success">Salvar</button>
               </div>
-
-
-              <div class="col-xs-6">
-                </div>
-              </div>
-              </div>
-              <!-- ./col -->
-            </div>
             </form>
           </div>
-
+          <div class="box box-primary" id="box-process-update" style="display: none;">
+            <div class="box-header with-border">
+              <br>
+              <h3 class="box-title">Editar Processo Seletivo</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" id="form-process-update" style="display: block">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="departamento">Departamento</label>
+                  <select departamento="select" id="departamentoUpdate" name="departamento">
+                    <option value=""></option>
+                    <option value="Almoxarifado">Almoxarifado</option>
+                    <option value="Financeiro">Financeiro</option>
+                    <option value="Administrativo">Administrativo</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <br><label for="cargo">Cargo</label>
+                  <select cargo="select" id="cargoUpdate" name="cargo">
+                    <option value=""></option>
+                    <option value="Programador">Programador</option>
+                    <option value="Jogador de Vôlei">Jogador de Vôlei</option>
+                    <option value="Ninja">Ninja</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <br><label for="area">Área</label>
+                  <select area="select" id="areaUpdate" name="area">
+                    <option value=""></option>
+                    <option value="Comercial">Comercial</option>
+                    <option value="Financeiro">Financeiro</option>
+                    <option value="Jurídico">Jurídico</option>
+                    <option value="TI">TI</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <br><label id="dataInicio" for="dataInicio">Data Início</label>
+                  <br><input type="date" name="dataInicio" id="dataInicioUpdate">
+                </div>
+                <div class="form-group">
+                  <br><label id="dataFinal" for="dataFinal">Data Final</label>
+                  <br><input type="date" name="dataFinal" id="dataFinalUpdate">
+                </div>
+                <div class="form-group">
+                  <br><label for="requisitos">Requisitos</label>
+                  <input type="text" class="form-control" id="requisitosUpdate" placeholder="Digite os requisitos"
+                    name="requisitos">
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="button" class="btn btn-danger btn-cancel">Cancelar</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-xs-6">
+          </div>
         </div>
       </div>
+      <!-- ./col -->
+    </div>
+    </form>
   </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".mobile-nav i").click(function(){
-            $(".site-nav-menu").toggleClass("mobile-menu");
-        });
+  </div>
+  </div>
+  </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".mobile-nav i").click(function () {
+        $(".site-nav-menu").toggleClass("mobile-menu");
+      });
     })
-</script>
+  </script>
+  <script src="../model/ProcessoSeletivo.js"></script>
+  <script src="../controllers/ProcessController.js"></script>
 </body>
+
 </html>

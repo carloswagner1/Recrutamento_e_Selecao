@@ -34,7 +34,7 @@
   <div class="container">
     
     <div class="form">
-        <form action="#">
+        <form action="#" id="formPerfil">
             <div class="form-header">
                 <div class="title">
                     <h1>Editar Perfil</h1>
@@ -47,10 +47,12 @@
                     <input type="text" name="nome" id="nome" placeholder="Insira seu nome aqui" required>
                 </div>
 
+
                 <div class="input-box">
                     <label id="labeldataNasc" for="dataNasc">Data de Nascimento</label>
+
                     <input id="dataNasc" type="date" name="dataNasc"  required>
-                </div>
+                </div-->
                 <div class="input-box">
                     <label id="labelEmail" for="email">E-mail</label>
                     <input type="email" name="email" id="email" placeholder="Informe seu e-mail" required>
@@ -101,7 +103,7 @@
                         <option value="Brasil">Brasil</option>
                     </select>
                 </div>
-                
+
                 
 
             </div>
@@ -164,6 +166,7 @@
         $(".site-nav-menu").toggleClass("mobile-menu");
     });
   })
-</script>     
+</script> 
+<script src="../controllers/GerenciarPerfilController.js"></script>    
 </body>
 </html>

@@ -24,11 +24,11 @@
         </div>
         <div class="site-nav-menu">
             <ul class="primary-menu">
-                <li><a href="#" class="active">Gerenciar Usuários</a></li>
-                <li><a href="../view/solicitarAberturaVaga.html" class="">Solicitar Vaga</a></li>
-                <li><a href="#" class="">Mensagens</a></li>
-                <li><a href="#" class="">Perfil</a></li>
-                <li><a href="#" class="">Sair</a></li>
+              <li><a href="../view/gerenciarUsuario.html" class="active">Gerenciar Usuários</a></li>
+              <li><a href="../view/solicitarAberturaVaga.html" class="">Solicitar Vaga</a></li>
+              <li><a href="../view/informarResultados.html" class="">Mensagens</a></li>
+              <li><a href="../view/agendarTeste-Entrevista.html" class="">Agendar Testes/Entrevistas</a></li>
+              <li><a href="../view/loginEmpresa.html" class="">Sair</a></li>
             </ul>
         </div>
     </div>
@@ -80,20 +80,20 @@
             <form role="form" id="form-user-create" style="display: block">
               <div class="box-body">
                 <div class="form-group">
-                  <label id="labelName" for="exampleInputName">Nome</label>
-                  <input type="text" class="form-control" id="exampleInputName" placeholder="Digite o nome do usuário" name="name">
+                  <label id="labelNome" for="exampleInputName">Nome</label>
+                  <input type="text" class="form-control" id="exampleInputName" placeholder="Digite o nome do usuário" name="name" data-tipo="nome">
                 </div>
                 <div class="form-group">
                   <label id="labelCPF" for="exampleInputCpf">CPF</label>
-                  <input type="text" class="form-control" id="exampleInputCpf" placeholder="000.000.000-00" name="cpf">
+                  <input type="text" class="form-control" id="exampleInputCpf" placeholder="000.000.000-00" name="cpf" data-tipo="cpf">
                 </div>
                 <div class="form-group">
                   <label id="labelEmail" for="exampleInputEmail1">E-mail</label>
-                  <input type="email" class="form-control" id="exampleInputEmail" placeholder="Digite o e-mail" name="email">
+                  <input type="email" class="form-control" id="exampleInputEmail" placeholder="Digite o e-mail" name="email" data-tipo="email">
                 </div>
                 <div class="form-group">
-                  <label id="labelCelular" for="exampleInputCelular">Celular </label>
-                  <input type="text" name="celular" id="exampleInputCelular" placeholder="(__)_____-____">
+                  <label id="labelCelular" for="celular">Celular </label>
+                  <input type="text" name="numCel" id="numCel" placeholder="(__)_____-____" data-tipo="celular" required>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputCountry">País</label>
@@ -343,8 +343,8 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label id="password" for="exampleInputPassword1">Senha</label>
-                  <input type="password" class="form-control" id="exampleInputPassword" placeholder="Crie uma senha" name="password">
+                  <label id="labelSenha" for="exampleInputPassword1">Senha</label>
+                  <input type="password" class="form-control" id="exampleInputPassword" placeholder="Crie uma senha" name="password" data-tipo="senha">
                 </div>
                 <div class="checkbox">
                   <label>
@@ -661,9 +661,9 @@
         });
     })
 </script>
-<script src="../classes/Utils.js"></script>
+<script src="../utils/Utils.js"></script>
+<script src="../app.js" type="module"></script>
 <script src="../model/User.js"></script>
 <script src="../controllers/UserController.js"></script>
-<script src="../index1.js"></script>
 </body>
 </html>
