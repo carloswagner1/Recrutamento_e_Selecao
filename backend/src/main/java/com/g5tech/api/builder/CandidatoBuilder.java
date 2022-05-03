@@ -28,6 +28,7 @@ public class CandidatoBuilder {
         candidato.setPais(dto.getPais());
         candidato.setArea(dto.getArea());
         candidato.setEmail(dto.getEmail());
+        candidato.setDataNascimento(dto.getDataNascimento());
 
         return candidato;
     }

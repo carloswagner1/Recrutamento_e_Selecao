@@ -1,6 +1,7 @@
 package com.g5tech.api.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 

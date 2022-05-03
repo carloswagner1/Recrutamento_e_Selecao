@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Candidato --- representa um candidato no sistema.
@@ -50,6 +51,9 @@ public class Candidato {
 
     @Column(name = "area")
     private String area;
+
+    @Column(name = "data_nascimento")
+    private Date dataNascimento;
 
     @Column(name = "email")
     private String email;
