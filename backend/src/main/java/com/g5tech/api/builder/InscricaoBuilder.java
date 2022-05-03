@@ -20,6 +20,7 @@ public class InscricaoBuilder {
         ProcessoSeletivo processoSeletivo = inscricao.getProcessoSeletivo();
 
         InscricaoResponseDTO dto = new InscricaoResponseDTO();
+        dto.setId(inscricao.getId());
         dto.setCargo(processoSeletivo.getCargo().getNome());
         dto.setLocal(processoSeletivo.getSolicitacaoVaga().getLocal());
         dto.setTipoContratacao(processoSeletivo.getSolicitacaoVaga().getTipoContratacao());
