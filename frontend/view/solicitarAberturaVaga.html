@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/solicitarAberturaVaga.css">
+    <title>Solicitação de Abertura de Vaga</title>
+
+</head>
+
+<body>
+    <header class="header-area">
+        <div class="header-container">
+            <div class="site-logo">
+                <a href="#"><img src="../images/logo.png" alt="logo"></a>
+            </div>
+            <div class="mobile-nav">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="site-nav-menu">
+                <ul class="primary-menu">
+                    <li><a href="../view/gerenciarUsuario.html" class="">Gerenciar Usuários</a></li>
+                    <li><a href="#" class="active">Solicitar Vaga</a></li>
+                    <li><a href="../view/informarResultados.html" class="">Mensagens</a></li>
+                    <li><a href="../view/agendarTeste-Entrevista.html" class="">Agendar Testes/Entrevistas</a></li>
+                    <li><a href="../view/loginEmpresa.html" class="">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div id="main-container">
+        <form id="form-solicitacao1" action="">
+            <h1 id="descricao">
+                <br>Motivo da Solicitação<br>
+            </h1>
+            <textarea id="descricao" style="resize: none" name="descricao" rows="10" cols="56"
+                placeholder="Descreva sobre a vaga que será solicitada"></textarea>
+        </form>
+        <h1>Solicitar Abertura de Vaga</h1>
+        <div class="mensagem">
+            <p><br>Preencha os campos para abrir uma Solicitação de Abertura de Vaga</p>
+        </div><br>
+        <form id="form-solicitacao2" action="">
+            <h1><label for="departamento">Departamento</label></h1>
+            <select departamento="select" id="departamento" name="departamento">
+                <option value="0"></option>
+                <option value="1">Almoxarifado</option>
+                <option value="2">Financeiro</option>
+                <option value="3">Administrativo</option>
+            </select>
+            <label for="cargo" class="cargo">Cargo</label>
+            <select cargo="select" id="cargo" name="cargo">
+                <option value="valor0"></option>
+                <option value="valor1">Programador</option>
+                <option value="valor2">Jogador de Vôlei</option>
+                <option value="valor3">Ninja</option>
+            </select>
+            <label for="tipoVaga" class="tipoVaga">Tipo de Vaga</label>
+            <select cargo="select" id="tipoVaga" name="tipoVaga">
+                <option value="valor0"></option>
+                <option value="valor1">Estágio</option>
+                <option value="valor2">CLT</option>
+                <option value="valor3">Contratação PJ</option>
+            </select>
+            <label for="localVaga" class="localVaga">Local da Vaga</label>
+            <select cargo="select" id="tipoVaga" name="tipoVaga">
+                <option value="valor0"></option>
+                <option value="valor1">Acre</option>
+                <option value="valor2">Alagoas</option>
+                <option value="valor3">Amapá</option>
+                <option value="valor3">Amazonas</option>
+                <option value="valor3">Bahia</option>
+                <option value="valor3">Ceará</option>
+                <option value="valor3">Espírito Santo</option>
+                <option value="valor3">Goiás</option>
+                <option value="valor3">Maranhão</option>
+                <option value="valor3">Mato Grosso</option>
+                <option value="valor3">Minas Gerais</option>
+                <option value="valor3">Pará</option>
+                <option value="valor3">Paraíba</option>
+                <option value="valor3">Paraná</option>
+                <option value="valor3">Pernambuco</option>
+                <option value="valor3">Piauí</option>
+                <option value="valor3">Rio de Janeiro</option>
+                <option value="valor3">Rio Grande do Norte</option>
+                <option value="valor3">Rio Grande do Sul</option>
+                <option value="valor3">Rondônia</option>
+                <option value="valor3">Roraima</option>
+                <option value="valor3">Santa Catarina</option>
+                <option value="valor3">São Paulo</option>
+                <option value="valor3">Segipe</option>
+                <option value="valor3">Tocantins</option>
+                <option value="valor3">Distrito Federal</option>
+            </select>
+            <label id="lblNumVaga" for="lblNumVaga">Quantidade de Vagas</label>
+            <input name="qtdvagas" id="qtdvagas" class="input" placeholder="Insira a quantidade de Vagas" data-tipo="qtdvaga">
+            <h1><label for="requisitos">Requisitos Desejados</label></h1>
+            <textarea id="requisitos" style="resize: none" name="requisitos" rows="2" cols="1"
+                placeholder="Insira os requisitos desejados"></textarea>
+            
+            <input type="submit" id="teste" value="Enviar Solicitação">
+            <span id="mensagem" class="invisivel">Erro ao buscar pacientes</span>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".mobile-nav i").click(function () {
+                $(".site-nav-menu").toggleClass("mobile-menu");
+            });
+        })
+    </script>
+    <script src="../model/Solicitacao.js"></script>
+    <script src="../controllers/SolicitacaoController.js"></script>
+</body>
+
+</html>

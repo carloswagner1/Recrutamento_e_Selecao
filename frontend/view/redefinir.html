@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/login.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Redefinir Senha</title>
+</head>
+<body>
+    <div id="login-container" data-tipo="candidato">
+        <h1>Esqueceu a senha?</h1>
+        <div class="mensagem"><p>Informe seu e-mail e enviaremos um link para redefinir sua senha</p></div>
+        <form action="">
+            <label for="email" id="emailLabel">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="Informe seu e-mail">
+            <div class="mensagem02"><p>
+                Certifique-se que o endereço deste e-mail é o mesmo utilizado ao se cadastrar na G5Tech.
+                
+            </p></div>
+            <input type="submit" value="Enviar">
+            <div id='msgError'></div>
+        </form>
+        
+        <div id="registro">
+        <p>Não possui uma conta?</p>
+        <a href="../view/criarConta.html" rel="next">Criar Conta</a>
+    </div>
+    </div>
+    <script src="../controllers/redefinirSenhaController.js" type="module"></script>    
+</body>
+</html>

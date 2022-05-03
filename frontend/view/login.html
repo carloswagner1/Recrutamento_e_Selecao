@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login-form" id="login-form">
+        <p>Empresa/ Anunciar vagas
+            <a href="../view/loginEmpresa.html">Entrar</a>
+        </p>
+    </div>
+    <div class="scale-up-center" id="login-container" data-tipo="candidato">
+        <h1>Bem Vindo(a) Candidato(a)!</h1>
+        <form>
+            <label for="email" id="emailLabel">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="Informe seu e-mail" required>
+            <label for="password" id="senhaLabel">Senha</label>
+            <input type="password" name="password" id="senha" placeholder="Digite sua senha" required>
+            <a href="../view/redefinir.html" id="esqueceu-senha">Esqueceu sua Senha?</a>
+            <input type="submit" class="heartbeat" value="Acessar Conta">
+            <div id='msgError'></div>
+        </form>
+        <div id="registro">
+            <p>Não possui uma conta?</p>
+            <a href="../view/criarConta.html" rel="next">Criar Conta</a>
+        </div>
+    </div>
+    <script src="../controllers/loginController.js" type="module"></script>    
+</body>
+
+</html>
