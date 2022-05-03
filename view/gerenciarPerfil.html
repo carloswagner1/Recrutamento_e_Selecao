@@ -68,7 +68,9 @@
                 <div class="input-box">
                     <label id="labelarea" for="area">Área de interesse </label>
                     <select name="area" id="area">
+                        <option selected disabled value="">Selecione</option>
                         <option value="todas">Todas</option>
+                        <option value="TI">TI</option>
                         <option value="administrativo">Administrativo</option>
                         <option value="financeiro">Financeiro</option>
                         <option value="humano">Humano</option>
@@ -77,12 +79,22 @@
                     </select>
                 </div>
                 <div class="input-box">
+                    <label id="labelgenero" for="genero">Gênero </label>
+                    <select name="genero" id="genero">
+                        <option selected disabled value="">Selecione</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="outro">Outro</option>
+                        <option value="prefiro não dizer">Prefiro não dizer</option>
+                 </select>
+                </div>
+                <div class="input-box">
                     <label id="labelCEP" for="cep">CEP</label>
                     <input type="text" name="cep" id="cep" maxlength="8">
                 </div>
                 <div class="input-box">
-                    <label id="labelRua" for="rua">Rua</label>
-                    <input type="text" name="rua" id="rua">
+                    <label id="labelLogradouro" for="logradouro">Logradouro</label>
+                    <input type="text" name="logradouro" id="logradouro">
                 </div>
                 <div class="input-box">
                     <label id="labelBairro" for="bairro">Bairro</label>
@@ -103,38 +115,9 @@
                         <option value="Brasil">Brasil</option>
                     </select>
                 </div>
-
-                
-
             </div>
 
-            <div class="genero-inputs">
-                <div class="genero-title">
-                    <h6>Gênero</h6>
-                </div>
-
-                <div class="genero-group">
-                    <div class="genero-input">
-                        <input id="feminino" type="radio" name="genero">
-                        <label for="feminino">Feminino</label>
-                    </div>
-
-                    <div class="genero-input">
-                        <input id="masculino" type="radio" name="genero">
-                        <label for="masculino">Masculino</label>
-                    </div>
-
-                    <div class="genero-input">
-                        <input id="outros" type="radio" name="genero">
-                        <label for="outros">Outros</label>
-                    </div>
-
-                    <div class="genero-input">
-                        <input id="nenhum" type="radio" name="genero">
-                        <label for="nenhum">Prefiro não dizer</label>
-                    </div>
-                </div>
-            
+           
 
             <div class="input-senha">
                 <h2>Alterar Senha</h2>

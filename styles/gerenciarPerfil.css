@@ -20,12 +20,7 @@
   
   }
  
-
   
-  /*----------container perfil -----------*/
-
-
-
 .container {
     width: 100%;
     justify-self: unset;
@@ -105,6 +100,10 @@ h2{
 
 }
 
+#nome{
+    width: 750px;
+   
+}
 .input-senha input{
   margin: 0.6rem 0;
   padding: .8rem ;
@@ -125,8 +124,7 @@ h2{
     outline: 1px solid var(--amarelo-fundo);
 }
 
-.input-box label,
-.gender-title h6 {
+.input-box label {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--cinza);
@@ -149,29 +147,6 @@ h2{
 }
 .input-box label{
   margin-top: 20px;
-}
-
-.genero-group, .area-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.62rem;
-    padding: 0 .5rem;
-    margin-bottom: 4rem;
-}
-
-.genero-input, .area-input {
-    display: flex;
-    align-items: center;
-}
-
-.genero-input input, .area-input input {
-    margin-right: 0.35rem;
-}
-
-.genero-input label,.area-input label {
-    font-size: 0.81rem;
-    font-weight: 600;
-    color: #000000c0;
 }
 
 .salvar-button button {
@@ -256,20 +231,56 @@ h2{
 .primary-menu li a:after{
     display: none;
 }
+#nome{
+    width: 230px;
+   
+}
 
-
+}
+@media screen and (max-width: 1600px) {
+    #nome{
+        width: 630px;
+       
+        }
+    .container {
+        width: 60%;
+    }    
+    .form {
+        width: 100%;
+    }
 }
 @media screen and (max-width: 1330px) {
   .form-image {
       display: none;
   }
   .container {
-      width: 50%;
+      width: 60%;
   }
   .form {
       width: 100%;
   }
+  #nome{
+    width: 550px;
+   
+    }
+  
 }
+@media screen and (max-width: 680px) {
+    .form-image {
+        display: none;
+    }
+    .container {
+        width: 50%;
+    }
+    .form {
+        width: 100%;
+    }
+    #nome{
+      width: 230px;
+     
+      }
+    
+  }
 
 @media screen and (max-width: 1064px) {
   .container {
@@ -278,18 +289,4 @@ h2{
       
   }
   
-  .genero-inputs, .area-inputs {
-      margin-top: 2rem;
-     
-     
-  }
-  .genero-group, .area-group {
-      flex-direction: column;
-  }
-  .genero-title h6, .area-title h6 {
-      margin: 0;
-  }
-  .genero-input, .area-input {
-      margin-top: 0.5rem;
-  }
 }
