@@ -74,6 +74,8 @@
                         <option value="humano">Humano</option>
                         <option value="juridico">Jurídico</option>
                         <option value="producao">Produção</option>
+                        <option value="ti">TI</option>
+
                     </select>
                 </div>
                 <div class="input-box">
@@ -115,12 +117,12 @@
 
                 <div class="genero-group">
                     <div class="genero-input">
-                        <input id="feminino" type="radio" name="genero">
+                        <input id="feminino" type="radio" name="genero" value="feminino" >
                         <label for="feminino">Feminino</label>
                     </div>
 
                     <div class="genero-input">
-                        <input id="masculino" type="radio" name="genero">
+                        <input id="masculino" type="radio" name="genero" value="masculino">
                         <label for="masculino">Masculino</label>
                     </div>
 
@@ -147,11 +149,14 @@
                         <input id="newPassword" type="password" name="newPassword" placeholder="Digite sua senha nova" >
                     </div>
             </div>
+
+            <input type="submit" value="Criar Conta" class="btn-criar-conta heartbeat">
+
             <div class="salvar-button">
-                <button><a href="#">Salvar</a> </button>
+                <button type="submit"><a href="#">Salvar</a> </button>
             </div>
             <div class="excluir-button">
-                <button><a href="#">Excluir conta</a></button>
+                <button ><a href="#">Excluir conta</a></button>
             </div>
         </form>
     </div>

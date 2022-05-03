@@ -8,7 +8,9 @@ class GerenciarPerfilController{
     onLoad(){     
         let listaCandidatos = this.getCandidatosStorage();
         let candidato = this.selectCandidato(listaCandidatos);
-        this.loadValues(candidato)          
+        this.loadValues(candidato); 
+       
+        
     }
     onSubmit(){
         this.formEl.addEventListener("submit", event => {
@@ -19,9 +21,9 @@ class GerenciarPerfilController{
             let values = this.getValues(this.formEl);                        
             let result = Object.assign({}, candidato, values);
             candidato = new Candidato();
-            candidato.loadFromJSON(result);
+            candidato.loadFromJSON(result);            
+            this.save();
             console.log(candidato)
-            candidato.save();
             this.formEl.reset();            
         });
 
@@ -53,11 +55,11 @@ class GerenciarPerfilController{
             area: obj._area, 
             genero: obj._genero
             };
-        });
+        })
         return candidato;
     }
     save(){
-        let candidatos = getCandidatosStorage();
+        let candidatos = this.getCandidatosStorage();
         candidatos.push(this);
         localStorage.setItem("candidatos", JSON.stringify(candidatos));
     }    
@@ -69,7 +71,7 @@ class GerenciarPerfilController{
                 if(value[field.name] == undefined){
                     return '';
                 }
-                if(field.id == value.genero || field.id == value.area){                    
+                if(field.id == value.genero){                    
                     field.checked = true;
                 }else{
                     field.value = value[field.name];                   
@@ -78,14 +80,23 @@ class GerenciarPerfilController{
         }
     }
     getValues(formEl){
-        let candidato = {};
+        /*let candidato = {};*/
         let isValid = true;
 
         [...formEl.elements].forEach(function (field, index) {
 
-            if (["nome", "email", "password", "cpf", "celular", "cep", "logradouro", "bairro","cidade", "estado", "pais", 'area', 'genero' ].indexOf(field.name) > -1 && !field.value) {
+            if (["nome", "email", "password", "cpf", "celular", "cep", "logradouro", "bairro","cidade", "estado", "pais", 'area' ].indexOf(field.name) > -1 && !field.value) {
                 field.parentElement.classList.add('has-error');
                 isValid = false;
+            }
+            if(field.name === 'genero'){
+                let genero;
+                let generoCampo =  document.getElementsByName('genero');
+                for(let i =0; i < generoCampo.length; i++){
+                    if(generoCampo[i].checked){
+                        genero = field.value;
+                    }
+                }
             }
         });
 
@@ -93,11 +104,11 @@ class GerenciarPerfilController{
             return false;
         }
         
-        /*let candidato = new Candidato(nome.value, email.value, senha.value, cpf.value, celular.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value, genero.value);
+        let candidato = new Candidato(nome.value, email.value, password.value, cpf.value, celular.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value, genero.value);
 
-        return candidato;*/
+        return candidato;
 
-        return new Candidato(
+        /*return new Candidato(
             candidato.nome,
             candidato.email,
             candidato.password,
@@ -111,7 +122,7 @@ class GerenciarPerfilController{
             candidato.pais,
             candidato.area,
             candidato.genero
-        );
+        );*/
 
     }
 }
