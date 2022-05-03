@@ -34,4 +34,15 @@ public enum AreaVaga {
 
         return null;
     }
+
+    public static AreaVaga getAreaVagaFromValue(Long areaVagaEscolhida) {
+
+        for (AreaVaga areaVaga : AreaVaga.values()) {
+            if (areaVaga.value.equals(areaVagaEscolhida)) {
+                return areaVaga;
+            }
+        }
+
+        return null;
+    }
 }

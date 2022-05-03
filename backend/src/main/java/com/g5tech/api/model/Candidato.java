@@ -49,7 +49,7 @@ public class Candidato {
     private String pais;
 
     @Column(name = "area")
-    private AreaVaga area;
+    private String area;
 
     @Column(name = "email")
     private String email;

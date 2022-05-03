@@ -2,6 +2,7 @@ package com.g5tech.api.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.g5tech.api.dto.CandidatoDTO;
+import com.g5tech.api.dto.InscricaoResponseDTO;
 import com.g5tech.api.service.CandidatoService;
 import com.g5tech.api.dto.UsuarioCandidatoDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/candidatos")
@@ -31,6 +33,12 @@ public class CandidatoController {
     @GetMapping("/{id}")
     public ResponseEntity<CandidatoDTO> getOne(@PathVariable Long id) {
         return new ResponseEntity<>(candidatoService.getOne(id), HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Busca lista de inscrições pelo id do candidato")
+    @GetMapping("/{id}/inscricoes")
+    public ResponseEntity<List<InscricaoResponseDTO>> getIncricoesByCandidatoId(@PathVariable Long id) {
+        return new ResponseEntity<>(candidatoService.getIncricoesByCandidatoId(id), HttpStatus.OK);
     }
 
     @Operation(summary = "Busca um candidato pelo seu id")

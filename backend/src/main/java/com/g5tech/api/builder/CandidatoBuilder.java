@@ -26,7 +26,7 @@ public class CandidatoBuilder {
         candidato.setCidade(dto.getCidade());
         candidato.setEstado(dto.getEstado());
         candidato.setPais(dto.getPais());
-        candidato.setArea(AreaVaga.getAreaVagaFromName(dto.getArea()));
+        candidato.setArea(dto.getArea());
         candidato.setEmail(dto.getEmail());
 
         return candidato;
@@ -45,7 +45,7 @@ public class CandidatoBuilder {
         dto.setCidade(candidato.getCidade());
         dto.setEstado(candidato.getEstado());
         dto.setPais(candidato.getPais());
-        dto.setArea(candidato.getArea().getName());
+        dto.setArea((candidato.getArea()));
         dto.setEmail(candidato.getEmail());
 
         return dto;

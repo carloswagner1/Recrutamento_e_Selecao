@@ -60,7 +60,7 @@ public class UsuarioService {
 
             Candidato candidato = this.getCandidatoByEmail(dto.getEmail());
 
-            usuarioCandidato.setHashSenha(senhaNova);
+            usuarioCandidato.setHashSenha(strongTextEncryptor.encrypt(senhaNova));
             usuarioCandidatoRepository.save(usuarioCandidato);
             emailService.sendNovaSenhaCandidato(candidato, senhaNova);
             return;

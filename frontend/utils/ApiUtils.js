@@ -11,16 +11,26 @@ export async function sendRequest(method, url, body) {
     // Logando para debugar
     console.log(url);
     console.log(body);
-    console.log(headers.get("Content-Type"));
     console.log(headers.get("Content-Length"));
-    
+
     try {
-        const response = await fetch(BASE_URL + url, {
-            method: method,
-            mode: 'cors',
-            body: JSON.stringify(body), // string or object
-            headers: headers
-        })
+        let response;
+
+        if (method === 'POST') {
+            response = await fetch(BASE_URL + url, {
+                method: method,
+                mode: 'cors',
+                body: JSON.stringify(body), // string or object
+                headers: headers
+            })
+        }
+        else if (method === 'GET') {
+            response = await fetch(BASE_URL + url, {
+                method: method,
+                mode: 'cors',
+                headers: headers
+            })
+        }
 
         const data = response.json().then(body => ({
             body: body,

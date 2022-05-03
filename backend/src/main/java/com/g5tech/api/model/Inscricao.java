@@ -33,6 +33,6 @@ public class Inscricao {
     @Column(name = "data_criacao")
     private Date dataCriacao;
 
-    @Column(name = "situacao")
-    private Situacao situacao;
+    @Column(name = "id_situacao")
+    private Long situacao;
 }
