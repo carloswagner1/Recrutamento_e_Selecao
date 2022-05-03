@@ -100,7 +100,10 @@ h2{
     font-size: 0.8rem;
   
 }
+ #labeldataNasc{
+   width: 230px;
 
+}
 
 .input-senha input{
   margin: 0.6rem 0;
@@ -131,8 +134,9 @@ h2{
 
 
 .input-box select{
-  
-  padding: 10px 85px;
+  height: 40px;
+  width: 230px;
+  padding: 10px 55px;
   font-size: 1rem;
   margin-top: 10px;
   box-shadow: 0 0 1px var(--cinza);

@@ -30,7 +30,7 @@
  
  margin-left: 5px;
  font-size: 1.5rem;
- color: #323232;
+ color: #ffffff;
  
 
 }
@@ -97,7 +97,18 @@ select {
     text-align: center;
     
   }
-  
+  form a{
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 15px;
+    display: inline-block;
+    text-align: center;
+    background-color: var(--fundo);
+      
+  }
+
+ 
   .content p{
     margin: 15px 0px;
     font-size: 15px;
