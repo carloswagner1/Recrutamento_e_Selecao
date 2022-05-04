@@ -45,4 +45,9 @@ public class InscricaoService {
         // Deletando
         inscricaoRepository.delete(inscricao);
     }
+
+    public void deleteAllByCandidato(Candidato candidato) {
+        List<Inscricao> inscricaoList = inscricaoRepository.findAllByCandidato(candidato);
+        inscricaoRepository.deleteAllInBatch(inscricaoList);
+    }
 }

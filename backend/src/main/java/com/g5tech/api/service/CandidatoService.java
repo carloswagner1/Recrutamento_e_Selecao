@@ -113,11 +113,23 @@ public class CandidatoService {
 
     public void delete(Long id) {
 
-        // deletar inscricao
-        // deletar form academica
-        // deletar exp profissional
+        Candidato candidato = this.getById(id);
 
+        inscricaoService.deleteAllByCandidato(candidato);
+        this.deleAllFormacoesByCandidato(candidato);
+        this.deleAllExperienciasByCandidato(candidato);
         candidatoRepository.deleteById(id);
+    }
+
+
+    private void deleAllFormacoesByCandidato(Candidato candidato) {
+        List<FormacaoAcademica> formacaoAcademicaList = formacaoAcademicaRepository.findAllByCandidato(candidato);
+        formacaoAcademicaRepository.deleteAll(formacaoAcademicaList);
+    }
+
+    private void deleAllExperienciasByCandidato(Candidato candidato) {
+        List<ExperienciaProfissional> experienciaProfissionalList = experienciaProfissionalRepository.findAllByCandidato(candidato);
+        experienciaProfissionalRepository.deleteAll(experienciaProfissionalList);
     }
 
     public List<InscricaoResponseDTO> getIncricoesByCandidatoId(Long id) {
