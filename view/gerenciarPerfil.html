@@ -68,22 +68,32 @@
                 <div class="input-box">
                     <label id="labelarea" for="area">Área de interesse </label>
                     <select name="area" id="area">
+                        <option selected disabled value="">Selecione</option>
                         <option value="todas">Todas</option>
+                        <option value="ti">TI</option>
                         <option value="administrativo">Administrativo</option>
                         <option value="financeiro">Financeiro</option>
                         <option value="humano">Humano</option>
                         <option value="juridico">Jurídico</option>
                         <option value="producao">Produção</option>
-                        <option value="ti">TI</option>
-
                     </select>
+                </div>
+                <div class="input-box">
+                    <label id="labelgenero" for="genero">Gênero </label>
+                    <select name="genero" id="genero">
+                        <option selected disabled value="">Selecione</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="outro">Outro</option>
+                        <option value="prefiro não dizer">Prefiro não dizer</option>
+                 </select>
                 </div>
                 <div class="input-box">
                     <label id="labelCEP" for="cep">CEP</label>
                     <input type="text" name="cep" id="cep" maxlength="8">
                 </div>
                 <div class="input-box">
-                    <label id="labelLogradouro" for="logradouro">Rua</label>
+                    <label id="labelLogradouro" for="logradouro">Logradouro</label>
                     <input type="text" name="logradouro" id="logradouro">
                 </div>
                 <div class="input-box">
@@ -105,58 +115,24 @@
                         <option value="Brasil">Brasil</option>
                     </select>
                 </div>
-
-                
-
-            </div>
-
-            <div class="genero-inputs">
-                <div class="genero-title">
-                    <h6>Gênero</h6>
-                </div>
-
-                <div class="genero-group">
-                    <div class="genero-input">
-                        <input id="feminino" type="radio" name="genero" value="feminino" >
-                        <label for="feminino">Feminino</label>
-                    </div>
-
-                    <div class="genero-input">
-                        <input id="masculino" type="radio" name="genero" value="masculino">
-                        <label for="masculino">Masculino</label>
-                    </div>
-
-                    <div class="genero-input">
-                        <input id="outros" type="radio" name="genero">
-                        <label for="outros">Outros</label>
-                    </div>
-
-                    <div class="genero-input">
-                        <input id="nenhum" type="radio" name="genero">
-                        <label for="nenhum">Prefiro não dizer</label>
-                    </div>
-                </div>
-            
+            </div>           
 
             <div class="input-senha">
                 <h2>Alterar Senha</h2>
                 <div class="input-box">
-                        <label id="labelSenha" for="password"> Senha Atual</label>
-                        <input id="password" type="password" name="password" placeholder="Digite sua senha atual" data-tipo="senha">
+                        <label for="password"> Senha Atual</label>
+                        <input id="password" type="password" name="password" placeholder="Digite sua senha atual" >
                     </div>
                     <div class="input-box">
                         <label for="newPassword">Senha Nova</label>
                         <input id="newPassword" type="password" name="newPassword" placeholder="Digite sua senha nova" >
                     </div>
             </div>
-
-            <input type="submit" value="Criar Conta" class="btn-criar-conta heartbeat">
-
             <div class="salvar-button">
-                <button type="submit"><a href="#">Salvar</a> </button>
+                <button><a href="#">Salvar</a> </button>
             </div>
             <div class="excluir-button">
-                <button ><a href="#">Excluir conta</a></button>
+                <button><a href="#">Excluir conta</a></button>
             </div>
         </form>
     </div>
@@ -172,9 +148,9 @@
     });
   })
 </script>
+<script src="../model/Candidato.js"></script>
 <script src="../app.js" type="module"></script> 
 <script src="../utils/Utils.js"></script>
-<script src="../model/Candidato.js"></script>
 <script src="../controllers/GerenciarPerfilController.js"></script>    
 </body>
 </html>

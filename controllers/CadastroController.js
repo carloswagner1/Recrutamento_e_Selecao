@@ -35,7 +35,7 @@ class CadastroController{
         });
 
         [...this.formEl2.elements].forEach(function(field, index){
-            if (["cpf", "numCel", "cep", "logradouro", "bairro","cidade", "estado", "pais", "area", 'genero'].indexOf(field.name) > -1 && !field.value) {
+            if (["cpf", "numCel", "cep", "logradouro", "bairro","cidade", "estado", "pais", "area", "genero", "dataNasc"].indexOf(field.name) > -1 && !field.value) {
                 field.parentElement.classList.add("has-error");
                 isValid = false
             }    
@@ -45,7 +45,7 @@ class CadastroController{
             return false;
         }
 
-        let candidato = new Candidato(nome.value, email.value, senha.value, cpf.value, numCel.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value, genero.value);
+        let candidato = new Candidato(nome.value, email.value, senha.value, cpf.value, numCel.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value, genero.value, dataNasc.value);
         return candidato;
     }
     insert(data){

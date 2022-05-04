@@ -239,31 +239,7 @@ class UserController {
         document.querySelector("#box-user-create").style.display = "none";
         document.querySelector("#box-user-update").style.display = "block";
 
-    }
-
-    /*validarPreenchimento(){        
-        let nome = document.querySelector('#exampleInputName');
-        let labelNome = document.querySelector('#labelName');
-
-        let cpf = document.querySelector('#exampleInputCpf');
-        let labelCPF = document.querySelector('#labelCPF');  
-
-        let email = document.querySelector('#exampleInputEmail');
-        let labelEmail = document.querySelector('#labelEmail');
-
-        let numCel = document.querySelector('#exampleInputCelular');
-        let labelCelular = document.querySelector('#labelCelular');
-
-        let senha = document.querySelector('#exampleInputPassword');
-        let labelSenha = document.querySelector('#password');  
-        
-        Utils.validarCampoNome(nome, labelNome);
-        Utils.validarCampoCPF(cpf, labelCPF);
-        Utils.validarCampoEmail(email, labelEmail);
-        Utils.validarCampoCelular(numCel, labelCelular);
-        Utils.validarCampoSenha(senha, labelSenha);
-
-    }*/
+    }   
 
 }
 

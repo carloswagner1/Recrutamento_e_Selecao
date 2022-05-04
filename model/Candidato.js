@@ -1,5 +1,5 @@
 class Candidato {
-    constructor(nome, email, password, cpf, celular, cep, logradouro, bairro, cidade, estado, pais, area, genero){
+    constructor(nome, email, password, cpf, celular, cep, logradouro, bairro, cidade, estado, pais, area, genero, dataNasc){
         this._id;
         this._nome = nome;        
         this._email = email;
@@ -14,6 +14,7 @@ class Candidato {
         this._pais = pais;
         this._area = area;
         this._genero = genero;
+        this._dataNasc = dataNasc;
     }
     get id(){
         return this._id;
@@ -56,6 +57,9 @@ class Candidato {
     }
     get genero(){
         return this._genero;
+    }
+    get dataNasc(){
+        return this._dataNasc;
     }
     loadFromJSON(json){
         for (let name in json){

@@ -8,25 +8,22 @@ class GerenciarPerfilController{
     onLoad(){     
         let listaCandidatos = this.getCandidatosStorage();
         let candidato = this.selectCandidato(listaCandidatos);
-        this.loadValues(candidato); 
-       
-        
+        this.loadValues(candidato);               
     }
     onSubmit(){
         this.formEl.addEventListener("submit", event => {
             event.preventDefault();
-            let listaCandidatos = this.getCandidatosStorage();
-            let candidato = this.selectCandidato(listaCandidatos);
+                    
+            let values = this.getValues(this.formEl)            
+            ;//pega os valores da tabela
+            let candidatoAtualizado = JSON.stringify(values);
+            console.log(values)
+            console.log(candidatoAtualizado)
 
-            let values = this.getValues(this.formEl);                        
-            let result = Object.assign({}, candidato, values);
-            candidato = new Candidato();
-            candidato.loadFromJSON(result);            
-            this.save();
-            console.log(candidato)
+           //salvar no banco de dados
+
             this.formEl.reset();            
         });
-
     }
     getCandidatosStorage() {
         let listaCandidatos = [];
@@ -53,7 +50,8 @@ class GerenciarPerfilController{
             estado: obj._estado, 
             pais: obj._pais, 
             area: obj._area, 
-            genero: obj._genero
+            genero: obj._genero,
+            dataNasc: obj._dataNasc,
             };
         })
         return candidato;
@@ -62,22 +60,19 @@ class GerenciarPerfilController{
         let candidatos = this.getCandidatosStorage();
         candidatos.push(this);
         localStorage.setItem("candidatos", JSON.stringify(candidatos));
-    }    
-
+    }
     loadValues(candidato){        
         for (let value of candidato){                        
             [...this.formEl.elements].forEach(function(field, index)
             {
                 if(value[field.name] == undefined){
                     return '';
-                }
-                if(field.id == value.genero){                    
-                    field.checked = true;
                 }else{
                     field.value = value[field.name];                   
                 }
             });      
         }
+        
     }
     getValues(formEl){
         /*let candidato = {};*/
@@ -85,26 +80,18 @@ class GerenciarPerfilController{
 
         [...formEl.elements].forEach(function (field, index) {
 
-            if (["nome", "email", "password", "cpf", "celular", "cep", "logradouro", "bairro","cidade", "estado", "pais", 'area' ].indexOf(field.name) > -1 && !field.value) {
+            if (["nome", "email", "password", "cpf", "celular", "cep", "logradouro", "bairro","cidade", "estado", "pais", 'area', 'genero', 'dataNasc' ].indexOf(field.name) > -1 && !field.value) {
                 field.parentElement.classList.add('has-error');
                 isValid = false;
             }
-            if(field.name === 'genero'){
-                let genero;
-                let generoCampo =  document.getElementsByName('genero');
-                for(let i =0; i < generoCampo.length; i++){
-                    if(generoCampo[i].checked){
-                        genero = field.value;
-                    }
-                }
-            }
+
         });
 
         if (!isValid) {
             return false;
         }
         
-        let candidato = new Candidato(nome.value, email.value, password.value, cpf.value, celular.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value, genero.value);
+        let candidato = new Candidato(nome.value, email.value, password.value, cpf.value, celular.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value, genero.value, dataNasc.value);
 
         return candidato;
 
