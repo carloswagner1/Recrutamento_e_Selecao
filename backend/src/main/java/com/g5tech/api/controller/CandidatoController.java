@@ -1,6 +1,7 @@
 package com.g5tech.api.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.g5tech.api.dto.CandidatoCompletoDTO;
 import com.g5tech.api.dto.CandidatoDTO;
 import com.g5tech.api.dto.InscricaoResponseDTO;
 import com.g5tech.api.service.CandidatoService;
@@ -32,7 +33,7 @@ public class CandidatoController {
     @Operation(summary = "Busca um candidato pelo seu id")
     @GetMapping("/{id}")
     public ResponseEntity<CandidatoDTO> getOne(@PathVariable Long id) {
-        return new ResponseEntity<>(candidatoService.getOne(id), HttpStatus.CREATED);
+        return new ResponseEntity<>(candidatoService.getOne(id), HttpStatus.OK);
     }
 
     @Operation(summary = "Busca lista de inscrições pelo id do candidato")
@@ -41,7 +42,13 @@ public class CandidatoController {
         return new ResponseEntity<>(candidatoService.getIncricoesByCandidatoId(id), HttpStatus.OK);
     }
 
-    @Operation(summary = "Busca um candidato pelo seu id")
+    @Operation(summary = "Busca dados pessoais, experiencias e formação acadêmica pelo id do candidato")
+    @GetMapping("/{id}/completo")
+    public ResponseEntity<CandidatoCompletoDTO> getExperienciaFormacaoByCandidatoId(@PathVariable Long id) {
+        return new ResponseEntity<>(candidatoService.getExperienciaFormacaoByCandidatoId(id), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Modifica um candidato pelo seu id")
     @PutMapping("/{id}")
     public ResponseEntity<UsuarioCandidatoDTO> update(
             @PathVariable Long id,

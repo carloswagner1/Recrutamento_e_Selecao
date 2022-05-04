@@ -45,6 +45,15 @@ public class ApiResponseEntityExceptionHandler extends ResponseEntityExceptionHa
         return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
+
+    @ExceptionHandler({ ProcessoSeletivoNotFoundException.class })
+    public ResponseEntity<Object> handleProcessoSeletivoNotFoundException(ProcessoSeletivoNotFoundException ex, WebRequest request) {
+
+        ErrorDTO error = new ErrorDTO("Processo seletivo não encontrado");
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
     @ExceptionHandler({ CandidatoEmailNotUniqueException.class })
     public ResponseEntity<Object> handleCandidatoEmailNotUniqueException(CandidatoEmailNotUniqueException ex, WebRequest request) {
 

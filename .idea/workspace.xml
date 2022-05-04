@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61613e5c-fc59-47a9-9b41-ffda79c3ef4b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/controller/InscricaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/controller/InscricaoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/InscricaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/InscricaoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/dto/ProcessoCompletoResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/exception/ProcessoSeletivoNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/builder/ProcessoSeletivoBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/builder/ProcessoSeletivoBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/controller/CandidatoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/controller/CandidatoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/controller/ProcessoSeletivoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/controller/ProcessoSeletivoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/dto/ProcessosResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/dto/ProcessoResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/exception/ApiResponseEntityExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/exception/ApiResponseEntityExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/ExperienciaProfissional.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/model/ExperienciaProfissional.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/CandidatoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/CandidatoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/ProcessoSeletivoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/g5tech/api/service/ProcessoSeletivoService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

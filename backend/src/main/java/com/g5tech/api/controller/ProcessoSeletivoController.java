@@ -1,7 +1,7 @@
 package com.g5tech.api.controller;
 
-import com.g5tech.api.dto.InscricaoResponseDTO;
-import com.g5tech.api.dto.ProcessosResponseDTO;
+import com.g5tech.api.dto.ProcessoCompletoResponseDTO;
+import com.g5tech.api.dto.ProcessoResponseDTO;
 import com.g5tech.api.service.ProcessoSeletivoService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,13 @@ public class ProcessoSeletivoController {
 
     @Operation(summary = "Busca lista de processos seletivos pelo id do candidato")
     @GetMapping("/candidatos/{id}")
-    public ResponseEntity<List<ProcessosResponseDTO>> getProcessosByCandidatoId(@PathVariable Long id) {
-        return new ResponseEntity<>(processoSeletivoService.getByAreaCandidato(id), HttpStatus.OK);
+    public ResponseEntity<List<ProcessoResponseDTO>> getProcessosByCandidatoId(@PathVariable("id") Long candidatoId) {
+        return new ResponseEntity<>(processoSeletivoService.getByAreaCandidato(candidatoId), HttpStatus.OK);
     }
+    @Operation(summary = "Busca processo seletivo pelo id")
+    @GetMapping("/{id}")
+    public ResponseEntity<ProcessoCompletoResponseDTO> getById(@PathVariable Long id) {
+        return new ResponseEntity<>(processoSeletivoService.getCompletoById(id), HttpStatus.OK);
+    }
+
 }

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProcessosResponseDTO {
+public class ProcessoResponseDTO {
     private Long id;
     private String cargo;
     private String tipoVaga;
