@@ -32,6 +32,8 @@
         <form class="bounce-top" id="formCad2" action="login.html" style="display: none;">
             <label id="labelCPF" for="cpf">CPF </label>
             <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" data-tipo="cpf" required>
+            <label id="labeldataNasc" for="dataNasc">Data de Nascimento</label>
+            <input id="dataNasc" type="date" name="dataNasc"  required>
             <label id="labelCelular" for="celular">Celular </label>
             <select name="codcel" id="codcel">
                 <option value="BR55">BR +55</option>
@@ -63,11 +65,13 @@
             <label id="labelarea" for="area">Area de Interesse</label>
             <select name="area" id="area" required>
                 <option selected disabled value="">Selecione</option>
-                <option value="ti">TI</option>
-                <option value="comercial">Comercial</option>
-                <option value="juridico">Jurídico</option>
+                <option value="todas">Todas</option>
+                <option value="TI">TI</option>
+                <option value="administrativo">Administrativo</option>
                 <option value="financeiro">Financeiro</option>
-                <option value="financeiro">Todas</option>
+                <option value="humano">Humano</option>
+                <option value="juridico">Jurídico</option>
+                <option value="producao">Produção</option>
             </select>
 
 
@@ -91,7 +95,7 @@
     <script src="../utils/Utils.js"></script>
     <script src="../app.js" type="module"></script>
     <script src="../model/Candidato.js"></script>
-    <script src="../controllers/CadastroController.js" type="module"></script>
+    <script src="../controllers/CadastroController.js"></script>
 </body>
 
 </html>
