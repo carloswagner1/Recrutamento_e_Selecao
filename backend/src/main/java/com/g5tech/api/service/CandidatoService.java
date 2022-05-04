@@ -90,7 +90,7 @@ public class CandidatoService {
         return CandidatoBuilder.buildDTO(candidato);
     }
 
-    private Candidato getById(Long id) {
+    public Candidato getById(Long id) {
 
         Optional<Candidato> candidatoOptional = candidatoRepository.findById(id);
 
