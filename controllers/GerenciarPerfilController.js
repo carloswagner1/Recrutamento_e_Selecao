@@ -34,7 +34,7 @@ class GerenciarPerfilController{
     }
     selectCandidato(listaCandidatos){
         let candidato = listaCandidatos.filter((item) => {
-            return item._email =='veiodahavan@email.com'
+            return item._email =='veiodaHavan@email.com'
         });
         candidato = candidato.map(obj => {
             return {
@@ -82,10 +82,12 @@ class GerenciarPerfilController{
 
             if (["nome", "email", "password", "cpf", "celular", "cep", "logradouro", "bairro","cidade", "estado", "pais", 'area', 'genero', 'dataNasc' ].indexOf(field.name) > -1 && !field.value) {
                 field.parentElement.classList.add('has-error');
-                isValid = false;
-            }
+                isValid = false;                
+            }else if(field.name == 'newPassword' && field.value !==''){                
+                password.value = newPassword.value;
+            }              
 
-        });
+        });         
 
         if (!isValid) {
             return false;
