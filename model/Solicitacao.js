@@ -1,33 +1,35 @@
 class Solicitacao{
-    constructor(departamento, cargo, requisitos, escolaridade, descricao, status){
+    constructor(departamento, cargo, tipoVaga, localVaga, qtdVagas, requisitos, descricao, status){
         this._departamento = departamento;
         this._cargo = cargo;
+        this._tipoVaga = tipoVaga;
+        this._localVaga = localVaga;
+        this._qtdVagas = qtdVagas;
         this._requisitos = requisitos;
-        this._escolaridade = escolaridade;
         this._descricao = descricao;
         this._status = status;
     }
-
     get departamento(){
         return this._departamento;
     }
-
     get cargo(){
         return this._cargo;
     }
-
+    get tipoVaga(){
+        return this._tipoVaga;
+    }
+    get localVaga(){
+        return this._localVaga;
+    }
+    get qtdVagas(){
+        return this._qtdVagas;
+    }
     get requisitos(){
         return this._requisitos;
     }
-
-    get escolaridade(){
-        return this._escolaridade;
-    }
-
     get descricao(){
         return this._descricao
     }
-
     get status(){
         return this._status;
     }
