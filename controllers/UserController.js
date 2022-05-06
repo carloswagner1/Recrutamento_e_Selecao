@@ -97,9 +97,7 @@ class UserController {
                 user[field.name] = field.checked;
 
             } else {
-
                 user[field.name] = field.value;
-
             }
 
         });

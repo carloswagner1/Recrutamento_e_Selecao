@@ -68,7 +68,7 @@ class GerenciarPerfilController{
                 if(value[field.name] == undefined){
                     return '';
                 }else{
-                    field.value = value[field.name];                   
+                    field.value = value[field.name];
                 }
             });      
         }

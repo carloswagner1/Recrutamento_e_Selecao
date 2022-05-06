@@ -59,12 +59,11 @@ const clearFields = () => {
     document.getElementById('nomeEmpresa').dataset.index = 'new'
 }
 
-const saveExperiencia = () => {
-    debugger
+const saveExperiencia = () => {    
     if (isValidFields()) {
         const experiencia = {
             nomeEmpresa: document.getElementById('nomeEmpresa').value,
-            cargo: document.getElementById('cargo').value,
+            cargo: document.getElementById('nomeCargo').options[document.getElementById('nomeCargo').selectedIndex].text,
             dataAdmissao: document.getElementById('dataAdmissao').value,
             dataDesligamento: document.getElementById('dataDesligamento').value
         }
@@ -210,7 +209,7 @@ const saveformacao = () => {
     if (isValidFields2()) {
         const formacao = {
             tipoformacao: document.getElementById('tipoformacao').value,
-            curso: document.getElementById('curso').value,
+            curso: document.getElementById('curso').options[document.getElementById('curso').selectedIndex].text,
             instituicao: document.getElementById('instituicao').value,
             dataInicio: document.getElementById('dataInicio').value,
             dataConclusao: document.getElementById('dataConclusao').value
