@@ -6,7 +6,7 @@ class UserController {
         this.formUpdateEl = document.getElementById(formIdUpdate);
         this.tableEl = document.getElementById(tableId);
 
-        //this.validarPreenchimento();
+        
         this.onSubmit();
         this.onEdit();
         this.selectAll();

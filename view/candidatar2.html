@@ -280,7 +280,7 @@
                 </header>
                 <form id="form2" class="modal-form">
                     <label for="tipoFormacao">Tipo de Formação</label>
-                    <select name="formacao" id="tipoformacao" data-index="new">
+                    <select name="formacao" id="tipoformacao">
                         <option selected disabled value="">Selecione</option>
                         <option value="fundamental">Ensino Fundamental</option>
                         <option value="medio">Ensino Médio</option>
@@ -375,8 +375,12 @@
             </div>
         </div>
         <div class="candidatar-button">
-            <button><a href="#">Candidatar</a></button>
+            <button onclick="onSubmit()"><a >Candidatar</a></button>
         </div>
+        <div>
+            <h3 id="mensagem" class="invisivel"></h3>    
+        </div>
+        
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

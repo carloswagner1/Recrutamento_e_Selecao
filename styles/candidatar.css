@@ -508,7 +508,17 @@ cursor: pointer;
 
 }
 
+#mensagem {
+  margin: auto;
+  color: red;
+  font-weight: bolder;
+  font-size: 18px;
+  margin-top: 1%;
+}
 
+.invisivel {
+  display: none;
+}
 
 
 

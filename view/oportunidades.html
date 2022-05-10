@@ -36,16 +36,16 @@
       
   </div>
   <form id="form-filtro">
-    <label id="tipoVaga" for="tipoVaga"> Filtrar por tipo de vaga </label>
-     <select name="tipoVaga" id="tipoVaga">
+    <label id="labelTipoVaga" for="selectTipoVaga"> Filtrar por tipo de vaga </label>
+     <select name="selectTipoVaga" id="selectTipoVaga" onchange="onSelect()">
          <option value="">Tipo de Vagas</option>
-         <option value="efetivo">Efetivo</option>
+         <option value="Efetivo">Efetivo</option>
          <option value="estágio">Estágio</option>
          <option value="temporário">Temporário</option>
          <option value="trainee">Treinee</option>
      </select>
-     <label id="localVaga" for="localVaga"> Filtrar por local </label>
-     <select name="localVaga" id="localVaga">
+     <label id="labelLocalVaga" for="localVaga"> Filtrar por local </label>
+     <select name="localVaga" id="localVaga" onselect="onSelect()">
         <option value="">Local da Vaga</option>
          <option value="saoPaulo">São Paulo</option>
          <option value="riodeJaneiro">Rio de Janeiro</option>
@@ -53,99 +53,21 @@
          <option value="sorocaba">Sorocaba</option>
          <option value="bauru">Bauru</option>
      </select>
-     <label  id="deptoVaga" for="deptoVaga"> Filtrar por Departamento </label>
-     <select name="deptoVaga" id="deptoVaga">
+     <label  id="labelDeptoVaga" for="deptoVaga"> Filtrar por Departamento </label>
+     <select name="deptoVaga" id="deptoVaga" onchange="onSelect()">
          <option value="">Departamento</option>
-         <option value="analista">Comercial</option>
-         <option value="analista">Experiencia do úsuario</option>
-         <option value="estágio">Desenvolvimento</option>
-         <option value="temporário">Jurídico</option>
-         <option value="trainee">Marketing </option>
+         <option value="comercial">Comercial</option>
+         <option value="experienciaUsuario">Experiencia do úsuario</option>
+         <option value="desenvolvimento">Desenvolvimento</option>
+         <option value="juridico">Jurídico</option>
+         <option value="marketing">Marketing </option>
      </select><a href="#" class="filtrar"> <i class="fa fa-search"></i></a>  
-   
+     <a href="" type=""></a>
     
     </form>
-  <div class="container">
-    <div class="cards">
-      <div class="image-section"></div>
-      <div class="content">
-        <h2>Advogado Jr</h2>
-        <p><img src="../images/pasta.png" alt=""> Efetivo
-        </p>
-        <p><img src="../images/local.png" alt=""> Rio de Janeiro/RJ</p>
-        <a href="#" class="btn">Candidatar</a>
-      </div>
-    </div>
-    <div class="cards">
-      <div class="image-section"></div>
-      <div class="content">
-        <h2>Analista Comercial Pleno</h2>
-        <p><img src="../images/pasta.png" alt=""> Efetivo
-        </p>
-        <p><img src="../images/local.png"  alt=""> Rio de Janeiro/RJ e Remoto</p>
-        <a href="#" class="btn">Candidatar</a>
-      </div>
-    </div>
-    <div class="cards">
-      <div class="image-section"></div>
-      <div class="content">
-        <h2>Analista de Marketing</h2>
-        <p><img src="../images/pasta.png" alt=""> Estágio
-        </p>
-        <p><img src="../images/local.png"  alt=""> São Paulo/SP</p>
-        <a href="#" class="btn">Candidatar</a>
-      </div>
-    </div>
-    <div class="cards">
-      <div class="image-section"></div>
-      <div class="content">
-        <h2>Auxiliar de Vendas Digital</h2>
-        <p><img src="../images/pasta.png" alt=""> Efetivo
-        </p>
-        <p><img src="../images/local.png" alt=""> São Paulo/SP e Remoto </p>
-        <a href="#" class="btn">Candidatar</a>
-      </div>
-    </div>
-    <div class="cards">
-      <div class="image-section"></div>
-      <div class="content">
-        <h2>Desenvolvedor(a) Java JR</h2>
-        <p><img src="../images/pasta.png" alt=""> Efetivo
-        </p>
-        <p><img src="../images/local.png" alt=""> Florianópolis/SC</p>
-        <a href="#" class="btn">Candidatar</a>
-      </div>
-    </div>
-    <div class="cards">
-      <div class="image-section"></div>
-      <div class="content">
-        <h2>Desenvolvedor(a) Mobile Pleno</h2>
-        <p><img src="../images/pasta.png" alt=""> Efetivo
-        </p>
-        <p><img src="../images/local.png" alt=""> Sorocaba/SP e Remoto</p>
-        <a href="#" class="btn">Candidatar</a>
-      </div>
-    </div>
-    <div class="cards">
-      <div class="image-section"></div>
-      <div class="content">
-        <h2>Técnico de Métodos e Processos</h2>
-        <p><img src="../images/pasta.png"alt=""> Estágio
-        </p>
-        <p><img src="../images/local.png" alt=""> Rio de Janeiro/RJ</p>
-        <a href="#" class="btn">Candidatar</a>
-      </div>
-    </div>
-    <div class="cards">
-      <div class="image-section"></div>
-      <div class="content">
-        <h2>Ux Designer Sênior </h2>
-        <p><img src="../images/pasta.png" alt=""> Efetivo
-        </p>
-        <p><img src="../images/local.png"  alt=""> São Paulo/SP</p>
-        <a href="#" class="btn">Candidatar</a>
-      </div>
-    </div>
+  <div class="container oportunidadesContainer" id="oportunidadesContainer">
+    
+
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -155,6 +77,8 @@
           $(".site-nav-menu").toggleClass("mobile-menu");
       });
     })
-  </script>     
+    
+  </script>       
+  <script src="../controllers/OportunidadesController.js"></script>
 </body>
 </html>
