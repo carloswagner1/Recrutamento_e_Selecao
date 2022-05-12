@@ -49,7 +49,7 @@ class LoginController {
                 if(tipo == 'empresa'){
                     window.location.href = "../view/gerenciarProcessoSeletivo.html"
                 }else{
-                    window.location.href = '../view/minhasvagas.html'
+                    window.location.href = '../view/minhasVagas.html'
                 }
                
                 let mathRandom = Math.random().toString(16).substr(2)

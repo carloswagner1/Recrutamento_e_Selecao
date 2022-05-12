@@ -20,13 +20,11 @@ body{
   --secundary-color: #FFF1CC;
   --shadow-color: #CCC;
   --text-color: #FFF;
-  --branco: #fff;
-  --amarelo: #fdb824;
   --azul-escuro: #001533;
   --azul-claro: #133463;
   --cinza: #323232; 
   --fundo: #081c6b;
-  --amarelo: #eab937;
+
 
 }  
 .container, .container-desc {
@@ -53,9 +51,11 @@ body{
 
 h1{
 color: var(--azul-escuro);
+margin-top: 10%;
 }
-h1, h3, h4{
+ h3, h4{
 margin: 20px ;
+
 
 } 
 p{
@@ -136,16 +136,7 @@ select{
 padding: 2%;
 width: 49%;
 }
-@media (max-width:480px){
 
-
-main{
-    padding: 0;
-    margin: 20px 0 0 0;
-    width:100%;
-    box-shadow: none;
-}
-}
 .button{
 border-style: none;
 height: 40px;
@@ -288,53 +279,6 @@ text-align: center;
 .records tr:hover{
 background-color: var(--secundary-color);
 }
-
-@media (max-width:480px){
-.modal{
-    top:100%;
-    transition: all 1s ease;
-}
-.modal.active{
-    top:0;
-}
-.modal-content{
-    margin:0;
-    width:100%;
-    position:fixed;
-}
-.modal-field{
-    width:100%;
-}
-th{
-    width: 100px;
-}
-}
-
-@media(max-width:480px){
-.records{
-    border-spacing: 5px;
-}
-.records thead{
-    display:none;
-}
-.records tr{
-    box-shadow: 0 1px 3px var(--shadow-color);
-}
-.records td:not(:first-child){
-    display:flex;
-    justify-content: space-between;
-    padding: 0 20px;
-}
-
-.records td{
-    margin:10px 0;
-}
-
-.records tr:hover{
-    background-color: inherit;
-}
-}
-
 
 fieldset {
 border: 1px solid var(--amarelo);
@@ -508,12 +452,12 @@ cursor: pointer;
 
 }
 
-#mensagem {
-  margin: auto;
+#mensagem {  
   color: red;
   font-weight: bolder;
   font-size: 18px;
-  margin-top: 1%;
+  margin-top: 5%;
+  margin-bottom: 0;
 }
 
 .invisivel {
@@ -521,83 +465,126 @@ cursor: pointer;
 }
 
 
-
-@media only screen and (max-width: 900px){
-.site-nav-menu{
-  float:none;
-  position: absolute;
-  background: var(--fundo);
-  width: 100%;
-  left:0;
-  top: 60px;
-  padding: 10px 0px 80px 0px;
-  border-top: 2px solid var(--amarelo) ;
-  clip-path: circle(0% at 100% 0%);
-  transition: all .5s;
-}
-
-.primary-menu li{
-  display: block;
-  text-align: center;
-  margin: 25px 2px;
-
-}
-
-.mobile-nav{
-  display: block;
-}
-.mobile-menu{
-  clip-path: circle(150% at 100% 0%);
-}
-.primary-menu li a:after{
-  display: none;
-}
-
-main{
-flex-grow: 1;
-display: flex;
-flex-direction: column;
-align-items:center;
-width: 90%;
-margin: 5vh auto;
-padding: 50px;
-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
-gap: 20px;
-background-color: rgb(255, 255, 255);
-text-align: center;
-
-}
-p{
-font-size: 1.5rem;
-color:var(--cinza);
-margin-left: 10px;
-padding: 4px;
-}
-
-table{
-margin-top: 3%;
-margin-bottom: 2%;
-
-}
-.modal label{
-display: block;
-width: 30%;
-text-align: left;
-color: #323232;
-}
-select{
-padding: 2%;
-width: 49%;
-}
 @media (max-width:480px){
-
-
-main{
+  main{
     padding: 0;
     margin: 20px 0 0 0;
     width:100%;
     box-shadow: none;
+  }
+  .modal{
+      top:100%;
+      transition: all 1s ease;
+  }
+  .modal.active{
+      top:0;
+  }
+  .modal-content{
+      margin:0;
+      width:100%;
+      position:fixed;
+  }
+  .modal-field{
+      width:100%;
+  }
+  th{
+      width: 100px;
+  }
+  .dados-pessoais h1{
+    margin-top: 35%;
+  }
+  .records{
+    border-spacing: 5px;
+  }
+  .records thead{
+      display:none;
+  }
+  .records tr{
+      box-shadow: 0 1px 3px var(--shadow-color);
+  }
+  .records td:not(:first-child){
+      display:flex;
+      justify-content: space-between;
+      padding: 0 20px;
+  }
+
+  .records td{
+      margin:10px 0;
+  }
+
+  .records tr:hover{
+      background-color: inherit;
+  }
 }
+
+
+@media only screen and (max-width: 900px){
+  .site-nav-menu{
+    float:none;
+    position: absolute;
+    background: var(--fundo);
+    width: 100%;
+    left:0;
+    top: 60px;
+    padding: 10px 0px 80px 0px;
+    border-top: 2px solid var(--amarelo) ;
+    clip-path: circle(0% at 100% 0%);
+    transition: all .5s;
+  }
+
+  .primary-menu li{
+    display: block;
+    text-align: center;
+    margin: 25px 2px;
+
+  }
+
+  .mobile-nav{
+    display: block;
+  }
+  .mobile-menu{
+    clip-path: circle(150% at 100% 0%);
+  }
+  .primary-menu li a:after{
+    display: none;
+  }
+
+  main{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  width: 90%;
+  margin: 5vh auto;
+  padding: 50px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+  gap: 20px;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+
+  }
+  p{
+  font-size: 1.5rem;
+  color:var(--cinza);
+  margin-left: 10px;
+  padding: 4px;
+  }
+
+  table{
+  margin-top: 3%;
+  margin-bottom: 2%;
+
+  }
+  .modal label{
+  display: block;
+  width: 30%;
+  text-align: left;
+  color: #323232;
+  }
+  select{
+  padding: 2%;
+  width: 49%;
+  }
 }
 .button{
 border-style: none;
@@ -742,53 +729,60 @@ text-align: center;
 background-color: var(--secundary-color);
 }
 
-@media (max-width:480px){
-.modal{
+@media screen and (min-width:481px) and (max-width:980px){
+  
+  .records{
+      border-spacing: 5px;
+  }
+
+  .records thead{
+      display:none;
+  }
+  .records tr{
+      box-shadow: 0 1px 3px var(--shadow-color);
+  }
+  .records td:not(:first-child){
+      display:flex;
+      justify-content: space-between;
+      padding: 0 20px;
+  }
+
+  .records td{
+      margin:10px 0;
+  }
+
+  .records tr:hover{
+      background-color: inherit;
+  }
+
+  .modal{
     top:100%;
     transition: all 1s ease;
-}
-.modal.active{
+    margin-top: 30%;
+    
+  }
+  .modal.active{
     top:0;
-}
-.modal-content{
+  }
+  .modal h1{
+    font-size: 10px;
+  }
+  .modal-content{
     margin:0;
     width:100%;
-    position:fixed;
-}
-.modal-field{
+  }
+  .modal-field{
     width:100%;
-}
-th{
+  }
+  th{
     width: 100px;
-}
-}
-
-@media(max-width:480px){
-.records{
-    border-spacing: 5px;
-}
-.records thead{
-    display:none;
-}
-.records tr{
-    box-shadow: 0 1px 3px var(--shadow-color);
-}
-.records td:not(:first-child){
-    display:flex;
-    justify-content: space-between;
-    padding: 0 20px;
+  }
+  .dados-pessoais h1{
+    margin-top: 20%;
+  }
 }
 
-.records td{
-    margin:10px 0;
-}
 
-.records tr:hover{
-    background-color: inherit;
-}
-}
-
-}
 @media screen and (max-width: 1330px) {
 
 .container, .container-desc {
@@ -798,7 +792,8 @@ th{
     width: 100%;
 }
 fieldset{
-  width: 50%;
+  width: 100%;
+  
 }
 }
 

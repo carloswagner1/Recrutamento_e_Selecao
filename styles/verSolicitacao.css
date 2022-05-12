@@ -43,16 +43,19 @@ td{
 .main-container{
     background-color: var(--branco);
     width:90%;
-    margin: 10% auto;
-    padding: 20px 30px;
+    height: 60vh;
+    margin-top: 8%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 10px 0px 10px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 15px black;
 }
 
-form {
-    margin-top:  30px;
+table {
     margin-bottom:  40px;
+
 
 }
 
@@ -62,4 +65,5 @@ label, input, select{
     text-align: left;
 
 }
+
 

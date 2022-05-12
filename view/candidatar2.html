@@ -17,381 +17,42 @@
 <body>
     <header class="header-area">
         <div class="header-container">
-            <div class="site-logo">
-                <a href="#"><img src="../images/logo.png" alt="logo"></a>
-            </div>
-            <div class="mobile-nav">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div class="site-nav-menu">
-                <ul class="primary-menu">
-                    <li><a href="../view/minhasVagas.html" class="">Minhas Vagas</a></li>
-                    <li><a href="../view/oportunidades.html" class="">Oportunidades</a></li>
-                    <li><a href="../view/gerenciarPerfil.html" class="">Perfil</a></li>
-                    <li><a href="../view/contato.html" class="">Contato</a></li>
-                    <li><a href="../view/login.html" class="">Sair</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
-    <div class="container-desc" id="container-desc" style="display: block;">
-        <div class="descricao">
-            <h1>Desenvolvedor(a) Java Jr</h1>
-            <h3>Descrição da vaga</h3>
-            <p>Desenvolvimento focado em manutenibilidade, performance e boas práticas de desenvolvimento de software
-                para sistemas de utilities.
-
-
-            <h3>Responsabilidades e atribuições</h3>
-
-            Leitura de especificação; Programação front-end (Javascript, Bootstrap) e back-end (Java, Spring Boot,
-            Spring Data).
-
-
-            <h3>Requisitos e qualificações</h3>
-
-
-            Java, Spring MVC; Webservice RESTFUL, Banco de dados relacional
-
-            Conhecimento em algoritmos e linguagem de programação Java
-
-            Vontade de aprender novas tecnologias e ferramentas; Ser responsável, auto gerenciável e comprometido;
-            Gostar de trabalhar em equipe.
-
-
-            <h3>Informações adicionais</h3>
-
-            <h4>✔ O que Temos?</h4>
-
+          <div class="logo">
+            <a href="#"><img src="../images/logo.png" alt="logo"></a>
+          </div>
+          <div class="mobile-nav">
+            <label for="menuTrigger" class="nav-ico"><i class="fa fa-bars"></i></label>
+            <input type="checkbox" id="menuTrigger">
+           <nav class="nav-menu">
             <ul>
-                <li>Flexibilidade no horário de trabalho;</li>
-                <li>Modelo de trabalho híbrido;</li>
-                <li>Programa de Capacitação;</li>
-                <li>Ambiente inovador e projetos desafiadores;</li>
-                <li>Auxílio Home Office;</li>
+                <li><a href="../view/minhasVagas.html" class="">Minhas Vagas</a></li>
+                <li><a href="../view/oportunidades.html" class="">Oportunidades</a></li>
+                <li><a href="" class="">Gerenciar Perfil</a>
+                    <i class="fa fa-caret-down"></i>
+                    <ul>
+                        <li><a href="../view/gerenciarPerfil.html">Editar Perfil</a></li>
+                        <li><a href="../view/curriculo.html">Editar Currículo</a></li>                     
+                    </ul>   
+                   </li>
+                <li><a href="../view/contato.html" class="">Contato</a></li>
+               <li><a href="../view/login.html" class="">Sair</a></li>
             </ul>
-            </p>
+          </nav>
+         </div>
         </div>
-        <div class="continuar-button">
-            <button onclick="showForm()"><a href="#">Continuar</a></button>
-        </div>
+      </header>  
+    <div class="container-desc" id="container-desc" >
+
+    <!-- Controller preenche dinamicamente-->
+       
     </div>
-    <main class="container-form" id="container-form" style="display: none;">
-        <div class="dados-pessoais">
-            <h1>Dino da Silva Sauro</h1>
-            <p>Celular: (11)99987-2212</p>
-            <p>E-mail:dino_s_s@gmail.com</p>
-        </div>
-        <fieldset>
-            <legend>
-                <h2>Experiências Profissional</h2>
-            </legend>
-            <button type="button" class="button blue mobile" id="adicionarExperiencia">Adicionar Experiência</button>
-            <table id="tableExperiencia" class="records">
-                <thead>
-                    <tr>
-                        <th>Empresa</th>
-                        <th>Cargo</th>
-                        <th>Data de Admissão</th>
-                        <th>Data de Desligamento</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
 
-                </tbody>
-            </table>
-            <div class="semExperiencia-inputs">
-                <div class="semExperiencia-group">
-                    <div class="semExperiencia-input">
-                        <input id="semExperiencia" type="radio" name="semExperiencia">
-                        <label for="semExperiencia">Não possuo experiência profissional</label>
-                    </div>
-                </div>
-            </div>
-        </fieldset>
-        <div class="modal" id="modal">
-            <div class="modal-content">
-                <header class="modal-header">
-                    <h2>Experiência Profissional</h2>
-                    <span class="modal-close" id="modalClose">&#10006;</span>
-                </header>
-                <form id="form" class="modal-form">
-                    <label for="nomeEmpresa">Nome da Empresa</label>
-                    <input type="text" id="nomeEmpresa" data-index="new" class="modal-field"
-                        placeholder="Nome da Empresa">
-                    <label for="cargo">Cargo</label>
 
-                    <select name="cargo" id="nomeCargo">
-                        <option selected disabled value="">Selecione</option>
-                        <option value="cargo1">Administrador
-                        <option value="cargo2">Advogado</option>
-                        <option value="cargo3">Agente de saúde</option>
-                        <option value="cargo4">Analista </option>
-                        <option value="cargo5">Arqueólogo</option>
-                        <option value="cargo6">Arquiteto</option>
-                        <option value="cargo7">Assistente administrativo</option>
-                        <option value="cargo8">Assistente comercial</option>
-                        <option value="cargo9">Assistente de marketing</option>
-                        <option value="cargo10">Assistente de recursos humanos</option>
-                        <option value="cargo11">Assistente financeiro</option>
-                        <option value="cargo12">Assistente social</option>
-                        <option value="cargo13">Auxiliar administrativo</option>
-                        <option value="cargo14">Auxiliar de almoxarifado</option>
-                        <option value="cargo15">Auxiliar financeiro</option>
-                        <option value="cargo16">Bancário</option>
-                        <option value="cargo17">Biólogo</option>
-                        <option value="cargo18">Biomédico</option>
-                        <option value="cargo19">Bioquímico</option>
-                        <option value="cargo20">Biotecnólogo</option>
-                        <option value="cargo21">Cientista da computação</option>
-                        <option value="cargo22">Cientista de dados</option>
-                        <option value="cargo23">Consultor financeiro</option>
-                        <option value="cargo24">Contabilista</option>
-                        <option value="cargo25">Contador</option>
-                        <option value="cargo26">Controller</option>
-                        <option value="cargo27">DBA (Administrador de Banco de Dados)</option>
-                        <option value="cargo28">Delegado</option>
-                        <option value="cargo29">Dentista</option>
-                        <option value="cargo30">Desenvolvedor</option>
-                        <option value="cargo31">Designer</option>
-                        <option value="cargo32">Economista</option>
-                        <option value="cargo33">Editor de texto</option>
-                        <option value="cargo34">Enfermeiro</option>
-                        <option value="cargo35">Engenheiro </option>
-                        <option value="cargo36">Especialista em e-commerce</option>
-                        <option value="cargo37">Esteticista</option>
-                        <option value="cargo38">Filósofo</option>
-                        <option value="cargo39">Fisioterapeuta</option>
-                        <option value="cargo40">Fonoaudiólogo</option>
-                        <option value="cargo41">Fotógrafo</option>
-                        <option value="cargo42">Geógrafo</option>
-                        <option value="cargo43">Gerente administrativo</option>
-                        <option value="cargo44">Gerente de projetos</option>
-                        <option value="cargo45">Gestor ambiental</option>
-                        <option value="cargo46">Gestor de tecnologia da informação</option>
-                        <option value="cargo47">Gestor financeiro</option>
-                        <option value="cargo48">Inspetor de qualidade</option>
-                        <option value="cargo49">Jovem aprendiz</option>
-                        <option value="cargo50">Juiz</option>
-                        <option value="cargo51">Mecânico</option>
-                        <option value="cargo52">Médico</option>
-                        <option value="cargo53">Motorista</option>
-                        <option value="cargo54">Nutricionista</option>
-                        <option value="cargo55">Nutrólogo</option>
-                        <option value="cargo56">Operador de caixa</option>
-                        <option value="cargo57">Operador de telemarketing</option>
-                        <option value="cargo58">Pedagogo</option>
-                        <option value="cargo59">Procurador</option>
-                        <option value="cargo60">Professor</option>
-                        <option value="cargo61">Programador</option>
-                        <option value="cargo62">Promotor de justiça</option>
-                        <option value="cargo63">Psicólogo</option>
-                        <option value="cargo64">Psiquiatra</option>
-                        <option value="cargo65">Representante comercial</option>
-                        <option value="cargo66">Roteirista</option>
-                        <option value="cargo67">Técnico de Enfermagem</option>
-                        <option value="cargo68">Técnico em informática</option>
-                        <option value="cargo69">Técnico em Segurança do Trabalho</option>
-                        <option value="cargo70">Terapeuta</option>
-                        <option value="cargo71">Turismólogo</option>
-                        <option value="cargo72 ">UI designer</option>
-                        <option value="cargo73">UX designer</option>
-                        <option value="cargo74">Web designer</option>
-                        <option value="cargo75">Webmaster</option>
-                        <option value="cargo76">Zootecnista</option>                    
-                    </select>
-                    <label for="dataAdmissao">Data de Admissão</label>
-                    <input type="month" id="dataAdmissao" class="modal-field">
-                   <label for="nomeDesligamento">Data de Desligamento</label>
-                    <input type="month" id="dataDesligamento" class="modal-field">
-                </form>
-                <footer class="modal-footer">
-                    <button id="salvar" class="button green">Salvar</button>
-                    <button id="cancelar" class="button blue">Cancelar</button>
-                </footer>
-
-            </div>
-        </div>
-    </fieldset>
-    <div class="modal" id="modal">
-                <div class="modal-content">
-                    <header class="modal-header">
-                        <h2>Experiência Profissional</h2>
-                        <span class="modal-close" id="modalClose">&#10006;</span>
-                    </header>
-                    <form id="form" class="modal-form">
-                        <label for="nomeEmpresa">Nome da Empresa</label>
-                        <input type="text" id="nomeEmpresa" data-index="new" class="modal-field" placeholder="Nome da Empresa">
-                        <label for="cargo">Cargo</label>
-                        <input type="text" id="cargo" class="modal-field" placeholder="Cargo">
-                        <label for="dataAdmissao">Data de Admissão</label>
-                        <input type="date" id="dataAdmissao"
-                        class="modal-field" >
-                        <label for="nomeDesligamento">Data de Desligamento</label>
-                        <input type="month" id="dataDesligamento" class="modal-field" >
-                    </form>
-                    <footer class="modal-footer">
-                        <button id="salvar" class="button green">Salvar</button>
-                        <button id="cancelar" class="button blue">Cancelar</button>
-                    </footer>
-                </div>
-
-            </div>
-        </div>
-        <fieldset>
-            <legend>
-                <h2>Formações Acadêmicas</h2>
-            </legend>
-            <button type="button" class="button blue mobile" id="adicionarFormacao">Adicionar Formação</button>
-            <table id="tableformacao" class="records">
-                <thead>
-                    <tr>
-                        <th>Tipo de Formação</th>
-                        <th>Curso</th>
-                        <th>Nome da Instituição</th>
-                        <th>Data de Início</th>
-                        <th>Data de Conclusão</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Tecnológo</td>
-                        <td>ADS</td>
-                        <td>Fatec SO</td>
-                        <td>02/2020</td>
-                        <td>12/2022</td>
-                        <td>
-                            <button type="button" class="button green">editar</button>
-                            <button type="button" class="button red">excluir</button>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </fieldset>
-
-        <div class="modal" id="modal-formacao">
-            <div class="modal-content">
-                <header class="modal-header">
-                    <h2>Formação Acadêmica</h2>
-                    <span class="modal-close" id="modalClose2">&#10006;</span>
-                </header>
-                <form id="form2" class="modal-form">
-                    <label for="tipoFormacao">Tipo de Formação</label>
-                    <select name="formacao" id="tipoformacao">
-                        <option selected disabled value="">Selecione</option>
-                        <option value="fundamental">Ensino Fundamental</option>
-                        <option value="medio">Ensino Médio</option>
-                        <option value="graduacao">Graduação</option>
-                        <option value="pos-graduacao">Pós-Graduação</option>
-                        <option value="doutorado">Doutorado</option>
-                        <option value="mestrado">Mestrado</option>
-                        <option value="tecnico">Técnico</option>
-                        <option value="tecnologo">Tecnólogo</option>
-                        <option value="tecnologo">Outra</option>
-                    </select>
-
-                    <label for="curso">Curso</label>
-                    <select name="curso" id="curso" data-index="new">
-                        <option selected disabled value="">Selecione</option>
-                        <option value="curso1">Administração</option>
-                        <option value="curso2">Análise e Desenvolvimento de Sistemas</option>
-                        <option value="curso3">Arquitetura e Urbanismo</option>
-                        <option value="curso4">Automação Industrial</option>
-                        <option value="curso5">Banco de Dados</option>
-                        <option value="curso6">Biomedicina</option>
-                        <option value="curso7">Biotecnologia</option>
-                        <option value="curso8">Ciência da Computação</option>
-                        <option value="curso9">Ciência e Tecnologia</option>
-                        <option value="curso10">Ciências Contábeis</option>
-                        <option value="curso11">Ciências do Consumo</option>
-                        <option value="curso12">Comércio Exterior</option>
-                        <option value="curso13">Computação</option>
-                        <option value="curso14">Comunicação e Informação</option>
-                        <option value="curso15">Comunicação em Mídias Digitais</option>
-                        <option value="curso16">Design</option>
-                        <option value="curso17">Direito</option>
-                        <option value="curso18">Ecologia</option>
-                        <option value="curso19">Educação Física</option>
-                        <option value="curso20">Eletrotécnica Industrial</option>
-                        <option value="curso21">Enfermagem</option>
-                        <option value="curso22">Engenharia </option>
-                        <option value="curso23">Estatística</option>
-                        <option value="curso24">Estética e Cosmética</option>
-                        <option value="curso25">Fabricação Mecânica</option>
-                        <option value="curso26">Farmácia</option>
-                        <option value="curso27">Filosofia</option>
-                        <option value="curso28">Física</option>
-                        <option value="curso29">Fisioterapia</option>
-                        <option value="curso30">Fonoaudiologia</option>
-                        <option value="curso31">Fotografia</option>
-                        <option value="curso32">Gastronomia</option>
-                        <option value="curso33">Geografia</option>
-                        <option value="curso34">Geologia</option>
-                        <option value="curso35">Gestão</option> 
-                        <option value="curso36">História</option>
-                        <option value="curso37">Hotelaria</option>
-                        <option value="curso38">Informática</option>
-                        <option value="curso39">Jogos Digitais</option>
-                        <option value="curso40">Jornalismo</option>
-                        <option value="curso41">Letras</option>
-                        <option value="curso42">Libras</option>
-                        <option value="curso43">Logística</option>
-                        <option value="curso44">Manutenção Industrial</option>
-                        <option value="curso45">Marketing</option>
-                        <option value="curso46">Matemática</option>
-                        <option value="curso47">Medicina</option>
-                        <option value="curso48">Medicina Veterinária</option>
-                        <option value="curso49">Nutrição</option>
-                        <option value="curso50">Odontologia</option>
-                        <option value="curso51">Pedagogia</option>
-                        <option value="curso52">Produção </option>
-                        <option value="curso53">Psicologia</option>
-                        <option value="curso54">Radiologia</option>
-                        <option value="curso55">Redes de Computadores</option>
-                        <option value="curso56">Relações Públicas</option>
-                        <option value="curso57">Secretariado</option>
-                        <option value="curso58">Segurança da Informação</option>
-                        <option value="curso59">Sistemas Biomédicos</option>
-                        <option value="curso60">Sistemas de Informação</option>
-                        <option value="curso61">Transporte</option>
-                        <option value="curso62">Turismo</option>
-                        <option value="curso63">Zootecnia </option>  
-                    </select>   
-                    <label for="instituicao">Instituição</label>
-                    <input type="text" id="instituicao" class="modal-field" placeholder="Nome da Insituição">
-                    <label for="dataAdimissao">Data de Início</label>
-                    <input type="month" id="dataInicio" class="modal-field">
-                    <label for="dataConclusao">Data de Conclusão</label>
-                    <input type="month" id="dataConclusao" class="modal-field">
-
-                </form>
-                <footer class="modal-footer">
-                    <button id="salvar2" class="button green">Salvar</button>
-                    <button id="cancelar2" class="button blue">Cancelar</button>
-                </footer>
-            </div>
-        </div>
-        <div class="candidatar-button">
-            <button onclick="onSubmit()"><a >Candidatar</a></button>
-        </div>
-        <div>
-            <h3 id="mensagem" class="invisivel"></h3>    
-        </div>
-        
-    </main>
+   
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".mobile-nav i").click(function () {
-                $(".site-nav-menu").toggleClass("mobile-menu");
-            });
-        })    
-    </script>
-    <script src="../model/Inscricao.js"></script>
     <script src="../controllers/CandidatarController.js"></script>
+    <script src="../model/Inscricao.js"></script>
+
 </body>
 
 </html>

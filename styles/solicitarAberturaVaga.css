@@ -127,8 +127,8 @@ h1,
   color: var(--azul-escuro);
 }
 
-#main-container {
-  margin-top: 3%;
+.main-container {
+  margin-top: 8%;
   background-color: var(--branco);
   width: 60%;
   margin-left: auto;
@@ -239,7 +239,7 @@ input[type="submit"]:hover {
     font-size: 18px;
   }
 
-  #main-container {
+  .main-container {
     width: 90%;
   }
 
@@ -250,7 +250,7 @@ input[type="submit"]:hover {
 }
 
 @media only screen and (max-width:1024px) {
-  #main-container {
+  .main-container {
     margin-top: 10%;
     background-color: var(--branco);
     width: 80%;
@@ -282,7 +282,7 @@ input[type="submit"]:hover {
 }
 
 @media only screen and (max-width:500px) {
-  #main-container {
+  main-container {
     margin-top: 15%;
     background-color: var(--branco);
     width: 80%;

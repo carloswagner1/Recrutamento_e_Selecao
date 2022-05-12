@@ -14,7 +14,7 @@
   }
   
   .titulo h1{
-    margin-top: 30px;
+    margin-top: 10%;
     padding: 0px 60px;
     color:rgb(99, 96, 96);
   }
@@ -30,7 +30,7 @@
  
  margin-left: 5px;
  font-size: 1.5rem;
- color: #323232;
+ color: #ffffff;
  
 
 }
@@ -97,7 +97,18 @@ select {
     text-align: center;
     
   }
-  
+  form a{
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 15px;
+    display: inline-block;
+    text-align: center;
+    background-color: var(--fundo);
+      
+  }
+
+ 
   .content p{
     margin: 15px 0px;
     font-size: 15px;
@@ -164,7 +175,9 @@ select {
       margin-left: 60px;
     }
    
-    
+    .titulo h1{
+      margin-top: 18%;
+    }
   select {
       border-bottom: 1px solid var(--cinza);
       padding: 10px;
@@ -179,6 +192,7 @@ select {
   @media only screen and (max-width: 300px) {
     
   .titulo h1{
+    margin: 8% auto;
   padding: 0px 20px;
   font-size: 2rem;
   
