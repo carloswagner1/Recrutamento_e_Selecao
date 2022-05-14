@@ -139,6 +139,12 @@ select {
     transition: .5s ;
   }
 
+  .mensagem-filtro{
+    background-color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+
   /*fim cards*/
 
 

@@ -8,16 +8,16 @@ var processos = [
         'localVaga': 'São Paulo',//vem da solicitacao
         'area': 'TI', //vem do processo 
         'descricao': 'Desenvolvimento focado em manutenibilidade, performance e boas práticas de desenvolvimento de software para sistemas de utilities',//vem do cargo
-        'departamento': 'Desenvolvimento'        
+        'departamento': 'desenvolvimento'        
     },
     {
         'id': '002',
         'vaga': 'Advogado',
         'tipoVaga': 'Efetivo',
         'localVaga': 'Sorocaba',
-        'area': 'Jurídico',
+        'area': 'JUrídico',
         'descricao': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias quasi quisquam magni reiciendis necessitatibus suscipit illum exercitationem aspernatur ipsam maxime. Ratione sequi repellendus iure aperiam corporis quam pariatur voluptatibus inventore!',
-        'departamento': 'Depto Jurídico'
+        'departamento': 'juridico'
     },
     {
         'id': '003',
@@ -26,60 +26,18 @@ var processos = [
         'localVaga': 'Rio de Janeiro',
         'area': 'TI',
         'descricao': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias quasi quisquam magni reiciendis necessitatibus suscipit illum exercitationem aspernatur ipsam maxime. Ratione sequi repellendus iure aperiam corporis quam pariatur voluptatibus inventore!',
-        'departamento': 'Desenvolvimento'
+        'departamento': 'desenvolvimento'
     },
     {
         'id': '004',
         'vaga': 'FrontEnd Developer Junior',
         'tipoVaga': 'Efetivo',
-        'localVaga': 'São Paulo',
-        'area': 'TI',
-        'descricao': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias quasi quisquam magni reiciendis necessitatibus suscipit illum exercitationem aspernatur ipsam maxime. Ratione sequi repellendus iure aperiam corporis quam pariatur voluptatibus inventore!',
-        'departamento': 'Desenvolvimento'
-    }, {
-        'id': '005',
-        'vaga': 'Estágio em Design',//vem de cargo
-        'tipoVaga': 'Estágio', //vem da solicitação
-        'localVaga': 'Sorocaba',//vem da solicitacao
-        'area': 'TI', //vem do processo 
-        'descricao': 'Desenvolvimento focado em manutenibilidade, performance e boas práticas de desenvolvimento de software para sistemas de utilities',//vem do cargo
-        'departamento': 'Comunicação'        
-    },
-    {
-        'id': '006',
-        'vaga': 'Auxiliar Administrativo',
-        'tipoVaga': 'Efetivo',
-        'localVaga': 'Bauru',
-        'area': 'Administrativo',
-        'descricao': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias quasi quisquam magni reiciendis necessitatibus suscipit illum exercitationem aspernatur ipsam maxime. Ratione sequi repellendus iure aperiam corporis quam pariatur voluptatibus inventore!',
-        'departamento': 'Recursos Humandos'
-    },
-    {
-        'id': '007',
-        'vaga': 'Técnico de Manutenção',
-        'tipoVaga': 'Temporário',
-        'localVaga': 'Floarianópolis',
-        'area': 'TI',
-        'descricao': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias quasi quisquam magni reiciendis necessitatibus suscipit illum exercitationem aspernatur ipsam maxime. Ratione sequi repellendus iure aperiam corporis quam pariatur voluptatibus inventore!',
-        'departamento': 'Logística'
-    },
-    {
-        'id': '008',
-        'vaga': 'BackEnd Developer',
-        'tipoVaga': 'Efetivo',
         'localVaga': 'Sorocaba',
         'area': 'TI',
         'descricao': 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias quasi quisquam magni reiciendis necessitatibus suscipit illum exercitationem aspernatur ipsam maxime. Ratione sequi repellendus iure aperiam corporis quam pariatur voluptatibus inventore!',
-        'departamento': 'Desenvolvimento'
+        'departamento': 'experienciaUsuario'
     }
 ]
-var processosPorArea = [];
-
-processos.forEach((processo, index) => {
-    if (areaCandidato === processo.area){
-        processosPorArea.push(processo);
-    }
-})
 // fim para testes
 
 class OportunidadesController {
@@ -89,27 +47,28 @@ class OportunidadesController {
 
         this.onLoad();
         this.onApply();
-        this.onSelect();       
+        
     }
     onLoad() {
-        var container = this.oportunidadesContainerEl;
-        processosPorArea.forEach((processo, index) => {
-            let content = `
-                <div class="cards">
-                    <div class="image-section"></div>
-                    <div class="content">   
-                        <p class="id" style="display: none;">${processo.id}</p>                
-                        <h2 class="vaga">${processo.vaga}</h2>
-                        <p class="tipoVaga">${processo.tipoVaga}</p>
-                        <p class="localVaga">${processo.localVaga}</p>
-                        <p class="descricao" style="display: none;">${processo.descricao}</p>  
-                        <p class="departamento" style="display: none;">${processo.departamento}</p> 
-                        <a class='btn' " >Candidatar</a>
+        const container = this.oportunidadesContainerEl;        
+        processos.forEach((processo, index) => {
+            if (areaCandidato === processo.area) {
+                const content = `
+                    <div class="cards">
+                        <div class="image-section"></div>
+                        <div class="content">   
+                            <p class="id" style="display: none;">${processo.id}</p>                
+                            <h2 class="vaga">${processo.vaga}</h2>
+                            <p class="tipoVaga">${processo.tipoVaga}</p>
+                            <p class="localVaga">${processo.localVaga}</p>
+                            <p class="descricao" style="display: none;">${processo.descricao}</p>  
+                            <p class="departamento" style="display: none;">${processo.departamento}</p> 
+                            <a class='btn' " >Candidatar</a>
+                        </div>
                     </div>
-                </div>
-            `;
-            container.innerHTML += content;            
-            
+                    `;
+                container.innerHTML += content;
+            }
         })
     }
 
@@ -128,79 +87,9 @@ class OportunidadesController {
             })        
         })
     }
-    onSelect(){       
-        var container = this.oportunidadesContainerEl;         
-        var search = document.getElementById('filtrar');
-        let tipoVaga = document.getElementById('filtroTipoVaga');
-        let localVaga = document.getElementById('filtroLocalVaga');
-        let deptoVaga = document.getElementById('filtroDeptoVaga')
-        
-        search.addEventListener("click", event => {
-            event.preventDefault();
-            console.log(processosPorArea)
-            //console.log(tipoVaga.value)
-
-            var processosFiltrados = [];
-            processosFiltrados = processosPorArea;
-            
-            if(tipoVaga.value !== ''){
-                processosFiltrados = processosPorArea.filter(processo =>{
-                    return filtrarVaga(processo.tipoVaga, tipoVaga.value)
-                });                
-            }           
-            console.log(processosFiltrados)
-            
-            if(localVaga.value !== ''){
-                processosFiltrados = processosFiltrados.filter(processo =>{
-                    return filtrarVaga(processo.localVaga, localVaga.value)
-                });                    
-            }
-
-            console.log(processosFiltrados)
-
-            if(deptoVaga.value !== ''){
-                processosFiltrados = processosFiltrados.filter(processo =>{
-                    return filtrarVaga(processo.departamento, deptoVaga.value)
-                });                    
-            }
-
-            console.log(processosFiltrados) 
-            container.innerHTML = '';
-            if(processosFiltrados.length === 0){
-                container.innerHTML = `<h2 class="mensagem-filtro">Não há processos seletivos para o filtro selecionado</h2>`
-            }else{ 
-                processosFiltrados.forEach((processo, index) => {
-                    let content = `
-                        <div class="cards">
-                            <div class="image-section"></div>
-                            <div class="content">   
-                                <p class="id" style="display: none;">${processo.id}</p>                
-                                <h2 class="vaga">${processo.vaga}</h2>
-                                <p class="tipoVaga">${processo.tipoVaga}</p>
-                                <p class="localVaga">${processo.localVaga}</p>
-                                <p class="descricao" style="display: none;">${processo.descricao}</p>  
-                                <p class="departamento" style="display: none;">${processo.departamento}</p> 
-                                <a class='btn' " >Candidatar</a>
-                            </div>
-                        </div>
-                    `;
-                    container.innerHTML += content;            
-                    
-                })
-            }
-        })
-    }
 }
 
-function filtrarVaga(valor, filtro) {
-    
-    console.log(valor)
-    console.log(filtro)
-    if (valor == filtro) {
-      return true;
-    }
-}
-/*function onSelectTipo(){    
+function onSelectTipo(){    
     var filtroTipoVaga = document.getElementById('selectTipoVaga').value;
     var content = document.querySelectorAll('.content');
     var campo = document.querySelectorAll('.tipoVaga')
@@ -225,9 +114,9 @@ function filtrarVaga(valor, filtro) {
         }    
     }    
   
-}*/
+}
 
-/*function onSelect(){   
+function onSelectLocal(){   
     onSelectTipo();
     var filtroLocalVaga = document.getElementById('selectLocalVaga').value;
     var content = document.querySelectorAll('.content');
@@ -253,7 +142,7 @@ function filtrarVaga(valor, filtro) {
         }    
     }    
   
-}*/
+}
 
 /*function onSelectTipo(tipo, value){
     console.log('ok')

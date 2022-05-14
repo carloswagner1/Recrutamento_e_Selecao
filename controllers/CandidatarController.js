@@ -47,10 +47,11 @@ function onSubmit() {
     }, 1500)
 }
 function getValues() {
+    let processo = candidatarController.getVagaSelecionadaStorage();
     let inscricao = {};
     let isValid = true;
-    let idCandidato = '001';
-    let idProcesso = '2001';
+    let idCandidato = '001';//id do candidato logado
+    let idProcesso = processo.id;
     let situacao = 'inscrito';
     let pontuacaoTeste = '';
 

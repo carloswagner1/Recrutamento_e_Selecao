@@ -46,33 +46,34 @@
 
   </div>
   <form id="form-filtro">
-    <label id="tipoVaga" for="tipoVaga"> Filtrar por tipo de vaga </label>
-    <select name="tipoVaga" id="tipoVaga">
+    <label class="tipoVaga" for="filtroTipoVaga"> Filtrar por tipo de vaga </label>
+    <select name="filtroTipoVaga" id="filtroTipoVaga">
       <option value="">Tipo de Vagas</option>
-      <option value="efetivo">Efetivo</option>
-      <option value="estágio">Estágio</option>
-      <option value="temporário">Temporário</option>
-      <option value="trainee">Treinee</option>
+      <option value="Efetivo">Efetivo</option>
+      <option value="Estágio">Estágio</option>
+      <option value="Temporário">Temporário</option>
+      <option value="Trainee">Trainee</option>
     </select>
-    <label id="localVaga" for="localVaga"> Filtrar por local </label>
-    <select name="localVaga" id="localVaga">
+    <label id="localVaga" for="filtroLocalVaga"> Filtrar por local </label>
+    <select name="filtroLocalVaga" id="filtroLocalVaga">
       <option value="">Local da Vaga</option>
-      <option value="saoPaulo">São Paulo</option>
-      <option value="riodeJaneiro">Rio de Janeiro</option>
-      <option value="florianopolis">Florianópolis</option>
-      <option value="sorocaba">Sorocaba</option>
-      <option value="bauru">Bauru</option>
+      <option value="São Paulo">São Paulo</option>
+      <option value="Rio de Janeiro">Rio de Janeiro</option>
+      <option value="Florianópolis">Florianópolis</option>
+      <option value="Sorocaba">Sorocaba</option>
+      <option value="Bauru">Bauru</option>
     </select>
-    <label id="deptoVaga" for="deptoVaga"> Filtrar por Departamento </label>
-    <select name="deptoVaga" id="deptoVaga">
+    <label id="LocalVaga" for="filtroDeptoVaga"> Filtrar por Departamento </label>
+    <select name="filtroDeptoVaga" id="filtroDeptoVaga">
       <option value="">Departamento</option>
-      <option value="analista">Comercial</option>
-      <option value="analista">Experiencia do úsuario</option>
-      <option value="estágio">Desenvolvimento</option>
-      <option value="temporário">Jurídico</option>
-      <option value="trainee">Marketing </option>
+      <option value="Logística">Logística</option>
+      <option value="Vendas">Vendas</option>
+      <option value="Recursos Humanos">Recursos Humanos</option>
+      <option value="Desenvolvimento">Desenvolvimento</option>
+      <option value="Jurídico">Jurídico</option>
+      <option value="Comunicação">Comunicação</option>
     </select>
-    <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
+    <a href="#" id="filtrar"><i class="fa fa-search"></i></a>
   </form>
   <div class="container oportunidadesContainer" id="oportunidadesContainer">
 
