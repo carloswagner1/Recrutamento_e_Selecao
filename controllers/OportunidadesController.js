@@ -137,9 +137,6 @@ class OportunidadesController {
         
         search.addEventListener("click", event => {
             event.preventDefault();
-            console.log(processosPorArea)
-            //console.log(tipoVaga.value)
-
             var processosFiltrados = [];
             processosFiltrados = processosPorArea;
             
@@ -147,8 +144,7 @@ class OportunidadesController {
                 processosFiltrados = processosPorArea.filter(processo =>{
                     return filtrarVaga(processo.tipoVaga, tipoVaga.value)
                 });                
-            }           
-            console.log(processosFiltrados)
+            }                       
             
             if(localVaga.value !== ''){
                 processosFiltrados = processosFiltrados.filter(processo =>{
@@ -156,15 +152,11 @@ class OportunidadesController {
                 });                    
             }
 
-            console.log(processosFiltrados)
-
             if(deptoVaga.value !== ''){
                 processosFiltrados = processosFiltrados.filter(processo =>{
                     return filtrarVaga(processo.departamento, deptoVaga.value)
                 });                    
             }
-
-            console.log(processosFiltrados) 
             container.innerHTML = '';
             if(processosFiltrados.length === 0){
                 container.innerHTML = `<h2 class="mensagem-filtro">Não há processos seletivos para o filtro selecionado</h2>`
@@ -193,93 +185,11 @@ class OportunidadesController {
 }
 
 function filtrarVaga(valor, filtro) {
-    
-    console.log(valor)
-    console.log(filtro)
+      
     if (valor == filtro) {
       return true;
     }
 }
-/*function onSelectTipo(){    
-    var filtroTipoVaga = document.getElementById('selectTipoVaga').value;
-    var content = document.querySelectorAll('.content');
-    var campo = document.querySelectorAll('.tipoVaga')
-    var cards = document.querySelectorAll('.cards');    
-    for(var i = 0; i < cards.length; i++){
-        if(filtroTipoVaga != ""){               
-            var card = content[i];
-            console.log(card)
-            var dados = getValues(card);
-            console.log(dados.tipoVaga);
-            console.log(typeof(dados.tipoVaga))
-            console.log(filtroTipoVaga)
-            if(filtroTipoVaga === dados.tipoVaga){                
-                cards[i].style.display = 'block';
-            }else{
-                cards[i].style.display = 'none'                
-            }   
-        }else{
-            for(var i = 0; i < campo.length; i++){                   
-                cards[i].style.display = 'block';
-            }
-        }    
-    }    
-  
-}*/
-
-/*function onSelect(){   
-    onSelectTipo();
-    var filtroLocalVaga = document.getElementById('selectLocalVaga').value;
-    var content = document.querySelectorAll('.content');
-    var campo = document.querySelectorAll('.localVaga')
-    var cards = document.querySelectorAll('.cards');    
-    for(var i = 0; i < cards.length; i++){
-        if(filtroLocalVaga != ""){               
-            var card = content[i];
-            console.log(card)
-            var dados = getValues(card);
-            console.log(dados.localVaga);
-            console.log(typeof(dados.localVaga))
-            console.log(filtroLocalVaga)
-            if(filtroLocalVaga === dados.localVaga){                
-                cards[i].style.display = 'block';
-            }else{
-                cards[i].style.display = 'none'                
-            }   
-        }else{
-            for(var i = 0; i < campo.length; i++){                   
-                cards[i].style.display = 'block';
-            }
-        }    
-    }    
-  
-}*/
-
-/*function onSelectTipo(tipo, value){
-    console.log('ok')
-    const valor = value
-    var content = document.querySelectorAll('.content');
-    var campo = document.querySelectorAll(`.${tipo}`)
-    var cards = document.querySelectorAll('.cards');
-    if(value != ""){
-        for(var i = 0; i < cards.length; i++){    
-            var card = content[i];
-            var dados = getValues(card);
-            if(value === dados[tipo]){
-                console.log("ok")
-                cards[i].style.display = 'block';
-            }else{
-                cards[i].style.display = 'none'
-                console.log('no')
-            }
-        }
-    }else{
-        for(var i = 0; i < cards.length; i++){                   
-            cards[i].style.display = 'block';
-        }
-    }    
-}*/
-
 function getValues(content) {
     let vagaValues = {
         id: '',
