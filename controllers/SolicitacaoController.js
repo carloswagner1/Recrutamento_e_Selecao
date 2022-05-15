@@ -30,14 +30,16 @@ class SolicitacaoController{
     }
 
     getValues(){
+        let userLogado = JSON.parse(localStorage.getItem('userLogado') || '[]');        
         let isValid = true;
-        let descricao = this.formEl1.descricao.value;
-        if(descricao == ""){
+        let motivo = this.formEl1.motivo.value;
+        let status = 'Em Análise'
+        if(motivo == ""){
             isValid = false;
         }
 
         [...this.formEl2.elements].forEach(function (field, index) {
-            if (['departamento', 'cargo', 'tipoVaga', 'localVaga', 'qtdVagas', 'requisitos', 'descricao',  ].indexOf(field.name) > -1 && !field.value) {
+            if (['departamento', 'cargo', 'tipoVaga', 'localVaga', 'qtdVagas', 'requisitos', 'motivo',  ].indexOf(field.name) > -1 && !field.value) {
                 field.parentElement.classList.add('has-error');
                 isValid = false;
             }
@@ -54,7 +56,9 @@ class SolicitacaoController{
             localVaga.options[localVaga.selectedIndex].text,
             qtdVagas.value,
             requisitos.value,
-            descricao,
+            motivo,
+            userLogado.id,
+            status,
         );
 
         return solicitacao;

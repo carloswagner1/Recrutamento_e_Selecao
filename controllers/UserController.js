@@ -169,7 +169,7 @@ class UserController {
 
         tr.querySelector(".btn-delete").addEventListener("click", (e) => {
 
-            if(confirm("Deseja relamente excluir?")) {
+            if(confirm("Deseja realmente excluir?")) {
 
                 let user = new User();
 

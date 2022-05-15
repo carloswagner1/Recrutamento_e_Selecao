@@ -31,14 +31,16 @@ class LoginController {
             
             let loginValid = {
                 email: '',
-                senha: ''
+                senha: '',
+                id:''
             }
 
             users.forEach((item) => {
                 if (email.value == item._email && senha.value == item._password) {
                     loginValid = {
                         login: item._email,
-                        senha: item._password
+                        senha: item._password,
+                        id: item._id
                     }
                     isValid = true;
                 }

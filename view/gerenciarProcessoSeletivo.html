@@ -9,200 +9,151 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="../styles/gerenciarUsuario.css">
   <link rel="stylesheet" href="../styles/header.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
+
   <header class="header-area">
-    <div class="header-container">
-      <div class="site-logo">
-        <a href="#"><img src="../images/logo.png" alt="logo"></a>
+    <header class="header-area">
+      <div class="header-container">
+        <div class="logo">
+          <a href="#"><img src="../images/logo.png" alt="logo"></a>
+        </div>
+        <div class="mobile-nav">
+          <label for="menuTrigger" class="nav-ico"><i class="fa fa-bars"></i></label>
+          <input type="checkbox" id="menuTrigger">
+         <nav class="nav-menu">
+          <ul>
+              <li><a href="#" class="">Solicitação de Vaga</a>
+                  <i class="fa fa-caret-down"></i>
+                 <ul>
+                     <li><a href="../view/solicitarAberturaVaga.html">Solicitar Vaga</a></li>
+                     <li><a href="../view/solicitacoesEnviadas.html">Ver Solicitações</a></li>
+                     <li><a href="../view/avaliarSolicitacao.html">Avaliar Solitações</a></li>
+                 </ul>   
+                </li>
+              <li><a href="#" class="">Processo Seletivo</a>
+                <i class="fa fa-caret-down"></i>
+               <ul >
+                   <li><a href="../view/gerenciarProcessoSeletivo.html" class="active">Gerenciar Processo</a></li>
+                   <li><a href="../view/progressoEmpresa.html">Ver Progresso</a></li>
+                   <li><a href="">Listar Candidatos</a></li>
+                   <li><a href="">Agendar Teste</a></li>
+                   <li><a href="">Agendar Entrevista</a></li>
+                   <li><a href="">Classificar Candidatos</a></li>
+                   <li><a href="">Ranking Final</a></li>
+               </ul>   
+              </li>
+              <li><a href="../view/gerenciarUsuario.html" class="">Gerenciar Usuários</a></li>
+              <li><a href="../view/loginEmpresa.html">Sair</a></li>
+          </ul>
+        </nav>
+       </div>
       </div>
-      <div class="mobile-nav">
-        <i class="fas fa-bars"></i>
-      </div>
-      <div class="site-nav-menu">
-        <ul class="primary-menu">
-          <li><a href="#" class="active">Gerenciar Processos Seletivos</a></li>
-          <li><a href="../view/solicitarAberturaVaga.html" class="">Solicitar Vaga</a></li>
-          <li><a href="#" class="">Mensagens</a></li>
-          <li><a href="#" class="">Perfil</a></li>
-          <li><a href="#" class="">Sair</a></li>
-        </ul>
-      </div>
-    </div>
-  </header>
-  <div id="main-container">
-    <h1>Gerenciar Processos Seletivos</h1>
-    <div class="row">
-      <div class="col-md-8">
-
-        <div class="box">
-          <div class="box-header">
-            <br>
-            <h3 class="box-title">Processos Seletivos Abertos</h3>
-          </div>
-          <!-- /.box-header -->
-          <div class="box-body no-padding">
-            <table class="table table-striped">
-              <thead>
+    </header>  
+    <main class="container">
+        <button type="button" class="button blue mobile" id="cadastrarProcesso">Cadastrar Processo Seletivo</button>
+        <table id="tableProcesso" class="records">
+            <thead>
                 <tr>
-                  <th>Departamento</th>
+                    <th>Departamento</th>
                   <th>Cargo</th>
-                  <th>Data de Início</th>
+                  <th>Área</th>
+                  <th>Tipo de Vaga</th>
+                  <th>Local</th>
+                  <th>Nº de Vagas</th>
+                  <th>Requisitos Desejaveis</th>
+                  <th>Teste</th>
+                  <th>Data de Ínicio</th>
                   <th>Data Final</th>
-                  <th>Ações</th>
+                  <th>Status</th>
+                  <th>Ação</th>
                 </tr>
-              </thead>
-              <tbody id="table-process">
-              </tbody>
-            </table>
-          </div>
-          <!-- /.box-body -->
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="row">
-          <!-- ./col -->
-          <div class="box box-success" id="box-process-create">
-            <div class="box-header with-border">
-              <br>
-              <h3 class="box-title">Criar Processo Seletivo</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" id="form-process-create" style="display: block">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="departamento">Departamento</label>
-                  <select departamento="select" id="departamento" name="departamento">
-                    <option value=""></option>
-                    <option value="Almoxarifado">Almoxarifado</option>
-                    <option value="Financeiro">Financeiro</option>
-                    <option value="Administrativo">Administrativo</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <br><label for="cargo">Cargo</label>
-                  <select cargo="select" id="cargo" name="cargo">
-                    <option value=""></option>
-                    <option value="Programador">Programador</option>
-                    <option value="Jogador de Vôlei">Jogador de Vôlei</option>
-                    <option value="Ninja">Ninja</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <br><label for="area">Área</label>
-                  <select area="select" id="area" name="area">
-                    <option value=""></option>
-                    <option value="Comercial">Comercial</option>
-                    <option value="Financeiro">Financeiro</option>
-                    <option value="Jurídico">Jurídico</option>
-                    <option value="TI">TI</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <br><label id="dataInicio" for="dataInicio">Data Início</label>
-                  <br><input type="date" name="dataInicio" id="dataInicio">
-                </div>
-                <div class="form-group">
-                  <br><label id="dataFinal" for="dataFinal">Data Final</label>
-                  <br><input type="date" name="dataFinal" id="dataFinal">
-                </div>
-                <div class="form-group">
-                  <br><label for="requisitos">Requisitos</label>
-                  <input type="text" class="form-control" id="requisitos" placeholder="Digite os requisitos"
-                    name="requisitos">
-                </div>
+            </thead>
+            <tbody>
 
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-success">Salvar</button>
-              </div>
-            </form>
-          </div>
-          <div class="box box-primary" id="box-process-update" style="display: none;">
-            <div class="box-header with-border">
-              <br>
-              <h3 class="box-title">Editar Processo Seletivo</h3>
+            </tbody>
+        </table>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h2>Gerenciar Processo</h2>
+                    <span class="modal-close" id="modalClose">&#10006;</span>
+                </header>
+                <form id="form" class="modal-form">
+                    <label for="nomeDepartamento">Departamento</label>
+                    <input type="text" id="nomeDepartamento" data-index="new" class="modal-field"
+                        placeholder="Nome do Departamento">
+                    <label for="cargo">Cargo</label>
+                    <input type="text" id="nomeCargo" class="modal-field"
+                        placeholder="Nome do Cargo">
+                    <label for="area" >Área </label>
+                    <select name="area" id="area" class="modal-field">
+                        <option selected disabled value="">Selecione</option>
+                        <option value="TI">TI</option>
+                        <option value="Administrativo">Administrativo</option>
+                        <option value="Financeiro">Financeiro</option>
+                        <option value="Humano">Humano</option>
+                        <option value="Jurídico">Jurídico</option>
+                        <option value="Produção">Produção</option>
+                    </select>   
+                    <label for="tipoVaga">Tipo de vaga</label>
+                    <input type="text" id="tipoVaga" class="modal-field" placeholder="Tipo de vaga">
+                    <label for="localVaga">Local da Vaga</label>
+                    <select name="localVaga "id="localVaga" class="modal-field">
+                        <option selected disabled value="">Selecione</option>
+                        <option value="Acre">Acre</option>
+                        <option value="Alagoas">Alagoas</option>
+                        <option value="Amapá">Amapá</option>
+                        <option value="Amazonas">Amazonas</option>
+                        <option value="Bahia">Bahia</option>
+                        <option value="Ceará">Ceará</option>
+                        <option value="Espírito Santo">Espírito Santo</option>
+                        <option value="Goiás">Goiás</option>
+                        <option value="Maranhão">Maranhão</option>
+                        <option value="Mato Grosso">Mato Grosso</option>
+                        <option value="Minas Gerais">Minas Gerais</option>
+                        <option value="Pará">Pará</option>
+                        <option value="Paraíba">Paraíba</option>
+                        <option value="Paraná">Paraná</option>
+                        <option value="Pernambuco">Pernambuco</option>
+                        <option value="Piauí">Piauí</option>
+                        <option value="Rio de Janeiro">Rio de Janeiro</option>
+                        <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                        <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                        <option value="Rondônia">Rondônia</option>
+                        <option value="Roraima">Roraima</option>
+                        <option value="Santa Catarina">Santa Catarina</option>
+                        <option value="São Paulo">São Paulo</option>
+                        <option value="Sergipe">Sergipe</option>
+                        <option value="Tocantins">Tocantins</option>
+                        <option value="Distrito Federal">Distrito Federal</option>
+                    </select> 
+                    <label id="lblNumVaga" for="lblNumVaga">Quantidade de Vagas</label>
+                    <input name="qtdvagas" id="qtdvagas" class="modal-field" placeholder="Insira a quantidade de Vagas" data-tipo="qtdvaga">
+                    <label for="requisitos">Requisitos Desejados</label>
+                    <textarea id="requisitos" style="resize: none" class="modal-field" name="requisitos" rows="2" cols="1"
+                placeholder="Insira os requisitos desejados"></textarea>
+                    <label for="teste">Tema do Teste</label>
+                    <input type="text" id="teste" class="modal-field"placeholder="Insira o tema do teste">
+                    <label for="dataInicio">Data de Início</label>
+                    <input type="month" id="dataInicio" class="modal-field">
+                   <label for="dataFinal">Data Final</label>
+                    <input type="month" id="dataFinal" class="modal-field">
+                    <label for="status">Status</label>
+                    <input type="text" id="status" class="modal-field"placeholder="Status do Processo">
+                     
+                </form>
+                <footer class="modal-footer">
+                    <button id="salvar" class="button green">Salvar</button>
+                    <button id="cancelar" class="button blue">Cancelar</button>
+                    
+                </footer>
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" id="form-process-update" style="display: block">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="departamento">Departamento</label>
-                  <select departamento="select" id="departamentoUpdate" name="departamento">
-                    <option value=""></option>
-                    <option value="Almoxarifado">Almoxarifado</option>
-                    <option value="Financeiro">Financeiro</option>
-                    <option value="Administrativo">Administrativo</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <br><label for="cargo">Cargo</label>
-                  <select cargo="select" id="cargoUpdate" name="cargo">
-                    <option value=""></option>
-                    <option value="Programador">Programador</option>
-                    <option value="Jogador de Vôlei">Jogador de Vôlei</option>
-                    <option value="Ninja">Ninja</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <br><label for="area">Área</label>
-                  <select area="select" id="areaUpdate" name="area">
-                    <option value=""></option>
-                    <option value="Comercial">Comercial</option>
-                    <option value="Financeiro">Financeiro</option>
-                    <option value="Jurídico">Jurídico</option>
-                    <option value="TI">TI</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <br><label id="dataInicio" for="dataInicio">Data Início</label>
-                  <br><input type="date" name="dataInicio" id="dataInicioUpdate">
-                </div>
-                <div class="form-group">
-                  <br><label id="dataFinal" for="dataFinal">Data Final</label>
-                  <br><input type="date" name="dataFinal" id="dataFinalUpdate">
-                </div>
-                <div class="form-group">
-                  <br><label for="requisitos">Requisitos</label>
-                  <input type="text" class="form-control" id="requisitosUpdate" placeholder="Digite os requisitos"
-                    name="requisitos">
-                </div>
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-success">Salvar</button>
-                <button type="button" class="btn btn-danger btn-cancel">Cancelar</button>
-              </div>
-            </form>
-          </div>
-          <div class="col-xs-6">
-          </div>
         </div>
-      </div>
-      <!-- ./col -->
-    </div>
-    </form>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $(".mobile-nav i").click(function () {
-        $(".site-nav-menu").toggleClass("mobile-menu");
-      });
-    })
-  </script>
-  <script src="../model/ProcessoSeletivo.js"></script>
-  <script src="../controllers/ProcessController.js"></script>
+    </main>
+    <script src="gerenciarProcSel.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>

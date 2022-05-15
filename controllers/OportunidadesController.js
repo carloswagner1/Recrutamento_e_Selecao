@@ -73,13 +73,9 @@ var processos = [
         'departamento': 'Desenvolvimento'
     }
 ]
-var processosPorArea = [];
+var processosPorArea = processos.filter(processo => processo.area === areaCandidato);
 
-processos.forEach((processo, index) => {
-    if (areaCandidato === processo.area){
-        processosPorArea.push(processo);
-    }
-})
+
 // fim para testes
 
 class OportunidadesController {
@@ -118,12 +114,13 @@ class OportunidadesController {
 
     onApply() {
         var content = document.querySelectorAll('.content');
+        var search = document.getElementById('form-filtro');        
         var btn = document.querySelectorAll('.btn');
         btn.forEach((item, index) => {
             item.addEventListener('click', () => {
                 var campo = content[index]            
                 var vaga = getValues(campo);
-                localStorage.setItem('vagaSelecionada', JSON.stringify(vaga))
+                localStorage.setItem('vagaSelecionada', JSON.stringify(vaga));
                 window.location.href = '../view/candidatar2.html';            
             })        
         })
@@ -179,11 +176,12 @@ class OportunidadesController {
                     container.innerHTML += content;            
                     
                 })
+                this.onApply();
             }
+            
         })
     }
 }
-
 function filtrarVaga(valor, filtro) {
       
     if (valor == filtro) {

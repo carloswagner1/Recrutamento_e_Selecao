@@ -11,25 +11,33 @@
     <title>Gerenciar Perfil</title>
 </head>
 <body>
-  <header class="header-area">
-    <div class="header-container">
-      <div class="site-logo">
-        <a href="#"><img src="../images/logo.png" alt="logo"></a>
-      </div>
-      <div class="mobile-nav">
-        <i class="fas fa-bars"></i>
-      </div>
-      <div class="site-nav-menu">
-        <ul class="primary-menu">
-            <li><a href="../view/minhasVagas.html" class="">Minhas Vagas</a></li>
-            <li><a href="../view/oportunidades.html" class="">Oportunidades</a></li> 
-            <li><a href="../view/gerenciarPerfil.html" class="active">Perfil</a></li>
-            <li><a href="../view/contato.html" class="">Contato</a></li>
-           <li><a href="../view/login.html" class="">Sair</a></li>
-        </ul>
-      </div>
-    </div>
-  </header> 
+    <header class="header-area">
+        <div class="header-container">
+          <div class="logo">
+            <a href="#"><img src="../images/logo.png" alt="logo"></a>
+          </div>
+          <div class="mobile-nav">
+            <label for="menuTrigger" class="nav-ico"><i class="fa fa-bars"></i></label>
+            <input type="checkbox" id="menuTrigger">
+           <nav class="nav-menu">
+            <ul>
+                <li><a href="../view/minhasVagas.html" class="">Minhas Vagas</a></li>
+                <li><a href="../view/oportunidades.html" class="">Oportunidades</a></li>
+                <li><a href="" class="active">Gerenciar Perfil</a>
+                    <i class="fa fa-caret-down"></i>
+                    <ul>
+                        <li><a href="../view/gerenciarPerfil.html">Editar Perfil</a></li>
+                        <li><a href="../view/curriculo.html">Editar Currículo</a></li>
+                     
+                    </ul>   
+                   </li>
+                <li><a href="../view/contato.html" class="">Contato</a></li>
+               <li><a href="../view/login.html" class="">Sair</a></li>
+            </ul>
+          </nav>
+         </div>
+        </div>
+      </header> 
 
   <div class="container">
     
@@ -44,7 +52,7 @@
             <div class="input-group">
                 <div class="input-box">
                     <label id="labelNome" for="nome">Nome Completo</label>
-                    <input type="text" name="nome" id="nome" placeholder="Insira seu nome aqui" data-tipo="nome" required>
+                    <input type="text" name="nome" id="nome" placeholder="Insira seu nome aqui" required>
                 </div>
 
 
@@ -55,25 +63,25 @@
                 </div>
                 <div class="input-box">
                     <label id="labelEmail" for="email">E-mail</label>
-                    <input type="email" name="email" id="email" placeholder="Informe seu e-mail" data-tipo="email" required>
+                    <input type="email" name="email" id="email" placeholder="Informe seu e-mail" required>
                 </div>
                 <div class="input-box">
                     <label id="labelCPF" for="cpf">CPF </label>
-                    <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" data-tipo="cpf" required> 
+                    <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required> 
                 </div>     
                 <div class="input-box">
                     <label id="labelCelular" for="celular">Celular </label>
-                    <input type="text" name="celular" id="celular" placeholder="(__)_____-____" data-tipo="celular" required>
+                    <input type="text" name="celular" id="celular" placeholder="(__)_____-____" required>
                 </div>
                 <div class="input-box">
                     <label id="labelarea" for="area">Área de interesse </label>
                     <select name="area" id="area">
                         <option selected disabled value="">Selecione</option>
                         <option value="todas">Todas</option>
-                        <option value="ti">TI</option>
+                        <option value="TI">TI</option>
                         <option value="administrativo">Administrativo</option>
                         <option value="financeiro">Financeiro</option>
-                        <option value="humano">Recursos Humanos</option>
+                        <option value="humano">Humano</option>
                         <option value="juridico">Jurídico</option>
                         <option value="producao">Produção</option>
                     </select>
@@ -115,7 +123,9 @@
                         <option value="Brasil">Brasil</option>
                     </select>
                 </div>
-            </div>           
+            </div>
+
+           
 
             <div class="input-senha">
                 <h2>Alterar Senha</h2>
@@ -140,14 +150,7 @@
 
 <script src="../model/gerenciarPerfil.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function(){
-    $(".mobile-nav i").click(function(){
-        $(".site-nav-menu").toggleClass("mobile-menu");
-    });
-  })
-</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script src="../model/Candidato.js"></script>
 <script src="../app.js" type="module"></script> 
 <script src="../utils/Utils.js"></script>

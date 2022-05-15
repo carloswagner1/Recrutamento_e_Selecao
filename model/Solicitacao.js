@@ -1,12 +1,13 @@
 class Solicitacao{
-    constructor(departamento, cargo, tipoVaga, localVaga, qtdVagas, requisitos, descricao, status){
+    constructor(departamento, cargo, tipoVaga, localVaga, qtdVagas, requisitos, motivo, idUsuario, status){
         this._departamento = departamento;
         this._cargo = cargo;
         this._tipoVaga = tipoVaga;
         this._localVaga = localVaga;
         this._qtdVagas = qtdVagas;
         this._requisitos = requisitos;
-        this._descricao = descricao;
+        this._motivo = motivo;
+        this._idUsuario = idUsuario;
         this._status = status;
     }
     get departamento(){
@@ -27,8 +28,11 @@ class Solicitacao{
     get requisitos(){
         return this._requisitos;
     }
-    get descricao(){
-        return this._descricao
+    get motivo(){
+        return this._motivo
+    }
+    get idUsuario(){
+        return this._idUsuario;
     }
     get status(){
         return this._status;
