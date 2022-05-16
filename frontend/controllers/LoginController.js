@@ -87,9 +87,3 @@ class LoginController {
 }
 
 let loginController = new LoginController("login-container");
-
-
-
-
-
-

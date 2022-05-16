@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "tb_sexperiencia_profissional")
+@Table(name = "tb_experiencia_profissional")
 @Getter
 @Setter
 public class ExperienciaProfissional {
@@ -18,6 +18,10 @@ public class ExperienciaProfissional {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_candidato")
+    private Candidato candidato;
 
     @Column(name = "empresa")
     private String empresa;

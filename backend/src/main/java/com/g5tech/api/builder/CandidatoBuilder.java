@@ -1,9 +1,12 @@
 package com.g5tech.api.builder;
 
-import com.g5tech.api.dto.CandidatoDTO;
-import com.g5tech.api.dto.UsuarioCandidatoDTO;
+import com.g5tech.api.dto.*;
+import com.g5tech.api.model.ExperienciaProfissional;
+import com.g5tech.api.model.FormacaoAcademica;
 import com.g5tech.api.model.indicator.AreaVaga;
 import com.g5tech.api.model.Candidato;
+
+import java.util.List;
 
 public class CandidatoBuilder {
 
@@ -28,6 +31,7 @@ public class CandidatoBuilder {
         candidato.setPais(dto.getPais());
         candidato.setArea(dto.getArea());
         candidato.setEmail(dto.getEmail());
+        candidato.setGenero(dto.getGenero());
         candidato.setDataNascimento(dto.getDataNascimento());
 
         return candidato;
@@ -48,6 +52,20 @@ public class CandidatoBuilder {
         dto.setPais(candidato.getPais());
         dto.setArea((candidato.getArea()));
         dto.setEmail(candidato.getEmail());
+        dto.setGenero(candidato.getGenero());
+        dto.setDataNascimento(candidato.getDataNascimento());
+
+        return dto;
+    }
+
+    public static CandidatoCompletoDTO buildDTOCompleto(Candidato candidato, List<FormacaoAcademicaDTO> formacaoAcademicaDTOList, List<ExperienciaProfissionalDTO> experienciaProfissionaDTOlList) {
+
+        CandidatoCompletoDTO dto = new CandidatoCompletoDTO();
+        dto.setNome(candidato.getNome());
+        dto.setCelular(candidato.getCelular());
+        dto.setEmail(candidato.getEmail());
+        dto.setExperiencias(experienciaProfissionaDTOlList);
+        dto.setFormacoes(formacaoAcademicaDTOList);
 
         return dto;
     }

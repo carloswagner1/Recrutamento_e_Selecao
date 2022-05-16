@@ -3,17 +3,17 @@ package com.g5tech.api.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.g5tech.api.builder.CandidatoBuilder;
+import com.g5tech.api.builder.ExperienciaProfissionalBuilder;
+import com.g5tech.api.builder.FormacaoAcademicaBuilder;
 import com.g5tech.api.builder.InscricaoBuilder;
-import com.g5tech.api.dto.CandidatoDTO;
-import com.g5tech.api.dto.InscricaoResponseDTO;
-import com.g5tech.api.dto.UsuarioCandidatoDTO;
+import com.g5tech.api.dto.*;
 import com.g5tech.api.exception.CandidatoCpfNotUniqueException;
 import com.g5tech.api.exception.CandidatoEmailNotUniqueException;
 import com.g5tech.api.exception.CandidatoNotFoundException;
-import com.g5tech.api.model.Candidato;
-import com.g5tech.api.model.Inscricao;
-import com.g5tech.api.model.UsuarioCandidato;
+import com.g5tech.api.model.*;
 import com.g5tech.api.repository.CandidatoRepository;
+import com.g5tech.api.repository.ExperienciaProfissionalRepository;
+import com.g5tech.api.repository.FormacaoAcademicaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.jasypt.util.text.StrongTextEncryptor;
@@ -33,6 +33,8 @@ public class CandidatoService {
     private final UsuarioService usuarioService;
     private final StrongTextEncryptor strongTextEncryptor;
     private final InscricaoService inscricaoService;
+    private final FormacaoAcademicaRepository formacaoAcademicaRepository;
+    private final ExperienciaProfissionalRepository experienciaProfissionalRepository;
 
     public Long save(UsuarioCandidatoDTO dto) throws JsonProcessingException {
 
@@ -90,7 +92,7 @@ public class CandidatoService {
         return CandidatoBuilder.buildDTO(candidato);
     }
 
-    private Candidato getById(Long id) {
+    public Candidato getById(Long id) {
 
         Optional<Candidato> candidatoOptional = candidatoRepository.findById(id);
 
@@ -111,11 +113,23 @@ public class CandidatoService {
 
     public void delete(Long id) {
 
-        // deletar inscricao
-        // deletar form academica
-        // deletar exp profissional
+        Candidato candidato = this.getById(id);
 
+        inscricaoService.deleteAllByCandidato(candidato);
+        this.deleAllFormacoesByCandidato(candidato);
+        this.deleAllExperienciasByCandidato(candidato);
         candidatoRepository.deleteById(id);
+    }
+
+
+    private void deleAllFormacoesByCandidato(Candidato candidato) {
+        List<FormacaoAcademica> formacaoAcademicaList = formacaoAcademicaRepository.findAllByCandidato(candidato);
+        formacaoAcademicaRepository.deleteAll(formacaoAcademicaList);
+    }
+
+    private void deleAllExperienciasByCandidato(Candidato candidato) {
+        List<ExperienciaProfissional> experienciaProfissionalList = experienciaProfissionalRepository.findAllByCandidato(candidato);
+        experienciaProfissionalRepository.deleteAll(experienciaProfissionalList);
     }
 
     public List<InscricaoResponseDTO> getIncricoesByCandidatoId(Long id) {
@@ -129,5 +143,18 @@ public class CandidatoService {
         }
 
         return InscricaoBuilder.buildDTOList(inscricoes);
+    }
+
+    public CandidatoCompletoDTO getExperienciaFormacaoByCandidatoId(Long id) {
+
+        Candidato candidato = this.getById(id);
+
+        List<FormacaoAcademica> formacaoAcademicaoList = formacaoAcademicaRepository.findAllByCandidato(candidato);
+        List<FormacaoAcademicaDTO> formacaoAcademicaoDTOList =  FormacaoAcademicaBuilder.buildDTOList(formacaoAcademicaoList);
+
+        List<ExperienciaProfissional> experienciaProfissionalList = experienciaProfissionalRepository.findAllByCandidato(candidato);
+        List<ExperienciaProfissionalDTO> experienciaProfissionalDTOList =  ExperienciaProfissionalBuilder.buildDTOList(experienciaProfissionalList);
+
+        return CandidatoBuilder.buildDTOCompleto(candidato, formacaoAcademicaoDTOList, experienciaProfissionalDTOList);
     }
 }

@@ -35,60 +35,23 @@
   </header> 
   
  
-  <div class="container" >
+  <div class="container" id="acompanhar-progresso">
+
     <div class="titulo" alt="titulo">
       <h1>Acompanhar Progresso</h1>
       <p>Acompanhe as etapas do processo seletivo em que se candidatou.</p>
     </div>
-    <div class="progresso">
-      <div class="progresso-titulo">
-        <span>Meu progresso</span>
-        <span>1/5</span>
-      </div>
-      <div class="jss958 progresso-barra root jss959 jss961" role="progressbar" aria-valuenow="67">
-          <div class="jss968 jss969 linear-progress__bar root jss972" style="transform: scaleX(0.20);">
-          </div>
-      </div>
+
+    <div class="progresso" id="progresso">
     </div>
-    <div class="row">
-      <div class="col-sm-1 col-md-6 side-content">
-        <div class="bs-vertical">
-          <ul>
-            <li class="complete">
-              <div class="texto">
-                <h1>Candidatar à Vaga</h1>
-              </div>
-              <a href="#"><i class="ico fa fa-check ico-green"></i> </a>
-            </li>
-            <li class="current">
-              <div class="texto">
-                <h1>Validação da Inscrição</h1>
-                <span>Estamos analisando sua inscrição. Por favor, aguarde.</span>
-              </div>
-              <a href="#"></a>
-            </li>
-            <li class="locked">
-              <div class="texto">
-                <h1>Teste</h1>
-              </div> 
-              <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
-            </li>
-            <li class="locked">
-              <div class="texto">
-                <h1>Entrevista</h1>
-              </div> 
-              <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
-            </li>
-            <li class="locked">
-              <div class="texto">
-                <h1>Resultado</h1>
-              </div> 
-              <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
-            </li> 
-          </ul>
-        </div>
-      </div>
+    
+    <div class="row" id="row">
+    </div>
+    
   </div>
+
+  <script src="../controllers/AcompanharProgresso.js" type="module"></script>   
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function(){

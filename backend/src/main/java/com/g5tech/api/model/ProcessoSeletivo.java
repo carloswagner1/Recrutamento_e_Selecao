@@ -28,7 +28,7 @@ public class ProcessoSeletivo {
     private Date dataFinal;
 
     @ManyToOne
-    @JoinColumn(name = "status")
+    @JoinColumn(name = "id_status")
     private Status status;
 
     @Column(name = "area")

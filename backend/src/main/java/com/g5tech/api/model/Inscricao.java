@@ -33,6 +33,7 @@ public class Inscricao {
     @Column(name = "data_criacao")
     private Date dataCriacao;
 
-    @Column(name = "id_situacao")
-    private Long situacao;
+    @ManyToOne
+    @JoinColumn(name = "id_status")
+    private Status status;
 }

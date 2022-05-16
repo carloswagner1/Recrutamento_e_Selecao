@@ -16,7 +16,14 @@ export async function sendRequest(method, url, body) {
     try {
         let response;
 
-        if (method === 'POST') {
+        if (method === 'GET') {
+            response = await fetch(BASE_URL + url, {
+                method: method,
+                mode: 'cors',
+                headers: headers
+            })
+        }
+        else if (method === 'POST') {
             response = await fetch(BASE_URL + url, {
                 method: method,
                 mode: 'cors',
@@ -24,7 +31,15 @@ export async function sendRequest(method, url, body) {
                 headers: headers
             })
         }
-        else if (method === 'GET') {
+        else if (method === 'PUT') {
+            response = await fetch(BASE_URL + url, {
+                method: method,
+                mode: 'cors',
+                body: JSON.stringify(body), // string or object
+                headers: headers
+            })
+        }
+        else if (method === 'DELETE') {
             response = await fetch(BASE_URL + url, {
                 method: method,
                 mode: 'cors',
