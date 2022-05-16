@@ -52,6 +52,9 @@ public class Candidato {
     @Column(name = "area")
     private String area;
 
+    @Column(name = "genero")
+    private String genero;
+
     @Column(name = "data_nascimento")
     private Date dataNascimento;
 

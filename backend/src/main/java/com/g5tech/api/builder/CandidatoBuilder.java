@@ -31,6 +31,7 @@ public class CandidatoBuilder {
         candidato.setPais(dto.getPais());
         candidato.setArea(dto.getArea());
         candidato.setEmail(dto.getEmail());
+        candidato.setGenero(dto.getGenero());
         candidato.setDataNascimento(dto.getDataNascimento());
 
         return candidato;
@@ -51,6 +52,8 @@ public class CandidatoBuilder {
         dto.setPais(candidato.getPais());
         dto.setArea((candidato.getArea()));
         dto.setEmail(candidato.getEmail());
+        dto.setGenero(candidato.getGenero());
+        dto.setDataNascimento(candidato.getDataNascimento());
 
         return dto;
     }
