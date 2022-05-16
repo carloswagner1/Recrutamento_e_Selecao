@@ -69,7 +69,9 @@ class UserController {
 
             let values = this.getValues(this.formEl);
 
-            if (!values) return false;
+            if (!values) {
+                return false;
+            }
 
             values.save();
 
