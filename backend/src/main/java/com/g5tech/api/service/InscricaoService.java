@@ -24,7 +24,7 @@ public class InscricaoService {
 
         Inscricao inscricao = this.getById(id);
         
-        return inscricao.getSituacao();
+        return inscricao.getStatus().getId();
     }
 
     private Inscricao getById(Long id) {

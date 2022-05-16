@@ -1,17 +1,17 @@
 package com.g5tech.api.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.g5tech.api.dto.ProcessoCompletoResponseDTO;
 import com.g5tech.api.dto.ProcessoResponseDTO;
+import com.g5tech.api.dto.UsuarioCandidatoDTO;
 import com.g5tech.api.service.ProcessoSeletivoService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -31,5 +31,11 @@ public class ProcessoSeletivoController {
     public ResponseEntity<ProcessoCompletoResponseDTO> getById(@PathVariable Long id) {
         return new ResponseEntity<>(processoSeletivoService.getCompletoById(id), HttpStatus.OK);
     }
+
+//    @Operation(summary = "Cria um novo candidato no banco de dados")
+//    @PostMapping
+//    public ResponseEntity<List<ProcessoResponseDTO>> create(@Valid @RequestBody FiltroVagasDTO dto) {
+//        return new ResponseEntity<>(processoSeletivoService.save(dto), HttpStatus.OK);
+//    }
 
 }
