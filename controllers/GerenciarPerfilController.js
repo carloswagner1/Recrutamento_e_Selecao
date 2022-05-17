@@ -17,8 +17,7 @@ class GerenciarPerfilController{
             let values = this.getValues(this.formEl)            
             ;//pega os valores da tabela
             let candidatoAtualizado = JSON.stringify(values);
-            console.log(values)
-            console.log(candidatoAtualizado)
+
 
            //salvar no banco de dados
 
@@ -96,22 +95,6 @@ class GerenciarPerfilController{
         let candidato = new Candidato(nome.value, email.value, password.value, cpf.value, celular.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value, genero.value, dataNasc.value);
 
         return candidato;
-
-        /*return new Candidato(
-            candidato.nome,
-            candidato.email,
-            candidato.password,
-            candidato.cpf,
-            candidato.celular,
-            candidato.cep,
-            candidato.logradouro,
-            candidato.bairro,
-            candidato.cidade,
-            candidato.estado,
-            candidato.pais,
-            candidato.area,
-            candidato.genero
-        );*/
 
     }
 }

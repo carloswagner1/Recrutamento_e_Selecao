@@ -44,6 +44,7 @@ function onSubmit() {
     mensagem.classList.remove("invisivel");
     setTimeout(function () {
         mensagem.classList.add("invisivel");
+        window.location.href = '../view/minhasVagas.html'
     }, 1500)
 }
 function getValues() {

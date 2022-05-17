@@ -108,10 +108,6 @@ class OportunidadesController {
             
         })
     }
-
-    //<img src="../images/pasta.png" alt="">
-    //<!--img src="../images/local.png" alt=""-->
-
     onApply() {
         var content = document.querySelectorAll('.content');
         var search = document.getElementById('form-filtro');        
