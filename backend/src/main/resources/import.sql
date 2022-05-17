@@ -29,7 +29,6 @@ INSERT INTO tb_candidato VALUES (3, 'ti', 'Jardim', '15981196531', '18021310', '
 INSERT INTO tb_candidato VALUES (4, 'ti', 'Jardim', '15981196532', '18021310', 'Sorocaba', '24611075800', '2001-09-10', 'kelly@mail.com', 'SP', 'F', 'kelly', 'Brasil', 'Rua Souza');
 INSERT INTO tb_candidato VALUES (5, 'ti', 'Jardim', '15981196535', '18021310', 'Sorocaba', '24611075800', '2001-09-10', 'lucas@mail.com', 'SP', 'M', 'lucas', 'Brasil', 'Rua Souza');
 
-
 -- INSCRICAO
 INSERT INTO tb_inscricao VALUES (1, '2022-09-09', 1, 1, 1);
 INSERT INTO tb_inscricao VALUES (2, '2022-09-09', 1, 2, 1);
