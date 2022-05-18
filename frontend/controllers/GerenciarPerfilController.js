@@ -33,7 +33,7 @@ class GerenciarPerfilController{
     }
     selectCandidato(listaCandidatos){
         let candidato = listaCandidatos.filter((item) => {
-            return item._email =='veiodaHavan@email.com'
+            return item._email =='carlos@email.com'
         });
         candidato = candidato.map(obj => {
             return {

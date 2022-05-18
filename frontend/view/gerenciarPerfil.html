@@ -63,15 +63,15 @@
                 </div>
                 <div class="input-box">
                     <label id="labelEmail" for="email">E-mail</label>
-                    <input type="email" name="email" id="email" placeholder="Informe seu e-mail" required>
+                    <input type="email" name="email" id="email" placeholder="Informe seu e-mail" data-tipo="email" required>
                 </div>
                 <div class="input-box">
                     <label id="labelCPF" for="cpf">CPF </label>
-                    <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required> 
+                    <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" data-tipo="cpf" required> 
                 </div>     
                 <div class="input-box">
                     <label id="labelCelular" for="celular">Celular </label>
-                    <input type="text" name="celular" id="celular" placeholder="(__)_____-____" required>
+                    <input type="text" name="celular" id="celular" placeholder="(__)_____-____" data-tipo="celular" required>
                 </div>
                 <div class="input-box">
                     <label id="labelarea" for="area">Área de interesse </label>
@@ -130,12 +130,12 @@
             <div class="input-senha">
                 <h2>Alterar Senha</h2>
                 <div class="input-box">
-                        <label for="password"> Senha Atual</label>
-                        <input id="password" type="password" name="password" placeholder="Digite sua senha atual" >
+                        <label id="labelSenha" for="password"> Senha Atual</label>
+                        <input id="password" type="password" name="password" data-tipo="senhaAtual" placeholder="Digite sua senha atual" >
                     </div>
                     <div class="input-box">
-                        <label for="newPassword">Senha Nova</label>
-                        <input id="newPassword" type="password" name="newPassword" placeholder="Digite sua senha nova" >
+                        <label id="labelSenhaNova" for="newPassword">Senha Nova</label>
+                        <input id="newPassword" type="password" name="newPassword" placeholder="Digite sua senha nova" data-tipo="senhaNova">
                     </div>
             </div>
             <div class="salvar-button">

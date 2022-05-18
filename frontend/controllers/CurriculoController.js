@@ -1,4 +1,24 @@
+//dados para testes (será o user logado)
+let candidato =
+{
+    'nome':'Dino da Silva Sauro', 
+    'celular': '(15)99999-9999',
+    'email':'dino_s_s@gmail.com'
+}
+// fim dados-testes
 
+class CurriculoController{
+    constructor(){        
+        this.onLoad();        
+    }
+    onLoad(){             
+        document.getElementById('nome').innerHTML = candidato.nome;
+        document.getElementById('celular').innerHTML = `Celular: ${candidato.celular}`;
+        document.getElementById('email').innerHTML = `E-mail: ${candidato.email}`
+    }
+}
+
+let curriculoController = new CurriculoController( ); 
 
 'use strict'
 
@@ -94,7 +114,7 @@ const updateTable = () => {
 
 const fillFields = (experiencia) => {
     document.getElementById('nomeEmpresa').value = experiencia.nomeEmpresa
-    document.getElementById('cargo').value = experiencia.cargo
+    document.getElementById('nomeCargo').value = experiencia.cargo
     document.getElementById('dataAdmissao').value = experiencia.dataAdmissao
     document.getElementById('dataDesligamento').value = experiencia.dataDesligamento
     document.getElementById('nomeEmpresa').dataset.index = experiencia.index
