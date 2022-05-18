@@ -13,33 +13,43 @@
     <title>Acompanhar Progresso</title>
 </head>
 <body>
-  <header class="header-area">
-    <div class="header-container">
-      <div class="logo">
-        <a href="#"><img src="../images/logo.png" alt="logo"></a>
-      </div>
-      <div class="mobile-nav">
-        <label for="menuTrigger" class="nav-ico"><i class="fa fa-bars"></i></label>
-        <input type="checkbox" id="menuTrigger">
-       <nav class="nav-menu">
-        <ul>
-            <li><a href="../view/minhasVagas.html" class="">Minhas Vagas</a></li>
-            <li><a href="../view/oportunidades.html" class="">Oportunidades</a></li>
-            <li><a href="" class="">Gerenciar Perfil</a>
-              <i class="fa fa-caret-down"></i>
-              <ul>
-                  <li><a href="../view/gerenciarPerfil.html">Editar Perfil</a></li>
-                  <li><a href="../view/curriculo.html">Editar Currículo</a></li>
-               
-              </ul>   
-             </li>
-            <li><a href="../view/contato.html" class="">Contato</a></li>
-           <li><a href="../view/login.html" class="">Sair</a></li>
-        </ul>
-      </nav>
-     </div>
-    </div>
-  </header>  
+    <header class="header-area">
+        <div class="header-container">
+          <div class="logo">
+            <a href="#"><img src="../images/logo.png" alt="logo"></a>
+          </div>
+          <div class="mobile-nav">
+            <label for="menuTrigger" class="nav-ico"><i class="fa fa-bars"></i></label>
+            <input type="checkbox" id="menuTrigger">
+           <nav class="nav-menu">
+            <ul>
+                <li><a href="#" class="">Solicitação de Vaga</a>
+                    <i class="fa fa-caret-down"></i>
+                   <ul>
+                       <li><a href="../view/solicitarAberturaVaga.html">Solicitar Vaga</a></li>
+                       <li><a href="../view/solicitacoesEnviadas.html">Ver Solicitações</a></li>
+                       <li><a href="../view/avaliarSolicitacao.html">Avaliar Solitações</a></li>
+                   </ul>   
+                  </li>
+                <li><a href="#" class="">Processo Seletivo</a>
+                  <i class="fa fa-caret-down"></i>
+                 <ul >
+                     <li><a href="../view/gerenciarProcessoSeletivo.html">Gerenciar Processo</a></li>
+                     <li><a href="../view/progressoEmpresa.html">Ver Progresso</a></li>
+                     <li><a href="">Listar Candidatos</a></li>
+                     <li><a href="">Agendar Teste</a></li>
+                     <li><a href="">Agendar Entrevista</a></li>
+                     <li><a href="">Classificar Candidatos</a></li>
+                     <li><a href="">Ranking Final</a></li>
+                 </ul>   
+                </li>
+                <li><a href="../view/gerenciarUsuario.html" class="">Gerenciar Usuários</a></li>
+                <li><a href="../view/loginEmpresa.html">Sair</a></li>
+            </ul>
+          </nav>
+         </div>
+        </div>
+      </header> 
   <div class="container" >
     <div class="titulo" alt="titulo">
       <h1>Acompanhar Progresso</h1>
@@ -62,25 +72,37 @@
             <li class="complete">
               <div class="texto">
                 <h1>Candidatar à Vaga</h1>
+                <button id="concluir1" class="button">Concluir</button>
               </div>
               <a href="#"><i class="ico fa fa-check ico-green"></i> </a>
             </li>
-            
+            <li class="current">
+              <div class="texto">
+                <h1>Validação da Inscrição</h1>
+                <span>Estamos analisando sua inscrição. Por favor, aguarde.</span>
+                <button id="concluir2" class="button">Concluir</button>
+              </div>
+              
+              <a href="#"></a>
+            </li>
             <li class="locked">
               <div class="texto">
                 <h1>Teste</h1>
+                <button id="concluir3" class="button">Concluir</button>
               </div> 
               <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
             </li>
             <li class="locked">
               <div class="texto">
                 <h1>Entrevista</h1>
+                <button id="concluir4" class="button">Concluir</button>
               </div> 
               <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
             </li>
             <li class="locked">
               <div class="texto">
                 <h1>Resultado</h1>
+                <button id="concluir5" class="button">Concluir</button>
               </div> 
               <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
             </li> 

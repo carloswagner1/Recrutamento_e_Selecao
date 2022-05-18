@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonte.googleapis.com/css2?family=Roboto:wght@400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/contato.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <title>Contato</title>
+</head>
+
+<body>
+    <header class="header-area">
+        <div class="header-container">
+          <div class="logo">
+            <a href="#"><img src="../images/logo.png" alt="logo"></a>
+          </div>
+          <div class="mobile-nav">
+            <label for="menuTrigger" class="nav-ico"><i class="fa fa-bars"></i></label>
+            <input type="checkbox" id="menuTrigger">
+           <nav class="nav-menu">
+            <ul>
+                <li><a href="../view/minhasVagas.html" class="">Minhas Vagas</a></li>
+                <li><a href="../view/oportunidades.html" class="">Oportunidades</a></li>
+                <li><a href="" class="">Gerenciar Perfil</a>
+                  <i class="fa fa-caret-down"></i>
+                  <ul>
+                      <li><a href="../view/gerenciarPerfil.html">Editar Perfil</a></li>
+                      <li><a href="../view/curriculo.html">Editar Currículo</a></li>
+                   
+                  </ul>   
+                 </li>
+                <li><a href="../view/contato.html" class="active">Contato</a></li>
+               <li><a href="../view/login.html" class="">Sair</a></li>
+            </ul>
+          </nav>
+         </div>
+        </div>
+      </header>  
+  <div class="container">
+
+    <div class="topico-texto">
+      <h2>Obrigado pelo contato.</h2>     
+    <p>
+      Em instantes, a equipe responsável responderá a sua solicitação.
+    </p>
+  </div>
+
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".mobile-nav i").click(function () {
+        $(".site-nav-menu").toggleClass("mobile-menu");
+      });
+    })
+  </script>
+</body>
+
+</html>

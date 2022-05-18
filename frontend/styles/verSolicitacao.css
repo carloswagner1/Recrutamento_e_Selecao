@@ -43,16 +43,19 @@ td{
 .main-container{
     background-color: var(--branco);
     width:90%;
-    margin: 10% auto;
+    margin-bottom: 10% auto;    
+    margin-top: 8%;
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px 30px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 15px black;
 }
 
-form {
-    margin-top:  30px;
+table {
     margin-bottom:  40px;
+
 
 }
 
@@ -63,8 +66,4 @@ label, input, select{
 
 }
 
-.fadeOut{
-	opacity: 0;
-	transition: 0.5s;
-}
 

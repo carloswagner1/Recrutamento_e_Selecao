@@ -67,7 +67,7 @@ class LoginController {
                     else {
                         // salvando id do candidato no local storage para mandar nas proximas requests
                         localStorage.setItem('id_candidato', JSON.stringify(responseBody.id));
-                        window.location.href = '../view/minhasvagas.html'
+                        window.location.href = '../view/minhasVagas.html'
                     }
     
                     let mathRandom = Math.random().toString(16).substr(2);

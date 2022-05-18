@@ -9,6 +9,8 @@ const validadores = {
     nome:input => validarCampoNome(input),
     email:input => validarCampoEmail(input),
     senha:input => validarCampoSenha(input),
+    senhaAtual:input => validarCampoSenhaAtual(input),
+    senhaNova:input => validarCampoSenhaNova(input),
     confirmaSenha:input => validarCampoConfirmSenha(input),    
     cpf:input => validarCampoCPF(input),
     celular:input => validarCampoCelular(input),        
@@ -76,6 +78,34 @@ function validarCampoSenha(input){
     }else {
         labelSenha.setAttribute('style', 'color: var(--cinza)');
         labelSenha.innerHTML = 'Senha';                    
+    }
+}
+function validarCampoSenhaAtual(input){
+    const senha = input.value;
+   
+    if(senha == ""){
+        labelSenha.setAttribute('style', 'color: red');
+        labelSenha.innerHTML = 'Senha Atual (*campo obrigatório)';
+        ;                
+    }else if(senha.length <= 5){
+        labelSenha.setAttribute('style', 'color: red', 'font-weight: bolder');
+        labelSenha.innerHTML = 'Senha Atual (mínimo 6 caracteres)';
+        ;                       
+    }else {
+        labelSenha.setAttribute('style', 'color: var(--cinza)');
+        labelSenha.innerHTML = 'Senha Atual';                    
+    }
+}
+function validarCampoSenhaNova(input){
+    const senha = input.value;
+   
+    if(senha.length <= 5){
+        labelSenhaNova.setAttribute('style', 'color: red', 'font-weight: bolder');
+        labelSenhaNova.innerHTML = 'Senha Nova (mínimo 6 caracteres)';
+        ;                       
+    }else {
+        labelSenha.setAttribute('style', 'color: var(--cinza)');
+        labelSenha.innerHTML = 'Senha Atual';                    
     }
 }
 function validarCampoConfirmSenha(input){
