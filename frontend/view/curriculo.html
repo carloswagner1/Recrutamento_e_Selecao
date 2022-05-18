@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/candidatar.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Currículo</title>
+</head>
+
+<body>
+    <header class="header-area">
+        <div class="header-container">
+          <div class="logo">
+            <a href="#"><img src="../images/logo.png" alt="logo"></a>
+          </div>
+          <div class="mobile-nav">
+            <label for="menuTrigger" class="nav-ico"><i class="fa fa-bars"></i></label>
+            <input type="checkbox" id="menuTrigger">
+           <nav class="nav-menu">
+            <ul>
+                <li><a href="../view/minhasVagas.html" class="">Minhas Vagas</a></li>
+                <li><a href="../view/oportunidades.html" class="">Oportunidades</a></li>
+                <li><a href="" class="">Gerenciar Perfil</a>
+                    <i class="fa fa-caret-down"></i>
+                    <ul>
+                        <li><a href="../view/gerenciarPerfil.html">Editar Perfil</a></li>
+                        <li><a href="../view/curriculo.html">Editar Currículo</a></li>
+                     
+                    </ul>   
+                   </li>
+                <li><a href="../view/contato.html" class="">Contato</a></li>
+               <li><a href="../view/login.html" class="">Sair</a></li>
+            </ul>
+          </nav>
+         </div>
+        </div>
+      </header>  
+
+    <main class="container-form" id="container-form">
+        <div class="dados-pessoais">
+            <h1>Dino da Silva Sauro</h1>
+            <p>Celular: (11)99987-2212</p>
+            <p>E-mail:dino_s_s@gmail.com</p>
+        </div>
+        <fieldset>
+            <legend>
+                <h2>Experiências Profissional</h2>
+            </legend>
+            <button type="button" class="button blue mobile" id="adicionarExperiencia">Adicionar Experiência</button>
+            <table id="tableExperiencia" class="records">
+                <thead>
+                    <tr>
+                        <th>Empresa</th>
+                        <th>Cargo</th>
+                        <th>Data de Admissão</th>
+                        <th>Data de Desligamento</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="semExperiencia-inputs">
+                <div class="semExperiencia-group">
+                    <div class="semExperiencia-input">
+                        <input id="semExperiencia" type="radio" name="semExperiencia">
+                        <label for="semExperiencia">Não possuo experiência profissional</label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h2>Experiência Profissional</h2>
+                    <span class="modal-close" id="modalClose">&#10006;</span>
+                </header>
+                <form id="form" class="modal-form">
+                    <label for="nomeEmpresa">Nome da Empresa</label>
+                    <input type="text" id="nomeEmpresa" data-index="new" class="modal-field"
+                        placeholder="Nome da Empresa">
+                    <label for="cargo">Cargo</label>
+
+                    <select name="cargo" id="nomeCargo">
+                        <option selected disabled value="">Selecione</option>
+                        <option value="Administrador">Administrador
+                        <option value="Advogado">Advogado</option>
+                        <option value="Agente de saúde">Agente de saúde</option>
+                        <option value="Analista">Analista </option>
+                        <option value="Arqueólogo">Arqueólogo</option>
+                        <option value="Arquiteto">Arquiteto</option>
+                        <option value="Assistente administrativo">Assistente administrativo</option>
+                        <option value="Assistente comercial">Assistente comercial</option>
+                        <option value="Assistente de marketing">Assistente de marketing</option>
+                        <option value="Assistente de rehumanos">Assistente de rehumanos</option>
+                        <option value="Assistente financeiro">Assistente financeiro</option>
+                        <option value="Assistente social">Assistente social</option>
+                        <option value="Auxiliar administrativo">Auxiliar administrativo</option>
+                        <option value="Auxiliar de almoxarifado">Auxiliar de almoxarifado</option>
+                        <option value="Auxiliar financeiro">Auxiliar financeiro</option>
+                        <option value="Bancário">Bancário</option>
+                        <option value="Biólogo">Biólogo</option>
+                        <option value="Biomédico">Biomédico</option>
+                        <option value="Bioquímico">Bioquímico</option>
+                        <option value="Biotecnólogo">Biotecnólogo</option>
+                        <option value="Cientista da computação">Cientista da computação</option>
+                        <option value="Cientista de dados">Cientista de dados</option>
+                        <option value="Consultor financeiro">Consultor financeiro</option>
+                        <option value="Contabilista">Contabilista</option>
+                        <option value="Contador">Contador</option>
+                        <option value="Controller">Controller</option>
+                        <option value="DBA (Administrador de Banco de Dados)">DBA (Administrador de Banco de Dados)</option>
+                        <option value="Delegado">Delegado</option>
+                        <option value="Dentista">Dentista</option>
+                        <option value="Desenvolvedor">Desenvolvedor</option>
+                        <option value="Designer">Designer</option>
+                        <option value="Economista">Economista</option>
+                        <option value="Editor de texto">Editor de texto</option>
+                        <option value="Enfermeiro">Enfermeiro</option>
+                        <option value="Engenheiro">Engenheiro </option>
+                        <option value="Especialista em e-commerce">Especialista em e-commerce</option>
+                        <option value="Esteticista">Esteticista</option>
+                        <option value="Filósofo">Filósofo</option>
+                        <option value="Fisioterapeuta">Fisioterapeuta</option>
+                        <option value="Fonoaudiólogo">Fonoaudiólogo</option>
+                        <option value="Fotógrafo">Fotógrafo</option>
+                        <option value="Geógrafo">Geógrafo</option>
+                        <option value="Gerente administrativo">Gerente administrativo</option>
+                        <option value="Gerente de projetos">Gerente de projetos</option>
+                        <option value="Gestor ambiental">Gestor ambiental</option>
+                        <option value="Gestor de tecnologia da informação">Gestor de tecnologia da informação</option>
+                        <option value="Gestor financeiro">Gestor financeiro</option>
+                        <option value="Inspetor de qualidade">Inspetor de qualidade</option>
+                        <option value="Jovem aprendiz">Jovem aprendiz</option>
+                        <option value="Juiz">Juiz</option>
+                        <option value="Mecânico">Mecânico</option>
+                        <option value="Médico">Médico</option>
+                        <option value="Motorista">Motorista</option>
+                        <option value="Nutricionista">Nutricionista</option>
+                        <option value="Nutrólogo">Nutrólogo</option>
+                        <option value="Operador de caixa">Operador de caixa</option>
+                        <option value="Operador de telemarketing">Operador de telemarketing</option>
+                        <option value="Pedagogo">Pedagogo</option>
+                        <option value="Procurador">Procurador</option>
+                        <option value="Professor">Professor</option>
+                        <option value="Programador">Programador</option>
+                        <option value="Promotor de justiça">Promotor de justiça</option>
+                        <option value="Psicólogo">Psicólogo</option>
+                        <option value="Psiquiatra">Psiquiatra</option>
+                        <option value="Representante comercial">Representante comercial</option>
+                        <option value="Roteirista">Roteirista</option>
+                        <option value="Técnico de Enfermagem">Técnico de Enfermagem</option>
+                        <option value="Técnico em informática">Técnico em informática</option>
+                        <option value="Técnico em Segurança do Trabalho">Técnico em Segurança do Trabalho</option>
+                        <option value="Terapeuta">Terapeuta</option>
+                        <option value="Turismólogo">Turismólogo</option>
+                        <option value="UI designer">UI designer</option>
+                        <option value="UX designer">UX designer</option>
+                        <option value="Web designer">Web designer</option>
+                        <option value="Webmaster">Webmaster</option>
+                        <option value="Zootecnista">Zootecnista</option>                    
+                    </select>
+                    <label for="dataAdmissao">Data de Admissão</label>
+                    <input type="month" id="dataAdmissao" class="modal-field">
+                   <label for="nomeDesligamento">Data de Desligamento</label>
+                    <input type="month" id="dataDesligamento" class="modal-field">
+                </form>
+                <footer class="modal-footer">
+                    <button id="salvar" class="button green">Salvar</button>
+                    <button id="cancelar" class="button blue">Cancelar</button>
+                </footer>
+
+            </div>
+        </div>
+    </fieldset>
+    <div class="modal" id="modal">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2>Experiência Profissional</h2>
+                        <span class="modal-close" id="modalClose">&#10006;</span>
+                    </header>
+                    <form id="form" class="modal-form">
+                        <label for="nomeEmpresa">Nome da Empresa</label>
+                        <input type="text" id="nomeEmpresa" data-index="new" class="modal-field" placeholder="Nome da Empresa">
+                        <label for="cargo">Cargo</label>
+                        <input type="text" id="cargo" class="modal-field" placeholder="Cargo">
+                        <label for="dataAdmissao">Data de Admissão</label>
+                        <input type="date" id="dataAdmissao"
+                        class="modal-field" >
+                        <label for="nomeDesligamento">Data de Desligamento</label>
+                        <input type="month" id="dataDesligamento" class="modal-field" >
+                    </form>
+                    <footer class="modal-footer">
+                        <button id="salvar" class="button green">Salvar</button>
+                        <button id="cancelar" class="button blue">Cancelar</button>
+                    </footer>
+                </div>
+
+            </div>
+        </div>
+        <fieldset>
+            <legend>
+                <h2>Formações Acadêmicas</h2>
+            </legend>
+            <button type="button" class="button blue mobile" id="adicionarFormacao">Adicionar Formação</button>
+            <table id="tableformacao" class="records">
+                <thead>
+                    <tr>
+                        <th>Tipo de Formação</th>
+                        <th>Curso</th>
+                        <th>Nome da Instituição</th>
+                        <th>Data de Início</th>
+                        <th>Data de Conclusão</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tecnológo</td>
+                        <td>ADS</td>
+                        <td>Fatec SO</td>
+                        <td>02/2020</td>
+                        <td>12/2022</td>
+                        <td>
+                            <button type="button" class="button green">editar</button>
+                            <button type="button" class="button red">excluir</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </fieldset>
+
+        <div class="modal" id="modal-formacao">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h2>Formação Acadêmica</h2>
+                    <span class="modal-close" id="modalClose2">&#10006;</span>
+                </header>
+                <form id="form2" class="modal-form">
+                    <label for="tipoFormacao">Tipo de Formação</label>
+                    <select name="formacao" id="tipoformacao" data-index="new">
+                        <option selected disabled value="">Selecione</option>
+                        <option value="Ensino Fundamental">Ensino Fundamental</option>
+                        <option value="Ensino Médio">Ensino Médio</option>
+                        <option value="Graduaçao">Graduação</option>
+                        <option value="Pos-Graduação">Pós-Graduação</option>
+                        <option value="Doutorado">Doutorado</option>
+                        <option value="Mestrado">Mestrado</option>
+                        <option value="Técnico">Técnico</option>
+                        <option value="Tecnólogo">Tecnólogo</option>
+                        <option value="Outra">Outra</option>
+                    </select>
+
+                    <label for="curso">Curso</label>
+                    <select name="curso" id="curso" data-index="new">
+                        <option selected disabled value="">Selecione</option>
+                        <option value="Administração">Administração</option>
+                        <option value="Análise e Desenvolvimento de Sistemas">Análise e Desenvolvimento de Sistemas</option>
+                        <option value="Arquitetura e Urbanismo">Arquitetura e Urbanismo</option>
+                        <option value="Automação Industrial">Automação Industrial</option>
+                        <option value="Banco de Dados">Banco de Dados</option>
+                        <option value="Biomedicina">Biomedicina</option>
+                        <option value="Biotecnologia">Biotecnologia</option>
+                        <option value="Ciência da Computação">Ciência da Computação</option>
+                        <option value="Ciência e Tecnologia">Ciência e Tecnologia</option>
+                        <option value="Ciências Contábeis">Ciências Contábeis</option>
+                        <option value="Ciências do Consumo">Ciências do Consumo</option>
+                        <option value="Comércio Exterior">Comércio Exterior</option>
+                        <option value="Computação">Computação</option>
+                        <option value="Comunicação e Informação">Comunicação e Informação</option>
+                        <option value="Comunicação em Mídias Digitais">Comunicação em Mídias Digitais</option>
+                        <option value="Design">Design</option>
+                        <option value="Direito">Direito</option>
+                        <option value="Ecologia">Ecologia</option>
+                        <option value="Educação Física">Educação Física</option>
+                        <option value="Eletrotécnica Industrial">Eletrotécnica Industrial</option>
+                        <option value="Enfermagem">Enfermagem</option>
+                        <option value="Engenharia">Engenharia </option>
+                        <option value="Estatística">Estatística</option>
+                        <option value="Estética e Cosmética">Estética e Cosmética</option>
+                        <option value="Fabricação Mecânica">Fabricação Mecânica</option>
+                        <option value="Farmácia">Farmácia</option>
+                        <option value="Filosofia">Filosofia</option>
+                        <option value="Física">Física</option>
+                        <option value="Fisioterapia">Fisioterapia</option>
+                        <option value="Fonoaudiologia">Fonoaudiologia</option>
+                        <option value="Fotografia">Fotografia</option>
+                        <option value="Gastronomia">Gastronomia</option>
+                        <option value="Geografia">Geografia</option>
+                        <option value="Geologia">Geologia</option>
+                        <option value="Gestão">Gestão</option> 
+                        <option value="História">História</option>
+                        <option value="Hotelaria">Hotelaria</option>
+                        <option value="Informática">Informática</option>
+                        <option value="Jogos Digitais">Jogos Digitais</option>
+                        <option value="Jornalismo">Jornalismo</option>
+                        <option value="Letras">Letras</option>
+                        <option value="Libras">Libras</option>
+                        <option value="Logística">Logística</option>
+                        <option value="Manutenção Industrial">Manutenção Industrial</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Matemática">Matemática</option>
+                        <option value="Medicina">Medicina</option>
+                        <option value="Medicina Veterinária">Medicina Veterinária</option>
+                        <option value="Nutrição">Nutrição</option>
+                        <option value="Odontologia">Odontologia</option>
+                        <option value="Pedagogia">Pedagogia</option>
+                        <option value="Produção">Produção </option>
+                        <option value="Psicologia">Psicologia</option>
+                        <option value="Radiologia">Radiologia</option>
+                        <option value="Redes de Computadores">Redes de Computadores</option>
+                        <option value="Relações Públicas">Relações Públicas</option>
+                        <option value="Secretariado">Secretariado</option>
+                        <option value="Segurança da Informação">Segurança da Informação</option>
+                        <option value="Sistemas Biomédicos">Sistemas Biomédicos</option>
+                        <option value="Sistemas de Informação">Sistemas de Informação</option>
+                        <option value="Transporte">Transporte</option>
+                        <option value="Turismo">Turismo</option>
+                        <option value="Zootecnia">Zootecnia </option>  
+                    </select>   
+                    <label for="instituicao">Instituição</label>
+                    <input type="text" id="instituicao" class="modal-field" placeholder="Nome da Insituição">
+                    <label for="dataAdimissao">Data de Início</label>
+                    <input type="month" id="dataInicio" class="modal-field">
+                    <label for="dataConclusao">Data de Conclusão</label>
+                    <input type="month" id="dataConclusao" class="modal-field">
+
+                </form>
+                <footer class="modal-footer">
+                    <button id="salvar2" class="button green">Salvar</button>
+                    <button id="cancelar2" class="button blue">Cancelar</button>
+                </footer>
+            </div>
+        </div>
+        <div class="candidatar-button">
+            <button><a href="#">Salvar</a></button>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../controllers/CurriculoController.js"></script>
+    <!--script src="formacao.js" defer></script-->
+    <!--script src="experiencia.js" defer></script-->
+</body>
+
+</html>

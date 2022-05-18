@@ -1,225 +1,264 @@
 *{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box ;
-    font-family: Helvetica, sans-serif;
-  }
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box ;
+  font-family: Helvetica, sans-serif;
+}
 :root{
-    --branco: #fff;
-    --amarelo: #fdb824;
-    --azul-escuro: #001533;
-    --azul-claro: #133463;
-    --cinza: #323232; 
-    --fundo: #081c6b;
-    --amarelo-nav: #eab937;
+  --amarelo: #fdb824;
+  --azul-escuro: #042758;
+  --azul-claro: #143d75;
+  --cinza: #323232; 
+  --fundo: #081c6b;
+
 }
 body{
-    font-size:  18px;
-    font-family: 'Roboto', sans-serif;
-    background-image: url('../images/recrutamento-selecao-tech-op.jpg') ;
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: center ;
-  
-    
-    
-  }
+  font-size:  18px;
+  font-family: 'Roboto', sans-serif;
+  background-image: url('../images/recrutamento-selecao-tech-op.jpg') ;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center ;
+}
 .header-area{
-    background-color:var(--fundo);
-    width: 100%;
-    
-    z-index: 999;
-    border-bottom: var(--amarelo-nav);
+  background-color:var(--fundo);
+  padding: 15px 30px;
+  display: flex;
+  width: 100%;
+  z-index: 999;
+  left: 0;
+  height: 13%;
+  top:0;
+  position: fixed;
+  border-bottom: var(--amarelo);
   
-  }
+
+}
+
+.header-container{
+  max-width: 1900px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   
-  .header-container{
-    width: 100%;
-    margin: auto;
-    display: table;
-    
-  }
-  .site-logo{
-    float: left;
-    padding: 5px 0px;
-    
-  }
+}
+.logo{
+  flex:1;
+  float: left;
+  padding: 5px 0px;
   
-  .site-logo img{
-   
-  width: 60%;
-  padding: 15px;
-  
-  }
-  .mobile-nav{
-    display:none;
-    float:right;
-  }
-    .mobile-nav i{
-    margin-top: 10%; 
-    padding: 40px 10px 0px 0px;
-    color: var(--amarelo-nav);
-    outline: none;
-    cursor:pointer;
+}
+.logo a{
+  text-decoration: none;
+}
+.logo img{   
+width: 180px;
+padding: 0px;
+
+}
+.nav-menu{
+ float: right;
+}
+
+.nav-menu ul{
+  margin: 0;
+  padding: 0px;
+  list-style: none;
+}
+
+.nav-menu a:hover, .nav-menu .active{
+  color: var(--amarelo);
+}
 
 
-  }
-  
-  .site-nav-menu{
-   float: right;
- 
-  
-  }
-  
-  
-  .primary-menu{
-    list-style: none;
-  }
-  
-  .primary-menu li{
-    display: inline-block;
-    margin: 25px 5px;
-  }
-  .primary-menu a{
-    color: #fff;
-    position: relative;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    padding: 10px 5px;
-    transition: .2s;
-  
-  }
-  .primary-menu a:hover, .primary-menu .active{
-    color: var(--amarelo-nav);
-  }
-  
-  .primary-menu li a:after{
-    content: "";
+.nav-menu ul li{
+  float: left;
+  margin: 0 0 0 3px;
+  position: relative;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+} 
+
+ul li a{
+  color: #fff;
+  display: block;
+  font-size: 15px;
+  line-height: 1.4;
+  text-decoration: none;
+  padding: 5px 20px;
+  transition: all .2s ease-out;
+
+}
+ul li:hover a{
+  color: var(--amarelo);
+}
+ul ul{
     position: absolute;
-    width: 0%;
-    height: 2px;
-    background: var(--amarelo-nav);
-    bottom:0px;
-    left:0;
-    transition: all .2s;
+    left: 0px;
+    width: 110%;
+    top: calc(100% + 13px);
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.2s ease-out;
+    pointer-events: none;
+}
+
+.nav-menu ul li:hover > ul{
+    opacity: 1;
+    pointer-events: auto;
+}
+.nav-menu ul ul li{
+  float: none;
+  margin: 0;
+}
+.nav-menu > ul > li > ul:after{
+  content: "";
+  position: absolute;
+  bottom:100%;
+  height: 16px;
+  width: 100%;
+  left: 0;
+}
+.nav-menu ul ul li a{
+  background: #0a2077;
+  padding: 15px;
+}
+.nav-menu ul ul ul {
+  left: 100%;
+  top:0;
+}
+.nav-menu ul li:hover ul li:hover > a{
+  color: #fff;
+  background-color: #0f3f7e;
+}
+
+.nav-menu ul li i{
+  position: absolute;
+  right: -2px;
+  color: #fff;
+  top: 8px;
+
+}
+.nav-menu ul li:hover > i{
+  color: var(--amarelo);
+}
+.nav-ico{
+  display: block;
+  width: 40px;
+  cursor: pointer;
+}
+
+
+/*---- Responsividade ----*/
+
+@media only screen and (min-width: 768px) and (max-width:991px) {
+  .nav-menu ul li {
+    margin: 0;
+    font-size: 17px;
   }
-  .primary-menu li a:hover:after{
+  .nav-menu ul li a{
+    padding: 5px 10px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .nav-ico, #menuTrigger{
+    display: none;
+    
+  }
+}
+@media screen and (max-width: 767px){
+  .logo img{
+    width: 170px;
+  }
+  .header-area{
+    height: 12%;
+  }
+  .nav-menu {
+    
+    position: fixed;
+    left: 0;
+    padding: 0;
+    background: var(--fundo);
+    z-index: 5;
+    height: calc(100vh - 74px);
+    overflow: auto;
+    width: calc(100% - 0px);
+    top: 70px;
+    text-align: center;
+    transition: all 0.3s ease-out;
+    transform: translateX(-100%);
+  }
+  .nav-menu ul li{
+    float:none;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: 1px solid #323233 ;
+  }
+  .nav-menu ul li a{
+  display: block;
+  color: #fff ;
+  padding: 12px;
+  }
+  .nav-menu > ul > li:hover > a{
+    background: var(--azul-escuro);
+    color: var(--amarelo);
+    
+  }
+  .nav-menu > ul > ul > li:hover> a {
+    background: var(--azul-escuro);
+    color: var(--amarelo);
+    
+  }
+  ul ul{
     width: 100%;
   }
-  .primary-menu li .active:after{
-    width: 100%;
+  .nav-menu ul ul{
+    position: static;
+    pointer-events: auto;
+    opacity: 1;
+    height: 0;
+    overflow: hidden;
   }
-  
-@media only screen and (max-width: 900px){
-    .site-nav-menu{
-        float:none;
-        position: absolute;
-        background: var(--fundo);
-        width: 100%;
-        left:0;
-        top: 85px;
-        padding: 30px 0px 150px 0px;
-        border-top: 2px solid var(--amarelo-nav) ;
-        clip-path: circle(0% at 100% 0%);
-        transition: all .5s;
-    }
-    
-    .primary-menu li{
-        display: block;
-        text-align: center;
-        margin: 25px 2px;
-    
-    }
-    
-    .mobile-nav{
-        display: block;
-    }
-    .mobile-menu{
-        clip-path: circle(150% at 100% 0%);
-    }
-    .primary-menu li a:after{
-        display: none;
-    }
+  .nav-menu ul ul li a{
+    padding-left: 30px;
+    transform: rotate(0deg);
+  }
+   
+  .nav-menu ul li a{
+    right:10px !important;
+  }
+  .nav-menu ul li:hover > i{
+    color:  var(--amarelo);
+
+  }
+  .nav-menu ul li:hover > ul{
+    height: auto;
+  }
+  .nav-menu ul li:hover ul li:hover > a{
+    color: var(--amarelo);
+  }
+  #menuTrigger{
+    opacity: 0;
+    position: fixed;
+    width: 0;
+    height: 0;
+    margin: 0;
+  }
+  #menuTrigger:checked + .nav-menu{
+    transform: translateX(0%);
+  }
+  .nav-ico{
+    display: block;
+    position: relative;
+    z-index: 10;
+    color: var(--amarelo);
+    font-size: 30px;
+  }
 }
 
-@media only screen and (max-width:400px){
-    .mobile-nav{
-        float:right;
-        display: block;
-    }
-    .mobile-nav i{
-        padding: 20px 10px 20px 0px;
-        color: var(--amarelo-nav);
-        outline: none;
-        cursor:pointer;
-    }
 
-    .site-logo img{
-        width: 40%;
-        padding: 5px;
-    
-    }
-    
-    
-    .site-nav-menu{
-        float:right;
-        position: absolute;
-        background: var(--fundo);
-        width: 100%;
-        left:0;
-        top: 60px;
-        padding: 0px 10px 10px 0px;
-        border-top: 2px solid var(--amarelo-nav) ;
-        clip-path: circle(0% at 100% 0%);
-        transition: all .5s;
-    }
-    .mobile-menu{
-        clip-path: circle(150% at 100% 0%);
-    }
-    .primary-menu li a:after{
-        display: none;
-    }
-}
 
-@media only screen and (max-width:357px){
-    
-    .mobile-nav{
-        display: flex;
-        float:right;
-        
-    }
-    .mobile-nav i{
-        padding: 0px 10px 10px 0px;
-        color: var(--amarelo-nav);
-        outline: none;
-        cursor:pointer;
-        
-    }
 
-    .site-logo img{
-        margin:5px 0px 0px 5px;
-        width: 30%;
-       
-        
-    }
-    .site-nav-menu{
-        float:right;
-        
-        background: var(--fundo);
-        width: 100%;
-        left:0;
-        top:80px;
-        padding: 0px 20px 0px 0px;
-        border-top: 2px solid var(--amarelo-nav) ;
-        clip-path: circle(0% at 100% 0%);
-        transition: all .5s;
-    }
-    .mobile-menu{
-        clip-path: circle(150% at 100% 0%);
-    }
-    .primary-menu li a:after{
-        display: none;
-    }
-    
-}

@@ -30,14 +30,16 @@ class SolicitacaoController{
     }
 
     getValues(){
+        let userLogado = JSON.parse(localStorage.getItem('userLogado') || '[]');        
         let isValid = true;
-        let descricao = this.formEl1.descricao.value;
-        if(descricao == ""){
+        let motivo = this.formEl1.motivo.value;
+        let status = 'Em Análise'
+        if(motivo == ""){
             isValid = false;
         }
 
         [...this.formEl2.elements].forEach(function (field, index) {
-            if (['departamento', 'cargo', 'requisitos', 'escolaridade'].indexOf(field.name) > -1 && !field.value) {
+            if (['departamento', 'cargo', 'tipoVaga', 'localVaga', 'qtdVagas', 'requisitos', 'motivo'].indexOf(field.name) > -1 && !field.value) {
                 field.parentElement.classList.add('has-error');
                 isValid = false;
             }
@@ -48,12 +50,17 @@ class SolicitacaoController{
         }
 
         let solicitacao = new Solicitacao(
-            departamento.options[departamento.selectedIndex].text,
+            departamento.options[departamento.selectedIndex].text, 
             cargo.options[cargo.selectedIndex].text,
+            tipoVaga.options[tipoVaga.selectedIndex].text,
+            localVaga.options[localVaga.selectedIndex].text,
+            qtdVagas.value,
             requisitos.value,
-            escolaridade.options[escolaridade.selectedIndex].text,
-            descricao
+            motivo,
+            userLogado.id,
+            status,
         );
+        console.log(solicitacao)
 
         return solicitacao;
     }
