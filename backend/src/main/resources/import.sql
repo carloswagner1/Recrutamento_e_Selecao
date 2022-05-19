@@ -1,6 +1,18 @@
 -- DEPARTAMENTO
-INSERT INTO tb_departamento VALUES (1, 'TI');
-INSERT INTO tb_departamento VALUES (2, 'RH');
+INSERT INTO tb_departamento VALUES (1, 'Administrativo');
+INSERT INTO tb_departamento VALUES (2, 'Comercial');
+INSERT INTO tb_departamento VALUES (3, 'Compras');
+INSERT INTO tb_departamento VALUES (4, 'Comunicação');
+INSERT INTO tb_departamento VALUES (5, 'Contábil');
+INSERT INTO tb_departamento VALUES (6, 'Financeiro');
+INSERT INTO tb_departamento VALUES (7, 'Jurídico');
+INSERT INTO tb_departamento VALUES (8, 'Logística');
+INSERT INTO tb_departamento VALUES (9, 'Marketing');
+INSERT INTO tb_departamento VALUES (10, 'Operacional/Produção');
+INSERT INTO tb_departamento VALUES (11, 'Recursos Humanos');
+INSERT INTO tb_departamento VALUES (12, 'Segurança');
+INSERT INTO tb_departamento VALUES (13, 'Tecnologia da Informação');
+INSERT INTO tb_departamento VALUES (14, 'Vendas');
 
 -- CARGO
 INSERT INTO tb_cargo VALUES(1, 'Analista de Sistemas', 'https://link', 'Analista', 1);
