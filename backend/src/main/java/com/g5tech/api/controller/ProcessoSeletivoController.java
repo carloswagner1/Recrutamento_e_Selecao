@@ -26,6 +26,7 @@ public class ProcessoSeletivoController {
     public ResponseEntity<List<ProcessoResponseDTO>> getProcessosByCandidatoId(@PathVariable("id") Long candidatoId) {
         return new ResponseEntity<>(processoSeletivoService.getByAreaCandidato(candidatoId), HttpStatus.OK);
     }
+
     @Operation(summary = "Busca processo seletivo pelo id")
     @GetMapping("/{id}")
     public ResponseEntity<ProcessoCompletoResponseDTO> getById(@PathVariable Long id) {

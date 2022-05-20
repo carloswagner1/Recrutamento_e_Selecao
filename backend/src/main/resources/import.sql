@@ -31,8 +31,8 @@ INSERT INTO tb_status VALUES (1, 'Entrevista');
 INSERT INTO tb_status VALUES (1, 'Concluido');
 
 -- PROCESSO SELETIVO
-INSERT INTO tb_processo_seletivo VALUES(1, 'TI', '2022-09-09', '2022-08-09', 1, 1, 1);
-INSERT INTO tb_processo_seletivo VALUES(2, 'TI', '2022-09-09', '2022-08-09', 3, 2, 1);
+INSERT INTO tb_processo_seletivo VALUES(1, 'TI', '2022-09-09', '2022-08-09', 'Nova vaga', 1, 1, 1, 1);
+INSERT INTO tb_processo_seletivo VALUES(2, 'TI', '2022-09-09', '2022-08-09', 'Vaga massa', 3, 2, 2, 1);
 
 -- CANDIDATO
 INSERT INTO tb_candidato VALUES (1, 'ti', 'Jardim', '15981196538', '18021310', 'Sorocaba', '38974521890', '1990-11-12', 'diego@mail.com', 'SP', 'M', 'Diego', 'Brasil', 'Rua Souza');

@@ -10,4 +10,6 @@ public class ProcessoResponseDTO {
     private String cargo;
     private String tipoVaga;
     private String local;
+    private String descricao;
+    private String departamento;
 }
