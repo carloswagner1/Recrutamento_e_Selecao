@@ -1,9 +1,13 @@
 package com.g5tech.api.builder;
 
 import com.g5tech.api.dto.InscricaoResponseDTO;
+import com.g5tech.api.model.Candidato;
 import com.g5tech.api.model.Inscricao;
 import com.g5tech.api.model.ProcessoSeletivo;
+import com.g5tech.api.model.Status;
 
+import javax.jws.WebService;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,5 +30,18 @@ public class InscricaoBuilder {
         dto.setTipoContratacao(processoSeletivo.getSolicitacaoVaga().getTipoContratacao());
 
         return dto;
+    }
+
+    public static Inscricao build(Candidato candidato, ProcessoSeletivo processoSeletivo, Status status) {
+
+        Inscricao inscricao = new Inscricao();
+
+        inscricao.setCandidato(candidato);
+        inscricao.setProcessoSeletivo(processoSeletivo);
+        inscricao.setStatus(status);
+        inscricao.setDataCriacao(new Date());
+        inscricao.setPontuacaoTeste(null);
+
+        return inscricao;
     }
 }

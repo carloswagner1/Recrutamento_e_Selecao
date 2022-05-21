@@ -1,6 +1,5 @@
 package com.g5tech.api.model;
 
-import com.g5tech.api.model.indicator.Situacao;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,4 +35,7 @@ public class Inscricao {
     @ManyToOne
     @JoinColumn(name = "id_status")
     private Status status;
+
+    @Column(name = "pontuacao_test")
+    private Double pontuacaoTeste;
 }

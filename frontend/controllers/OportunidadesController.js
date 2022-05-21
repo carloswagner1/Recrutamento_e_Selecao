@@ -68,7 +68,7 @@ class OportunidadesController {
             item.addEventListener('click', () => {
                 var campo = content[index];            
                 var vaga = getValues(campo);
-                localStorage.setItem('vaga', JSON.stringify(vaga));
+                localStorage.setItem('vaga_selecionada', JSON.stringify(vaga));
                 window.location.href = '../view/candidatar2.html';            
             })        
         })

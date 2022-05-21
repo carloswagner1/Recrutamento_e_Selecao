@@ -14,6 +14,12 @@ INSERT INTO tb_departamento VALUES (12, 'Segurança');
 INSERT INTO tb_departamento VALUES (13, 'Tecnologia da Informação');
 INSERT INTO tb_departamento VALUES (14, 'Vendas');
 
+-- STATUS
+INSERT INTO tb_status VALUES (1, 'Inscrições');
+INSERT INTO tb_status VALUES (2, 'Teste');
+INSERT INTO tb_status VALUES (3, 'Entrevista');
+INSERT INTO tb_status VALUES (4, 'Concluído');
+
 -- CARGO
 INSERT INTO tb_cargo VALUES(1, 'Analista de Sistemas', 'https://link', 'Analista', 1);
 INSERT INTO tb_cargo VALUES(2, 'Analista de RH', 'https://link', 'Tecnologo', 1);
@@ -42,16 +48,16 @@ INSERT INTO tb_candidato VALUES (4, 'ti', 'Jardim', '15981196532', '18021310', '
 INSERT INTO tb_candidato VALUES (5, 'ti', 'Jardim', '15981196535', '18021310', 'Sorocaba', '24611075800', '2001-09-10', 'lucas@mail.com', 'SP', 'M', 'lucas', 'Brasil', 'Rua Souza');
 
 -- INSCRICAO
-INSERT INTO tb_inscricao VALUES (1, '2022-09-09', 1, 1, 1);
-INSERT INTO tb_inscricao VALUES (2, '2022-09-09', 1, 2, 1);
-INSERT INTO tb_inscricao VALUES (3, '2022-09-09', 2, 1, 1);
-INSERT INTO tb_inscricao VALUES (4, '2022-09-09', 2, 2, 1);
-INSERT INTO tb_inscricao VALUES (5, '2022-09-09', 3, 1, 1);
-INSERT INTO tb_inscricao VALUES (6, '2022-09-09', 3, 2, 1);
-INSERT INTO tb_inscricao VALUES (7, '2022-09-09', 4, 1, 1);
-INSERT INTO tb_inscricao VALUES (8, '2022-09-09', 4, 2, 1);
-INSERT INTO tb_inscricao VALUES (9, '2022-09-09', 5, 1, 1);
-INSERT INTO tb_inscricao VALUES (10, '2022-09-09', 5, 2, 1);
+INSERT INTO tb_inscricao VALUES (1, '2022-09-09', null, 1, 1, 1);
+INSERT INTO tb_inscricao VALUES (2, '2022-09-09', null, 1, 2, 1);
+INSERT INTO tb_inscricao VALUES (3, '2022-09-09', null, 2, 1, 1);
+INSERT INTO tb_inscricao VALUES (4, '2022-09-09', null, 2, 2, 1);
+INSERT INTO tb_inscricao VALUES (5, '2022-09-09', null, 3, 1, 1);
+INSERT INTO tb_inscricao VALUES (6, '2022-09-09', null, 3, 2, 1);
+INSERT INTO tb_inscricao VALUES (7, '2022-09-09', null, 4, 1, 1);
+INSERT INTO tb_inscricao VALUES (8, '2022-09-09', null, 4, 2, 1);
+INSERT INTO tb_inscricao VALUES (9, '2022-09-09', null, 5, 1, 1);
+INSERT INTO tb_inscricao VALUES (10, '2022-09-09', null, 5, 2, 1);
 
 -- USUARIO_CANDIDATO
 INSERT INTO tb_usuario_candidato VALUES (1, 'diego@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', '1');
