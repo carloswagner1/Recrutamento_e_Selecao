@@ -33,10 +33,4 @@ public class ProcessoSeletivoController {
         return new ResponseEntity<>(processoSeletivoService.getCompletoById(id), HttpStatus.OK);
     }
 
-//    @Operation(summary = "Cria um novo candidato no banco de dados")
-//    @PostMapping
-//    public ResponseEntity<List<ProcessoResponseDTO>> create(@Valid @RequestBody FiltroVagasDTO dto) {
-//        return new ResponseEntity<>(processoSeletivoService.save(dto), HttpStatus.OK);
-//    }
-
 }
