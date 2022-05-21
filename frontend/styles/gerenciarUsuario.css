@@ -4,17 +4,7 @@
     box-sizing: border-box ;
     font-family: Helvetica, sans-serif;
   }
-  body{
-    font-size:  18px;
-    font-family: 'Roboto', sans-serif;
-    background-image: url('../images/recrutamento-selecao-tech-op.jpg') ;
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: center ;
-  
-    
-    
-  }
+ 
   :root{
     --primary-color: #FFBA00;
     --secundary-color: #FFF1CC;
@@ -32,12 +22,15 @@
     justify-self: unset;
     justify-content: center;
     display: flex;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
-    margin: 15% auto;
+    box-shadow: 1px 0px  6px 0px rgba(0, 0, 0, 0.637);
+    min-height: 500px;
+    margin: 5% auto;
+    background-color: #f9f9f9;
+    
   }
   
   
-  .form, .container{
+  .form{
     width: 90%;
     display: flex;
     flex-direction: column;
