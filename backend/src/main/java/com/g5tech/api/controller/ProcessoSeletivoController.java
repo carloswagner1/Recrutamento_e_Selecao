@@ -26,16 +26,11 @@ public class ProcessoSeletivoController {
     public ResponseEntity<List<ProcessoResponseDTO>> getProcessosByCandidatoId(@PathVariable("id") Long candidatoId) {
         return new ResponseEntity<>(processoSeletivoService.getByAreaCandidato(candidatoId), HttpStatus.OK);
     }
+
     @Operation(summary = "Busca processo seletivo pelo id")
     @GetMapping("/{id}")
     public ResponseEntity<ProcessoCompletoResponseDTO> getById(@PathVariable Long id) {
         return new ResponseEntity<>(processoSeletivoService.getCompletoById(id), HttpStatus.OK);
     }
-
-//    @Operation(summary = "Cria um novo candidato no banco de dados")
-//    @PostMapping
-//    public ResponseEntity<List<ProcessoResponseDTO>> create(@Valid @RequestBody FiltroVagasDTO dto) {
-//        return new ResponseEntity<>(processoSeletivoService.save(dto), HttpStatus.OK);
-//    }
 
 }

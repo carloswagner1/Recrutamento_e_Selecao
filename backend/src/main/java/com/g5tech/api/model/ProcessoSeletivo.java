@@ -27,12 +27,19 @@ public class ProcessoSeletivo {
     @Column(name = "data_final")
     private Date dataFinal;
 
+    @Column(name = "descricao")
+    private String descricao;
+
     @ManyToOne
     @JoinColumn(name = "id_status")
     private Status status;
 
     @Column(name = "area")
     private String areaVaga;
+
+    @ManyToOne
+    @JoinColumn(name = "id_departamento")
+    private Departamento departamento;
 
     @OneToOne
     @JoinColumn(name = "id_solicitacao_vaga")

@@ -1,9 +1,13 @@
+import { sendRequest } from "../utils/ApiUtils.js";
+
 class CandidatarController {
+
     constructor(containerDescId) {
         this.containerDescEl = document.getElementById(containerDescId);
 
         this.onLoad();
     }
+
     onLoad() {
         const container = this.containerDescEl;
         let vagaSelecionada = this.getVagaSelecionadaStorage();
@@ -14,62 +18,102 @@ class CandidatarController {
                 <p>${vagaSelecionada.descricao}        
             </div>
             <div class="continuar-button">
-                <button id="candidatar" onclick="onSubmit()" ><a href="#">Candidatar</a></button>
+                <button id="candidatar" name="candidatar" class="btn"><a href="#">Candidatar</a></button>
                 <button id="editarcurriculo" ><a href="../view/curriculo.html">Editar Currículo</a></button>
             </div>
             <div>
                 <h3 id="mensagem" class="invisivel"></h3>    
             </div
         `;
+
         container.innerHTML += content;
+
+        this.onSubmit();
     }
-    getVagaSelecionadaStorage() {
-        let dadosVaga = [];
-        if (localStorage.getItem("vagaSelecionada")) {
-            dadosVaga = JSON.parse(localStorage.getItem("vagaSelecionada"));
+
+    onSubmit() {
+
+        console.log("candidatar");
+
+
+        document.getElementsByName("candidatar").forEach(element => {
+            element.addEventListener("click", candidatar);
+        });
+
+        function candidatar() {
+
+            let values = getValues();
+    
+            if (!values) {
+                return false;
+            }
+
+            console.log("candidatar");
+            console.log(values);
+
+            // setting the url
+            const url = "/inscricoes/";
+
+            // enviando a request
+            const responsePromise = sendRequest('POST', url, values);
+
+            responsePromise.then(response => {
+    
+                // log para debuggar
+                console.log(response);
+        
+                // salvando o body da resposta
+                let responseBody = response.body;
+                console.log(responseBody);
+        
+                if (response.status == 200) {
+        
+                    mensagem.innerHTML = "Inscrição efetuada com sucesso!"
+                    mensagem.classList.remove("invisivel");
+                
+                    setTimeout(function () {
+                        mensagem.classList.add("invisivel");
+                        window.location.href = '../view/minhasVagas.html'
+                    }, 1500)
+        
+                }
+                else {
+                    // mensagem de erro
+                    mensagem.innerHTML = "Inscrição não pode ser efetuada"
+                }
+        
+            })
         }
+
+        function getValues() {
+    
+            let processo = candidatarController.getVagaSelecionadaStorage();
+            let inscricao = {};
+            let idCandidato = JSON.parse(localStorage.getItem("id_candidato"));
+            let idProcesso = processo.id;
+        
+            inscricao.idCandidato = idCandidato;
+            inscricao.idProcesso = idProcesso;
+        
+            return new Inscricao(
+                inscricao.idCandidato,
+                inscricao.idProcesso,
+            );
+        }
+    
+    }
+
+    getVagaSelecionadaStorage() {
+
+        let dadosVaga = [];
+
+        if (localStorage.getItem("vaga_selecionada")) {
+            dadosVaga = JSON.parse(localStorage.getItem("vaga_selecionada"));
+        }
+
         return dadosVaga;
     }
 
 }
 
 let candidatarController = new CandidatarController("container-desc");
-
-
-function onSubmit() {
-    let values = this.getValues();
-    if (!values) return false;
-    values.save();
-    mensagem.innerHTML = "Inscrição efetuada com sucesso!"
-    mensagem.classList.remove("invisivel");
-    setTimeout(function () {
-        mensagem.classList.add("invisivel");
-        window.location.href = '../view/minhasVagas.html'
-    }, 1500)
-}
-function getValues() {
-    let processo = candidatarController.getVagaSelecionadaStorage();
-    let inscricao = {};
-    let isValid = true;
-    let idCandidato = '001';//id do candidato logado
-    let idProcesso = processo.id;
-    let situacao = 'inscrito';
-    let pontuacaoTeste = '';
-
-    if (!isValid) {
-        return false;
-    }
-
-    inscricao.idCandidato = idCandidato;
-    inscricao.idProcesso = idProcesso;
-    inscricao.situacao = situacao;
-    inscricao.pontuacaoTeste = pontuacaoTeste;
-    return new Inscricao(
-        inscricao.idInscricao,
-        inscricao.idCandidato,
-        inscricao.idProcesso,
-        inscricao.dataInscricao,
-        inscricao.situacao,
-        inscricao.pontuacaoTeste,
-    );
-}
