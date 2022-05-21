@@ -7,8 +7,7 @@ class SolicitacoesEnviadasController{
 
     onLoad(){        
         var tabelaSolicitacoes = this.solicitacoesTableEl
-        var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');      
-        console.log(solicitacoes)  
+        var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');       
 
         if (solicitacoes.length === 0){
             this.containerEl.innerHTML = `<h3>Não há solicitações enviadas por este usuário</h3>`

@@ -7,51 +7,53 @@ class AvaliarSolicitacaoController{
     }
     onLoad(){        
         var tabelaSolicitacoes = this.solicitacoesTableEl;        
-        var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');
+        var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');//pega todas solicitacoes
+        // filtrando para pegar somente as solicitações com statis "em análise"
+        var solicitacoesEmAnalise = solicitacoes.filter(solicitacao => solicitacao._status === "Em Análise");
         
         
-        if (solicitacoes.length === 0){
+        if (solicitacoesEmAnalise.length === 0){
             this.containerEl.innerHTML = `<h3>Não há solicitações para avaliação</h3>`
         }else{
-            solicitacoes.forEach((solicitacao, index) => {
-                if(solicitacao._status === 'Em Análise'){
-                    var solicitacaoTr = montaTr(solicitacao);
-                    tabelaSolicitacoes.appendChild(solicitacaoTr);
-                }                            
+            solicitacoesEmAnalise.forEach((solicitacao, index) => {                
+                var solicitacaoTr = montaTr(solicitacao);
+                tabelaSolicitacoes.appendChild(solicitacaoTr);
             })            
-        }    
+        }         
         
     }
     onClick(){
-        var solicitacoesEl = document.querySelectorAll(".solicitacao");
-
-        var tabela = this.solicitacoesTableEl;
-        var linhas = solicitacoesEl.length;
         var btn = document.querySelectorAll('.btn');
+        console.log(btn.length)
         btn.forEach((item, index) => {
             item.addEventListener('click', () => {
-                var campo = solicitacoesEl[index]            
-                var solicitacaoValues = getValues(campo, btn);
-
+                var campo = (item.parentNode).parentNode
+                var linhas = btn.length/2
+                var solicitacaoValues = getValues(campo, btn[index]);
                 //SALVAR NO BANCO DE DADOS COM O NOVO VALOR
+                var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');
+                solicitacoes.map(solicitacao =>{
+                    if(solicitacao._cargo == solicitacaoValues._cargo){
+                        Object.assign(solicitacao, solicitacaoValues);
+                    }
+                })
+
+                localStorage.setItem("solicitacoes", JSON.stringify(solicitacoes));
 
 
                 (item.parentNode).parentNode.classList.add("fadeOut");
                                 
                 setTimeout(function(){
-                    (item.parentNode).parentNode.remove();//parentNode é o pai do alvo
+                    (item.parentNode).parentNode.remove();
+                    //parentNode é o pai do alvo                    
                 }, 500)
-                linhas -= 1;
+                linhas -= 1;                               
                 if(linhas === 0){
                     this.containerEl.innerHTML = `<h3>Não há solicitações para avaliação</h3>`
                 }
-                
+                                
             })
-
-
-
-        })        
-
+        })
     }
 }
 
@@ -101,7 +103,8 @@ function getValues(campo, btn) {
         _idUsuario: '',
         _status: '',        
     }
-    var dados = campo.childNodes;    
+    console.log(campo)
+    var dados = campo.childNodes;
 
     for(var i = 0; i < dados.length; i++){
         switch(dados[i].className){
