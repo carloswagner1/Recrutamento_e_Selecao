@@ -36,6 +36,6 @@ public class Inscricao {
     @JoinColumn(name = "id_status")
     private Status status;
 
-    @Column(name = "pontuacao_test")
+    @Column(name = "pontuacao_teste")
     private Double pontuacaoTeste;
 }
