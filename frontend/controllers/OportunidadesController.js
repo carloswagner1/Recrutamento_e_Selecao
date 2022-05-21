@@ -8,9 +8,7 @@ class OportunidadesController {
         this.formFiltroEl = document.getElementById(formFiltroId);
         this.oportunidadesContainerEl = document.getElementById(oportunidadesContainerId);
 
-        this.onLoad();
-        this.onApply();
-        this.onSelect();       
+        this.onLoad();      
     }
 
     onLoad() {
@@ -45,7 +43,7 @@ class OportunidadesController {
                                 <p class="localVaga">${processo.local}</p>
                                 <p class="descricao" style="display: none;">${processo.descricao}</p>  
                                 <p class="departamento" style="display: none;">${processo.departamento}</p> 
-                                <a class='btn' " >Candidatar</a>
+                                <a class='btn' name="candidatar" >Candidatar</a>
                             </div>
                         </div>
                     `;
@@ -54,32 +52,36 @@ class OportunidadesController {
                     
                 });
             }
+
+            // calling this after the result of promise
+            this.onSelect(); 
+            this.onApply();
         });
     }
 
     onApply() {
+        
         var content = document.querySelectorAll('.content');
-        var search = document.getElementById('form-filtro');        
         var btn = document.querySelectorAll('.btn');
+
         btn.forEach((item, index) => {
             item.addEventListener('click', () => {
-                var campo = content[index]            
+                var campo = content[index];            
                 var vaga = getValues(campo);
-                localStorage.setItem('vagaSelecionada', JSON.stringify(vaga));
+                localStorage.setItem('vaga', JSON.stringify(vaga));
                 window.location.href = '../view/candidatar2.html';            
             })        
         })
     }
 
-    onSelect(){     
+    onSelect() {     
 
         var container = this.oportunidadesContainerEl;         
         var search = document.getElementById('filtrar');
         let tipoVaga = document.getElementById('filtroTipoVaga');
         let localVaga = document.getElementById('filtroLocalVaga');
         let deptoVaga = document.getElementById('filtroDeptoVaga')
-
-        
+      
         // setting the url
         const url = "/processos/candidatos/" + localStorage.getItem('id_candidato');
 
@@ -93,8 +95,6 @@ class OportunidadesController {
             responsePromise.then(response => {
 
                 if (response.status == 200) {
-
-                    
 
                     // salvando o body da resposta
                     let processosPorArea = response.body;
@@ -121,9 +121,11 @@ class OportunidadesController {
 
                     container.innerHTML = '';
 
-                    if (processosFiltrados.length === 0){
+                    if (processosFiltrados.length === 0) {
                         container.innerHTML = `<h2 class="mensagem-filtro">Não há processos seletivos para o filtro selecionado</h2>`
-                    } else { 
+                    }
+                    else { 
+
                         processosFiltrados.forEach((processo, index) => {
 
                             let content = `
@@ -136,7 +138,7 @@ class OportunidadesController {
                                         <p class="localVaga">${processo.local}</p>
                                         <p class="descricao" style="display: none;">${processo.descricao}</p>  
                                         <p class="departamento" style="display: none;">${processo.departamento}</p> 
-                                        <a class='btn' " >Candidatar</a>
+                                        <a class='btn' name="candidatar" >Candidatar</a>
                                     </div>
                                 </div>
                             `;
@@ -157,13 +159,16 @@ class OportunidadesController {
         })
     }
 }
+
 function filtrarVaga(valor, filtro) {
       
     if (valor == filtro) {
       return true;
     }
 }
+
 function getValues(content) {
+
     let vagaValues = {
         id: '',
         vaga: '',
@@ -172,30 +177,39 @@ function getValues(content) {
         descricao: '',
         departamento: ''
     }
+
     var dados = content.childNodes;    
 
-    for(var i = 0; i < dados.length; i++){
-        switch(dados[i].className){
+    for (var i = 0; i < dados.length; i++) {
+
+        switch (dados[i].className) {
+
             case 'id':
                 vagaValues.id = dados[i].innerHTML;
                 break;
+
             case 'vaga':
                 vagaValues.vaga = dados[i].innerHTML;
                 break;
+
             case 'tipoVaga':
                 vagaValues.tipoVaga = dados[i].innerHTML;
                 break;
+
             case 'localVaga':
                 vagaValues.localVaga = dados[i].innerHTML;
                 break;
+
             case 'descricao':
                 vagaValues.descricao = dados[i].innerHTML;
                 break;
+
             case 'departamento':
                 vagaValues.departamento = dados[i].innerHTML;
                 break;      
         }
-    }    
+    } 
+
     return vagaValues;
 } 
 let oportunidadesController = new OportunidadesController("form-filtro", "oportunidadesContainer");
