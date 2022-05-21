@@ -14,10 +14,7 @@
     --azul-claro: #133463;
     --cinza: #323232;
 }
-body{
-    background-image: url('/images/recrutamento-selecao-tech.jpg');
-    background-size: cover;
-}    
+  
 
 .btn{
     margin-top: 1.5%;
