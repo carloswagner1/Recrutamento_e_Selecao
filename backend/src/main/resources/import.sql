@@ -65,3 +65,6 @@ INSERT INTO tb_usuario_candidato VALUES (2, 'carlos@mail.com', '+rKLXWvIsjFOndd9
 INSERT INTO tb_usuario_candidato VALUES (3, 'jessica@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', '1');
 INSERT INTO tb_usuario_candidato VALUES (4, 'kelly@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', '1');
 INSERT INTO tb_usuario_candidato VALUES (5, 'lucas@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', '1');
+
+-- EXPERIENCIA_PROFISSIONAL
+INSERT INTO tb_experiencia_profissional VALUES (1, 'Analista', '2021-01-01', '2022-05-31', 'GFT', 1);

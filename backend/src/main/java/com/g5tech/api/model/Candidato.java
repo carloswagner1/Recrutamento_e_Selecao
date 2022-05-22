@@ -1,6 +1,5 @@
 package com.g5tech.api.model;
 
-import com.g5tech.api.model.indicator.AreaVaga;
 import lombok.Getter;
 import lombok.Setter;
 

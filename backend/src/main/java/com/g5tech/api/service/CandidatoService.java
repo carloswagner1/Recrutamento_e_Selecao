@@ -21,7 +21,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+
+import static java.util.Objects.nonNull;
 
 @Log4j2
 @RequiredArgsConstructor
@@ -33,8 +36,8 @@ public class CandidatoService {
     private final UsuarioService usuarioService;
     private final StrongTextEncryptor strongTextEncryptor;
     private final InscricaoService inscricaoService;
-    private final FormacaoAcademicaRepository formacaoAcademicaRepository;
-    private final ExperienciaProfissionalRepository experienciaProfissionalRepository;
+    private final ExperienciaProfissionalService experienciaProfissionalService;
+    private final FormacaoAcademicaService formacaoAcademicaService;
 
     public Long save(UsuarioCandidatoDTO dto) throws JsonProcessingException {
 
@@ -116,20 +119,9 @@ public class CandidatoService {
         Candidato candidato = this.getById(id);
 
         inscricaoService.deleteAllByCandidato(candidato);
-        this.deleAllFormacoesByCandidato(candidato);
-        this.deleAllExperienciasByCandidato(candidato);
+        formacaoAcademicaService.deleAllFormacoesByCandidato(candidato);
+        experienciaProfissionalService.deleAllExperienciasByCandidato(candidato);
         candidatoRepository.deleteById(id);
-    }
-
-
-    private void deleAllFormacoesByCandidato(Candidato candidato) {
-        List<FormacaoAcademica> formacaoAcademicaList = formacaoAcademicaRepository.findAllByCandidato(candidato);
-        formacaoAcademicaRepository.deleteAll(formacaoAcademicaList);
-    }
-
-    private void deleAllExperienciasByCandidato(Candidato candidato) {
-        List<ExperienciaProfissional> experienciaProfissionalList = experienciaProfissionalRepository.findAllByCandidato(candidato);
-        experienciaProfissionalRepository.deleteAll(experienciaProfissionalList);
     }
 
     public List<InscricaoResponseDTO> getIncricoesByCandidatoId(Long id) {
@@ -149,12 +141,26 @@ public class CandidatoService {
 
         Candidato candidato = this.getById(id);
 
-        List<FormacaoAcademica> formacaoAcademicaoList = formacaoAcademicaRepository.findAllByCandidato(candidato);
-        List<FormacaoAcademicaDTO> formacaoAcademicaoDTOList =  FormacaoAcademicaBuilder.buildDTOList(formacaoAcademicaoList);
+        List<FormacaoAcademica> formacaoAcademicaoList = formacaoAcademicaService.getAllByCandidato(candidato);
+        List<FormacaoAcademicaDTO> formacaoAcademicaoDTOList = FormacaoAcademicaBuilder.buildDTOList(formacaoAcademicaoList);
 
-        List<ExperienciaProfissional> experienciaProfissionalList = experienciaProfissionalRepository.findAllByCandidato(candidato);
-        List<ExperienciaProfissionalDTO> experienciaProfissionalDTOList =  ExperienciaProfissionalBuilder.buildDTOList(experienciaProfissionalList);
+        List<ExperienciaProfissional> experienciaProfissionalList = experienciaProfissionalService.getAllByCandidato(candidato);
+        List<ExperienciaProfissionalDTO> experienciaProfissionalDTOList = ExperienciaProfissionalBuilder.buildDTOList(experienciaProfissionalList);
 
         return CandidatoBuilder.buildDTOCompleto(candidato, formacaoAcademicaoDTOList, experienciaProfissionalDTOList);
     }
+
+    public void updateCurriculo(CurriculoRequestDTO dto) {
+
+        Candidato candidato = this.getById(dto.getIdCandidato());
+
+        if (!dto.getExperiencias().isEmpty()) {
+            experienciaProfissionalService.saveOrUpdateList(candidato, dto.getExperiencias());
+        }
+
+        if (!dto.getFormacoes().isEmpty()) {
+            formacaoAcademicaService.saveOrUpdateList(candidato, dto.getFormacoes());
+        }
+    }
+
 }

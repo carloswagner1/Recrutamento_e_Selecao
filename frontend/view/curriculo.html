@@ -85,11 +85,11 @@
                 </header>
                 <form id="form" class="modal-form">
                     <label for="nomeEmpresa">Nome da Empresa</label>
-                    <input type="text" id="nomeEmpresa" data-index="new" class="modal-field"
+                    <input type="text" id="empresa" data-index="new" class="modal-field"
                         placeholder="Nome da Empresa">
                     <label for="cargo">Cargo</label>
 
-                    <select name="cargo" id="nomeCargo">
+                    <select name="cargo" id="cargo">
                         <option selected disabled value="">Selecione</option>
                         <option value="Administrador">Administrador
                         <option value="Advogado">Advogado</option>
@@ -188,8 +188,8 @@
                         <span class="modal-close" id="modalClose">&#10006;</span>
                     </header>
                     <form id="form" class="modal-form">
-                        <label for="nomeEmpresa">Nome da Empresa</label>
-                        <input type="text" id="nomeEmpresa" data-index="new" class="modal-field" placeholder="Nome da Empresa">
+                        <label for="empresa">Nome da Empresa</label>
+                        <input type="text" id="empresa" data-index="new" class="modal-field" placeholder="Nome da Empresa">
                         <label for="cargo">Cargo</label>
                         <input type="text" id="cargo" class="modal-field" placeholder="Cargo">
                         <label for="dataAdmissao">Data de Admissão</label>
@@ -247,7 +247,7 @@
                 </header>
                 <form id="form2" class="modal-form">
                     <label for="tipoFormacao">Tipo de Formação</label>
-                    <select name="formacao" id="tipoformacao" data-index="new">
+                    <select name="formacao" id="tipoFormacao" data-index="new">
                         <option selected disabled value="">Selecione</option>
                         <option value="Ensino Fundamental">Ensino Fundamental</option>
                         <option value="Ensino Médio">Ensino Médio</option>
@@ -330,7 +330,7 @@
                     <label for="instituicao">Instituição</label>
                     <input type="text" id="instituicao" class="modal-field" placeholder="Nome da Insituição">
                     <label for="dataAdimissao">Data de Início</label>
-                    <input type="month" id="dataInicio" class="modal-field">
+                    <input type="month" id="dataIngresso" class="modal-field">
                     <label for="dataConclusao">Data de Conclusão</label>
                     <input type="month" id="dataConclusao" class="modal-field">
 
@@ -341,14 +341,14 @@
                 </footer>
             </div>
         </div>
-        <div class="candidatar-button">
-            <button><a href="#">Salvar</a></button>
+        <div class="candidatar-button" id="salvarTudo">
+            <button><a href="../view/candidatar2.html">Salvar</a></button>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../controllers/CurriculoController.js"></script>
-    <!--script src="formacao.js" defer></script-->
-    <!--script src="experiencia.js" defer></script-->
+    <script src="../controllers/CurriculoController.js" type="module"></script>
+    <script src="../model/ExperienciaProfissional.js"></script>
+    <script src="../model/formacaoAcademica.js"></script>
 </body>
 
 </html>
