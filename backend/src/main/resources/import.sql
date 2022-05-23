@@ -30,12 +30,6 @@ INSERT INTO tb_cargo VALUES(4, 'Analista de RH', 'https://link', 'Tecnologo', 2)
 INSERT INTO tb_solicitacao_vaga VALUES(1, 'Necessário', 'Sorocaba', 2, 'Nenhum', 'Efetivo', 1);
 INSERT INTO tb_solicitacao_vaga VALUES(2, 'Necessário', 'Santos', 2, 'Nenhum', 'Estágio', 3);
 
--- STATUS
-INSERT INTO tb_status VALUES (1, 'Iniciado');
-INSERT INTO tb_status VALUES (1, 'Teste');
-INSERT INTO tb_status VALUES (1, 'Entrevista');
-INSERT INTO tb_status VALUES (1, 'Concluido');
-
 -- PROCESSO SELETIVO
 INSERT INTO tb_processo_seletivo VALUES(1, 'TI', '2022-09-09', '2022-08-09', 'Nova vaga', 1, 1, 1, 1);
 INSERT INTO tb_processo_seletivo VALUES(2, 'TI', '2022-09-09', '2022-08-09', 'Vaga massa', 3, 2, 2, 1);
@@ -68,7 +62,7 @@ INSERT INTO tb_usuario_candidato VALUES (5, 'lucas@mail.com', '+rKLXWvIsjFOndd9j
 
 
 -- USUARIO_FUNCIONARIO
-INSERT INTO tb_usuario_funcionario VALUES (1, '97373313035', 'funcionario@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', );
+INSERT INTO tb_usuario_funcionario VALUES (1, '97373313035', 'funcionario@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', 'funcionario', 1);
 
 -- EXPERIENCIA_PROFISSIONAL
 INSERT INTO tb_experiencia_profissional VALUES (1, 'Analista', '2021-01-01', '2022-05-31', 'GFT', 1);

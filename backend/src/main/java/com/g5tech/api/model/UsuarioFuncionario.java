@@ -31,7 +31,7 @@ public class UsuarioFuncionario {
     private String hashSenha;
 
     @Column(name = "perfil")
-    private Perfil perfil;
+    private String perfil;
 
     @OneToOne
     @JoinColumn(name = "id_departamento")
