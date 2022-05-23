@@ -134,4 +134,7 @@ public class UsuarioService {
         return candidatoOptional.get();
     }
 
+    public void save(UsuarioCandidato usuarioCandidato) {
+        usuarioCandidatoRepository.save(usuarioCandidato);
+    }
 }

@@ -3,6 +3,7 @@ package com.g5tech.api.builder;
 import com.g5tech.api.dto.*;
 import com.g5tech.api.model.ExperienciaProfissional;
 import com.g5tech.api.model.FormacaoAcademica;
+import com.g5tech.api.model.UsuarioCandidato;
 import com.g5tech.api.model.indicator.AreaVaga;
 import com.g5tech.api.model.Candidato;
 
@@ -66,6 +67,28 @@ public class CandidatoBuilder {
         dto.setEmail(candidato.getEmail());
         dto.setExperiencias(experienciaProfissionaDTOlList);
         dto.setFormacoes(formacaoAcademicaDTOList);
+
+        return dto;
+    }
+
+    public static UsuarioCandidatoDTO buildUsuarioCandidatoDTO(Candidato candidato, String senha) {
+
+        UsuarioCandidatoDTO dto = new UsuarioCandidatoDTO();
+
+        dto.setNome(candidato.getNome());
+        dto.setCpf(candidato.getCpf());
+        dto.setCelular(candidato.getCelular());
+        dto.setCep(candidato.getCep());
+        dto.setRua(candidato.getRua());
+        dto.setBairro(candidato.getBairro());
+        dto.setCidade(candidato.getCidade());
+        dto.setEstado(candidato.getEstado());
+        dto.setPais(candidato.getPais());
+        dto.setArea((candidato.getArea()));
+        dto.setGenero(candidato.getGenero());
+        dto.setDataNascimento(candidato.getDataNascimento());
+        dto.setEmail(candidato.getEmail());
+        dto.setSenha(senha);
 
         return dto;
     }

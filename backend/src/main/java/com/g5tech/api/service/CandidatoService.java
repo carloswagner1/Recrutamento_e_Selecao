@@ -2,10 +2,7 @@ package com.g5tech.api.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.g5tech.api.builder.CandidatoBuilder;
-import com.g5tech.api.builder.ExperienciaProfissionalBuilder;
-import com.g5tech.api.builder.FormacaoAcademicaBuilder;
-import com.g5tech.api.builder.InscricaoBuilder;
+import com.g5tech.api.builder.*;
 import com.g5tech.api.dto.*;
 import com.g5tech.api.exception.CandidatoCpfNotUniqueException;
 import com.g5tech.api.exception.CandidatoEmailNotUniqueException;
@@ -17,6 +14,7 @@ import com.g5tech.api.repository.FormacaoAcademicaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.jasypt.util.text.StrongTextEncryptor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -88,11 +86,13 @@ public class CandidatoService {
         return candidatoRepository.save(candidato);
     }
 
-    public CandidatoDTO getOne(Long id) {
+    public UsuarioCandidatoDTO getOne(Long id) {
 
         Candidato candidato = this.getById(id);
+        UsuarioCandidato usuarioCandidato = usuarioService.getUsuarioCandidatoByEmail(candidato.getEmail());
+        String senha = strongTextEncryptor.decrypt(usuarioCandidato.getHashSenha());
 
-        return CandidatoBuilder.buildDTO(candidato);
+        return CandidatoBuilder.buildUsuarioCandidatoDTO(candidato, senha);
     }
 
     public Candidato getById(Long id) {
@@ -108,10 +108,26 @@ public class CandidatoService {
 
     public UsuarioCandidatoDTO update(Long id, UsuarioCandidatoDTO dto) {
 
-        Candidato candidato = this.getById(id);
-        UsuarioCandidato usuarioCandidato = usuarioService.getUsuarioCandidatoByEmail(dto.getEmail());
+        Candidato candidatoSalvo = this.getById(id);
 
-        return new UsuarioCandidatoDTO();
+        if (!candidatoSalvo.getEmail().equals(dto.getEmail())) {
+            this.checkByEmail(dto.getEmail());
+        }
+
+        if (!candidatoSalvo.getCpf().equals(dto.getCpf())) {
+            this.checkByCpf(dto.getCpf());
+        }
+
+        Candidato candidato = CandidatoBuilder.build(dto);
+        BeanUtils.copyProperties(candidato, candidatoSalvo, "id");
+        Candidato candidatoUpdated = candidatoRepository.save(candidatoSalvo);
+
+        UsuarioCandidato usuarioCandidatoSalvo = usuarioService.getUsuarioCandidatoByEmail(dto.getEmail());
+        UsuarioCandidato usuarioCandidato = UsuarioBuilder.buildUsuarioCandidato(dto.getEmail(), strongTextEncryptor.encrypt(dto.getSenha()), candidatoUpdated);
+        BeanUtils.copyProperties(usuarioCandidato, usuarioCandidatoSalvo, "id");
+        usuarioService.save(usuarioCandidatoSalvo);
+
+        return dto;
     }
 
     public void delete(Long id) {

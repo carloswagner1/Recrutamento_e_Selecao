@@ -2,11 +2,13 @@ package com.g5tech.api.model.indicator;
 
 public enum AreaVaga {
 
-    TI          (1L, "ti"),
-    COMERCIAL   (2L, "comercial"),
-    JURIDICO    (3L, "juridico"),
-    FINANCEIRO  (4L, "financeiro"),
-    TODAS       (5L, "todas")
+    TODAS           (1L, "Todas"),
+    TI              (2L, "TI"),
+    ADMINISTRATIVO  (3L, "Administrativo"),
+    FINANCEIRO      (4L, "Financeiro"),
+    HUMANO          (5L, "Humano"),
+    JURIDICO        (6L, "Jurídico"),
+    PRODUCAO        (7L, "Produção")
     ;
 
     private Long value;

@@ -34,7 +34,7 @@ public class CandidatoController {
 
     @Operation(summary = "Busca um candidato pelo seu id")
     @GetMapping("/{id}")
-    public ResponseEntity<CandidatoDTO> getOne(@PathVariable Long id) {
+    public ResponseEntity<UsuarioCandidatoDTO> getOne(@PathVariable Long id) {
         return new ResponseEntity<>(candidatoService.getOne(id), HttpStatus.OK);
     }
 
@@ -51,10 +51,11 @@ public class CandidatoController {
     }
 
     @Operation(summary = "Modifica um candidato pelo seu id")
-    @PutMapping("/{id}")
+    @PostMapping("/{id}/update")
     public ResponseEntity<UsuarioCandidatoDTO> update(
             @PathVariable Long id,
             @Valid @RequestBody UsuarioCandidatoDTO dto) {
+
         return new ResponseEntity<>(candidatoService.update(id, dto), HttpStatus.OK);
     }
 
