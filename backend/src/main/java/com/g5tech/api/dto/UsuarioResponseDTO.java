@@ -1,6 +1,5 @@
 package com.g5tech.api.dto;
 
-import com.g5tech.api.model.indicator.Perfil;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class UsuarioResponseDTO {
     private Long id;
-    private Long perfil;
+    private String perfil;
 }

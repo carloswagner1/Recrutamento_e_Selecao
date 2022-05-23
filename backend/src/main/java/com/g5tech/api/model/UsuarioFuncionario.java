@@ -21,6 +21,9 @@ public class UsuarioFuncionario {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "cpf")
+    private String cpf;
+
     @Column(name = "email")
     private String email;
 
