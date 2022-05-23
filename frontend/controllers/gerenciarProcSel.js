@@ -1,3 +1,194 @@
+class GerenciarProcessoController{
+    constructor(containerID, solicitacoesTableId){
+        this.containerEl = document.getElementById(containerID);
+        this.solicitacoesTableEl = document.getElementById(solicitacoesTableId);
+        this.onLoad();
+        this.onClick();        
+    }
+    onLoad(){        
+        var tabelaSolicitacoes = this.solicitacoesTableEl;        
+        var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');//pega todas solicitacoes
+        // filtrando para pegar somente as solicitações com statis "em análise"
+        var solicitacoesAprovadas = solicitacoes.filter(solicitacao => solicitacao._status === "Aprovada");
+        
+        
+        if (solicitacoesAprovadas.length === 0){
+            document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há solicitações aprovadas no momento</h2>`
+        }else{
+            solicitacoesAprovadas.forEach((solicitacao, index) => {                
+                var solicitacaoTr = montaTr(solicitacao, index);
+                tabelaSolicitacoes.appendChild(solicitacaoTr);
+            })            
+        }       
+    }
+    onClick(){
+        var btn = document.querySelectorAll('.button.blue.mobile.cadastrarrocesso');
+        btn.forEach((item, index) =>{
+            item.addEventListener('click', () =>{
+                var campo = item.parentNode
+                var linhas = btn.length                
+                var processo = getProcessoValues(campo, btn[index]);
+                fillFields(processo);
+                openModal();
+                var btnSalvar = document.getElementById('salvar');
+                btnSalvar.addEventListener('click', () =>{
+                    var solicitacaoValues = getValues(campo, btn[index]);
+                    var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');
+                    solicitacoes.map(solicitacao =>{
+                        if(solicitacao._cargo == solicitacaoValues._cargo){
+                            Object.assign(solicitacao, solicitacaoValues);
+                        }
+                    })
+
+                    localStorage.setItem("solicitacoes", JSON.stringify(solicitacoes));
+
+                    //Excluir linha da tabela
+                    (item.parentNode).parentNode.classList.add("fadeOut");
+                                    
+                    setTimeout(function(){
+                        (item.parentNode).parentNode.remove();
+                        //parentNode é o pai do alvo                    
+                    }, 500)
+                    linhas -= 1;                               
+                    if(linhas === 0){
+                        document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há solicitações aprovadas no momento</h2>`
+                    }
+                })
+                        
+            });
+        })
+    }
+
+}
+let gerenciarProcessoController = new GerenciarProcessoController("main-container","tabela-solicitacoes")
+
+function montaTr(solicitacao, index){
+    var solicitacaoTr = document.createElement("tr");
+    solicitacaoTr.classList.add('solicitacao');        
+    solicitacaoTr.appendChild(montaTd(solicitacao._departamento, "departamento"));
+    solicitacaoTr.appendChild(montaTd(solicitacao._cargo, "cargo"));
+    solicitacaoTr.appendChild(montaTd(solicitacao._tipoVaga, "tipoVaga"));
+    solicitacaoTr.appendChild(montaTd(solicitacao._localVaga, "localVaga"));
+    solicitacaoTr.appendChild(montaTd(solicitacao._qtdVagas, "qtdVagas"));
+    solicitacaoTr.appendChild(montaTd(solicitacao._requisitos, "requisitos"));
+    solicitacaoTr.appendChild(montaTd(solicitacao._motivo, "motivo"));
+    solicitacaoTr.appendChild(montaTdBtn(index));
+
+    return solicitacaoTr
+}
+
+function montaTd(dado, classe){
+    var td = document.createElement("td");
+    td.textContent = dado;
+    td.classList.add(classe);   
+
+    return td;
+}
+function montaTdBtn(index){
+    var td = document.createElement("td");
+    td.innerHTML = `
+        Cadastrar Processo Seletivo
+    `;
+    td.classList.add("button");
+    td.classList.add("blue");
+    td.classList.add("mobile");
+    td.classList.add("cadastrarrocesso");
+    td.setAttribute("type", "button")    
+    return td;
+}
+function getProcessoValues(campo, btn) {
+    let processoValues = {
+        nomeDepartamento: '',
+        nomeCargo: '',
+        area:'',
+        tipoVaga: '',
+        localVaga: '',
+        qtdvagas: '',
+        requisitos: '',
+        teste: '',
+        dataInicio: '', 
+        dataFinal:'',
+        status: '',
+        index: '',                
+    }
+    var dados = campo.childNodes;
+
+    for(var i = 0; i < dados.length; i++){
+        switch(dados[i].className){
+            case 'departamento':
+                processoValues.nomeDepartamento = dados[i].innerHTML;
+                break;
+            case 'cargo':
+                processoValues.nomeCargo = dados[i].innerHTML;
+                break;
+            case 'tipoVaga':
+                processoValues.tipoVaga = dados[i].innerHTML;
+                break;
+            case 'localVaga':
+                processoValues.localVaga = dados[i].innerHTML;
+                break;
+            case 'qtdVagas':
+                processoValues.qtdvagas = dados[i].innerHTML;
+                break;     
+            case 'requisitos':
+                processoValues.requisitos = dados[i].innerHTML;
+                break;
+            case 'motivo':
+                processoValues.motivo = dados[i].innerHTML;
+                break;
+        }        
+    }   
+    processoValues.status = "Processo iniciado";
+    processoValues.index = 'new'        
+    return processoValues;
+} 
+function getValues(campo, btn) {
+    let userLogado = JSON.parse(localStorage.getItem('userLogado') || '[]');
+    let solicitacaoValues = {
+        _departamento: '',
+        _cargo: '',
+        _tipoVaga: '',
+        _localVaga: '',
+        _qtdVagas: '',
+        _requisitos: '',
+        _motivo: '',
+        _idUsuario: '',
+        _status: '',        
+    }
+    console.log(campo)
+    var dados = campo.childNodes;
+
+    for(var i = 0; i < dados.length; i++){
+        switch(dados[i].className){
+            case 'departamento':
+                solicitacaoValues._departamento = dados[i].innerHTML;
+                break;
+            case 'cargo':
+                solicitacaoValues._cargo = dados[i].innerHTML;
+                break;
+            case 'tipoVaga':
+                solicitacaoValues._tipoVaga = dados[i].innerHTML;
+                break;
+            case 'localVaga':
+                solicitacaoValues._localVaga = dados[i].innerHTML;
+                break;
+            case 'qtdVagas':
+                solicitacaoValues._qtdVagas = dados[i].innerHTML;
+                break;     
+            case 'requisitos':
+                solicitacaoValues._requisitos = dados[i].innerHTML;
+                break;
+            case 'motivo':
+                solicitacaoValues._motivo = dados[i].innerHTML;
+                break;
+        }        
+    }
+    solicitacaoValues._status = 'Processo iniciado'
+    solicitacaoValues._idUsuario = userLogado.id;
+       
+    return solicitacaoValues;
+} 
+
 'use strict'
 
 const openModal = () => document.getElementById('modal')
@@ -123,11 +314,14 @@ const fillFields = (processo) => {
     document.getElementById('nomeDepartamento').dataset.index = processo.index
 }
 
+
 const editProcesso = (index) => {
     const processo = readProcesso()[index]
     processo.index = index
-    fillFields(processo)
-    openModal()
+    fillFields(processo);
+    openModal();
+    document.getElementById('salvar')
+    .addEventListener('click', saveProcesso)       
 }
 
 const editDelete = (event) => {
@@ -151,17 +345,26 @@ const editDelete = (event) => {
 updateTable()
 
 // Eventos
-document.getElementById('cadastrarProcesso')
-    .addEventListener('click', openModal)
+/*var btn = document.querySelectorAll('.button.blue.mobile.cadastrarrocesso');
+btn.forEach((item, index) =>{
+    item.addEventListener('click', () =>{        
+        var campo = item.parentNode;
+        var linhas = btn.length/2;
+        var processo = getProcessoValues(campo, btn[index]);
+        fillFields(processo);
+        openModal();
+    }) 
+})*/ 
 
-document.getElementById('modalClose')
-    .addEventListener('click', closeModal)
+/*document.getElementById('cadastrarProcesso')
+    .addEventListener('click', openModal)*/
 
-document.getElementById('salvar')
-    .addEventListener('click', saveProcesso)
+document.getElementById('modalClose').addEventListener('click', closeModal)
 
-document.querySelector('#tableProcesso>tbody')
-    .addEventListener('click', editDelete)
+document.getElementById('salvar').addEventListener('click', saveProcesso)
 
-document.getElementById('cancelar')
-    .addEventListener('click', closeModal)
+document.querySelector('#tableProcesso>tbody').addEventListener('click', editDelete)
+
+document.getElementById('cancelar').addEventListener('click', closeModal);
+
+

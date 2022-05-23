@@ -40,7 +40,7 @@ class AvaliarSolicitacaoController{
 
                 localStorage.setItem("solicitacoes", JSON.stringify(solicitacoes));
 
-
+                //Excluir linha da tabela
                 (item.parentNode).parentNode.classList.add("fadeOut");
                                 
                 setTimeout(function(){
