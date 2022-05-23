@@ -54,45 +54,154 @@ class AcompanharProgresso {
 
                 const containerRow = document.getElementById("row");
 
-                const contentRow = `
-                <div class="col-sm-1 col-md-6 side-content">
-                    <div class="bs-vertical">
-                    <ul>
-                        <li class="complete">
-                        <div class="texto">
-                            <h1>Candidatar à Vaga</h1>
+                let contentRow;
+
+                switch(status) {
+
+                    case 1:
+                        contentRow = `
+                        <div class="col-sm-1 col-md-6 side-content">
+                            <div class="bs-vertical">
+                            <ul>
+                                <li class="complete">
+                                <div class="texto">
+                                    <h1>Candidatar à Vaga</h1>
+                                </div>
+                                <a href="#"><i class="ico fa fa-check ico-green"></i> </a>
+                                </li>
+                                <li class="locked">
+                                <div class="texto">
+                                    <h1>Teste</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
+                                </li>
+                                <li class="locked">
+                                <div class="texto">
+                                    <h1>Entrevista</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
+                                </li>
+                                <li class="locked">
+                                <div class="texto">
+                                    <h1>Resultado</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
+                                </li> 
+                            </ul>
+                            </div>
                         </div>
-                        <a href="#"><i class="ico fa fa-check ico-green"></i> </a>
-                        </li>
-                        <li class="current">
-                        <div class="texto">
-                            <h1>Validação da Inscrição</h1>
-                            <span>Estamos analisando sua inscrição. Por favor, aguarde.</span>
+                        `;
+                        break;
+
+                    case 2:
+                        contentRow = `
+                        <div class="col-sm-1 col-md-6 side-content">
+                            <div class="bs-vertical">
+                            <ul>
+                                <li class="complete">
+                                <div class="texto">
+                                    <h1>Candidatar à Vaga</h1>
+                                </div>
+                                <a href="#"><i class="ico fa fa-check ico-green"></i> </a>
+                                </li>
+                                <li class="complete">
+                                <div class="texto">
+                                    <h1>Teste</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-green"></i> </a>
+                                </li>
+                                <li class="locked">
+                                <div class="texto">
+                                    <h1>Entrevista</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
+                                </li>
+                                <li class="locked">
+                                <div class="texto">
+                                    <h1>Resultado</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
+                                </li> 
+                            </ul>
+                            </div>
                         </div>
-                        <a href="#"></a>
-                        </li>
-                        <li class="locked">
-                        <div class="texto">
-                            <h1>Teste</h1>
-                        </div> 
-                        <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
-                        </li>
-                        <li class="locked">
-                        <div class="texto">
-                            <h1>Entrevista</h1>
-                        </div> 
-                        <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
-                        </li>
-                        <li class="locked">
-                        <div class="texto">
-                            <h1>Resultado</h1>
-                        </div> 
-                        <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
-                        </li> 
-                    </ul>
-                    </div>
-                </div>
-                `;
+                        `;
+                        break;
+
+                    case 3:
+                        contentRow = `
+                        <div class="col-sm-1 col-md-6 side-content">
+                            <div class="bs-vertical">
+                            <ul>
+                                <li class="complete">
+                                <div class="texto">
+                                    <h1>Candidatar à Vaga</h1>
+                                </div>
+                                <a href="#"><i class="ico fa fa-check ico-green"></i> </a>
+                                </li>
+                                <li class="complete">
+                                <div class="texto">
+                                    <h1>Teste</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-green"></i> </a>
+                                </li>
+                                <li class="locked">
+                                <div class="texto">
+                                    <h1>Entrevista</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-green"></i> </a>
+                                </li>
+                                <li class="locked">
+                                <div class="texto">
+                                    <h1>Resultado</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
+                                </li> 
+                            </ul>
+                            </div>
+                        </div>
+                        `;
+                        break;
+
+                    case 3:
+                        contentRow = `
+                        <div class="col-sm-1 col-md-6 side-content">
+                            <div class="bs-vertical">
+                            <ul>
+                                <li class="complete">
+                                <div class="texto">
+                                    <h1>Candidatar à Vaga</h1>
+                                </div>
+                                <a href="#"><i class="ico fa fa-check ico-green"></i> </a>
+                                </li>
+                                <li class="complete">
+                                <div class="texto">
+                                    <h1>Teste</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-green"></i> </a>
+                                </li>
+                                <li class="locked">
+                                <div class="texto">
+                                    <h1>Entrevista</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-green"></i> </a>
+                                </li>
+                                <li class="locked">
+                                <div class="texto">
+                                    <h1>Resultado</h1>
+                                </div> 
+                                <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
+                                </li> 
+                            </ul>
+                            </div>
+                        </div>
+                        `;
+                        break;
+
+                    default:
+                        break;
+
+                }
             
                 // Append newyly created card element to the container
                 containerRow.innerHTML += contentRow;

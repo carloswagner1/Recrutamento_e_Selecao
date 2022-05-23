@@ -42,7 +42,7 @@ public class ProcessoSeletivoService {
         return ProcessoSeletivoBuilder.buildDTOCompleto(processoSeletivo);
     }
 
-    private ProcessoSeletivo getById(Long id) {
+    public ProcessoSeletivo getById(Long id) {
 
         Optional<ProcessoSeletivo> processoSeletivoOptional = processoSeletivoRepository.findById(id);
 

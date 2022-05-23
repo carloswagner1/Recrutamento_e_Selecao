@@ -1,5 +1,6 @@
 package com.g5tech.api.controller;
 
+import com.g5tech.api.dto.InscricaoRequestDTO;
 import com.g5tech.api.service.InscricaoService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,12 @@ public class InscricaoController {
     @GetMapping("/{id}/status")
     public ResponseEntity<Long> getOne(@PathVariable Long id) {
         return new ResponseEntity<>(inscricaoService.getStatusById(id), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Salva uma nova inscrição para um Candidato e Processo Seletivo")
+    @PostMapping
+    public ResponseEntity<Long> create(@RequestBody InscricaoRequestDTO dto) {
+        return new ResponseEntity<>(inscricaoService.saveInscricao(dto), HttpStatus.OK);
     }
 
     @Operation(summary = "Deleta uma inscrição pelo seu id")
