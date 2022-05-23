@@ -13,7 +13,8 @@ const validadores = {
     senhaNova:input => validarCampoSenhaNova(input),
     confirmaSenha:input => validarCampoConfirmSenha(input),    
     cpf:input => validarCampoCPF(input),
-    celular:input => validarCampoCelular(input),        
+    celular:input => validarCampoCelular(input),
+            
 }
 function validarCampoEmail(input){
     const email = input.value;

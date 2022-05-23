@@ -1,0 +1,133 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+    border: none;
+}
+
+:root{
+    --branco: #fff;
+    --amarelo: #e0c00a;
+    --azul-escuro: #001533;
+    --azul-claro: #133463;
+    --cinza: #323232; 
+    --fundo: #081c6b;
+    --amarelo-nav: #eab937;
+    --cinza-claro: #797979;
+    --cor-aviso: #df2525; 
+}
+.container{
+    width:70%;
+    padding: 15px 30px;
+    min-height: 500px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 1px 0px  6px 0px rgba(0, 0, 0, 0.637);
+}
+
+.box-title{
+    background-color: var(--azul-claro);
+    border: 2px solid var(--azul-escuro);
+    border-radius: 5px;
+    width: 80%;
+    margin-left: 10%;    
+    color: var(--branco);
+}
+
+
+.filtrar i{
+    margin-left: 5px;
+    font-size: 1.5rem;
+    color: var(--amarelo);
+}
+   
+   
+#form-filtro label {
+
+    font-size: 1.2rem;
+    color: rgb(99, 96, 96);
+    margin: 10px;
+ 
+
+}
+
+#form-filtro select {
+    border: 1px solid #32323254;
+    padding: 10px;
+    font-size: 1rem;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 10px;
+
+}
+.titulo h1{
+    margin-top: 15%;
+    padding: 0px 10px;
+    color:rgb(99, 96, 96);
+
+}
+.titulo p{
+  color:rgb(99, 96, 96);
+  padding: 0px 10px;
+  font-size: 1.6rem;
+  margin-top: 10px;
+}
+.btn.btn-primary{
+    background-color: var(--azul-claro);
+}
+
+.box-title{
+    box-shadow: 0px 1px 5px #001533;
+    border-radius: 4px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.content{
+    box-shadow: 0px 1px 5px #001533;
+    border-radius: 4px;
+    margin-bottom: 40px;
+    min-height: 500px;
+    margin:15px 0px;
+    padding: 5%;;
+}
+
+.dados{
+    color: var(--branco);
+    background-color: var(--cinza-claro);
+    border: solid var(--azul-escuro);
+    width: 75%;
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 1%;
+    text-align: center;
+}
+.box-body{
+    text-align: center;
+}
+.collapse p{
+    color:var(--amarelo);
+    margin-top:8px;
+}
+.nomes{
+    cursor: pointer;
+    border: var(--azul-escuro);
+    width: 75%;
+    border-radius: 20px;
+    border: solid var(--azul-escuro);
+    color: var(--branco);
+    background-color: var(--azul-claro);
+    margin: auto;
+    margin-top: 2%;
+}
+.nomes:hover{
+    color: var(--azul-escuro);
+    background-color: var(--amarelo);
+
+}
+
+@media (max-width: 510px) {
+    .titulo h1{
+        margin-top: 25%;
+    }
+}
