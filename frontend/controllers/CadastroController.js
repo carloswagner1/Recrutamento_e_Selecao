@@ -1,6 +1,6 @@
 import { sendRequest } from "../utils/ApiUtils.js";
 
-class CadastroController{
+class CadastroController {
     constructor(formCadastro1, formCadastro2){
         this.formEl1 = document.getElementById(formCadastro1);
         this.formEl2 = document.getElementById(formCadastro2);
@@ -10,7 +10,7 @@ class CadastroController{
         this.onSubmit();
     }
     
-    onSubmit(){
+    onSubmit() {
         this.formEl2.addEventListener("submit", (event) => {
 
             event.preventDefault();         
@@ -37,7 +37,7 @@ class CadastroController{
         })
     }
 
-    onNext(){
+    onNext() {
         this.formEl1.addEventListener("submit", e=> {
             e.preventDefault();            
             this.showCadastro2();
@@ -45,7 +45,7 @@ class CadastroController{
     }
  
 
-    getValues(){
+    getValues() {
         let isValid = true;
         [...this.formEl1.elements].forEach(function(field, index){
             if (["nome", "email", "password"].indexOf(field.name) > -1 && !field.value) {
@@ -69,7 +69,7 @@ class CadastroController{
         return candidato;
     }
 
-    insert(data){
+    insert(data) {
         if(sessionStorage.getItem("candidatos")) {
             candidatos = JSON.parse(sessionStorage.getItem("candidatos"));
         }        
@@ -78,7 +78,7 @@ class CadastroController{
         sessionStorage.setItem("candidatos", JSON.stringify(candidatos));
     }
 
-    showCadastro2(){
+    showCadastro2() {
         document.querySelector("#formCad1").style.display = "none";
         document.querySelector("#formCad2").style.display = "block";
         document.getElementById('cpf').focus();

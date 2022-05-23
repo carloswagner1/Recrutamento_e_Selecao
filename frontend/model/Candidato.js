@@ -1,6 +1,6 @@
 class Candidato {
 
-    constructor(nome, email, senha, cpf, celular, cep, rua, bairro, cidade, estado, pais, area) {
+    constructor(nome, email, senha, cpf, celular, cep, rua, bairro, cidade, estado, pais, area, dataNascimento, genero) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -13,6 +13,8 @@ class Candidato {
         this.estado = estado;
         this.pais = pais;
         this.area = area;
+        this.dataNascimento = dataNascimento;
+        this.genero = genero;
     }
 
 }
