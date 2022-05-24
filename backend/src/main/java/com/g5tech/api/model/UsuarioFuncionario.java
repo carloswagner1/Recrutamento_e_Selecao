@@ -21,6 +21,9 @@ public class UsuarioFuncionario {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "cpf")
+    private String cpf;
+
     @Column(name = "email")
     private String email;
 
@@ -28,7 +31,7 @@ public class UsuarioFuncionario {
     private String hashSenha;
 
     @Column(name = "perfil")
-    private Perfil perfil;
+    private String perfil;
 
     @OneToOne
     @JoinColumn(name = "id_departamento")

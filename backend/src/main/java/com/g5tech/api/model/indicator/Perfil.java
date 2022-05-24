@@ -2,18 +2,18 @@ package com.g5tech.api.model.indicator;
 
 public enum Perfil {
 
-    FUNCIONARIO(1L),
-    GERENTE_DEPTO(2L),
-    GERENTE_RH(3L),
+    FUNCIONARIO("funcionario"),
+    GERENTE_DEPTO("gerente_departamento"),
+    GERENTE_RH("gerente_rh"),
     ;
 
-    private Long value;
+    private String value;
 
-    Perfil(Long value) {
+    Perfil(String value) {
         this.value = value;
     }
 
-    public Long getValue() {
+    public String getValue() {
         return value;
     }
 }

@@ -55,11 +55,10 @@
                     <input type="text" name="nome" id="nome" placeholder="Insira seu nome aqui" data-tipo="nome" required>
                 </div>
 
-
                 <div class="input-box">
                     <label id="labeldataNasc" for="dataNasc">Data de Nascimento</label>
 
-                    <input id="dataNasc" type="date" name="dataNasc"  required>
+                    <input id="dataNascimento" type="date" name="dataNascimento"  required>
                 </div>
                 <div class="input-box">
                     <label id="labelEmail" for="email">E-mail</label>
@@ -90,10 +89,10 @@
                     <label id="labelgenero" for="genero">Gênero </label>
                     <select name="genero" id="genero">
                         <option selected disabled value="">Selecione</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="outro">Outro</option>
-                        <option value="prefiro não dizer">Prefiro não dizer</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Outro">Outro</option>
+                        <option value="Prefiro não dizer">Prefiro não dizer</option>
                  </select>
                 </div>
                 <div class="input-box">
@@ -102,7 +101,7 @@
                 </div>
                 <div class="input-box">
                     <label id="labelLogradouro" for="logradouro">Logradouro</label>
-                    <input type="text" name="logradouro" id="logradouro">
+                    <input type="text" name="rua" id="rua">
                 </div>
                 <div class="input-box">
                     <label id="labelBairro" for="bairro">Bairro</label>
@@ -131,29 +130,27 @@
                 <h2>Alterar Senha</h2>
                 <div class="input-box">
                         <label id="labelSenha" for="password"> Senha Atual</label>
-                        <input id="password" type="password" name="password" data-tipo="senhaAtual" placeholder="Digite sua senha atual" >
+                        <input id="senha" type="senha" name="senha" data-tipo="senhaAtual" placeholder="Digite sua senha atual" >
                     </div>
                     <div class="input-box">
                         <label id="labelSenhaNova" for="newPassword">Senha Nova</label>
                         <input id="newPassword" type="password" name="newPassword" placeholder="Digite sua senha nova" data-tipo="senhaNova">
                     </div>
             </div>
-            <div class="salvar-button">
+            <div class="salvar-button" id="salvarTudo">
                 <button><a href="#">Salvar</a> </button>
             </div>
-            <div class="excluir-button">
+            <div class="excluir-button" id="excluir">
                 <button><a href="#">Excluir conta</a></button>
             </div>
         </form>
     </div>
 </div>
 
-<script src="../model/gerenciarPerfil.js"></script>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script src="../model/Candidato.js"></script>
 <script src="../app.js" type="module"></script> 
 <script src="../utils/Utils.js"></script>
-<script src="../controllers/GerenciarPerfilController.js"></script>    
+<script src="../controllers/GerenciarPerfilController.js" type="module"></script>    
 </body>
 </html>

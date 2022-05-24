@@ -20,7 +20,7 @@ public class UsuarioCandidatoDTO {
     private String pais;
     private String area;
     private String genero;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date dataNascimento;
     private String email;
     private String senha;

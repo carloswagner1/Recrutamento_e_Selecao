@@ -47,6 +47,8 @@ export async function sendRequest(method, url, body) {
             })
         }
 
+        console.log(body);
+
         const data = response.json().then(body => ({
             body: body,
             status: response.status

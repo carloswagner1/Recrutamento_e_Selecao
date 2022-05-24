@@ -1,102 +1,153 @@
-class GerenciarPerfilController{
-    constructor(formPerfil){
+import { sendRequest } from "../utils/ApiUtils.js";
+
+
+class GerenciarPerfilController {
+
+    constructor(formPerfil) {
         this.formEl = document.getElementById(formPerfil);
         Utils.buscaCep();        
         this.onLoad();
         this.onSubmit();               
     }
-    onLoad(){     
-        let listaCandidatos = this.getCandidatosStorage();
-        let candidato = this.selectCandidato(listaCandidatos);
-        this.loadValues(candidato);               
+
+    onLoad() {  
+        
+        // setting the url
+        const url = "/candidatos/" + localStorage.getItem('id_candidato');
+
+        // enviando a request
+        const responsePromise = sendRequest('GET', url, "");
+
+        responsePromise.then(response => {
+
+            // log para debuggar
+            console.log(response);
+
+            if (response.status == 200) {
+                localStorage.setItem('candidato', JSON.stringify(response.body));
+            }
+        }) 
+        
+        this.loadValues(localStorage.getItem('candidato')); 
     }
-    onSubmit(){
-        this.formEl.addEventListener("submit", event => {
-            event.preventDefault();
+
+    onSubmit() {
+
+        console.log(this.formEl);
+
+        document.getElementById('salvarTudo')
+            .addEventListener('click', salvarTudo);
+
+        function salvarTudo (e) {
+
+            let element = e.currentTarget.parentNode;
+
+            console.log(element);
+            
+            let values = getValues(element);
                     
-            let values = this.getValues(this.formEl)            
-            ;//pega os valores da tabela
+            //pega os valores da tabela
             let candidatoAtualizado = JSON.stringify(values);
+            console.log('candidatoAtualizado');
+            console.log(candidatoAtualizado);
+        
+            //salvar no banco de dados
+        
+            // setting the url
+            const url = "/candidatos/" + localStorage.getItem('id_candidato') + "/update";
+            
+            // enviando a request
+            const responsePromise = sendRequest('POST', url, JSON.parse(candidatoAtualizado));
+        
+            responsePromise.then(response => {
+        
+                // log para debuggar
+                console.log(response);
+        
+                if (response.status == 200) {
+                    element.reset();  
+                    loadValues(response.body, element); 
+                }
+        
+            })
 
-
-           //salvar no banco de dados
-
-            this.formEl.reset();            
-        });
-    }
-    getCandidatosStorage() {
-        let listaCandidatos = [];
-        if (localStorage.getItem("candidatos")) {
-            listaCandidatos = JSON.parse(localStorage.getItem("candidatos"));
+            function loadValues(candidato, element) {  
+        
+                console.log("candidato");
+                console.log(candidato);
+                              
+                [...element.elements].forEach(function (field, index) {
+                    
+                    if (candidato[field.name] == undefined) {
+                        return '';
+                    }
+                    else if (candidato[field.name] === 'dataNascimento') {
+                        field.value = new Date(candidato[field.name]).getDate('yyy-MM-dd')
+                    }
+                    else {
+                        field.value = candidato[field.name];
+                    }
+                });       
+            }
         }
-        return listaCandidatos;
+
+        function getValues(element) {
+            /*let candidato = {};*/
+            let isValid = true;
+    
+            [...element.elements].forEach(function (field, index) {
+    
+                if (["nome", "email", "senha", "cpf", "celular", "cep", "rua", "bairro","cidade", "estado", "pais", 'area', 'genero', 'dataNascimento' ].indexOf(field.name) > -1 && !field.value) {
+                    field.parentElement.classList.add('has-error');
+                    isValid = false;                
+                }
+                else if (field.name == 'newPassword' && field.value !=='') {                
+                    senha.value = newPassword.value;
+                }              
+    
+            });         
+    
+            if (!isValid) {
+                return false;
+            }
+
+            console.log()
+            
+            let candidato = new Candidato(nome.value, email.value, senha.value, cpf.value, celular.value, cep.value, rua.value, bairro.value, cidade.value, estado.value, pais.value, area.value, dataNascimento.value, genero.value);
+    
+            return candidato;
+    
+        }
     }
-    selectCandidato(listaCandidatos){
-        let candidato = listaCandidatos.filter((item) => {
-            return item._email =='carlos@email.com'
-        });
-        candidato = candidato.map(obj => {
-            return {
-            nome: obj._nome,
-            email: obj._email, 
-            password: obj._password, 
-            cpf: obj._cpf, 
-            celular: obj._celular, 
-            cep: obj._cep, 
-            logradouro: obj._logradouro, 
-            bairro: obj._bairro, 
-            cidade: obj._cidade, 
-            estado: obj._estado, 
-            pais: obj._pais, 
-            area: obj._area, 
-            genero: obj._genero,
-            dataNasc: obj._dataNasc,
-            };
-        })
-        return candidato;
-    }
-    save(){
+
+    save() {
         let candidatos = this.getCandidatosStorage();
         candidatos.push(this);
         localStorage.setItem("candidatos", JSON.stringify(candidatos));
     }
-    loadValues(candidato){        
-        for (let value of candidato){                        
-            [...this.formEl.elements].forEach(function(field, index)
-            {
-                if(value[field.name] == undefined){
-                    return '';
-                }else{
-                    field.value = value[field.name];
-                }
-            });      
-        }
+
+    loadValues(candidato) {  
         
-    }
-    getValues(formEl){
-        /*let candidato = {};*/
-        let isValid = true;
-
-        [...formEl.elements].forEach(function (field, index) {
-
-            if (["nome", "email", "password", "cpf", "celular", "cep", "logradouro", "bairro","cidade", "estado", "pais", 'area', 'genero', 'dataNasc' ].indexOf(field.name) > -1 && !field.value) {
-                field.parentElement.classList.add('has-error');
-                isValid = false;                
-            }else if(field.name == 'newPassword' && field.value !==''){                
-                password.value = newPassword.value;
-            }              
-
-        });         
-
-        if (!isValid) {
-            return false;
-        }
-        
-        let candidato = new Candidato(nome.value, email.value, password.value, cpf.value, celular.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value, genero.value, dataNasc.value);
-
-        return candidato;
-
+        console.log("candidato");
+        candidato = JSON.parse(candidato)
+        console.log(candidato);
+                      
+        [...this.formEl.elements].forEach(function (field, index) {
+            
+            if (candidato[field.name] == undefined) {
+                return '';
+            }
+            else if (candidato[field.name] === 'dataNascimento') {
+                field.value = Date(candidato[field.name]).getDate('yyy-MM-dd')
+            }
+            else {
+                field.value = candidato[field.name];
+            }
+        });       
     }
 }
+
+document.getElementById('excluir')
+    .addEventListener('click', excluir);
 
 let gerenciarPerfilController = new GerenciarPerfilController( "formPerfil"); 

@@ -1,7 +1,5 @@
 package com.g5tech.api.model;
 
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,9 +26,6 @@ public class ExperienciaProfissional {
 
     @Column(name = "cargo")
     private String cargo;
-
-    @Column(name = "descricao_tarefas")
-    private String descricaoTarefas;
 
     @Column(name = "data_admissao")
     private Date dataAdmissao;

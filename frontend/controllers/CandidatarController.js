@@ -9,8 +9,10 @@ class CandidatarController {
     }
 
     onLoad() {
+
         const container = this.containerDescEl;
         let vagaSelecionada = this.getVagaSelecionadaStorage();
+        
         const content = `
             <div class="descricao">
                 <h1>${vagaSelecionada.vaga}</h1>
@@ -34,7 +36,6 @@ class CandidatarController {
     onSubmit() {
 
         console.log("candidatar");
-
 
         document.getElementsByName("candidatar").forEach(element => {
             element.addEventListener("click", candidatar);

@@ -30,22 +30,16 @@ INSERT INTO tb_cargo VALUES(4, 'Analista de RH', 'https://link', 'Tecnologo', 2)
 INSERT INTO tb_solicitacao_vaga VALUES(1, 'Necessário', 'Sorocaba', 2, 'Nenhum', 'Efetivo', 1);
 INSERT INTO tb_solicitacao_vaga VALUES(2, 'Necessário', 'Santos', 2, 'Nenhum', 'Estágio', 3);
 
--- STATUS
-INSERT INTO tb_status VALUES (1, 'Iniciado');
-INSERT INTO tb_status VALUES (1, 'Teste');
-INSERT INTO tb_status VALUES (1, 'Entrevista');
-INSERT INTO tb_status VALUES (1, 'Concluido');
-
 -- PROCESSO SELETIVO
 INSERT INTO tb_processo_seletivo VALUES(1, 'TI', '2022-09-09', '2022-08-09', 'Nova vaga', 1, 1, 1, 1);
 INSERT INTO tb_processo_seletivo VALUES(2, 'TI', '2022-09-09', '2022-08-09', 'Vaga massa', 3, 2, 2, 1);
 
 -- CANDIDATO
-INSERT INTO tb_candidato VALUES (1, 'ti', 'Jardim', '15981196538', '18021310', 'Sorocaba', '38974521890', '1990-11-12', 'diego@mail.com', 'SP', 'M', 'Diego', 'Brasil', 'Rua Souza');
-INSERT INTO tb_candidato VALUES (2, 'ti', 'Jardim', '15981196530', '18021310', 'Sorocaba', '24611075800', '2001-09-10', 'carlos@mail.com', 'SP', 'M', 'Carlos', 'Brasil', 'Rua Souza');
-INSERT INTO tb_candidato VALUES (3, 'ti', 'Jardim', '15981196531', '18021310', 'Sorocaba', '24611075800', '2001-09-10', 'jessica@mail.com', 'SP', 'F', 'jessica', 'Brasil', 'Rua Souza');
-INSERT INTO tb_candidato VALUES (4, 'ti', 'Jardim', '15981196532', '18021310', 'Sorocaba', '24611075800', '2001-09-10', 'kelly@mail.com', 'SP', 'F', 'kelly', 'Brasil', 'Rua Souza');
-INSERT INTO tb_candidato VALUES (5, 'ti', 'Jardim', '15981196535', '18021310', 'Sorocaba', '24611075800', '2001-09-10', 'lucas@mail.com', 'SP', 'M', 'lucas', 'Brasil', 'Rua Souza');
+INSERT INTO tb_candidato VALUES (1, 'TI', 'Jardim', '15981196538', '18021310', 'Sorocaba', '38974521890', '1990-11-12', 'diego@mail.com', 'SP', 'Masculino', 'Diego', 'Brasil', 'Rua Souza');
+INSERT INTO tb_candidato VALUES (2, 'TI', 'Jardim', '15981196530', '18021310', 'Sorocaba', '24611075800', '2001-09-10', 'carlos@mail.com', 'SP', 'Masculino', 'Carlos', 'Brasil', 'Rua Souza');
+INSERT INTO tb_candidato VALUES (3, 'TI', 'Jardim', '15981196531', '18021310', 'Sorocaba', '70595456030', '2001-09-10', 'jessica@mail.com', 'SP', 'Feminino', 'jessica', 'Brasil', 'Rua Souza');
+INSERT INTO tb_candidato VALUES (4, 'TI', 'Jardim', '15981196532', '18021310', 'Sorocaba', '72717632018', '2001-09-10', 'kelly@mail.com', 'SP', 'Feminino', 'kelly', 'Brasil', 'Rua Souza');
+INSERT INTO tb_candidato VALUES (5, 'TI', 'Jardim', '15981196535', '18021310', 'Sorocaba', '50834633000', '2001-09-10', 'lucas@mail.com', 'SP', 'Masculino', 'lucas', 'Brasil', 'Rua Souza');
 
 -- INSCRICAO
 INSERT INTO tb_inscricao VALUES (1, '2022-09-09', null, 1, 1, 1);
@@ -65,3 +59,10 @@ INSERT INTO tb_usuario_candidato VALUES (2, 'carlos@mail.com', '+rKLXWvIsjFOndd9
 INSERT INTO tb_usuario_candidato VALUES (3, 'jessica@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', '1');
 INSERT INTO tb_usuario_candidato VALUES (4, 'kelly@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', '1');
 INSERT INTO tb_usuario_candidato VALUES (5, 'lucas@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', '1');
+
+
+-- USUARIO_FUNCIONARIO
+INSERT INTO tb_usuario_funcionario VALUES (1, '97373313035', 'funcionario@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', 'funcionario', 1);
+
+-- EXPERIENCIA_PROFISSIONAL
+INSERT INTO tb_experiencia_profissional VALUES (1, 'Analista', '2021-01-01', '2022-05-31', 'GFT', 1);
