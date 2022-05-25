@@ -146,9 +146,6 @@ line-height: 40px;
 font-size: 1rem;
 background-color: var(--fundo);
 }
-
-
-
 .modal-close{
 position: absolute;
 right: 0;
@@ -214,15 +211,13 @@ border-radius: 3px;
 height: 50px;
 text-align: center;
 border: 1px solid rgba(0, 0, 0, 0.178);
-
-
 }
 
 .records th:last-child,
 .records td:last-child{
-padding: 0;
-min-width: 140px;
-text-align: center;
+  padding: 0;
+  min-width: 140px;
+  text-align: center;
 }
 
 .records tr:hover{
@@ -233,15 +228,10 @@ legend{
 }
 
 h2{
-
-text-align: center;
-color: var(--cinza);
-font-size: 1.7rem;
-
-
+  text-align: center;
+  color: var(--cinza);
+  font-size: 1.7rem;
 }
-
-
 
 .input-box input:hover, .input-box-textarea input:hover {
   background-color: #eeeeee75;
@@ -283,6 +273,10 @@ text-transform: uppercase;
 font-weight: bold;
 }
 
+.fadeOut{
+	opacity: 0;
+	transition: 0.5s;
+}
 .tabela th{
   color: var(--amarelo); 
   border: 1px solid #323232;
