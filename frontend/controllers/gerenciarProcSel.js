@@ -1,16 +1,16 @@
 class GerenciarProcessoController{
     constructor(containerID, solicitacoesTableId){
         this.containerEl = document.getElementById(containerID);
-        this.solicitacoesTableEl = document.getElementById(solicitacoesTableId);
-        this.onLoad();
-        this.onClick();        
+        this.solicitacoesTableEl = document.getElementById(solicitacoesTableId);        
+        this.onLoad();                      
     }
+    
     onLoad(){        
         var tabelaSolicitacoes = this.solicitacoesTableEl;        
         var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');//pega todas solicitacoes
         // filtrando para pegar somente as solicitações com statis "em análise"
         var solicitacoesAprovadas = solicitacoes.filter(solicitacao => solicitacao._status === "Aprovada");
-        
+        console.log(solicitacoesAprovadas)        
         
         if (solicitacoesAprovadas.length === 0){
             document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há solicitações aprovadas no momento</h2>`
@@ -20,45 +20,7 @@ class GerenciarProcessoController{
                 tabelaSolicitacoes.appendChild(solicitacaoTr);
             })            
         }       
-    }
-    onClick(){
-        var btn = document.querySelectorAll('.button.blue.mobile.cadastrarrocesso');
-        btn.forEach((item, index) =>{
-            item.addEventListener('click', () =>{
-                var campo = item.parentNode
-                var linhas = btn.length                
-                var processo = getProcessoValues(campo, btn[index]);
-                fillFields(processo);
-                openModal();
-                var btnSalvar = document.getElementById('salvar');
-                btnSalvar.addEventListener('click', () =>{
-                    var solicitacaoValues = getValues(campo, btn[index]);
-                    var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');
-                    solicitacoes.map(solicitacao =>{
-                        if(solicitacao._cargo == solicitacaoValues._cargo){
-                            Object.assign(solicitacao, solicitacaoValues);
-                        }
-                    })
-
-                    localStorage.setItem("solicitacoes", JSON.stringify(solicitacoes));
-
-                    //Excluir linha da tabela
-                    (item.parentNode).parentNode.classList.add("fadeOut");
-                                    
-                    setTimeout(function(){
-                        (item.parentNode).parentNode.remove();
-                        //parentNode é o pai do alvo                    
-                    }, 500)
-                    linhas -= 1;                               
-                    if(linhas === 0){
-                        document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há solicitações aprovadas no momento</h2>`
-                    }
-                })
-                        
-            });
-        })
-    }
-
+    }    
 }
 let gerenciarProcessoController = new GerenciarProcessoController("main-container","tabela-solicitacoes")
 
@@ -92,8 +54,8 @@ function montaTdBtn(index){
     td.classList.add("button");
     td.classList.add("blue");
     td.classList.add("mobile");
-    td.classList.add("cadastrarrocesso");
-    td.setAttribute("type", "button")    
+    td.classList.add("cadastrarprocesso");
+    td.setAttribute("type", "submit")    
     return td;
 }
 function getProcessoValues(campo, btn) {
@@ -138,57 +100,10 @@ function getProcessoValues(campo, btn) {
                 break;
         }        
     }   
-    processoValues.status = "Processo iniciado";
+    processoValues.status = "Iniciado";
     processoValues.index = 'new'        
     return processoValues;
 } 
-function getValues(campo, btn) {
-    let userLogado = JSON.parse(localStorage.getItem('userLogado') || '[]');
-    let solicitacaoValues = {
-        _departamento: '',
-        _cargo: '',
-        _tipoVaga: '',
-        _localVaga: '',
-        _qtdVagas: '',
-        _requisitos: '',
-        _motivo: '',
-        _idUsuario: '',
-        _status: '',        
-    }
-    console.log(campo)
-    var dados = campo.childNodes;
-
-    for(var i = 0; i < dados.length; i++){
-        switch(dados[i].className){
-            case 'departamento':
-                solicitacaoValues._departamento = dados[i].innerHTML;
-                break;
-            case 'cargo':
-                solicitacaoValues._cargo = dados[i].innerHTML;
-                break;
-            case 'tipoVaga':
-                solicitacaoValues._tipoVaga = dados[i].innerHTML;
-                break;
-            case 'localVaga':
-                solicitacaoValues._localVaga = dados[i].innerHTML;
-                break;
-            case 'qtdVagas':
-                solicitacaoValues._qtdVagas = dados[i].innerHTML;
-                break;     
-            case 'requisitos':
-                solicitacaoValues._requisitos = dados[i].innerHTML;
-                break;
-            case 'motivo':
-                solicitacaoValues._motivo = dados[i].innerHTML;
-                break;
-        }        
-    }
-    solicitacaoValues._status = 'Processo iniciado'
-    solicitacaoValues._idUsuario = userLogado.id;
-       
-    return solicitacaoValues;
-} 
-
 'use strict'
 
 const openModal = () => document.getElementById('modal')
@@ -198,7 +113,6 @@ const closeModal = () => {
     clearFields()
     document.getElementById('modal').classList.remove('active')
 }
-
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_processo')) ?? []
 const setLocalStorage = (dbProcesso) => localStorage.setItem("db_processo", JSON.stringify(dbProcesso))
@@ -225,7 +139,7 @@ const createProcesso = (processo) => {
 }
 
 const isValidFields = () => {
-    return document.getElementById('form').reportValidity()
+    return document.getElementById('modal-form').reportValidity()
 }
 
 //Interação com o layout
@@ -256,7 +170,9 @@ const saveProcesso = () => {
         if (index == 'new') {
             createProcesso(processo)
             updateTable()
+            updateSolicitacao()
             closeModal()
+            removeLinha();
         } else {
             updateProcesso(index, processo)
             updateTable()
@@ -264,7 +180,35 @@ const saveProcesso = () => {
         }
     }
 }
+const updateSolicitacao = () => {
+    const solicitacaoAtualizada = {
+        _cargo: document.getElementById('nomeCargo').value,
+        _status: 'Processo Iniciado',        
+    }
+    var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');
+    solicitacoes.map(solicitacao =>{
+        if(solicitacao._cargo == solicitacaoAtualizada._cargo){
+            Object.assign(solicitacao, solicitacaoAtualizada);
+        }
+    })
 
+    localStorage.setItem("solicitacoes", JSON.stringify(solicitacoes));
+}
+const removeLinha = () => {
+    //Excluir linha da tabela
+    var table = document.getElementById('tabela-solicitacoes')
+    var indice = localStorage.getItem('linhaTabela');
+   
+    table.children[indice].classList.add("fadeOut");
+                                    
+    setTimeout(function(){
+        table.children[indice].remove();        
+    }, 500)
+                             
+    if(table.childElementCount === 1){
+        document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há solicitações aprovadas no momento</h2>`
+    }
+}
 const createRow = (processo, index) => {
     const newRow = document.createElement('tr')
     newRow.innerHTML = `
@@ -345,19 +289,22 @@ const editDelete = (event) => {
 updateTable()
 
 // Eventos
-/*var btn = document.querySelectorAll('.button.blue.mobile.cadastrarrocesso');
+var btn = document.querySelectorAll('.button.blue.mobile.cadastrarprocesso');
+
 btn.forEach((item, index) =>{
-    item.addEventListener('click', () =>{        
+    item.addEventListener('click', () =>{                              
         var campo = item.parentNode;
-        var linhas = btn.length/2;
+        let linhaTabela = index;
+        let numLinhas = btn.length;
+        localStorage.setItem('linhaTabela', JSON.stringify(linhaTabela));
+        localStorage.setItem('numLinhas', JSON.stringify(numLinhas));
         var processo = getProcessoValues(campo, btn[index]);
         fillFields(processo);
         openModal();
     }) 
-})*/ 
+}) 
 
-/*document.getElementById('cadastrarProcesso')
-    .addEventListener('click', openModal)*/
+
 
 document.getElementById('modalClose').addEventListener('click', closeModal)
 

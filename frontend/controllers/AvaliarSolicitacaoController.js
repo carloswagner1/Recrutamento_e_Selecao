@@ -24,7 +24,7 @@ class AvaliarSolicitacaoController{
     }
     onClick(){
         var btn = document.querySelectorAll('.btn');
-        console.log(btn.length)
+        var table = document.getElementById('tabela-solicitacoes')
         btn.forEach((item, index) => {
             item.addEventListener('click', () => {
                 var campo = (item.parentNode).parentNode
@@ -47,8 +47,9 @@ class AvaliarSolicitacaoController{
                     (item.parentNode).parentNode.remove();
                     //parentNode é o pai do alvo                    
                 }, 500)
-                linhas -= 1;                               
-                if(linhas === 0){
+                console.log(table.childElementCount)
+                               
+                if(table.childElementCount === 1){
                     this.containerEl.innerHTML = `<h3>Não há solicitações para avaliação</h3>`
                 }
                                 

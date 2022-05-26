@@ -102,7 +102,7 @@
           <h2>Gerenciar Processo</h2>
           <span class="modal-close" id="modalClose">&#10006;</span>
         </header>
-        <form id="form" class="modal-form">
+        <form id="modal-form" class="modal-form">
           <label for="nomeDepartamento">Departamento</label>
           <input type="text" id="nomeDepartamento" data-index="new" class="modal-field"
             placeholder="Nome do Departamento" required>
@@ -152,7 +152,7 @@
             <option value="Distrito Federal">Distrito Federal</option>
           </select>
           <label id="lblNumVaga" for="lblNumVaga">Quantidade de Vagas</label>
-          <input name="qtdvagas" id="qtdvagas" class="modal-field" placeholder="Insira a quantidade de Vagas"
+          <input name="qtdvagas" id="qtdvagas" class="modal-field" placeholder="Insira a quantidade de Vagas" type="number" min="1"
             data-tipo="qtdvaga" required>
           <label for="requisitos">Requisitos Desejados</label>
           <textarea id="requisitos" style="resize: none" class="modal-field" name="requisitos" rows="2" cols="1"
@@ -163,8 +163,8 @@
           <input type="month" id="dataInicio" class="modal-field" required>
           <label for="dataFinal">Data Final</label>
           <input type="month" id="dataFinal" class="modal-field" required>
-          <label for="status">Status</label>
-          <input type="text" id="status" class="modal-field" placeholder="Status do Processo" required>
+          <label for="status" style="display: none">Status</label>
+          <input type="text" id="status" class="modal-field" placeholder="Status do Processo" style="display: none" required>
 
         </form>
         <footer class="modal-footer">

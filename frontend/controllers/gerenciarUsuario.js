@@ -45,8 +45,7 @@ const clearFields = () => {
     document.getElementById('nome').dataset.index = 'new'
 }
 
-const saveUsuario = () => {
-  
+const saveUsuario = () => {  
     if (isValidFields()) {
         const usuario = {
             nome: document.getElementById('nome').value,
