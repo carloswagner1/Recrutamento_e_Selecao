@@ -234,7 +234,6 @@ input[type="submit"]:hover {
     margin-left: 10%;
     margin-right: 10%;
     float: right;
-    color: red;
     font-weight: bolder;
     font-size: 18px;
   }
@@ -337,7 +336,6 @@ input[type="submit"]:hover {
     margin-right: 10%;
     margin-top: 10%;
     float: right;
-    color: red;
     font-weight: bolder;
     font-size: 18px;
   }

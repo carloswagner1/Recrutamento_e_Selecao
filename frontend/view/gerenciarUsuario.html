@@ -22,87 +22,107 @@
         <div class="mobile-nav">
           <label for="menuTrigger" class="nav-ico"><i class="fa fa-bars"></i></label>
           <input type="checkbox" id="menuTrigger">
-         <nav class="nav-menu">
-          <ul>
+          <nav class="nav-menu">
+            <ul>
               <li><a href="#" class="">Solicitação de Vaga</a>
-                  <i class="fa fa-caret-down"></i>
-                 <ul>
-                     <li><a href="../view/solicitarAberturaVaga.html">Solicitar Vaga</a></li>
-                     <li><a href="../view/solicitacoesEnviadas.html">Ver Solicitações</a></li>
-                     <li><a href="../view/avaliarSolicitacao.html">Avaliar Solitações</a></li>
-                 </ul>   
-                </li>
+                <i class="fa fa-caret-down"></i>
+                <ul>
+                  <li><a href="../view/solicitarAberturaVaga.html">Solicitar Vaga</a></li>
+                  <li><a href="../view/solicitacoesEnviadas.html">Ver Solicitações</a></li>
+                  <li><a href="../view/avaliarSolicitacao.html">Avaliar Solitações</a></li>
+                </ul>
+              </li>
               <li><a href="#" class="">Processo Seletivo</a>
                 <i class="fa fa-caret-down"></i>
-               <ul >
-                <li><a href="../view/gerenciarProcessoSeletivo.html" class="active">Gerenciar Processo</a></li>
-                <li><a href="../view/progressoEmpresa.html">Ver Progresso</a></li>
-                <li><a href="../view/listarCandidatos.html">Listar Candidatos</a></li>
-                <li><a href="../view/testes.html">Agendar Teste</a></li>
-                <li><a href="../view/classificarCandidatos.html">Classificar Candidatos</a></li>
-                <li><a href="../view/ranking.html">Ranking Final</a></li>
-               </ul>   
+                <ul>
+                  <li><a href="../view/gerenciarProcessoSeletivo.html" class="active">Gerenciar Processo</a></li>
+                  <li><a href="../view/progressoEmpresa.html">Ver Progresso</a></li>
+                  <li><a href="../view/listarCandidatos.html">Listar Candidatos</a></li>
+                  <li><a href="../view/testes.html">Agendar Teste</a></li>
+                  <li><a href="../view/classificarCandidatos.html">Classificar Candidatos</a></li>
+                  <li><a href="../view/ranking.html">Ranking Final</a></li>
+                </ul>
               </li>
               <li><a href="../view/gerenciarUsuario.html" class="active">Gerenciar Usuários</a></li>
               <li><a href="../view/loginEmpresa.html">Sair</a></li>
-          </ul>
-        </nav>
-       </div>
+            </ul>
+          </nav>
+        </div>
       </div>
-    </header> 
+    </header>
 
     <main class="container">
       <button type="button" class="button blue mobile" id="cadastrarUsuario">Cadastrar Usuário</button>
       <table id="tableUsuario" class="records">
-          <thead>
-              <tr>
-                  <th>Nome</th>
-                  <th>CPF</th>
-                  <th>E-mail</th>
-                  <th>Celular</th>
-                  <th>Tipo de Usuário</th>
-                  <th>Ação</th>
-              </tr>
-          </thead>
-          <tbody>
-
-          </tbody>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>E-mail</th>
+            <th>Celular</th>
+            <th>Tipo de Usuário</th>
+            <th>Departamento</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
       </table>
       <div class="modal" id="modal">
-          <div class="modal-content">
-              <header class="modal-header">
-                  <h2>Novo Usuário</h2>
-                  <span class="modal-close" id="modalClose">&#10006;</span>
-              </header>
-              <form id="form" class="modal-form">
-                  <label for="nome">Nome</label>
-                  <input type="text" id="nome" data-index="new" class="modal-field" placeholder="Nome do Usuário"
-                      required>
-                      <label for="cpf">CPF</label>    
-                  <input type="text" name="cpf" class="modal-field" id="cpf" placeholder="000.000.000-00" data-tipo="cpf" required>
-                  <label for="E-mail">Email</label>
-                  <input type="email" id="email" class="modal-field" placeholder="usuario@email.com" required>
-                  <label for="E-mail">Celular</label>
-                  <input type="text" id="celular" class="modal-field" placeholder="(__)_____-____" required>
-                  <label for="tipo">Tipo de Usuário </label>
-                  <select name="tipo" id="tipo" class="modal-field">
-                      <option value="tipo1">Gestor de Departamento</option>
-                      <option value="tipo2">Funcionário do RH</option>
-                  </select>
-                  
-                      <label for="exampleInputPassword1">Senha</label>
-                      <input required type="password" class="modal-field" id="exampleInputPasswordUpdate" placeholder="Crie uma senha" name="password">
-                   
-              </form>
-              <footer class="modal-footer">
-                  <button id="salvar" class="button green">Salvar</button>
-                  <button id="cancelar" class="button blue">Cancelar</button>
-              </footer>
-          </div>
+        <div class="modal-content">
+          <header class="modal-header">
+            <h2>Novo Usuário</h2>
+            <span class="modal-close" id="modalClose">&#10006;</span>
+          </header>
+          <form id="form" class="modal-form">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" data-index="new" class="modal-field" placeholder="Nome do Usuário" required>
+            <label for="cpf">CPF</label>
+            <input type="text" name="cpf" class="modal-field" id="cpf" placeholder="000.000.000-00" data-tipo="cpf"
+              required>
+            <label for="E-mail">Email</label>
+            <input type="email" id="email" class="modal-field" placeholder="usuario@email.com" required>
+            <label for="E-mail">Celular</label>
+            <input type="text" id="celular" class="modal-field" placeholder="(__)_____-____" required>
+            <label for="tipo">Tipo de Usuário </label>
+            <select name="tipo" id="tipo" class="modal-field">
+              <option selected disabled value="">Selecione</option>
+              <option value="Gestor de Departamento">Gestor de Departamento</option>
+              <option value="Funcionário do RH">Funcionário do RH</option>
+            </select>
+            <label for="Departamento">Departamento</label>
+            <select name="Departamento" id="departamento" class="modal-field">
+              <option selected disabled value="">Selecione</option>
+              <option value="Administrativo">Administrativo</option>
+              <option value="Comercial">Comercial</option>
+              <option value="Compras">Compras</option>
+              <option value="Comunicação">Comunicação</option>
+              <option value="Contábil">Contábil</option>
+              <option value="Financeiro">Financeiro</option>
+              <option value="Jurídico">Jurídico</option>
+              <option value="Logístico">Logístico</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Operacional/Produção">Operacional/Produção</option>
+              <option value="Recursos Humanos">Recursos Humanos</option>
+              <option value="Segurança">Segurança</option>
+              <option value="Tecnologias da Informação">Tecnologias da Informação</option>
+              <option value="Vendas">Vendas</option>
+            </select>
+
+            <label for="exampleInputPassword1">Senha</label>
+            <input required type="password" class="modal-field" id="exampleInputPasswordUpdate"
+              placeholder="Crie uma senha" name="password">
+
+          </form>
+          <footer class="modal-footer">
+            <button id="salvar" class="button green">Salvar</button>
+            <button id="cancelar" class="button blue">Cancelar</button>
+          </footer>
+        </div>
       </div>
-  </main>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="../controllers/gerenciarUsuario.js" defer></script>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../controllers/gerenciarUsuario.js" defer></script>
 </body>
 
 </html>

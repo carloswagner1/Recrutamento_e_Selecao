@@ -23,34 +23,34 @@
       <div class="mobile-nav">
         <label for="menuTrigger" class="nav-ico"><i class="fa fa-bars"></i></label>
         <input type="checkbox" id="menuTrigger">
-       <nav class="nav-menu">
-        <ul>
+        <nav class="nav-menu">
+          <ul>
             <li><a href="#" class="">Solicitação de Vaga</a>
-                <i class="fa fa-caret-down"></i>
-               <ul>
-                   <li><a href="../view/solicitarAberturaVaga.html">Solicitar Vaga</a></li>
-                   <li><a href="../view/solicitacoesEnviadas.html">Ver Solicitações</a></li>
-                   <li><a href="../view/avaliarSolicitacao.html">Avaliar Solitações</a></li>
-               </ul>   
-              </li>
+              <i class="fa fa-caret-down"></i>
+              <ul>
+                <li><a href="../view/solicitarAberturaVaga.html">Solicitar Vaga</a></li>
+                <li><a href="../view/solicitacoesEnviadas.html">Ver Solicitações</a></li>
+                <li><a href="../view/avaliarSolicitacao.html">Avaliar Solitações</a></li>
+              </ul>
+            </li>
             <li><a href="#" class="">Processo Seletivo</a>
               <i class="fa fa-caret-down"></i>
-             <ul >
-              <li><a href="../view/gerenciarProcessoSeletivo.html">Gerenciar Processo</a></li>
-                  <li><a href="../view/progressoEmpresa.html">Ver Progresso</a></li>
-                  <li><a href="../view/listarCandidatos.html">Listar Candidatos</a></li>
-                  <li><a href="../view/testes.html">Agendar Teste</a></li>
-                  <li><a href="../view/classificarCandidatos.html">Classificar Candidatos</a></li>
-                  <li><a href="../view/ranking.html">Ranking Final</a></li>
-             </ul>   
+              <ul>
+                <li><a href="../view/gerenciarProcessoSeletivo.html">Gerenciar Processo</a></li>
+                <li><a href="../view/progressoEmpresa.html">Ver Progresso</a></li>
+                <li><a href="../view/listarCandidatos.html">Listar Candidatos</a></li>
+                <li><a href="../view/testes.html">Agendar Teste</a></li>
+                <li><a href="../view/classificarCandidatos.html">Classificar Candidatos</a></li>
+                <li><a href="../view/ranking.html">Ranking Final</a></li>
+              </ul>
             </li>
             <li><a href="../view/gerenciarUsuario.html" class="">Gerenciar Usuários</a></li>
             <li><a href="../view/loginEmpresa.html">Sair</a></li>
-        </ul>
-      </nav>
-     </div>
+          </ul>
+        </nav>
+      </div>
     </div>
-  </header> 
+  </header>
 
   <div class="container">
     <div class="titulo" alt="titulo">
@@ -58,16 +58,13 @@
       <p>Por aqui você agenda os testes a serem aplicados.</p>
     </div>
     <div id="form-filtro">
-    <label for="procSel"> Filtrar por Processo Seletivo</label>
-    <select name="procSel" id="procSel">
-      <option selected disabled value="">Selecione</option>
-      <option value="Desenvolvedor(a) Java Jr">Desenvolvedor(a) Java Jr</option>
-      <option value="DBA Senior">DBA Senior</option>
-      <option value="FrontEnd Developer Junior">FrontEnd Developer Junior</option>
-     
-    </select>
-    <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
-  </div>
+      <label for="procSel"> Filtrar por Processo Seletivo</label>
+      <select name="procSel" id="procSel">
+        <option selected disabled value="">Selecione</option>
+
+      </select>
+      <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
+    </div>
     <div class="box box-success">
       <div class="box-header with-border">
         <br>
@@ -76,21 +73,22 @@
       <form role="form" id="form-user-create">
         <div class="box-body">
           <div class="form-group">
-            <label for="assunto">Assunto</label>
-            <input type="text" id="assunto" name="assunto" placeholder="Insira o assunto do teste">
             <label id="lblTema" for="lblTema">Tema do Teste</label>
             <input name="tema" id="tema" class="input" placeholder="Insira o tema do teste" data-tipo="tema">
+            <label for="assunto">Assunto</label>
+            <input type="text" id="assunto" name="assunto" placeholder="Insira o assunto do teste">
             <label for="exampleInputLink">Link do Teste</label>
             <input type="text" class="form-control" id="exampleInputLink" placeholder="Insira o Link do Teste"
               name="link">
             <div class="box-footer">
-            <br><button type="submit" class="btn btn-success">Agendar Teste</button>
+              <br><button type="submit" class="btn btn-success" id="btn-agendar">Agendar Teste</button>
             </div>
           </div>
         </div>
-      </form> 
+      </form>
     </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../controllers/AgendarTestes.js"></script>
+</body>
 
 </html>

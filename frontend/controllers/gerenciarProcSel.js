@@ -9,8 +9,7 @@ class GerenciarProcessoController{
         var tabelaSolicitacoes = this.solicitacoesTableEl;        
         var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');//pega todas solicitacoes
         // filtrando para pegar somente as solicitações com statis "em análise"
-        var solicitacoesAprovadas = solicitacoes.filter(solicitacao => solicitacao._status === "Aprovada");
-        console.log(solicitacoesAprovadas)        
+        var solicitacoesAprovadas = solicitacoes.filter(solicitacao => solicitacao._status === "Aprovada");               
         
         if (solicitacoesAprovadas.length === 0){
             document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há solicitações aprovadas no momento</h2>`

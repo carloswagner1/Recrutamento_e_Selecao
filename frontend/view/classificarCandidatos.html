@@ -24,53 +24,50 @@
       <div class="mobile-nav">
         <label for="menuTrigger" class="nav-ico"><i class="fa fa-bars"></i></label>
         <input type="checkbox" id="menuTrigger">
-       <nav class="nav-menu">
-        <ul>
+        <nav class="nav-menu">
+          <ul>
             <li><a href="#" class="">Solicitação de Vaga</a>
-                <i class="fa fa-caret-down"></i>
-               <ul>
-                   <li><a href="../view/solicitarAberturaVaga.html">Solicitar Vaga</a></li>
-                   <li><a href="../view/solicitacoesEnviadas.html">Ver Solicitações</a></li>
-                   <li><a href="../view/avaliarSolicitacao.html">Avaliar Solitações</a></li>
-               </ul>   
-              </li>
+              <i class="fa fa-caret-down"></i>
+              <ul>
+                <li><a href="../view/solicitarAberturaVaga.html">Solicitar Vaga</a></li>
+                <li><a href="../view/solicitacoesEnviadas.html">Ver Solicitações</a></li>
+                <li><a href="../view/avaliarSolicitacao.html">Avaliar Solitações</a></li>
+              </ul>
+            </li>
             <li><a href="#" class="">Processo Seletivo</a>
               <i class="fa fa-caret-down"></i>
-             <ul >
-                 <li><a href="../view/gerenciarProcessoSeletivo.html">Gerenciar Processo</a></li>
-                 <li><a href="../view/progressoEmpresa.html">Ver Progresso</a></li>
-                 <li><a href="../view/listarCandidatos.html">Listar Candidatos</a></li>
-                 <li><a href="../view/testes.html">Agendar Teste</a></li>
-                 <li><a href="../view/classificarCandidatos.html">Classificar Candidatos</a></li>
-                 <li><a href="../view/ranking.html">Ranking Final</a></li>
-             </ul>   
+              <ul>
+                <li><a href="../view/gerenciarProcessoSeletivo.html">Gerenciar Processo</a></li>
+                <li><a href="../view/progressoEmpresa.html">Ver Progresso</a></li>
+                <li><a href="../view/listarCandidatos.html">Listar Candidatos</a></li>
+                <li><a href="../view/testes.html">Agendar Teste</a></li>
+                <li><a href="../view/classificarCandidatos.html">Classificar Candidatos</a></li>
+                <li><a href="../view/ranking.html">Ranking Final</a></li>
+              </ul>
             </li>
             <li><a href="../view/gerenciarUsuario.html" class="">Gerenciar Usuários</a></li>
             <li><a href="../view/loginEmpresa.html">Sair</a></li>
-        </ul>
-      </nav>
-     </div>
+          </ul>
+        </nav>
+      </div>
     </div>
-</header> 
-<div class="container">
-  <div class="titulo" alt="titulo">
-    <h1>Classificar Candidatos</h1>
-    <p>Por aqui você classifica o desempenho que o candidato obteve no teste.</p>
-  </div>
-  <div id="form-filtro">
-  <label for="procSel"> Filtrar por Processo Seletivo</label>
-  <select name="procSel" id="procSel">
-    <option selected disabled value="">Selecione</option>
-    <option value="Desenvolvedor(a) Java Jr">Desenvolvedor(a) Java Jr</option>
-    <option value="DBA Senior">DBA Senior</option>
-    <option value="FrontEnd Developer Junior">FrontEnd Developer Junior</option>
-   
-  </select>
-  <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
-</div>
+  </header>
+  <div class="container">
+    <div class="titulo" alt="titulo">
+      <h1>Classificar Candidatos</h1>
+      <p>Por aqui você classifica o desempenho que o candidato obteve no teste.</p>
+    </div>
+    <div id="form-filtro">
+      <label for="procSel"> Filtrar por Processo Seletivo</label>
+      <select name="procSel" id="procSel">
+        <option selected disabled value="">Selecione</option>
+
+      </select>
+      <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
+    </div>
 
     <div class="box">
-     
+
       <div class="box-header">
         <br>
         <h3 class="box-title">Candidatos do Processo Seletivo</h3>
@@ -163,6 +160,7 @@
       });
     })
   </script>
+  <script src="../controllers/ClassificarCandidatos.js"></script>
 </body>
 
 </html>

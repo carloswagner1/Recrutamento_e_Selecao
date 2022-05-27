@@ -61,20 +61,17 @@
         <div id="form-filtro">
             <label for="procSel"> Filtrar por Processo Seletivo</label>
             <select name="procSel" id="procSel">
-                <option selected disabled value="">Selecione</option>
-                <option value="Desenvolvedor(a) Java Jr">Desenvolvedor(a) Java Jr</option>
-                <option value="DBA Senior">DBA Senior</option>
-                <option value="FrontEnd Developer Junior">FrontEnd Developer Junior</option>
+                <option selected disabled value="">Selecione</option>              
 
             </select>
-            <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
+            <a href="#" class="filtrar" id="filtrar"><i class="fa fa-search"></i></a>
         </div>
 
         <div class="content">
 
             <div class="box-header">
                 <br>
-                <h3 class="box-title">Candidatos do Processo Seletivo</h3>
+                <h3 class="box-title" id="box-title">Candidatos do Processo Seletivo</h3>
             </div>
             <div class="box-body no-padding" id="dados-candidatos">
                 <p data-toggle="collapse" data-target="#dados" class="nomes">OldMan of Havan</p>
@@ -92,8 +89,10 @@
                 </div>
                 <p data-toggle="collapse" data-target="#dados1" class="nomes"> Walter Disney</p>
                 <div id="dados1" class="collapse dados">
-                    E-mail: mickey.mouse@plus.com <br>
-                    CPF: 123.123.123-14 <br>
+                    <span class="email">E-mail: mickey.mouse@plus.com</span>
+                    <br>
+                    <span class="cpf">CPF: 123.123.123-14</span>
+                    <br>
                     Celular: (11) 91234-4444 <br>
                     <p>Formação Acadêmica:</p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam porro qui
                     soluta sequi, cumque id maxime accusantium modi et sed nostrum voluptatem. Ratione voluptas ad
@@ -129,7 +128,10 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
+    <script src="../controllers/ListarCandidatos.js"></script>
+    
 
 </body>
 
