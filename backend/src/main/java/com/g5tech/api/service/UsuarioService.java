@@ -106,7 +106,7 @@ public class UsuarioService {
             throw new SenhaInvalidaException();
         }
 
-        return UsuarioResponseDTOBuilder.build(usuarioFuncionario.getId(), usuarioFuncionario.getPerfil().getValue());
+        return UsuarioResponseDTOBuilder.build(usuarioFuncionario.getId(), usuarioFuncionario.getPerfil());
     }
 
     private UsuarioFuncionario getUsuarioFuncionarioByEmail(String email) {
@@ -134,4 +134,7 @@ public class UsuarioService {
         return candidatoOptional.get();
     }
 
+    public void save(UsuarioCandidato usuarioCandidato) {
+        usuarioCandidatoRepository.save(usuarioCandidato);
+    }
 }

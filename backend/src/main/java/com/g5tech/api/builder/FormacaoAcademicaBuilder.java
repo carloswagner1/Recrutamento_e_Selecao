@@ -1,6 +1,7 @@
 package com.g5tech.api.builder;
 
 import com.g5tech.api.dto.FormacaoAcademicaDTO;
+import com.g5tech.api.model.Candidato;
 import com.g5tech.api.model.FormacaoAcademica;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class FormacaoAcademicaBuilder {
     private static FormacaoAcademicaDTO buildDTO(FormacaoAcademica formacaoAcademica) {
 
         FormacaoAcademicaDTO dto = new FormacaoAcademicaDTO();
+        dto.setId(formacaoAcademica.getId());
         dto.setTipoFormacao(formacaoAcademica.getTipoFormacao());
         dto.setCurso(formacaoAcademica.getCurso());
         dto.setInstituicao(formacaoAcademica.getInstituicao());
@@ -26,4 +28,16 @@ public class FormacaoAcademicaBuilder {
         return dto;
     }
 
+    public static FormacaoAcademica build(Candidato candidato, FormacaoAcademicaDTO dto) {
+
+        FormacaoAcademica formacaoAcademica = new FormacaoAcademica();
+        formacaoAcademica.setCandidato(candidato);
+        formacaoAcademica.setInstituicao(dto.getInstituicao());
+        formacaoAcademica.setCurso(dto.getCurso());
+        formacaoAcademica.setTipoFormacao(dto.getTipoFormacao());
+        formacaoAcademica.setDataIngresso(dto.getDataIngresso());
+        formacaoAcademica.setDataConclusao(dto.getDataConclusao());
+
+        return formacaoAcademica;
+    }
 }

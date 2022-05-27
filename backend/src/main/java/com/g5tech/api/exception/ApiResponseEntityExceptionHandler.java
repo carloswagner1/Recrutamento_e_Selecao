@@ -70,4 +70,20 @@ public class ApiResponseEntityExceptionHandler extends ResponseEntityExceptionHa
         return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
+    @ExceptionHandler({ ExperienciaProfissionalNotFoundException.class })
+    public ResponseEntity<Object> handleExperienciaProfissionalNotFoundException(ExperienciaProfissionalNotFoundException ex, WebRequest request) {
+
+        ErrorDTO error = new ErrorDTO("Experiencia Profissional não encontrado");
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler({ FormacaoAcademicaNotFoundException.class })
+    public ResponseEntity<Object> handleFormacaoAcademicaNotFoundException(FormacaoAcademicaNotFoundException ex, WebRequest request) {
+
+        ErrorDTO error = new ErrorDTO("Formação Acadêmica não encontrado");
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
 }
