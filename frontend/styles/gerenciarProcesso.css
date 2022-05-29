@@ -18,12 +18,12 @@
 
 }  
 .container{
-  width:90%;
-  padding: 15px 30px;
-  min-height: 1000px;
-  background-color: #f9f9f9;
-  border-radius: 5px;
-  box-shadow: 1px 0px  6px 0px rgba(0, 0, 0, 0.637);
+  width: 100%;
+  justify-self: unset;
+  justify-content: center;
+  display: flex;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+  margin:auto;
 }
 
 .form{
@@ -103,11 +103,11 @@ transition: box-shadow .6s ease;
 background-color: #1FB6FF;
 }
 
-button.green{
+.button.green{
 background-color: #13CE66;
 }
 
-button.red{
+.button.red{
 background-color: #FF4949;
 }
 .modal{
@@ -146,6 +146,9 @@ line-height: 40px;
 font-size: 1rem;
 background-color: var(--fundo);
 }
+
+
+
 .modal-close{
 position: absolute;
 right: 0;
@@ -211,13 +214,15 @@ border-radius: 3px;
 height: 50px;
 text-align: center;
 border: 1px solid rgba(0, 0, 0, 0.178);
+
+
 }
 
 .records th:last-child,
 .records td:last-child{
-  padding: 0;
-  min-width: 140px;
-  text-align: center;
+padding: 0;
+min-width: 140px;
+text-align: center;
 }
 
 .records tr:hover{
@@ -228,10 +233,15 @@ legend{
 }
 
 h2{
-  text-align: center;
-  color: var(--cinza);
-  font-size: 1.7rem;
+
+text-align: center;
+color: var(--cinza);
+font-size: 1.7rem;
+
+
 }
+
+
 
 .input-box input:hover, .input-box-textarea input:hover {
   background-color: #eeeeee75;
@@ -272,7 +282,6 @@ color: var(--azul-escuro);
 text-transform: uppercase;
 font-weight: bold;
 }
-
 .fadeOut{
 	opacity: 0;
 	transition: 0.5s;
@@ -306,43 +315,42 @@ form {
 
 
 
-@media screen and (max-width: 880px){
-  .tabela td{
-      display: flex;
-      justify-content: space-between;
-      color: var(--azul-claro);
-      
-  }
+@media screen and (max-width: 1100px){
+  .table td{
+    display: flex;
+    justify-content: space-between;
+    color: var(--azul-claro);
+}
 
-  .tabela tr{
-      display: block;
-     
-  }
-  .tabela button{
-    margin-bottom:40px;
-  }
+.table tr{
+    display: block;
+}
 
-  .tabela td,  tr{
-      font-size: 13px;
-  }
+.table td, .table tr{
+    font-size: 13px;
+}
 
-  .tabela td:first-of-type{
-      font-weight: bold;
-      font-size: 20px;
-      text-align: center;
-      display: block;
-      
-  }
+.nota{
+    width: 10%;
+    background-color: inherit;
+}
 
-  .tabela td:not(.first-of-type):before{
-      content: attr(data-title);
-      display: block;
-      font-weight: bold;
-  }
+.table td:first-of-type{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+}
 
-  .tabela thead{
-      display: none;
-  }
+.table td:not(.first-of-type):before{
+    content: attr(data-title);
+    display: block;
+    font-weight: bold;
+}
+
+.table thead{
+    display: none;
+}
 };
 
 @media (max-width:480px){
@@ -422,6 +430,7 @@ form {
   table{
   margin-top: 3%;
   margin-bottom: 2%;
+  width: 100%;
 
   }
   .modal label{

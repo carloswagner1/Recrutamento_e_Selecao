@@ -104,6 +104,7 @@ label{
     border: 1px solid rgba(0, 0, 0, 0.199);
     margin-left: 35px;
     padding: 25px;
+    width: 50%;
     border-radius: 10px;
 }
 .bs-vertical ul>li {
@@ -158,8 +159,8 @@ label{
 .bs-vertical ul>li.complete>a:before {
     background-color: #5cb85c;
     opacity: 1;
-    height: calc(100% - 10px);
-    bottom: -40px;
+    height: calc(100% - 15px);
+    bottom: -55px;
 }
 .bs-vertical ul>li.complete>a:after {
     display:none;
@@ -209,14 +210,27 @@ label{
     .titulo h1{
         margin-top: 20%;
     }
-    button{
-        margin-right:18%;
+    .texto{
+
+        width: 80%;
+    }
+
+    .button{
+        margin-left: 80%;
     }
 }
- @media (min-width: 800px)
-{
-        .col-sm-5 {
-    flex: 0 0 auto;
-    width: 90%;
-        }
+@media (max-width: 657px){
+    .button{
+        margin-left: 75%;
+    }
 }
+
+@media (max-width: 300px){
+    .button{
+        margin-left: 55%;
+    }
+    .texto{
+        width:80%;
+    }
+}
+

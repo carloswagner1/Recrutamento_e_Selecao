@@ -40,10 +40,7 @@ td{
 .main-container{
     background-color: var(--branco);
     width:90%;
-    margin-bottom: 10% auto;    
-    margin-top: 8%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 15% auto auto auto;
     padding: 20px 30px;
     border-radius: 10px;
     text-align: center;
@@ -63,4 +60,41 @@ label, input, select{
 
 }
 
+@media only screen and (max-width:1100px) {
+    .table td{
+        display: flex;
+        justify-content: space-between;
+        color: var(--azul-claro);
+    }
+
+    .table tr{
+        display: block;
+    }
+
+    .table td, .table tr{
+        font-size: 13px;
+    }
+
+    .nota{
+        width: 10%;
+        background-color: inherit;
+    }
+
+    .table td:first-of-type{
+        font-weight: bold;
+        font-size: 20px;
+        text-align: center;
+        display: block;
+    }
+
+    .table td:not(.first-of-type):before{
+        content: attr(data-title);
+        display: block;
+        font-weight: bold;
+    }
+
+    .table thead{
+        display: none;
+    }
+}
 
