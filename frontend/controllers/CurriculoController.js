@@ -29,6 +29,9 @@ class CurriculoController {
 
                 localStorage.setItem('db_Experiencia', JSON.stringify(candidato.experiencias));
                 localStorage.setItem('db_formacao', JSON.stringify(candidato.formacoes));
+
+                updateTable();
+                updateTableFormacoes();
             }
         });
     }
@@ -46,8 +49,13 @@ const closeModal = () => {
     document.getElementById('modal').classList.remove('active');
 };
 
-const getLocalStorage = () => JSON.parse(localStorage.getItem('db_Experiencia')) ?? [];
-const setLocalStorage = (dbExperiencia) => localStorage.setItem("db_Experiencia", JSON.stringify(dbExperiencia));
+function getLocalStorage() {
+    return JSON.parse(localStorage.getItem('db_Experiencia'))
+};
+
+function setLocalStorage(dbExperiencia) {
+    localStorage.setItem("db_Experiencia", JSON.stringify(dbExperiencia))
+};
 
 // CRUD - create read update delete
 const deleteExperiencia = (index, id) => {
@@ -75,7 +83,7 @@ const updateExperiencia = (index, experiencia) => {
     setLocalStorage(dbExperiencia)
 }
 
-const readExperiencia = () => getLocalStorage()
+const readExperiencia = () => getLocalStorage();
 
 const createExperiencia = (experiencia) => {
     const dbExperiencia = getLocalStorage()
@@ -122,7 +130,9 @@ const saveExperiencia = () => {
 }
 
 const createRowExperiencias = (experiencia, index) => {
+
     const newRow = document.createElement('tr');
+
     newRow.innerHTML = `
         <td>${experiencia.empresa}</td>
         <td>${experiencia.cargo}</td>
@@ -133,6 +143,7 @@ const createRowExperiencias = (experiencia, index) => {
             <button type="button" class="button red" id="delete-${index}" >Excluir</button>
         </td>
     `;
+
     document.querySelector('#tableExperiencia>tbody').appendChild(newRow);
 }
 
@@ -158,7 +169,7 @@ const editDelete = (event) => {
 }
 
 const editExperiencia = (index) => {
-    console.log("chegou aqui");
+
     console.log("index: " + index);
 
     const experiencia = readExperiencia()[index];
@@ -191,8 +202,6 @@ const clearTable = () => {
     const rows = document.querySelectorAll('#tableExperiencia>tbody tr');
     rows.forEach(row => row.parentNode.removeChild(row));
 }
-
-updateTable()
 
 'use strict'
 
@@ -281,7 +290,9 @@ const saveformacao = () => {
 }
 
 const createRowFormacoes = (formacao, index) => {
+
     const newRow = document.createElement('tr');
+
     newRow.innerHTML = `
         <td>${formacao.tipoFormacao}</td>
         <td>${formacao.curso}</td>
@@ -293,6 +304,7 @@ const createRowFormacoes = (formacao, index) => {
             <button type="button" class="button red" id="delete-${index}" >Excluir</button>
         </td>
     `;
+
     document.querySelector('#tableformacao>tbody').appendChild(newRow);
 }
 
@@ -360,8 +372,6 @@ const salvarTudo = (event) => {
     // enviando a request
     sendRequest("POST", url, curriculo);
 }
-
-updateTableFormacoes();
 
 // Eventos
 
