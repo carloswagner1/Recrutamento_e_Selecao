@@ -86,7 +86,8 @@ class SolicitacaoController {
             }, 1500)
             
             this.formEl1.reset();
-            this.formEl2.reset();      
+            this.formEl2.reset();
+            window.location.href = '../view/solicitacoesEnviadas.html'     
         });
     }
 
