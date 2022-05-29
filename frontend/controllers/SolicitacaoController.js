@@ -1,40 +1,101 @@
-class SolicitacaoController{
-    constructor(formSolicitacao1, formSolicitacao2){
+import { sendRequest } from "../utils/ApiUtils.js";
+
+class SolicitacaoController {
+
+    constructor(formSolicitacao1, formSolicitacao2) {
         this.formEl1 = document.getElementById(formSolicitacao1);
         this.formEl2 = document.getElementById(formSolicitacao2);
 
+        this.onLoad();
         this.onSubmit();
     }
 
-    onSubmit(){
+    onLoad() {
+
+        // setting the url
+        const url = "/usuarios/" + localStorage.getItem('id_usuario') + "/departamento";
+
+        // enviando a request e salvando a promise
+        const responsePromise = sendRequest('GET', url, '');
+
+        responsePromise.then(response => {
+
+            // log para debuggar
+            console.log(response);
+
+            // preenchendo departamento e cargos
+            //let document = this.formEl2;
+
+            document.getElementById('departamento').value = response.body.departamento;
+            document.getElementById('departamento').disabled = true;
+
+            let select = document.getElementById('cargo');
+
+            response.body.cargos.forEach((cargo) => {
+                let option = document.createElement('option');
+                option.value = cargo;
+                option.innerHTML = cargo;
+                select.appendChild(option);
+            })
+        })
+
+    }
+
+    onSubmit() {
+
         this.formEl2.addEventListener("submit", event => {
+            
             event.preventDefault();
-            let values = this.getValues();
+            let solicitacao = this.getValues();
             var mensagem = document.querySelector("#mensagem");            
-            if(!values){
+            
+            if (!solicitacao) {
                 mensagem.innerHTML = "*Todos os campos devem ser preenchidos"
                 mensagem.classList.remove("invisivel");
-            }else{
-                let solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');
-                solicitacoes.push(values);    
-                localStorage.setItem('solicitacoes', JSON.stringify(solicitacoes));
-                mensagem.innerHTML = "Cadastro efetuado com sucesso!"
-                mensagem.classList.remove("invisivel");
-                setTimeout(function(){
-                    mensagem.classList.add("invisivel");
-                }, 1500)
-                this.formEl1.reset();
-                this.formEl2.reset();
-            }            
+                return;
+            }
+
+            // setting the url
+            const url = "/solicitacoes";
+
+            // enviando a request e salvando a promise
+            const responsePromise = sendRequest('POST', url, solicitacao);
+
+            responsePromise.then(response => {
+
+                // log para debuggar
+                console.log(response);
+
+                // salvando o body da resposta
+                let responseBody = response.body;
+
+                if (response.status == 200) {
+
+                    mensagem.innerHTML = "Cadastro efetuado com sucesso!"
+                    mensagem.classList.remove("invisivel");
+
+                }
+                else {
+                    mensagem.innerHTML = "Tivemos um problema ao salvar. Tente novamente em instantes!"
+                    mensagem.classList.remove("invisivel");
+                }
+            })
+            
+            setTimeout(function(){
+                mensagem.classList.add("invisivel");
+            }, 1500)
+            
+            this.formEl1.reset();
+            this.formEl2.reset();      
         });
     }
 
-    getValues(){
-        let userLogado = JSON.parse(localStorage.getItem('userLogado') || '[]');        
+    getValues() {
+
         let isValid = true;
         let motivo = this.formEl1.motivo.value;
-        let status = 'Em Análise'
-        if(motivo == ""){
+        
+        if (motivo == "") {
             isValid = false;
         }
 
@@ -56,11 +117,10 @@ class SolicitacaoController{
             localVaga.options[localVaga.selectedIndex].text,
             qtdVagas.value,
             requisitos.value,
-            motivo,
-            userLogado.id,
-            status,
+            motivo
         );
-        console.log(solicitacao)
+
+        console.log(solicitacao);
 
         return solicitacao;
     }

@@ -1,16 +1,16 @@
 package com.g5tech.api.service;
 
+import com.g5tech.api.builder.DepartamentoCargoDTOBuilder;
 import com.g5tech.api.builder.UsuarioBuilder;
 import com.g5tech.api.builder.UsuarioResponseDTOBuilder;
+import com.g5tech.api.dto.DepartamentoCargoDTO;
 import com.g5tech.api.dto.UsuarioRedefineSenhaDTO;
 import com.g5tech.api.dto.UsuarioRequestDTO;
 import com.g5tech.api.dto.UsuarioResponseDTO;
 import com.g5tech.api.exception.CandidatoNotFoundException;
 import com.g5tech.api.exception.SenhaInvalidaException;
 import com.g5tech.api.exception.UsuarioNotFoundException;
-import com.g5tech.api.model.Candidato;
-import com.g5tech.api.model.UsuarioCandidato;
-import com.g5tech.api.model.UsuarioFuncionario;
+import com.g5tech.api.model.*;
 import com.g5tech.api.model.indicator.TipoUsuario;
 import com.g5tech.api.repository.CandidatoRepository;
 import com.g5tech.api.repository.UsuarioCandidatoRepository;
@@ -22,6 +22,7 @@ import org.jasypt.util.text.StrongTextEncryptor;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -34,6 +35,7 @@ public class UsuarioService {
     private final UsuarioFuncionarioRepository usuarioFuncionarioRepository;
     private final EmailService emailService;
     private final CandidatoRepository candidatoRepository;
+    private final CargoService cargoService;
 
     public UsuarioCandidato saveNewUsuario(String email, String hashSenha, Candidato candidato) {
 
@@ -136,5 +138,27 @@ public class UsuarioService {
 
     public void save(UsuarioCandidato usuarioCandidato) {
         usuarioCandidatoRepository.save(usuarioCandidato);
+    }
+
+    public DepartamentoCargoDTO buscaDepartamento(Long id) {
+
+        UsuarioFuncionario usuario = this.getUsuarioFuncionarioById(id);
+
+        Departamento departamento = usuario.getDepartamento();
+
+        List<Cargo> cargos = cargoService.getByDepartamento(departamento);
+
+        return DepartamentoCargoDTOBuilder.build(departamento, cargos);
+    }
+
+    private UsuarioFuncionario getUsuarioFuncionarioById(Long id) {
+
+        Optional<UsuarioFuncionario> usuarioFuncionarioOptional = usuarioFuncionarioRepository.findById(id);
+
+        if (!usuarioFuncionarioOptional.isPresent()) {
+            throw  new UsuarioNotFoundException();
+        }
+
+        return usuarioFuncionarioOptional.get();
     }
 }

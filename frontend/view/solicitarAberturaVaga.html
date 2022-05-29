@@ -58,10 +58,12 @@
             <textarea id="descricao" style="resize: none" name="motivo" rows="10" cols="56"
                 placeholder="Descreva sobre a vaga que será solicitada"></textarea>
         </form>
+
         <h1>Solicitar Abertura de Vaga</h1>
         <div class="mensagem">
             <p><br>Preencha os campos para abrir uma Solicitação de Abertura de Vaga</p>
         </div><br>
+
         <form id="form-solicitacao2" action="">
             <h1><label for="departamento">Departamento</label></h1>
             <select id="departamento" name="departamento">
@@ -80,87 +82,10 @@
                 <option value="Segurança">Segurança</option>
                 <option value="Tecnologias da Informação">Tecnologias da Informação</option>
                 <option value="Vendas">Vendas</option>
-               
             </select>
             <label for="cargo" class="cargo">Cargo</label>
             <select name="cargo" id="cargo">
-                <option selected disabled value="">Selecione</option>
-                <option value="Administrador">Administrador
-                <option value="Advogado">Advogado</option>
-                <option value="Agente de saúde">Agente de saúde</option>
-                <option value="Analista">Analista</option>
-                <option value="Arqueólogo">Arqueólogo</option>
-                <option value="Arquiteto">Arquiteto</option>
-                <option value="Assistente administrativo">Assistente administrativo</option>
-                <option value="Assistente comercial">Assistente comercial</option>
-                <option value="Assistente de marketing">Assistente de marketing</option>
-                <option value="Assistente de rehumanos">Assistente de rehumanos</option>
-                <option value="Assistente financeiro">Assistente financeiro</option>
-                <option value="Assistente social">Assistente social</option>
-                <option value="Auxiliar administrativo">Auxiliar administrativo</option>
-                <option value="Auxiliar de almoxarifado">Auxiliar de almoxarifado</option>
-                <option value="Auxiliar financeiro">Auxiliar financeiro</option>
-                <option value="Bancário">Bancário</option>
-                <option value="Biólogo">Biólogo</option>
-                <option value="Biomédico">Biomédico</option>
-                <option value="Bioquímico">Bioquímico</option>
-                <option value="Biotecnólogo">Biotecnólogo</option>
-                <option value="Cientista da computação">Cientista da computação</option>
-                <option value="Cientista de dados">Cientista de dados</option>
-                <option value="Consultor financeiro">Consultor financeiro</option>
-                <option value="Contabilista">Contabilista</option>
-                <option value="Contador">Contador</option>
-                <option value="Controller">Controller</option>
-                <option value="DBA (Administrador de Banco de Dados)">DBA (Administrador de Banco de Dados)</option>
-                <option value="Delegado">Delegado</option>
-                <option value="Dentista">Dentista</option>
-                <option value="Desenvolvedor">Desenvolvedor</option>
-                <option value="Designer">Designer</option>
-                <option value="Economista">Economista</option>
-                <option value="Editor de texto">Editor de texto</option>
-                <option value="Enfermeiro">Enfermeiro</option>
-                <option value="Engenheiro">Engenheiro </option>
-                <option value="Especialista em e-commerce">Especialista em e-commerce</option>
-                <option value="Esteticista">Esteticista</option>
-                <option value="Filósofo">Filósofo</option>
-                <option value="Fisioterapeuta">Fisioterapeuta</option>
-                <option value="Fonoaudiólogo">Fonoaudiólogo</option>
-                <option value="Fotógrafo">Fotógrafo</option>
-                <option value="Geógrafo">Geógrafo</option>
-                <option value="Gerente administrativo">Gerente administrativo</option>
-                <option value="Gerente de projetos">Gerente de projetos</option>
-                <option value="Gestor ambiental">Gestor ambiental</option>
-                <option value="Gestor de tecnologia da informação">Gestor de tecnologia da informação</option>
-                <option value="Gestor financeiro">Gestor financeiro</option>
-                <option value="Inspetor de qualidade">Inspetor de qualidade</option>
-                <option value="Jovem aprendiz">Jovem aprendiz</option>
-                <option value="Juiz">Juiz</option>
-                <option value="Mecânico">Mecânico</option>
-                <option value="Médico">Médico</option>
-                <option value="Motorista">Motorista</option>
-                <option value="Nutricionista">Nutricionista</option>
-                <option value="Nutrólogo">Nutrólogo</option>
-                <option value="Operador de caixa">Operador de caixa</option>
-                <option value="Operador de telemarketing">Operador de telemarketing</option>
-                <option value="Pedagogo">Pedagogo</option>
-                <option value="Procurador">Procurador</option>
-                <option value="Professor">Professor</option>
-                <option value="Programador">Programador</option>
-                <option value="Promotor de justiça">Promotor de justiça</option>
-                <option value="Psicólogo">Psicólogo</option>
-                <option value="Psiquiatra">Psiquiatra</option>
-                <option value="Representante comercial">Representante comercial</option>
-                <option value="Roteirista">Roteirista</option>
-                <option value="Técnico de Enfermagem">Técnico de Enfermagem</option>
-                <option value="Técnico em informática">Técnico em informática</option>
-                <option value="Técnico em Segurança do Trabalho">Técnico em Segurança do Trabalho</option>
-                <option value="Terapeuta">Terapeuta</option>
-                <option value="Turismólogo">Turismólogo</option>
-                <option value="UI designer">UI designer</option>
-                <option value="UX designer">UX designer</option>
-                <option value="Web designer">Web designer</option>
-                <option value="Webmaster">Webmaster</option>
-                <option value="Zootecnista">Zootecnista</option>                    
+                <option selected disabled value="">Selecione</option>                 
             </select>
             <label for="tipoVaga" class="tipoVaga">Tipo de Vaga</label>
             <select cargo="select" id="tipoVaga" name="tipoVaga">
@@ -205,15 +130,17 @@
             <input type="number" name="qtdVagas" id="qtdVagas" class="input" placeholder="Insira a quantidade de Vagas" data-tipo="qtdVaga" min="1">
             <h1><label for="requisitos">Requisitos Desejados</label></h1>
             <textarea id="requisitos" style="resize: none" name="requisitos" rows="2" cols="1"
-                placeholder="Insira os requisitos desejados"></textarea>
+                placeholder="Insira os requisitos desejados">
+            </textarea>
             
             <input type="submit" id="teste" value="Enviar Solicitação">
-            <span id="mensagem" class="invisivel">Erro ao buscar pacientes</span>
+            <span id="mensagem" class="invisivel">Erro ao salvar solicitação</span>
         </form>
+
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../model/Solicitacao.js"></script>
-    <script src="../controllers/SolicitacaoController.js"></script>
+    <script src="../controllers/SolicitacaoController.js" type="module"></script>
 </body>
 
 </html>

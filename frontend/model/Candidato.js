@@ -16,5 +16,5 @@ class Candidato {
         this.dataNascimento = dataNascimento;
         this.genero = genero;
     }
-
+    
 }
