@@ -71,20 +71,22 @@ class SolicitacaoController {
                     mensagem.innerHTML = "Cadastro efetuado com sucesso!"
                     mensagem.classList.remove("invisivel");
 
+                    setTimeout(function() {
+                        mensagem.classList.add("invisivel");
+                                            
+                        window.location.href = '../view/solicitacoesEnviadas.html'  
+                    }, 1500)
+
                 }
                 else {
                     mensagem.innerHTML = "Tivemos um problema ao salvar. Tente novamente em instantes!"
                     mensagem.classList.remove("invisivel");
                 }
+
+                this.formEl1.reset();
+                this.formEl2.reset();
             })
-            
-            setTimeout(function(){
-                mensagem.classList.add("invisivel");
-            }, 1500)
-            
-            this.formEl1.reset();
-            this.formEl2.reset();
-            window.location.href = '../view/solicitacoesEnviadas.html'     
+           
         });
     }
 
