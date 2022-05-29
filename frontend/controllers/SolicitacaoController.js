@@ -66,9 +66,6 @@ class SolicitacaoController {
                 // log para debuggar
                 console.log(response);
 
-                // salvando o body da resposta
-                let responseBody = response.body;
-
                 if (response.status == 200) {
 
                     mensagem.innerHTML = "Cadastro efetuado com sucesso!"
