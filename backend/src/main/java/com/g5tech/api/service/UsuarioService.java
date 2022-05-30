@@ -151,7 +151,7 @@ public class UsuarioService {
         return DepartamentoCargoDTOBuilder.build(departamento, cargos);
     }
 
-    private UsuarioFuncionario getUsuarioFuncionarioById(Long id) {
+    public UsuarioFuncionario getUsuarioFuncionarioById(Long id) {
 
         Optional<UsuarioFuncionario> usuarioFuncionarioOptional = usuarioFuncionarioRepository.findById(id);
 

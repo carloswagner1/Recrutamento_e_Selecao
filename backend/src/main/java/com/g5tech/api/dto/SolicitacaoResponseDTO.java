@@ -1,11 +1,13 @@
 package com.g5tech.api.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+@Builder
 @Getter
 @Setter
-public class SolicitacaoRequestDTO {
+public class SolicitacaoResponseDTO {
     private String departamento;
     private String cargo;
     private String tipoVaga;
@@ -13,4 +15,5 @@ public class SolicitacaoRequestDTO {
     private String qtdVagas;
     private String requisitos;
     private String motivo;
+    private String status;
 }

@@ -27,8 +27,8 @@ INSERT INTO tb_cargo VALUES(3, 'Analista de Sistemas', 'https://link', 'Analista
 INSERT INTO tb_cargo VALUES(4, 'Analista de RH', 'https://link', 'Tecnologo', 2);
 
 -- SOLICITACAO VAGA
-INSERT INTO tb_solicitacao_vaga VALUES(1, 'Necessário', 'Sorocaba', 2, 'Nenhum', 'Efetivo', 1);
-INSERT INTO tb_solicitacao_vaga VALUES(2, 'Necessário', 'Santos', 2, 'Nenhum', 'Estágio', 3);
+INSERT INTO tb_solicitacao_vaga VALUES(1, 'Necessário', 'São Paulo', 2, 'Nenhum', 'Em Análise', 'Efetivo', 1);
+INSERT INTO tb_solicitacao_vaga VALUES(2, 'Necessário', 'Pará', 2, 'Nenhum', 'Em Análise', 'Estágio', 3);
 
 -- PROCESSO SELETIVO
 INSERT INTO tb_processo_seletivo VALUES(1, 'TI', '2022-09-09', '2022-08-09', 'Nova vaga', 1, 1, 1, 1);

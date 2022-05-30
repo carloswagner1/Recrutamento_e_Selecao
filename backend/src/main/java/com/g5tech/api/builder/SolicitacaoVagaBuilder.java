@@ -15,7 +15,7 @@ public class SolicitacaoVagaBuilder {
         solicitacaoVaga.setQuantidadeVagas(new Integer(dto.getQtdVagas()));
         solicitacaoVaga.setLocal(dto.getLocalVaga());
         solicitacaoVaga.setTipoContratacao(dto.getTipoVaga());
-        solicitacaoVaga.setInValid("S");
+        solicitacaoVaga.setStatus("Em Análise");
 
         return solicitacaoVaga;
     }

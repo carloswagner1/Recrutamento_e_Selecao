@@ -1,19 +1,15 @@
 package com.g5tech.api.controller;
 
-import com.g5tech.api.dto.SolicitacaoRequestDTO;
-import com.g5tech.api.dto.UsuarioRequestDTO;
-import com.g5tech.api.dto.UsuarioResponseDTO;
+import com.g5tech.api.dto.*;
 import com.g5tech.api.service.SolicitacaoVagaService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -25,6 +21,12 @@ public class SolicitacaoVagaController {
     @Operation(summary = "Salva uma nova solicitação de vaga no sistema")
     @PostMapping
     public ResponseEntity<Boolean> create(@Valid @RequestBody SolicitacaoRequestDTO dto) {
-        return new ResponseEntity<>(solicitacaoVagaService.create(dto), HttpStatus.OK);
+        return new ResponseEntity<>(solicitacaoVagaService.create(dto), HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Busca solicitações abertas para um departamento")
+    @GetMapping("usuarios/{id}")
+    public ResponseEntity<List<SolicitacaoResponseDTO>> getAllByDepartamento(@PathVariable Long id) {
+        return new ResponseEntity<>(solicitacaoVagaService.getAllByDepartamento(id), HttpStatus.OK);
     }
 }

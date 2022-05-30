@@ -35,6 +35,6 @@ public class SolicitacaoVaga {
     @Column(name = "tipo_contratacao")
     private String tipoContratacao;
 
-    @Column(name = "in_valid")
-    private String inValid;
+    @Column(name = "status")
+    private String status;
 }
