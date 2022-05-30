@@ -25,4 +25,4 @@ function montarOption(nomeCargo){
     option.setAttribute('value', `${nomeCargo}`);
     option.innerHTML = `${nomeCargo}`
     return option
-}c
+}
