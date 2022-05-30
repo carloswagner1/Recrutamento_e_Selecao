@@ -12,6 +12,7 @@ public class SolicitacaoResponseDTOBuilder {
         return solicitacaoVagaList.stream()
                 .map(solicitacaoVaga ->
                         SolicitacaoResponseDTO.builder()
+                                .id(solicitacaoVaga.getId().toString())
                                 .departamento(solicitacaoVaga.getCargo().getDepartamento().getNome())
                                 .cargo(solicitacaoVaga.getCargo().getNome())
                                 .tipoVaga(solicitacaoVaga.getTipoContratacao())

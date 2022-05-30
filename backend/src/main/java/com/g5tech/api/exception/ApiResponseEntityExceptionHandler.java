@@ -102,4 +102,12 @@ public class ApiResponseEntityExceptionHandler extends ResponseEntityExceptionHa
         return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
+    @ExceptionHandler({ SolicitacaoVagaNotFoundException.class })
+    public ResponseEntity<Object> handleSolicitacaoVagaNotFoundException(SolicitacaoVagaNotFoundException ex, WebRequest request) {
+
+        ErrorDTO error = new ErrorDTO("Solicitação de Vaga não encontrado");
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
 }

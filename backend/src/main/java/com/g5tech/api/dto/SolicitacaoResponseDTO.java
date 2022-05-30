@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SolicitacaoResponseDTO {
+    private String id;
     private String departamento;
     private String cargo;
     private String tipoVaga;
