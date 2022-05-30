@@ -105,7 +105,7 @@
 .box-body{
     text-align: center;
 }
-.collapse p{
+.collapse p, .formacaoAcademica{
     color:var(--amarelo);
     margin-top:8px;
 }
@@ -125,6 +125,7 @@
     background-color: var(--amarelo);
 
 }
+
 
 @media (max-width: 510px) {
     .titulo h1{
