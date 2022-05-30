@@ -34,4 +34,7 @@ public class SolicitacaoVaga {
 
     @Column(name = "tipo_contratacao")
     private String tipoContratacao;
+
+    @Column(name = "status")
+    private String status;
 }

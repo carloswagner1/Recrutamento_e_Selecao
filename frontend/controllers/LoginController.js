@@ -67,15 +67,9 @@ class LoginController {
                     else {
                         // salvando id do candidato no local storage para mandar nas proximas requests
                         localStorage.setItem('id_candidato', JSON.stringify(responseBody.id));
+                        localStorage.setItem('perfil', JSON.stringify(responseBody.perfil));
                         window.location.href = '../view/minhasVagas.html'
                     }
-    
-                    let mathRandom = Math.random().toString(16).substr(2);
-                    let token = mathRandom + mathRandom;
-    
-                    localStorage.setItem('token', token);
-                    localStorage.setItem('userLogado', JSON.stringify(true));
-
                 }
             }).catch(error => {
                 // log para debuggar

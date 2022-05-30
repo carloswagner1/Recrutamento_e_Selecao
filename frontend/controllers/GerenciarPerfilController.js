@@ -26,9 +26,10 @@ class GerenciarPerfilController {
             if (response.status == 200) {
                 localStorage.setItem('candidato', JSON.stringify(response.body));
             }
+
+            this.loadValues(localStorage.getItem('candidato')); 
         }) 
         
-        this.loadValues(localStorage.getItem('candidato')); 
     }
 
     onSubmit() {
