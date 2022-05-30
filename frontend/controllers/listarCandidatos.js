@@ -101,49 +101,7 @@ class ListarCandidatosController{
         option.innerHTML = `${nomeCargo}`
         return option
     }
-    /*montarDados(candidato, index, formacaoCandidato, experienciaCandidato){
-        var listaInscritos = this.dadosCandidatoEl;
-        var collapse = `
-            <p data-toggle="collapse" data-target="#dados${index}" class="nomes">${candidato.nome}</p>`
-     
-
-        var collapseDados = document.createElement("div");
-        collapseDados.classList.add("collapse");
-        collapseDados.classList.add("dados");
-        collapseDados.setAttribute("id",`dados${index}`);        
-            
-        
-        listaInscritos.innerHTML +=  collapse;
-        listaInscritos.innerHTML += collapseDados;
-    }
     
-    dadosFormacao(formacaoCandidato){        
-        if (formacaoCandidato.length === 0){
-            return '<p class="formacaoAcademica">Não há registros de dados de formação acadêmica</p>';
-        }else{            
-            formacaoCandidato.forEach((formacao) => {
-                return `
-                <p class="formacaoAcademica">Formação Acadêmica:</p>
-                <span class="tipoFormacao">${formacao.tipoFormacao}</span>
-                    <br>
-                    <span class="curso">Curso: ${formacao.curso}</span>
-                    <br>
-                    <span class="instituicao">Instituição: ${formacao.instituicao}</span>
-                    <br>                    
-                    <span class="dataConcusao">Data de Início: ${(formacao.dataIngresso)}</span>
-                    <br>
-                    <span class="dataConcusao">Data de Conclusão: ${formacao.dataConclusao}</span>
-                    <br>
-                    <br>
-                `
-            })
-        }
- 
-    
-    }
-    dadosExperiencia(experiencia){
-    
-    }*/
 }
 
 let listaCandidatosController = new ListarCandidatosController("form-filtro",  "procSel", "dados-candidatos", "box-title");
