@@ -27,8 +27,8 @@ class AvaliarSolicitacaoController{
         var table = document.getElementById('tabela-solicitacoes')
         btn.forEach((item, index) => {
             item.addEventListener('click', () => {
-                var campo = (item.parentNode).parentNode
-                var linhas = btn.length/2
+                var campo = (item.parentNode).parentNode;
+                var linhas = btn.length/2;
                 var solicitacaoValues = getValues(campo, btn[index]);
                 //SALVAR NO BANCO DE DADOS COM O NOVO VALOR
                 var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');
@@ -46,8 +46,7 @@ class AvaliarSolicitacaoController{
                 setTimeout(function(){
                     (item.parentNode).parentNode.remove();
                     //parentNode é o pai do alvo                    
-                }, 500)
-                console.log(table.childElementCount)
+                }, 500)               
                                
                 if(table.childElementCount === 1){
                     this.containerEl.innerHTML = `<h3>Não há solicitações para avaliação</h3>`
@@ -104,8 +103,9 @@ function getValues(campo, btn) {
         _idUsuario: '',
         _status: '',        
     }
-    console.log(campo)
+    
     var dados = campo.childNodes;
+ 
 
     for(var i = 0; i < dados.length; i++){
         switch(dados[i].className){

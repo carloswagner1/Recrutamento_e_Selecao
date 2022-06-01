@@ -55,7 +55,10 @@
 .btn.btn-success{
     display: inline-block;
 }
-
+.fadeOut{
+	opacity: 0;
+	transition: 0.5s;
+}
 th{
     color: var(--amarelo);
 }
@@ -153,7 +156,7 @@ form {
     color: var(--branco);
 }
 
-#nota-teste{
+.nota-teste{
     margin: auto;
     border-radius: 10px;
     width: 20%;
