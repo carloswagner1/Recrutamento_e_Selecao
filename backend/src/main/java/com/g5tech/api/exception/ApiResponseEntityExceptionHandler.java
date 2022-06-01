@@ -86,4 +86,28 @@ public class ApiResponseEntityExceptionHandler extends ResponseEntityExceptionHa
         return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
+    @ExceptionHandler({ CargoNotFoundException.class })
+    public ResponseEntity<Object> handleCargoNotFoundException(CargoNotFoundException ex, WebRequest request) {
+
+        ErrorDTO error = new ErrorDTO("Cargo não encontrado");
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler({ DepartamentoNotFoundException.class })
+    public ResponseEntity<Object> handleDepartamentoNotFoundException(DepartamentoNotFoundException ex, WebRequest request) {
+
+        ErrorDTO error = new ErrorDTO("Departamento não encontrado");
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler({ SolicitacaoVagaNotFoundException.class })
+    public ResponseEntity<Object> handleSolicitacaoVagaNotFoundException(SolicitacaoVagaNotFoundException ex, WebRequest request) {
+
+        ErrorDTO error = new ErrorDTO("Solicitação de Vaga não encontrado");
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
 }

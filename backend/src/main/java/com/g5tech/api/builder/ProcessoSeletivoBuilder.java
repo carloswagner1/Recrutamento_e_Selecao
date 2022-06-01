@@ -23,7 +23,7 @@ public class ProcessoSeletivoBuilder {
         dto.setTipoVaga(processoSeletivo.getSolicitacaoVaga().getTipoContratacao());
         dto.setLocal(processoSeletivo.getSolicitacaoVaga().getLocal());
         dto.setDescricao(processoSeletivo.getDescricao());
-        dto.setDepartamento(processoSeletivo.getDepartamento().getName());
+        dto.setDepartamento(processoSeletivo.getDepartamento().getNome());
 
         return dto;
     }
