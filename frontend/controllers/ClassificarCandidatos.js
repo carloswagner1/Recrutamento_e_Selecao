@@ -38,7 +38,7 @@ class ClassificarCandidatosController{
             document.getElementById("thead").setAttribute("style", "display: ")
 
 
-            //Pelo Processo Seletivo que foi selecionado, temos que buscar no banco os candidatos inscritos. Então, preciso de um inner join entre as tabelas processo_seletivo, tb_inscricao e tb_candidatos para trazer os candidatos inscritos do processso seletivo vai substituir este filtro aqui de baixo. Tem q colocar uma condição de inscricoes !== "reprovado" pu "classificado" pq nestas já foi feita a classificação e não pode carregar mais 
+            //Pelo Processo Seletivo que foi selecionado, temos que buscar no banco os candidatos inscritos. Então, preciso de um inner join entre as tabelas processo_seletivo, tb_inscricao e tb_candidatos para trazer os candidatos inscritos do processso seletivo vai substituir este filtro aqui de baixo. Tem q colocar uma condição de inscricoes !== "reprovado" ou "classificado" pq nestas já foi feita a classificação e não pode carregar mais 
 
 
             //O FILTRO ABAIXO NÃO CONSIDEREI AS INSCRIÇÕES PQ OS DADOS ESTÃO MOCADOS.
