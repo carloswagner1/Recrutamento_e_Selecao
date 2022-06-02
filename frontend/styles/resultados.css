@@ -38,8 +38,11 @@
     margin: 2%;
 }
 .box.box-success{
-    width: 50%;
+    width: 100%;
     float: left;
+}
+.box.box-success .box-title{
+    margin-top: 50px;
 }
 
 .box-title{
