@@ -67,7 +67,6 @@ class ClassificarCandidatosController{
 
             //fim filtro
 
-
             //para cada candidato inscrito, temos q preencheer o html
             if(candidatosInscritos.length === 0){
                 //se não houver candidato inscrito no processo
@@ -91,31 +90,7 @@ class ClassificarCandidatosController{
         btn.forEach((item, index) => {
             item.addEventListener('click', () => {                
                 var linha = (item.parentNode).parentNode.parentNode;
-                updateInscricao(linha, btn[index], index);
-                //removeLinha(linha)
-
-                /*var notaCampo = document.getElementsByName('nota');
-                var idCampo = document.getElementsByClassName('id');   
-                var idCandidato = '';
-                var notaTeste = '';
-
-                if(item.textContent === 'Classificar'){
-                    console.log(index)
-                    idCandidato = idCampo[index/2].innerHTML;
-                    notaTeste = notaCampo[index/2].value;
-                    console.log(notaTeste);
-                    console.log(idCandidato)
-                    //updateInscricao(notaTeste, "classificado", idCandidato)
-                    removeLinha(linha);                    
-                    
-                }else{
-                    console.log(index)
-                    idCandidato = idCampo[(index-1)/2].innerHTML;
-                    notaTeste = notaCampo[(index-1)/2].value;
-                    updateInscricao(notaTeste, "reprovado", idCandidato)    
-                    removeLinha(linha);                
-                    if (index > 0) index -=1;
-                } */               
+                updateInscricao(linha, btn[index], index);          
             })            
         })
     }
@@ -189,11 +164,6 @@ function updateInscricao(linha, btn, index) {
         situacao: '',        
     }
     var dados = linha.childNodes;
-    console.log(linha)
-    console.log(dados)
-    console.log(index)
-    //console.log(document.getElementById(`nota${index}`).value)
-
     
     for (var i = 0; i < dados.length; i++){ 
         if(dados[i].className === 'id'){                
