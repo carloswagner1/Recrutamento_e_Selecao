@@ -63,19 +63,19 @@
         <option selected disabled value="">Selecione</option>
 
       </select>
-      <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
+      <a href="#" class="filtrar" id="filtrar"><i class="fa fa-search"></i></a>
     </div>
 
     <div class="box">
 
       <div class="box-header">
         <br>
-        <h3 class="box-title">Candidatos do Processo Seletivo</h3>
+        <h3 class="box-title" id="box-title">Selecione um Processo Seletivo</h3>
       </div>
       <!-- /.box-header -->
       <div class="box-body no-padding">
-        <table class="table table-striped table table-bordered">
-          <thead>
+        <table class="table table-striped table table-bordered" id="table">
+          <thead id=thead style="display: none;">
             <tr>
               <th>Nome</th>
               <th>E-mail</th>
@@ -83,60 +83,11 @@
               <th>Celular</th>
               <th>Nota do Teste</th>
               <th scope="col">Ações</th>
+              <th style="display: none">id</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td data-title="Nome">OldMan of Havan</td>
-              <td data-title="E-mail">véidahavan@gmail.com</td>
-              <td data-title="CPF">123.123.123-12</td>
-              <td data-title="Celular">(11) 91234-1234</td>
-              <td data-title="Nota do Teste">
-                <div class="nota nota-tabela">
-                  <input type="text" class="form-control" id="exampleInputNota" name="nota">
-                </div>
-              </td>
-              <td data-title="Ações">
-                <div>
-                  <button type="button" class="btn btn-success">Classificar</button>
-                  <button type="button" class="btn btn-danger">Reprovar</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td data-title="Nome">Walter Disney</td>
-              <td data-title="E-mail">mickey.mouse@plus.com</td>
-              <td data-title="CPF">123.123.123-14</td>
-              <td data-title="Celular">(11) 91234-4444</td>
-              <td data-title="Nota do Teste">
-                <div class="nota nota-tabela">
-                  <input type="text" class="form-control" id="exampleInputNota" name="nota">
-                </div>
-              </td>
-              <td data-title="Ações">
-                <div>
-                  <button type="button" class="btn btn-success">Classificar</button>
-                  <button type="button" class="btn btn-danger">Reprovar</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td data-title="Nome">Maicon Dieckson</td>
-              <td data-title="E-mail">rusbé@yahoooooouull.com</td>
-              <td data-title="CPF">321.321.321-11</td>
-              <td data-title="Celular">(11) 91265-1111</td>
-              <td data-title="Nota do Teste">
-                <div class="nota nota-tabela">
-                  <input type="text" class="form-control" id="exampleInputNota" name="nota">
-                </div>
-              </td>
-              <td data-title="Ações">
-                <div>
-                  <button type="button" class="btn btn-success">Classificar</button>
-                  <button type="button" class="btn btn-danger">Reprovar</button>
-                </div>
-              </td>
-            </tr>
+          <tbody id="tabela-candidatos">
+
           </tbody>
         </table>
       </div>

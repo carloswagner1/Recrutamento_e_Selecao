@@ -52,7 +52,7 @@
     </div>
   </header>
 
-  <div class="container">
+  <div class="container" id="form-container" data-tipo="form-agendar">
     <div class="titulo" alt="titulo">
       <h1>Testes</h1>
       <p>Por aqui você agenda os testes a serem aplicados.</p>
@@ -63,7 +63,7 @@
         <option selected disabled value="">Selecione</option>
 
       </select>
-      <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
+      <a href="#" class="filtrar"><i class="fa fa-search" id="filtrar"></i></a>
     </div>
     <div class="box box-success">
       <div class="box-header with-border">
@@ -82,7 +82,9 @@
               name="link">
             <div class="box-footer">
               <br><button type="submit" class="btn btn-success" id="btn-agendar">Agendar Teste</button>
+              <div id='msgError'></div>
             </div>
+
           </div>
         </div>
       </form>

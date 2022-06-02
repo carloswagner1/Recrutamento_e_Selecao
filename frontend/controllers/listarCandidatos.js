@@ -42,14 +42,14 @@ class ListarCandidatosController{
             var listaCandidatos = this.boxTitleEl;
 
 
-            //Pelo Processo Seletivo que foi selecionado, temos que buscar no banco os candidatos inscritos. Então, preciso de um inner join entre as tabelas processo_seletivo, tb_inscricao e tb_candidatos para trazer os candidatos escritos do processso seletivo vai substituir este filtro aqui de baixo
-            console.log(processoSeletivo)
+            //Pelo Processo Seletivo que foi selecionado, temos que buscar no banco os candidatos inscritos. Então, preciso de um inner join entre as tabelas processo_seletivo, tb_inscricao e tb_candidatos para trazer os candidatos inscritos do processso seletivo vai substituir este filtro aqui de baixo
+            
             var candidatosInscritos = [];
             this.boxTitleEl.innerHTML = 'Candidatos do Processo Seletivo' 
             this.dadosCandidatoEl.innerHTML = ''
                     
             if(processoSeletivo === 'Desenvolvedor Backend'){     
-                console.log(processoSeletivo)           
+                           
                 candidatosInscritos = candidatos.filter(candidato => {
                     if(candidato.id === 1 || candidato.id === 2 || candidato.id === 4){
                         return candidato;
@@ -57,8 +57,7 @@ class ListarCandidatosController{
                 })
             }
             else if(processoSeletivo === 'Desenvolvedor FrontEnd'){
-                console.log(processoSeletivo)
-                
+                               
                 candidatosInscritos = candidatos.filter(candidato => {
                     if(candidato.id === 3 || candidato.id === 5){
                         return candidato;
@@ -120,7 +119,7 @@ function montarDados(candidato, index, formacaoCandidato, experienciaCandidato){
     collapseDados.setAttribute("id",`dados${index}`); 
     collapseDados.innerHTML += dadosPessoais(candidato);
     collapseDados.innerHTML += dadosFormacao(formacaoCandidato);
-    collapseDados.innerHTML += dadosExpericiencia(experienciaCandidato);
+    collapseDados.innerHTML += dadosExperiencia(experienciaCandidato);
     
     return collapseDados;
 }
@@ -162,7 +161,7 @@ function dadosFormacao(listaFormacoes){
     return dadosFormacao;
 
 }
-function dadosExpericiencia(listaExperiencias){
+function dadosExperiencia(listaExperiencias){
     if (listaExperiencias.length === 0){
         var dadosExperiencia = '<p>Não há registros de experiências anteriores</p>';        
     }else{
