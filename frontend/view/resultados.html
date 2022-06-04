@@ -61,9 +61,8 @@
             <label for="procSel"> Filtrar por Processo Seletivo</label>
             <select name="procSel" id="procSel">
                 <option selected disabled value="">Selecione</option>
-
             </select>
-            <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
+            <a href="#" class="filtrar" id="filtrar"><i class="fa fa-search"></i></a>
         </div>
         <div class="row">
             <div class="col-md-3">
@@ -78,11 +77,11 @@
                                     <label for="exampleInputNotaTeste" class="text-ranking">Maior Nota do
                                         Teste</label>
                                     <div class="nota" id="nota-teste">
-                                        7.6
+                                        0.00
                                     </div>
                                 </div><br>
-                                <button type="button" class="btn btn-primary">Consultar Lista de Candidatos</button>
-                                <button type="button" id="btnEncerrar" class="btn btn-danger">Encerrar Processo
+                                <button type="button" class="btn btn-primary" disabled>Consultar Lista de Candidatos</button>
+                                <button type="button" id="btnEncerrar" class="btn btn-danger" disabled>Encerrar Processo
                                     Seletivo</button>
                             </div>
                         </div>
@@ -93,21 +92,22 @@
                 <div class="box">
                     <div class="box-header">
                         <br>
-                        <h3 class="box-title">Resultados do Processo Seletivo</h3>
+                        <h3 class="box-title" id="box-title">Resultados do Processo Seletivo</h3>
                     </div>
                     <div class="box-body no-padding">
                         <table class="table table-responsive table table-bordered table table-striped">
-                            <thead>
+                            <thead id="thead" style="display: none">
                                 <tr>
                                     <th>Nome</th>
                                     <th>E-mail</th>
                                     <th>Celular</th>
                                     <th>Nota do Teste</th>
                                     <th>Data da Entrevista</th>
+                                    <th>Horário Entrevista</th>
                                     <th scope="col">Ação</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tabela-candidatos">
                                 <tr>
                                     <td data-title="Nome">OldMan of Havan</td>
                                     <td data-title="E-Mail">véidahavan@gmail.com</td>
@@ -119,6 +119,7 @@
                                         </div>
                                     </td>
                                     <td data-title="Data da entrevista"> 02-02-2022</td>
+                                    <td data-title="Horario da entrevista"> 12:00</td>
                                     <td data-title="Ações">
                                         <div>
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -140,6 +141,7 @@
                                     </td>
                                     
                                     <td data-title="Data da entrevista"> 00-00-0000</td>
+                                    <td data-title="Horario da entrevista"> 00:00</td>
                                     <td data-title="Ações">
                                         <div>
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -163,6 +165,7 @@
                                     </td>
                                     
                                     <td data-title="Data da entrevista"> 16-06-2022</td>
+                                    <td data-title="Horario da entrevista"> 9:00</td>
                                     <td data-title="Ações">
                                         <div>
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
