@@ -15,10 +15,13 @@ INSERT INTO tb_departamento VALUES (13, 'Tecnologia da Informação');
 INSERT INTO tb_departamento VALUES (14, 'Vendas');
 
 -- STATUS
-INSERT INTO tb_status VALUES (1, 'Inscrições');
+INSERT INTO tb_status VALUES (1, 'Iniciado');
 INSERT INTO tb_status VALUES (2, 'Teste');
 INSERT INTO tb_status VALUES (3, 'Entrevista');
 INSERT INTO tb_status VALUES (4, 'Concluído');
+INSERT INTO tb_status VALUES (5, 'Reprovado no Teste');
+INSERT INTO tb_status VALUES (5, 'Reprovado');
+INSERT INTO tb_status VALUES (5, 'Aprovado');
 
 -- CARGO
 INSERT INTO tb_cargo VALUES(1, 'Analista de Sistemas', 'https://link', 'Analista', 1);
