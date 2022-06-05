@@ -138,7 +138,8 @@ class ResultadosController{
         this.boxTitleEl = document.getElementById(boxTitleId);
         this.tableCandidatosEl = document.getElementById(tableCandidatosID);
         this.onLoad();
-        this.onSelect();        
+        this.onSelect();
+        this.encerrarProcesso();        
     }
 
     onLoad(){        
@@ -190,6 +191,8 @@ class ResultadosController{
                 })
             })
             document.getElementById('nota-teste').innerHTML = maiorNota;
+            document.getElementById('btnConsultar').disabled=false
+            document.getElementById('btnEncerrar').disabled = false
 
             //fim filtro
 
@@ -213,6 +216,71 @@ class ResultadosController{
                     tabelaCandidatos.appendChild(candidatoTr);
                 })                                
             }
+            this.btnAgendarEntrevista();
+        })
+    }
+    btnAgendarEntrevista(){
+        var btn = document.getElementsByName
+        ('btn-agendar');        
+        btn.forEach((item, index) =>{
+            item.addEventListener('click', () =>{
+                var camposEmail = document.querySelectorAll('.email');
+                document.getElementById('email').value = camposEmail[index].textContent;
+                var btnEnviar =  document.getElementById('enviar'); 
+                btnEnviar.addEventListener('click', event =>{
+                                
+                    var camposModal = document.querySelectorAll('.modal-field');
+                    var msgError = document.getElementById('msgError');
+                    console.log(camposModal)
+                    camposModal.forEach(item =>{
+                        //testar campos vazios
+                        if(item.value === ''){
+                            event.preventDefault();
+                            msgError.innerHTML = " *Todos os campos devem ser preenchidos"
+                            setTimeout(function(){
+                                msgError.innerHTML = "" 
+                            }, 5000)
+                                        
+                        }
+                        else{
+                            //capturando dados para mensagem
+                            event.preventDefault();
+                            let email = document.getElementById('email');
+                            let mensagem = document.getElementById('mensagem');
+                            let dataEntrevista = document.getElementById('dataEntrevista');
+                            let horaEntrevista = document.getElementById('horarioEntrevista');
+                            let linkEntrevista = document.getElementById('linkEntrevista');
+
+
+                            //preeenchendo provisoriamente a table com os dados marcado
+
+                            var campoDataentrevista = document.querySelectorAll('.dataEntrevista');
+                            var campoHoraEntrevista = document.querySelectorAll('.horaEntrevista');
+                            campoDataentrevista[index].textContent = dataEntrevista.value;
+                            campoHoraEntrevista[index].innerHTML = horaEntrevista.value;
+                            
+                            var body = new Object();
+                            body.email = email.value;
+                            body.mensagem = mensagem.value;
+                            body.dataEntrevista = dataEntrevista.value;
+                            body.horaEntrevista = horaEntrevista.value;
+                            body.linkEntrevista = linkEntrevista.value;
+
+                            //acredito q aqui vc pefa o body e manda mensagem para o candidato e para o email da empresa
+                        }
+                    })
+                })
+            })
+        })
+        
+    }
+
+
+    encerrarProcesso(){
+        var btnEncerrar = document.getElementById('btnEncerrar');
+        btnEncerrar.addEventListener('click', event =>{
+            event.preventDefault();
+            //updateProcesso();
         })
     }
 }
@@ -225,7 +293,7 @@ function montarOption(nomeCargo, id){
     option.innerHTML = `${nomeCargo}`
     return option
 }
-
+//interação elementos HTML
 function montaTr(candidato, index, nota){
     
     var candidatoTr = document.createElement("tr");
@@ -272,16 +340,18 @@ function montaTdBtn(classe, dataTitle){
     var td = document.createElement("td");
     td.innerHTML = `
     <div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+        <button type="button" class="btn btn-primary" name="btn-agendar" data-bs-toggle="modal"
             data-bs-target="#modal-entrevista">Agendar Entrevista</button>
-        <button type="button" class="btn btn-success">Aprovar</button>
-        <button type="button" class="btn btn-danger">Reprovar</button>
+        <button type="button" class="btn btn-success" name="btn-aprovar">Aprovar</button>
+        <button type="button" class="btn btn-danger" name="btn-reprovar">Reprovar</button>
     </div>
 `;
     td.classList.add(classe); 
     td.setAttribute("data-title", dataTitle);
     return td;
 }
+
+//interação com os dados
 function updateInscricao(linha, btn, index) {
     
     const inscricaoAtualizada = {
@@ -319,14 +389,15 @@ function updateInscricao(linha, btn, index) {
 
     removeLinha(linha);    
 }
-function removeLinha(linha) {
-    //Excluir linha da tabela
-    linha.classList.add("fadeOut");
-    setTimeout(function(){
-        linha.remove();        
-    }, 500)
-    if(document.getElementById('tabela-candidatos').childElementCount === 1){        
-        document.getElementById("box-title").innerHTML = 'Não há candidatos para classificar neste processo seletivo'
-        document.getElementById("thead").setAttribute('style', 'display: none')
+function updateProcesso(){
+    let processoSeletivo = document.getElementById('procSel').value;
+
+    const processoAtualizado = {
+        status: 'Concluído',
     }
+    processos.map(processo => {
+        if(processo.id = processoSeletivo){
+            Object.assign(processo, processoAtualizado)
+        }
+    })
 }

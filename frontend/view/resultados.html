@@ -80,7 +80,7 @@
                                         0.00
                                     </div>
                                 </div><br>
-                                <button type="button" class="btn btn-primary" disabled>Consultar Lista de Candidatos</button>
+                                <button type="button" class="btn btn-primary" id="btnConsultar" onclick="window.open('listarCandidatos.html', '_blanck')"    disabled>Consultar Lista de Candidatos</button>
                                 <button type="button" id="btnEncerrar" class="btn btn-danger" disabled>Encerrar Processo
                                     Seletivo</button>
                             </div>
@@ -96,7 +96,7 @@
                     </div>
                     <div class="box-body no-padding">
                         <table class="table table-responsive table table-bordered table table-striped">
-                            <thead id="thead" style="display: none">
+                            <thead id="thead" >
                                 <tr>
                                     <th>Nome</th>
                                     <th>E-mail</th>
@@ -122,7 +122,8 @@
                                     <td data-title="Horario da entrevista"> 12:00</td>
                                     <td data-title="Ações">
                                         <div>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            <button type="button" class="btn btn-primary"
+                                            name="btn-agendar" data-bs-toggle="modal"
                                                 data-bs-target="#modal-entrevista">Agendar Entrevista</button>
                                             <button type="button" class="btn btn-success">Aprovar</button>
                                             <button type="button" class="btn btn-danger">Reprovar</button>
@@ -144,7 +145,9 @@
                                     <td data-title="Horario da entrevista"> 00:00</td>
                                     <td data-title="Ações">
                                         <div>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            <button type="button" class="btn btn-primary" 
+                                            name="btn-agendar"
+                                            data-bs-toggle="modal"
                                                 data-bs-target="#modal-entrevista">Agendar Entrevista</button>
                                             <button type="button" class="btn btn-success">Aprovar</button>
                                             <button type="button" class="btn btn-danger">Reprovar</button>
@@ -192,26 +195,27 @@
 
                 <div class="modal-header">
                     <h2 class="modal-title">Agendar Entrevista</h2>
-                    <button type="button" class="btn btn-close" id="close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn btn-close" id="close" data-bs-dismiss="modal" ></button>
                 </div>
 
                 <div class="modal-body">
                     <form id="form" class="modal-form">
                         <label for="email">E-mail</label>
-                        <input type="email" name="email" id="email" required>
+                        <input class="modal-field" type="email" name="email" id="email" required>
                         <label for="mensagem">Mensagem</label>
-                        <textarea name="mensagem" id="" cols="30" rows="10"></textarea>
+                        <textarea class="modal-field" name="mensagem" id="mensagem" cols="30" rows="10"></textarea>
                         <label for="dataEntrevista">Data da Entrevista</label>
-                        <input type="date" id="dataEntrevista" class="modal-field">
+                        <input class="modal-field" type="date" id="dataEntrevista" class="modal-field" required>
                         <label for="horarioEntrevista">Horário da Entrevista</label>
-                        <input type="time" id="horarioEntrevista" class="modal-field">
+                        <input class="modal-field" type="time" id="horarioEntrevista" class="modal-field" required>
                         <label for="linkEntrevista">Link da Entrevista</label>
-                        <input type="text" id="linkEntrevista" class="modal-field">
+                        <input class="modal-field" type="text" id="linkEntrevista" class="modal-field" required>
+                        <div id='msgError'></div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="enviar" class="btn btn-success">Enviar</button>
-                    <button type="button" id="enviar" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="cancelar" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -221,6 +225,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="../controllers/Resultados.js"></script>
+    <script src="../utils/Utils.js"></script>
 </body>
 
 </html>
