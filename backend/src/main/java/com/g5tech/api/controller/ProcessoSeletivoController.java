@@ -1,9 +1,9 @@
 package com.g5tech.api.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.g5tech.api.dto.ProcessoCompletoResponseDTO;
 import com.g5tech.api.dto.ProcessoResponseDTO;
-import com.g5tech.api.dto.UsuarioCandidatoDTO;
+import com.g5tech.api.dto.SolicitacaoRequestDTO;
+import com.g5tech.api.dto.SolicitacaoResponseDTO;
 import com.g5tech.api.service.ProcessoSeletivoService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +31,31 @@ public class ProcessoSeletivoController {
     @GetMapping("/{id}")
     public ResponseEntity<ProcessoCompletoResponseDTO> getById(@PathVariable Long id) {
         return new ResponseEntity<>(processoSeletivoService.getCompletoById(id), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Busca processos para um departamento")
+    @GetMapping("/usuarios/{id}")
+    public ResponseEntity<List<ProcessoCompletoResponseDTO>> getAllProcessosByDepartamento(@PathVariable Long id) {
+        return new ResponseEntity<>(processoSeletivoService.getAllByDepartamento(id), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Salva um novo processo seletivo no sistema")
+    @PostMapping
+    public ResponseEntity<Boolean> create(@Valid @RequestBody ProcessoRequestDTO dto) {
+        return new ResponseEntity<>(processoSeletivoService.create(dto), HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Altera um processo seletivo no sistema")
+    @PutMapping
+    public ResponseEntity<Boolean> update(@Valid @RequestBody ProcessoRequestDTO dto) {
+        return new ResponseEntity<>(processoSeletivoService.update(dto), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Deleta um processo seletivo do sistema")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
+        processoSeletivoService.delete(id);
+        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.NO_CONTENT);
     }
 
 }

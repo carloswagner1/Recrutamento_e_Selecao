@@ -14,7 +14,6 @@ import com.g5tech.api.repository.CandidatoRepository;
 import com.g5tech.api.repository.InscricaoRepository;
 import com.g5tech.api.repository.ProcessoSeletivoRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -70,7 +69,7 @@ public class InscricaoService {
 
         ProcessoSeletivo processoSeletivo = this.getProcessoSeletivoById(dto.getIdProcesso());
 
-        Status status = statusService.getById(StatusIndicator.INSCRICOES.getId());
+        Status status = statusService.getById(StatusIndicator.INICIADO.getId());
 
         Inscricao inscricao = InscricaoBuilder.build(candidato, processoSeletivo, status);
 

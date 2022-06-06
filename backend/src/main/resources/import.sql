@@ -20,22 +20,24 @@ INSERT INTO tb_status VALUES (2, 'Teste');
 INSERT INTO tb_status VALUES (3, 'Entrevista');
 INSERT INTO tb_status VALUES (4, 'Concluído');
 INSERT INTO tb_status VALUES (5, 'Reprovado no Teste');
-INSERT INTO tb_status VALUES (5, 'Reprovado');
-INSERT INTO tb_status VALUES (5, 'Aprovado');
+INSERT INTO tb_status VALUES (6, 'Reprovado');
+INSERT INTO tb_status VALUES (7, 'Aprovado');
 
 -- CARGO
-INSERT INTO tb_cargo VALUES(1, 'Analista de Sistemas', 'https://link', 'Analista', 1);
-INSERT INTO tb_cargo VALUES(2, 'Analista de RH', 'https://link', 'Tecnologo', 1);
-INSERT INTO tb_cargo VALUES(3, 'Analista de Sistemas', 'https://link', 'Analista',  2);
-INSERT INTO tb_cargo VALUES(4, 'Analista de RH', 'https://link', 'Tecnologo', 2);
+INSERT INTO tb_cargo VALUES(1, 'Analista de Sistemas', 'Analista', 1);
+INSERT INTO tb_cargo VALUES(2, 'Analista de RH', 'Tecnologo', 1);
+INSERT INTO tb_cargo VALUES(3, 'Analista de Sistemas', 'Analista',  2);
+INSERT INTO tb_cargo VALUES(4, 'Analista de RH', 'Tecnologo', 2);
 
 -- SOLICITACAO VAGA
-INSERT INTO tb_solicitacao_vaga VALUES(1, 'Necessário', 'São Paulo', 2, 'Nenhum', 'Em Análise', 'Efetivo', 1);
-INSERT INTO tb_solicitacao_vaga VALUES(2, 'Necessário', 'Pará', 2, 'Nenhum', 'Em Análise', 'Estágio', 3);
+INSERT INTO tb_solicitacao_vaga VALUES(1, 'Necessário', 'São Paulo', 2, 'Nenhum', 'Finalizada', 'Efetivo', 1);
+INSERT INTO tb_solicitacao_vaga VALUES(2, 'Necessário', 'São Paulo', 2, 'Nenhum', 'Finalizada', 'Efetivo', 2);
+INSERT INTO tb_solicitacao_vaga VALUES(3, 'Necessário', 'São Paulo', 2, 'Nenhum', 'Aprovada', 'Efetivo', 1);
+INSERT INTO tb_solicitacao_vaga VALUES(4, 'Necessário', 'Pará', 2, 'Nenhum', 'Em Análise', 'Estágio', 1);
 
 -- PROCESSO SELETIVO
-INSERT INTO tb_processo_seletivo VALUES(1, 'TI', '2022-09-09', '2022-08-09', 'Nova vaga', 1, 1, 1, 1);
-INSERT INTO tb_processo_seletivo VALUES(2, 'TI', '2022-09-09', '2022-08-09', 'Vaga massa', 3, 2, 2, 1);
+INSERT INTO tb_processo_seletivo VALUES(1, 'TI', '2022-09-09', '2022-08-09', 'Lógica', 1, 1, 1);
+INSERT INTO tb_processo_seletivo VALUES(2, 'TI', '2022-09-09', '2022-08-09', 'Lógica', 2, 2, 1);
 
 -- CANDIDATO
 INSERT INTO tb_candidato VALUES (1, 'TI', 'Jardim', '15981196538', '18021310', 'Sorocaba', '38974521890', '1990-11-12', 'diego@mail.com', 'SP', 'Masculino', 'Diego', 'Brasil', 'Rua Souza');

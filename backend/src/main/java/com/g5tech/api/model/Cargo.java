@@ -25,7 +25,4 @@ public class Cargo {
 
     @Column(name = "descricao")
     private String descricao;
-
-    @Column(name = "link_teste")
-    private String linkTeste;
 }
