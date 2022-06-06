@@ -1,4 +1,4 @@
-package com.g5tech.api.controller;
+package com.g5tech.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
@@ -21,4 +21,5 @@ public class ProcessoRequestDTO {
     private String localVaga;
     private String qtdvagas;
     private String requisitos;
+    private String status;
 }

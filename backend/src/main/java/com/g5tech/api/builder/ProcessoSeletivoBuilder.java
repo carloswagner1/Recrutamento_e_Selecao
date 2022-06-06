@@ -1,6 +1,6 @@
 package com.g5tech.api.builder;
 
-import com.g5tech.api.controller.ProcessoRequestDTO;
+import com.g5tech.api.dto.ProcessoRequestDTO;
 import com.g5tech.api.dto.ProcessoCompletoResponseDTO;
 import com.g5tech.api.dto.ProcessoResponseDTO;
 import com.g5tech.api.model.*;
@@ -16,7 +16,7 @@ public class ProcessoSeletivoBuilder {
                 .collect(Collectors.toList());
     }
 
-    private static ProcessoResponseDTO buildDTO(ProcessoSeletivo processoSeletivo) {
+    public static ProcessoResponseDTO buildDTO(ProcessoSeletivo processoSeletivo) {
 
         ProcessoResponseDTO dto = new ProcessoResponseDTO();
         dto.setId(processoSeletivo.getId());

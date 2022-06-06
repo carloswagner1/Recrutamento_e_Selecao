@@ -2,7 +2,7 @@ package com.g5tech.api.service;
 
 import com.g5tech.api.builder.SolicitacaoResponseDTOBuilder;
 import com.g5tech.api.builder.SolicitacaoVagaBuilder;
-import com.g5tech.api.controller.ProcessoRequestDTO;
+import com.g5tech.api.dto.ProcessoRequestDTO;
 import com.g5tech.api.dto.SolicitacaoRequestDTO;
 import com.g5tech.api.dto.SolicitacaoResponseDTO;
 import com.g5tech.api.exception.SolicitacaoVagaNotFoundException;

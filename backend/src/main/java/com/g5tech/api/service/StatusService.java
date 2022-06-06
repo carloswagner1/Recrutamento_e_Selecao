@@ -14,4 +14,8 @@ public class StatusService {
     public Status getById(Long id) {
         return statusRepository.findById(id).get();
     }
+
+    public Status getByName(String nome) {
+        return statusRepository.findByNome(nome);
+    }
 }

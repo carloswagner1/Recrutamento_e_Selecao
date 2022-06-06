@@ -1,9 +1,6 @@
 package com.g5tech.api.controller;
 
-import com.g5tech.api.dto.ProcessoCompletoResponseDTO;
-import com.g5tech.api.dto.ProcessoResponseDTO;
-import com.g5tech.api.dto.SolicitacaoRequestDTO;
-import com.g5tech.api.dto.SolicitacaoResponseDTO;
+import com.g5tech.api.dto.*;
 import com.g5tech.api.service.ProcessoSeletivoService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -33,10 +30,29 @@ public class ProcessoSeletivoController {
         return new ResponseEntity<>(processoSeletivoService.getCompletoById(id), HttpStatus.OK);
     }
 
+    @Operation(summary = "Busca status de um processo seletivo pelo id")
+    @GetMapping("/{id}/status")
+    public ResponseEntity<Long> getStatusById(@PathVariable Long id) {
+        return new ResponseEntity<>(processoSeletivoService.getStatusById(id), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Busca status de um processo seletivo pelo id")
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Boolean> updateStatusById(@PathVariable Long id, @RequestBody ProcessoRequestDTO dto) {
+        processoSeletivoService.updateStatusById(id, dto.getStatus());
+        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+    }
+
     @Operation(summary = "Busca processos para um departamento")
     @GetMapping("/usuarios/{id}")
     public ResponseEntity<List<ProcessoCompletoResponseDTO>> getAllProcessosByDepartamento(@PathVariable Long id) {
         return new ResponseEntity<>(processoSeletivoService.getAllByDepartamento(id), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Busca processos em andamento para um departamento")
+    @GetMapping("/usuarios/{id}/abertos")
+    public ResponseEntity<List<ProcessoResponseDTO>> getAllProcessosAbertosByDepartamento(@PathVariable Long id) {
+        return new ResponseEntity<>(processoSeletivoService.getAllAbertosByDepartamento(id), HttpStatus.OK);
     }
 
     @Operation(summary = "Salva um novo processo seletivo no sistema")
