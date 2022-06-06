@@ -31,8 +31,20 @@
 .box{
     box-shadow: 0px 1px 5px #001533;
     border-radius: 4px;
-    
+    width: 100%;
 }
+
+#btnEncerrar{
+    margin: 2%;
+}
+.box.box-success{
+    width: 100%;
+    float: left;
+}
+.box.box-success .box-title{
+    margin-top: 50px;
+}
+
 .box-title{
     background-color: var(--azul-claro);
     border: 2px solid var(--azul-escuro);
@@ -44,16 +56,21 @@
     text-align: center;
 }
 
+
+
 .btn{
     margin-top: 1.5%;
 }
 
 .btn.btn-danger{
     display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.30);
+
 }
 
 .btn.btn-success{
     display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.30);
 }
 
 th{
@@ -80,7 +97,22 @@ td{
 }
 .btn.btn-primary{
     background-color: var(--azul-claro);
+    margin-bottom: 5%;
+    width: 70%;
 }
+
+.btn.btn-success{
+    width: 70%;
+}
+
+.btn{
+    text-align: center;
+}
+
+.btn.btn-danger{
+    width: 70%;
+}
+
 .filtrar i{
     margin-left: 5px;
     font-size: 1.5rem;
@@ -118,10 +150,10 @@ td{
   font-size: 1.6rem;
   margin-top: 10px;
 }
-.col-md-4{
-    
+.col-md-3{
     text-align: center;
 }
+
 form {
     margin-top:  30px;
     margin-bottom:  40px;
@@ -155,8 +187,9 @@ form {
 
 #nota-teste{
     margin: auto;
+    border: 2px solid #e09c0a;
     border-radius: 10px;
-    width: 20%;
+    width: 70%;
     font-size: 30pt;
     font-weight: bold;
     color: var(--azul-escuro);
