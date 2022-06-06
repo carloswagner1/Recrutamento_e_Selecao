@@ -1,11 +1,13 @@
 package com.g5tech.api.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_processo_seletivo")
 @Getter
@@ -27,9 +29,6 @@ public class ProcessoSeletivo {
     @Column(name = "data_final")
     private Date dataFinal;
 
-    @Column(name = "descricao")
-    private String descricao;
-
     @ManyToOne
     @JoinColumn(name = "id_status")
     private Status status;
@@ -37,12 +36,11 @@ public class ProcessoSeletivo {
     @Column(name = "area")
     private String areaVaga;
 
-    @ManyToOne
-    @JoinColumn(name = "id_departamento")
-    private Departamento departamento;
-
     @OneToOne
     @JoinColumn(name = "id_solicitacao_vaga")
     private SolicitacaoVaga solicitacaoVaga;
+
+    @Column(name = "tema_teste")
+    private String teste;
 
 }

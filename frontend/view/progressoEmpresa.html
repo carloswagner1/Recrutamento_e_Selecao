@@ -52,65 +52,31 @@
       </div>
     </div>
   </header>
-  <div class="container">
+
+  <div class="container" id="acompanhar-progresso">
+
     <div class="titulo" alt="titulo">
       <h1>Acompanhar Progresso</h1>
       <p>Acompanhe as etapas dos processos seletivos abertos.</p>
     </div>
-    <form id="form-filtro"></form>
-    <label for="procSel"> Filtrar por Processo Seletivo</label>
-    <select name="procSel" id="procSel">
-      <option selected disabled value="">Selecione</option>
 
-    </select>
-    <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
+    <form id="form-filtro">
+      <label for="procSel"> Filtrar por Processo Seletivo</label>
+      <select name="procSel" id="procSel">
+        <option selected disabled value="">Selecione</option>
+      </select>
+
+      <button id="filtrar" class="filtrar" type="button"><i class="fa fa-search"></i></button>
+
     </form>
-    <div class="progresso">
-      <div class="progresso-titulo">
-        <span>Progresso</span>
-        <span>1/5</span>
-      </div>
-      <div class="jss958 progresso-barra root jss959 jss961" role="progressbar" aria-valuenow="67">
-        <div class="jss968 jss969 linear-progress__bar root jss972" style="transform: scaleX(0.20);">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-        <div class="bs-vertical">
-          <ul>
-            <li class="complete">
-              <div class="texto">
-                <h1>Candidatar à Vaga</h1>
-                <button id="concluir1" class="button">Concluir</button>
-              </div>
-              <a href="#"><i class="ico fa fa-check ico-green"></i> </a>
-            </li>
-            <li class="locked">
-              <div class="texto">
-                <h1>Teste</h1>
-                <button id="concluir3" class="button">Concluir</button>
-              </div>
-              <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
-            </li>
-            <li class="locked">
-              <div class="texto">
-                <h1>Entrevista</h1>
-                <button id="concluir4" class="button">Concluir</button>
-              </div>
-              <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
-            </li>
-            <li class="locked">
-              <div class="texto">
-                <h1>Resultado</h1>
-                <button id="concluir5" class="button">Concluir</button>
-              </div>
-              <a href="#"><i class="ico fa fa-lock ico-muted"></i> </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+
+    <div class="progresso" id="progresso"></div>
+
+    <div class="row" id="row"></div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../controllers/ProgressoEmpresa.js"></script>
+    <script src="../controllers/ProgressoEmpresa.js" type="module"></script>
+  </div>
 </body>
 
 </html>

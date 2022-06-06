@@ -23,9 +23,6 @@ class SolicitacaoController {
             // log para debuggar
             console.log(response);
 
-            // preenchendo departamento e cargos
-            //let document = this.formEl2;
-
             document.getElementById('departamento').value = response.body.departamento;
             document.getElementById('departamento').disabled = true;
 
@@ -66,7 +63,7 @@ class SolicitacaoController {
                 // log para debuggar
                 console.log(response);
 
-                if (response.status == 200) {
+                if (response.status == 201) {
 
                     mensagem.innerHTML = "Cadastro efetuado com sucesso!"
                     mensagem.classList.remove("invisivel");

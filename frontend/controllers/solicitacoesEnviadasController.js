@@ -38,11 +38,6 @@ class SolicitacoesEnviadasController {
             else {
                 this.containerEl.innerHTML = `<h3>Não há solicitações enviadas por este usuário</h3>`;
             }
-
-
-
-
-
         })
 
         var tabelaSolicitacoes = this.solicitacoesTableEl

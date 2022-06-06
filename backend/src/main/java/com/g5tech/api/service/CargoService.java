@@ -30,4 +30,15 @@ public class CargoService {
 
         return cargoOptional.get();
     }
+
+    public Cargo getByName(String nomeCargo, Departamento departamento) {
+
+        Optional<Cargo> cargoOptional = cargoRepository.findByNomeAndDepartamento(nomeCargo, departamento);
+
+        if (!cargoOptional.isPresent()) {
+            throw  new CargoNotFoundException();
+        }
+
+        return cargoOptional.get();
+    }
 }

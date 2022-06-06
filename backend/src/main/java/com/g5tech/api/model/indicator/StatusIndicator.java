@@ -1,10 +1,13 @@
 package com.g5tech.api.model.indicator;
 
 public enum StatusIndicator {
-    INSCRICOES(1L, "Inscrições"),
+    INICIADO(1L, "Iniciado"),
     TESTE(2L, "Teste"),
     ENTREVISTA(3L, "Entrevista"),
     CONCLUIDO(4L, "Concluído"),
+    REPROVADO_TESTE(5L, "Reprovado no Teste"),
+    Reprovado(6L, "Reprovado"),
+    Aprovado(7L, "Aprovado"),
     ;
 
     private Long id;

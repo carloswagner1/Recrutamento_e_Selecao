@@ -83,7 +83,7 @@ class GerenciarPerfilController {
                         return '';
                     }
                     else if (candidato[field.name] === 'dataNascimento') {
-                        field.value = new Date(candidato[field.name]).getDate('yyy-MM-dd')
+                        field.value = new Date(candidato[field.name]).getDate('yyy-MM-dd');
                     }
                     else {
                         field.value = candidato[field.name];
