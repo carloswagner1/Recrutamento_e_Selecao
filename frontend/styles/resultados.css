@@ -213,76 +213,82 @@ form {
     
 }
    
-    .modal-content{
-    display: flex;
-    flex-direction: column;
-    gap:20px;
-    width: 50vw;
-    margin: 15vh auto;
-    padding-bottom: 20px;
-    background-color: white;
-    box-shadow: 1px 1px 10px black;
-    }
-    
-    .modal-header{
-    text-align: center;
-    justify-content: center;
-    height: 45px;
-    font-size: 1rem;
-    color:var(--amarelo);
-    background-color: var(--fundo);
-    }
-    .modal-header h2{
-        margin-left:85px;
-    }
-    .modal-form label{
-        font-size: 1.2rem;
-        color: #323232;
-        margin-left: 20px;
-    }
-    
-    .modal-form input{
-        margin-left: 20px;
-        width: 80%;
-        border-radius: 5px;
-        border: 1px solid rgba(0, 0, 0, 0.404);
-    }
-    .modal-form textarea{
-        margin-left: 20px;
-        width: 80%;
-        border-radius: 5px;
-        border: 1px solid rgba(0, 0, 0, 0.404);;
-    }
-    #close{
-    position: absolute;
-    right: 8px;
-    display: block;
-    width: 22px;
-    height: 22px;
-    user-select: none;
-    cursor: pointer;
-    }
-    
-    #close:hover{
-    background-color: #FF4949;
-    color: white;
-    }
-    
-    .modal-form{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 0 20px;
-    background-color: #f9f9f9;
-    }
-    
-    .modal-footer{
-    background-color: var(--fundo);
-    text-align: right;
-    
+.modal-content{
+display: flex;
+flex-direction: column;
+gap:20px;
+width: 50vw;
+margin: 15vh auto;
+padding-bottom: 20px;
+background-color: white;
+box-shadow: 1px 1px 10px black;
+}
 
-    }
+.modal-header{
+text-align: center;
+justify-content: center;
+height: 45px;
+font-size: 1rem;
+color:var(--amarelo);
+background-color: var(--fundo);
+}
+.modal-header h2{
+    margin-left:85px;
+}
+.modal-form label{
+    font-size: 1.2rem;
+    color: #323232;
+    margin-left: 20px;
+}
+
+.modal-form input{
+    margin-left: 20px;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.404);
+}
+.modal-form textarea{
+    margin-left: 20px;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.404);;
+}
+#close{
+position: absolute;
+right: 8px;
+display: block;
+width: 22px;
+height: 22px;
+user-select: none;
+cursor: pointer;
+}
+
+#close:hover{
+background-color: #FF4949;
+color: white;
+}
+
+.modal-form{
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 20px;
+padding: 0 20px;
+background-color: #f9f9f9;
+}
+
+.modal-footer{
+background-color: var(--fundo);
+text-align: right;
+}
+
+#msgError{
+    color: var(--cor-aviso);
+    margin-left: 20px;
+}
+#mensagemProcesso{
+    color: var(--cor-aviso);    
+}
     
 @media only screen and (max-width:1400px) {
     .table td{

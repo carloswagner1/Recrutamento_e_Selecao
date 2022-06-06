@@ -62,9 +62,8 @@
             <label for="procSel"> Filtrar por Processo Seletivo</label>
             <select name="procSel" id="procSel">
                 <option selected disabled value="">Selecione</option>
-
             </select>
-            <a href="#" class="filtrar"><i class="fa fa-search"></i></a>
+            <a href="#" class="filtrar" id="filtrar"><i class="fa fa-search"></i></a>
         </div>
         <div class="row">
             <div class="col-md-3">
@@ -79,12 +78,13 @@
                                     <label for="exampleInputNotaTeste" class="text-ranking">Maior Nota do
                                         Teste</label>
                                     <div class="nota" id="nota-teste">
-                                        7.6
+                                        0.00
                                     </div>
                                 </div><br>
-                                <button type="button" class="btn btn-primary">Consultar Lista de Candidatos</button>
-                                <button type="button" id="btnEncerrar" class="btn btn-danger">Encerrar Processo
+                                <button type="button" class="btn btn-primary" id="btnConsultar" onclick="window.open('listarCandidatos.html', '_blanck')"    disabled>Consultar Lista de Candidatos</button>
+                                <button type="button" id="btnEncerrar" class="btn btn-danger" disabled>Encerrar Processo 
                                     Seletivo</button>
+                                <div id="mensagemProcesso"></div> 
                             </div>
                         </div>
                     </form>
@@ -94,85 +94,23 @@
                 <div class="box">
                     <div class="box-header">
                         <br>
-                        <h3 class="box-title">Resultados do Processo Seletivo</h3>
+                        <h3 class="box-title" id="box-title">Selecione um Processo Seletivo</h3><br>
                     </div>
                     <div class="box-body no-padding">
                         <table class="table table-responsive table table-bordered table table-striped">
-                            <thead>
+                            <thead id="thead" style="display:none" >
                                 <tr>
                                     <th>Nome</th>
                                     <th>E-mail</th>
                                     <th>Celular</th>
                                     <th>Nota do Teste</th>
                                     <th>Data da Entrevista</th>
+                                    <th>Horário Entrevista</th>
                                     <th scope="col">Ação</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td data-title="Nome">OldMan of Havan</td>
-                                    <td data-title="E-Mail">véidahavan@gmail.com</td>
-                                    <td data-title="Celular">(11) 91234-1234</td>
-                                    <td data-title="Nota do teste">
-                                        <div class="nota nota-tabela">
-                                            <input type="text" readonly class="form-control" id="exampleInputNota"
-                                                name="nota">
-                                        </div>
-                                    </td>
-                                    <td data-title="Data da entrevista"> 02-02-2022</td>
-                                    <td data-title="Ações">
-                                        <div>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#modal-entrevista">Agendar Entrevista</button>
-                                            <button type="button" class="btn btn-success">Aprovar</button>
-                                            <button type="button" class="btn btn-danger">Reprovar</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td data-title="Nome">Walter Disney</td>
-                                    <td data-title="E-Mail">mickey.mouse@plus.com</td>
-                                    <td data-title="Celular">(11) 91234-4444</td>
-                                    <td data-title="Nota do teste">
-                                        <div class="nota nota-tabela">
-                                            <input type="text" readonly class="form-control" id="exampleInputNota"
-                                                name="nota">
-                                        </div>
-                                    </td>
-                                    
-                                    <td data-title="Data da entrevista"> 00-00-0000</td>
-                                    <td data-title="Ações">
-                                        <div>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#modal-entrevista">Agendar Entrevista</button>
-                                            <button type="button" class="btn btn-success">Aprovar</button>
-                                            <button type="button" class="btn btn-danger">Reprovar</button>
-
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td data-title="Nome">Maicon Dieckson</td>
-                                    <td data-title="E-Mail">rusbé@yahoooooouull.com</td>
-                                    <td data-title="Celular">(11) 91265-1111</td>
-                                    <td data-title="Nota do teste">
-                                        <div class="nota nota-tabela">
-                                            <input type="text" readonly class="form-control" id="exampleInputNota"
-                                                name="nota">
-                                        </div>
-                                    </td>
-                                    
-                                    <td data-title="Data da entrevista"> 16-06-2022</td>
-                                    <td data-title="Ações">
-                                        <div>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#modal-entrevista">Agendar Entrevista</button>
-                                            <button type="button" class="btn btn-success">Aprovar</button>
-                                            <button type="button" class="btn btn-danger">Reprovar</button>
-                                        </div>
-                                    </td>
-                                </tr>
+                            <tbody id="tabela-candidatos">
+                                
                             </tbody>
                         </table>
 
@@ -208,7 +146,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="enviar" class="btn btn-success">Enviar</button>
+                    <button type="button" id="enviar" class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
                     <button type="button" id="enviar" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -219,6 +157,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="../controllers/Resultados.js"></script>
+    <script src="../utils/Utils.js"></script>
 </body>
 
 </html>

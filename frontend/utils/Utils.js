@@ -2,7 +2,7 @@ class Utils {
 
     static dateFormat(date) {
 
-        return date.getMonth() + '/' + date.getFullYear();
+        return date.getdate() + '/' + date.getMonth() + '/' + date.getFullYear();
 
     }   
     /*Buscar endereço pelo CEP */
