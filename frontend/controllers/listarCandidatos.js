@@ -37,13 +37,8 @@ class ListarCandidatosController {
 
         var filtrar = document.getElementById('filtrar');
 
-        console.log("AQUI PASSEI");
-
         filtrar.addEventListener("click", () => {
 
-            console.log("AQUI PASSEI TAMBÉM");
-
-            event.preventDefault();
             let processoSeletivo = this.procSelEl.value;
             var listaCandidatos = this.boxTitleEl;
 
