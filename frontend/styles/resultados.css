@@ -282,6 +282,9 @@ text-align: right;
     color: var(--cor-aviso);
     margin-left: 20px;
 }
+#mensagemProcesso{
+    color: var(--cor-aviso);    
+}
     
 @media only screen and (max-width:1400px) {
     .table td{

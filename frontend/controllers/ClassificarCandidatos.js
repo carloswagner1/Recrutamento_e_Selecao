@@ -159,7 +159,9 @@ function updateInscricao(linha, btn, index) {
     const inscricaoAtualizada = {
         idCandidato: '',
         pontuacaoTeste: '',
-        situacao: '',        
+        situacao: '',
+        dataEntrevista: '',
+        horaEntrevista: '',
     }
     var dados = linha.childNodes;
     
