@@ -56,7 +56,6 @@ INSERT INTO tb_inscricao VALUES (6, '2022-09-09', null, 3, 2, 1);
 INSERT INTO tb_inscricao VALUES (7, '2022-09-09', null, 4, 1, 1);
 INSERT INTO tb_inscricao VALUES (8, '2022-09-09', null, 4, 2, 1);
 INSERT INTO tb_inscricao VALUES (9, '2022-09-09', null, 5, 1, 1);
-INSERT INTO tb_inscricao VALUES (10, '2022-09-09', null, 5, 2, 1);
 
 -- USUARIO_CANDIDATO
 INSERT INTO tb_usuario_candidato VALUES (1, 'diego@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', '1');

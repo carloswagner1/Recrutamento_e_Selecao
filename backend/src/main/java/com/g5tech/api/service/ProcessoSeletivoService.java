@@ -1,9 +1,10 @@
 package com.g5tech.api.service;
 
+import com.g5tech.api.builder.CandidatoBuilder;
+import com.g5tech.api.builder.ExperienciaProfissionalBuilder;
+import com.g5tech.api.builder.FormacaoAcademicaBuilder;
 import com.g5tech.api.builder.ProcessoSeletivoBuilder;
-import com.g5tech.api.dto.ProcessoRequestDTO;
-import com.g5tech.api.dto.ProcessoCompletoResponseDTO;
-import com.g5tech.api.dto.ProcessoResponseDTO;
+import com.g5tech.api.dto.*;
 import com.g5tech.api.exception.ProcessoSeletivoNotFoundException;
 import com.g5tech.api.model.*;
 import com.g5tech.api.model.indicator.StatusIndicator;
@@ -20,6 +21,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 @Log4j2
 @RequiredArgsConstructor
@@ -34,6 +36,8 @@ public class ProcessoSeletivoService {
     private final DepartamentoService departamentoService;
     private final InscricaoRepository inscricaoRepository;
     private final EmailService emailService;
+    private final FormacaoAcademicaService formacaoAcademicaService;
+    private final ExperienciaProfissionalService experienciaProfissionalService;
 
     public List<ProcessoResponseDTO> getByAreaCandidato(Long candidatoId) {
 
@@ -177,5 +181,28 @@ public class ProcessoSeletivoService {
 
         processoSeletivo.setStatus(status);
         processoSeletivoRepository.save(processoSeletivo);
+    }
+
+    public List<CandidatoCompletoDTO> getCandidatosById(Long id) {
+
+        ProcessoSeletivo processoSeletivo = this.getById(id);
+
+        List<Inscricao> inscricoes = inscricaoRepository.findAllByProcessoSeletivo(processoSeletivo);
+
+        return inscricoes.stream()
+                .filter(Objects::nonNull)
+                .map(inscricao -> {
+
+                    Candidato candidato = inscricao.getCandidato();
+
+                    List<FormacaoAcademica> formacaoAcademicaoList = formacaoAcademicaService.getAllByCandidato(candidato);
+                    List<FormacaoAcademicaDTO> formacaoAcademicaoDTOList = FormacaoAcademicaBuilder.buildDTOList(formacaoAcademicaoList);
+
+                    List<ExperienciaProfissional> experienciaProfissionalList = experienciaProfissionalService.getAllByCandidato(candidato);
+                    List<ExperienciaProfissionalDTO> experienciaProfissionalDTOList = ExperienciaProfissionalBuilder.buildDTOList(experienciaProfissionalList);
+
+                    return CandidatoBuilder.buildDTOCompleto(candidato, formacaoAcademicaoDTOList, experienciaProfissionalDTOList);
+                })
+                .collect(Collectors.toList());
     }
 }

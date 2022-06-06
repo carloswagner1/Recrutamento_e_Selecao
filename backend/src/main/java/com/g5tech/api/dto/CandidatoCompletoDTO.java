@@ -9,6 +9,7 @@ import java.util.List;
 @Setter
 public class CandidatoCompletoDTO {
     private String nome;
+    private String cpf;
     private String celular;
     private String email;
     private List<ExperienciaProfissionalDTO> experiencias;
