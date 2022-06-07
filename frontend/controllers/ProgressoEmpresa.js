@@ -10,7 +10,6 @@ class ProgressoEmpresaController {
     }
 
     onLoad() { 
-        
     
         // setting the url
         const url = "/processos/usuarios/" + localStorage.getItem("id_usuario") + "/abertos";

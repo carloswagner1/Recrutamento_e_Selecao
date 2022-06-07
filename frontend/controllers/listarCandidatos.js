@@ -1,129 +1,126 @@
-// para testes
+import { sendRequest } from "../utils/ApiUtils.js";
 
-var candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
+class ListarCandidatosController {
 
-var processos = JSON.parse(localStorage.getItem('db_processo') || '[]'); 
-
-var listaFormacoes = JSON.parse(localStorage.getItem('db_formacao') || []);
-
-
-var listaExperiencias = JSON.parse(localStorage.getItem('db_Experiencia'))
-
-
-// fim testes
-
-class ListarCandidatosController{
-    constructor(formFiltroId, procSelId, dadosCandidatoId, boxTitleId){
+    constructor(formFiltroId, procSelId, dadosCandidatoId, boxTitleId) {
         this.formFiltroEl = document.getElementById(formFiltroId);
         this.procSelEl = document.getElementById(procSelId)
         this.dadosCandidatoEl = document.getElementById(dadosCandidatoId);
         this.boxTitleEl = document.getElementById(boxTitleId)
-        this.onLoad();
-        this.onSelect();        
+        this.onLoad();       
     }
 
-    onLoad(){          
-        //filtrar processsos para pegar processos != de encerrado
-             
-        var processsosEmAndamento = processos.filter(processo => processo.status !== "Encerrado");        
-        if(processsosEmAndamento !== ''){            
-            processsosEmAndamento.forEach(processo => this.procSelEl.appendChild(this.montarOption(processo.nomeCargo))) 
-            // salvar os processosEmAndamento no localStorage.         
-        }else{
-            this.boxTitleEl.innerHTML = 'Não há processos seletivos em andamento'
-        }
+    onLoad() { 
+        
+        // setting the url
+        const url = "/processos/usuarios/" + localStorage.getItem("id_usuario") + "/abertos";
+
+        // enviando a request e salvando a promise
+        const responsePromise = sendRequest('GET', url, "");
+
+        responsePromise.then(response => {
+
+            // log para debuggar
+            console.log(response);
+
+            if (response.status == 200) {
+
+                let select = this.procSelEl;
+                response.body.forEach(processo => select.appendChild(montarOption(processo)));
+            }
+        })
+
+        this.onSelect();
     }
-    onSelect(){
+
+    onSelect() {
+
         var filtrar = document.getElementById('filtrar');
 
-        filtrar.addEventListener("click", event => {
-            event.preventDefault();
+        filtrar.addEventListener("click", () => {
+
             let processoSeletivo = this.procSelEl.value;
             var listaCandidatos = this.boxTitleEl;
 
+            var processoId = document.getElementById('procSel').value
 
             //Pelo Processo Seletivo que foi selecionado, temos que buscar no banco os candidatos inscritos. Então, preciso de um inner join entre as tabelas processo_seletivo, tb_inscricao e tb_candidatos para trazer os candidatos inscritos do processso seletivo vai substituir este filtro aqui de baixo
             
-            var candidatosInscritos = [];
-            this.boxTitleEl.innerHTML = 'Candidatos do Processo Seletivo' 
-            this.dadosCandidatoEl.innerHTML = ''
-                    
-            if(processoSeletivo === 'Desenvolvedor Backend'){     
-                           
-                candidatosInscritos = candidatos.filter(candidato => {
-                    if(candidato.id === 1 || candidato.id === 2 || candidato.id === 4){
-                        return candidato;
+            const url = "/processos/" + processoId + "/candidatos";
+
+            // enviando a request e salvando a promise
+            const responsePromise = sendRequest('GET', url, "");
+    
+            responsePromise.then(response => {
+    
+                // log para debuggar
+                console.log(response);
+    
+                if (response.status == 200) {
+ 
+                    var candidatosInscritos = response.body;
+
+                    this.boxTitleEl.innerHTML = 'Candidatos do Processo Seletivo';
+                    this.dadosCandidatoEl.innerHTML = '';
+
+                    //para cada candidato inscrito, temos q preencheer o html
+                    if (candidatosInscritos.length === 0) {
+                        //se não houver candidato inscrito no processo
+                        listaCandidatos.innerHTML = 'Não há candidatos para este processo seletivo'
                     }
-                })
-            }
-            else if(processoSeletivo === 'Desenvolvedor FrontEnd'){
-                               
-                candidatosInscritos = candidatos.filter(candidato => {
-                    if(candidato.id === 3 || candidato.id === 5){
-                        return candidato;
+                    else {
+                        candidatosInscritos.forEach((candidato, index) => {
+
+                            //estrutura para preencher o HTML
+                            
+                            this.dadosCandidatoEl.innerHTML += nomeCandidato(candidato, index);
+                            this.dadosCandidatoEl.appendChild(montarDados(candidato, index));
+
+                        })                
                     }
-                })
-            }
+                }
+            })
+            
 
-            //para cada candidato inscrito, temos q preencheer o html
-            if(candidatosInscritos.length === 0){
-                //se não houver candidato inscrito no processo
-                listaCandidatos.innerHTML = 'Não há candidatos para este processo seletivo'
-            }else{
-                candidatosInscritos.forEach((candidato, index) => {
-                    //pegar formacao academica no banco de dados
-                    var formacaoCandidato = listaFormacoes.filter(formacao => {
-                        if(candidato.id === formacao.id){
-                            return formacao;
-                        }
-                    })  
+                
 
-                    //pegar expericencia no banco de dados pelo id do candidato
-                    var experienciaCandidato = listaExperiencias.filter(experiencia => {
-                        if(candidato.id === experiencia.id){
-                            return experiencia;
-                        }
-                    })
-
-                    //estrutura para preencher o HTML
-                    
-                    this.dadosCandidatoEl.innerHTML += nomeCandidato(candidato, index)
-                    this.dadosCandidatoEl.appendChild(montarDados(candidato, index, formacaoCandidato, experienciaCandidato)) 
-
-                })                
-            }
+            
         })
     }
-    montarOption(nomeCargo){
-        var option = document.createElement("option");
-        option.setAttribute('value', `${nomeCargo}`);
-        option.innerHTML = `${nomeCargo}`
-        return option
-    }
     
+}
+
+function montarOption(processo) {
+    var option = document.createElement("option");
+    option.setAttribute('value', `${processo.id}`);
+    option.innerHTML = `${processo.cargo}`
+    return option
 }
 
 let listaCandidatosController = new ListarCandidatosController("form-filtro",  "procSel", "dados-candidatos", "box-title");
 
 
-function nomeCandidato(candidato, index){
+function nomeCandidato(candidato, index) {
     var dadoNome = `
     <p data-toggle="collapse" data-target="#dados${index}" class="nomes">${candidato.nome}</p>`
     console.log(dadoNome)
     return dadoNome;
 }
-function montarDados(candidato, index, formacaoCandidato, experienciaCandidato){    
+
+function montarDados(candidato, index) {    
     var collapseDados = document.createElement("div");
     collapseDados.classList.add("collapse");
     collapseDados.classList.add("dados");
     collapseDados.setAttribute("id",`dados${index}`); 
     collapseDados.innerHTML += dadosPessoais(candidato);
-    collapseDados.innerHTML += dadosFormacao(formacaoCandidato);
-    collapseDados.innerHTML += dadosExperiencia(experienciaCandidato);
+    collapseDados.innerHTML += dadosFormacao(candidato.formacoes);
+    collapseDados.innerHTML += dadosExperiencia(candidato.experiencias);
     
     return collapseDados;
 }
-function dadosPessoais(candidato){
+
+function dadosPessoais(candidato) {
+
     var dados = `
     <br>
     <span class="cpf">CPF: ${candidato.cpf}</span>
@@ -132,15 +129,19 @@ function dadosPessoais(candidato){
     <br>                    
     <span class="celular">Celular: ${candidato.celular}</span>
     `
+
     return dados;
 }
 
-function dadosFormacao(listaFormacoes){
-    if (listaFormacoes.length === 0){
+function dadosFormacao(formacoes) {
+
+    if (formacoes.length === 0) {
         var dadosFormacao = '<p>Não há registros de dados de formação acadêmica</p>';        
-    }else{
+    }
+    else {
+
         dadosFormacao = `<p class="formacaoAcademica">Formação Acadêmica:</p>`
-        listaFormacoes.forEach(formacao =>{
+        formacoes.forEach(formacao =>{
              var curso = `
                                  
                 <span class="tipoFormacao"> ${formacao.tipoFormacao}</span>
@@ -158,15 +159,17 @@ function dadosFormacao(listaFormacoes){
             dadosFormacao += curso;
         })        
     }
-    return dadosFormacao;
 
+    return dadosFormacao;
 }
-function dadosExperiencia(listaExperiencias){
-    if (listaExperiencias.length === 0){
+
+function dadosExperiencia(experiencias) {
+    if (experiencias.length === 0){
         var dadosExperiencia = '<p>Não há registros de experiências anteriores</p>';        
-    }else{
+    }
+    else {
         dadosExperiencia = `<p class="experiencia">Experiência Profissional:</p>`
-        listaExperiencias.forEach(experiencia =>{
+        experiencias.forEach(experiencia =>{
              var experienciaProfisisonal = `
                                  
              <span class="empresa">Empresa: ${experiencia.empresa}</span>
@@ -180,5 +183,6 @@ function dadosExperiencia(listaExperiencias){
             dadosExperiencia += experienciaProfisisonal;
         })        
     }
+
     return dadosExperiencia;
 }

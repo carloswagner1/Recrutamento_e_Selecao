@@ -30,6 +30,12 @@ public class ProcessoSeletivoController {
         return new ResponseEntity<>(processoSeletivoService.getCompletoById(id), HttpStatus.OK);
     }
 
+    @Operation(summary = "Busca dados dos candidatos isncritos para um processo seletivo pelo id")
+    @GetMapping("/{id}/candidatos")
+    public ResponseEntity<List<CandidatoCompletoDTO>> getCandidatosById(@PathVariable Long id) {
+        return new ResponseEntity<>(processoSeletivoService.getCandidatosById(id), HttpStatus.OK);
+    }
+
     @Operation(summary = "Busca status de um processo seletivo pelo id")
     @GetMapping("/{id}/status")
     public ResponseEntity<Long> getStatusById(@PathVariable Long id) {
