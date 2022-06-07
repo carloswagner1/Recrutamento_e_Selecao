@@ -205,4 +205,27 @@ public class ProcessoSeletivoService {
                 })
                 .collect(Collectors.toList());
     }
+
+    public void updateStatusToTeste(Long id, TesteDTO dto) {
+
+        ProcessoSeletivo processoSeletivo = this.getById(id);
+
+        Status status = statusService.getById(StatusIndicator.TESTE.getId());
+
+        processoSeletivo.setStatus(status);
+        processoSeletivoRepository.save(processoSeletivo);
+
+        List<Inscricao> inscricoes = inscricaoRepository.findAllByProcessoSeletivo(processoSeletivo);
+
+        List<String> emailList = inscricoes.stream()
+                .map(inscricao -> {
+                    inscricao.setStatus(status);
+                    inscricaoRepository.save(inscricao);
+                    return inscricao.getCandidato().getEmail();
+                })
+                .collect(Collectors.toList());
+
+        emailService.sendTeste(processoSeletivo.getCargo().getNome(), dto, emailList);
+    }
+
 }

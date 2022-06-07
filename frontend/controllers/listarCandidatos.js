@@ -39,7 +39,6 @@ class ListarCandidatosController {
 
         filtrar.addEventListener("click", () => {
 
-            let processoSeletivo = this.procSelEl.value;
             var listaCandidatos = this.boxTitleEl;
 
             var processoId = document.getElementById('procSel').value

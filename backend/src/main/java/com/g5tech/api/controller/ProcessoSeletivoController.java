@@ -61,6 +61,15 @@ public class ProcessoSeletivoController {
         return new ResponseEntity<>(processoSeletivoService.getAllAbertosByDepartamento(id), HttpStatus.OK);
     }
 
+    @Operation(summary = "Altera status de um processo e suas inscrições e envia email para candidatos")
+    @PostMapping("/{id}/teste")
+    public ResponseEntity<Boolean> updateStatusToTeste(
+            @PathVariable Long id,
+            @RequestBody TesteDTO dto) {
+        processoSeletivoService.updateStatusToTeste(id, dto);
+        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+    }
+
     @Operation(summary = "Salva um novo processo seletivo no sistema")
     @PostMapping
     public ResponseEntity<Boolean> create(@Valid @RequestBody ProcessoRequestDTO dto) {
