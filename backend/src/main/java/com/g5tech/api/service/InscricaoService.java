@@ -98,4 +98,18 @@ public class InscricaoService {
         return candidatoOptional.get();
     }
 
+    public Inscricao getByCandidatoAndProcesso(Candidato candidato, ProcessoSeletivo processoSeletivo) {
+
+        Optional<Inscricao> inscricaoOptional = inscricaoRepository.findByCandidatoAndProcessoSeletivo(candidato, processoSeletivo);
+
+        if (!inscricaoOptional.isPresent()) {
+            throw new InscricaoNotFoundException();
+        }
+
+        return inscricaoOptional.get();
+    }
+
+    public void save(Inscricao inscricao) {
+        inscricaoRepository.save(inscricao);
+    }
 }

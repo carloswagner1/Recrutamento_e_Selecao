@@ -1,5 +1,6 @@
 package com.g5tech.api.service;
 
+import com.g5tech.api.dto.TesteDTO;
 import com.g5tech.api.model.Candidato;
 import com.g5tech.api.model.Cargo;
 import lombok.RequiredArgsConstructor;
@@ -63,18 +64,45 @@ public class EmailService {
         }
     }
 
-    public void sendProcessoEncerrado(String cargo, List<String> email) {
+    public void sendProcessoEncerrado(String cargo, List<String> emailList) {
 
-        String[] emailArray = email.toArray(new String[0]);
+        String[] emailArray = emailList.toArray(new String[0]);
 
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setFrom(EMAIL_G5TECH);
-        message.setTo(emailArray);
+        message.setTo(EMAIL_G5TECH);
+        message.setBcc(emailArray);
         message.setSubject("Processo Seletivo para o cargo: ".concat(cargo).concat(" foi encerrado"));
         message.setText("Olá!\n"
                 +"\nO processo seletivo para o cargo: " + cargo + " foi encerrado.\n"
                 + "\nDesejamos sorte nas suas próximas tentativas.\n"
+                + "\nEquipe G5 Tech");
+
+        try {
+            mailSender.send(message);
+        } catch (MailException ex) {
+            log.error("EmailService sendProcessoEncerrado", ex);
+            throw ex;
+        }
+    }
+
+    public void sendTeste(String cargo, TesteDTO dto, List<String> emailList) {
+
+        String[] emailArray = emailList.toArray(new String[0]);
+
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setFrom(EMAIL_G5TECH);
+        message.setTo(EMAIL_G5TECH);
+        message.setBcc(emailArray);
+        message.setSubject("O teste para o cargo: ".concat(cargo).concat(" já está disponível"));
+        message.setText("Olá!\n"
+                +"\nO teste do processo seletivo para o cargo: " + cargo + " está disponível.\n"
+                + "\nTema:" + dto.getTema() + "\n"
+                + "\nAssunto:" + dto.getAssunto() + "\n"
+                + "\nLink:" + dto.getLink() + "\n"
+                + "\nDesejamos sorte nessa etapa e ficamos a disposição.\n"
                 + "\nEquipe G5 Tech");
 
         try {

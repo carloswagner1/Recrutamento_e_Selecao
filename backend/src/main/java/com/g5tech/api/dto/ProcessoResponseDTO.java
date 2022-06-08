@@ -12,4 +12,5 @@ public class ProcessoResponseDTO {
     private String local;
     private String descricao;
     private String departamento;
+    private String teste;
 }

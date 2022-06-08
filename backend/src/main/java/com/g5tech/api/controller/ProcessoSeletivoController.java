@@ -36,6 +36,12 @@ public class ProcessoSeletivoController {
         return new ResponseEntity<>(processoSeletivoService.getCandidatosById(id), HttpStatus.OK);
     }
 
+    @Operation(summary = "Busca dados dos candidatos isncritos para um processo seletivo pelo id")
+    @GetMapping("/{id}/candidatos/teste")
+    public ResponseEntity<List<CandidatoCompletoDTO>> getCandidatosTesteById(@PathVariable Long id) {
+        return new ResponseEntity<>(processoSeletivoService.getCandidatosTesteById(id), HttpStatus.OK);
+    }
+
     @Operation(summary = "Busca status de um processo seletivo pelo id")
     @GetMapping("/{id}/status")
     public ResponseEntity<Long> getStatusById(@PathVariable Long id) {
@@ -59,6 +65,15 @@ public class ProcessoSeletivoController {
     @GetMapping("/usuarios/{id}/abertos")
     public ResponseEntity<List<ProcessoResponseDTO>> getAllProcessosAbertosByDepartamento(@PathVariable Long id) {
         return new ResponseEntity<>(processoSeletivoService.getAllAbertosByDepartamento(id), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Altera status de um processo e suas inscrições e envia email para candidatos")
+    @PostMapping("/{id}/teste")
+    public ResponseEntity<Boolean> updateStatusToTeste(
+            @PathVariable Long id,
+            @RequestBody TesteDTO dto) {
+        processoSeletivoService.updateStatusToTeste(id, dto);
+        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
     }
 
     @Operation(summary = "Salva um novo processo seletivo no sistema")

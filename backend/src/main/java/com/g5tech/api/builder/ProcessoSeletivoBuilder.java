@@ -25,6 +25,7 @@ public class ProcessoSeletivoBuilder {
         dto.setLocal(processoSeletivo.getSolicitacaoVaga().getLocal());
         dto.setDescricao(processoSeletivo.getCargo().getDescricao());
         dto.setDepartamento(processoSeletivo.getCargo().getDepartamento().getNome());
+        dto.setTeste(processoSeletivo.getTeste());
 
         return dto;
     }
