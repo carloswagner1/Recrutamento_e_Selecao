@@ -29,4 +29,8 @@ Os   processos   envolvidosno   sistema   de Recrutamento   e Seleção   possue
 ## Informações Importantes
 O levantamento de requisitos foi realizado em uma empresa real mediante entrevista com o responsável pela área, buscando agregar todas as fases do recrutamento e seleção. O nome, logo, marcas e demais informações/documentos que vinculem ao nome real da empresa serão apresentados por um nome fantasia, por tratar-se de atividade acadêmica com o propósito de simulaão de uma situação real de projeto.
 
-## Links 📎
+## Telas do sistema
+
+Interface da empresa
+
+
