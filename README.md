@@ -24,35 +24,9 @@ Repositório relativo ao projeto do Trabalho de Graduação do Curso de Análise
 
 ## Resumo 📖
 
-A Empresa Farmacêutica necessita criar um sistema para gerenciamento do processo de seleção de funcionários e, para isto, o stakeholder me contactou apresentando a forma com que o processo é realizado na empresa, sendo que abaixo apresento o resumo das atividades que envolvem o processo: 
-
- 
-
-O Gestor do Departamento com necessidade de contratação de funcionário encaminha solicitação para o gestor de Recursos Humanos justificando, com a indicação do cargo e departamento, pré-requisitos técnicos e comportamentais, qualificações e o tipo de contratação. O Gestor de RH avalia a adequação do pedido de contratação de funcionário. Se adequada, o Gestor de RH dá início ao processo de Recrutamento e Seleção.
- 
-
-Os candidatos enviam seus currículos ao Setor de Recrutamento e Seleção até a data final determinada na divulgação. O Setor de Recrutamento e Seleção avalia os currículos, descartando os recebidos fora do prazo e aqueles em que os candidatos não cumpram com os pré-requisitos do cargo. 
-
- 
-
-O Setor de Recrutamento e Seleção agenda datas para a realização dos testes para avaliação das habilidades técnicas e comportamentais. Após a realização dos testes, o setor de seleção classifica os candidatos de acordo com as habilidades técnicas e adequação com a cultura da empresa, sendo que os melhores são convocados para uma entrevista com a presença do Gestor de Departamento. A escolha final cabe os Gestor de Departamento. 
-
- 
-
-O Setor de Recrutamento e Seleção informa o resultado do processo aos candidatos entrevistados.
+Os   processos   envolvidosno   sistema   de Recrutamento   e Seleção   possuem, geralmente, o objetivo de localizar profissionais que estão dentro ou fora do mercado de trabalho para que ocupem um determinado perfil solicitado,que remete a uma vaga numa  empresa  ou  instituição  que,  cada  vez  mais,  exige  que  esses  funcionários estejam alinhados com os valores e a cultura da empresa. Com a informatização dos processos,   os departamentosde   Recursos   Humanos,   responsáveispor   essa atribuição, passampor transformações, atualizandoos modelos até então conhecidos para realizar essa tarefa. O presente trabalho tem como objetivo principal desenvolver uma   ferramenta   para   auxiliar   o Recrutamento   e Seleçãopara   organizações, dinamizando  os  aspectos  relacionados  à  recepção  de  candidaturas,  aplicação  de testes e seleção dos candidatos que estejam mais alinhados com o perfil pretendido pela  empresa,  o  que,  ao  final,  representa  agilidade  dos  processos de  contratação, bem  como  reduçãodos  conflitos  nas  equipes  de  trabalho  e  a  rotatividade  de profissionais  que,  por  não  se  alinharem  aos  valores  da  empresa,deixam  os  seus quadros de funcionário em busca de uma colocação que esteja mais de acordo com seus  anseios  pessoais.Algumas  das  tecnologias  utilizadas  para  desenvolver  o sistema  incluem: Java  (backend),  CSS/HTML  (frontend),  javascript  (frontend),  o sistema  de  gerenciamento  de  banco  de  dados  MySQL,  o  ambiente  de  execução JavaScript –o node.js e o editor de código-fonte Visual Studio Code. Espera-se com este projeto a melhoria dos processos de Recrutamento e Seleçãodas empresas que o  utilizarem, tornandotais  processoseficientes,  consistentes,  sem  duplicidade  de dados e de fácil usabilidade. 
 
 ## Informações Importantes
 O levantamento de requisitos foi realizado em uma empresa real mediante entrevista com o responsável pela área, buscando agregar todas as fases do recrutamento e seleção. O nome, logo, marcas e demais informações/documentos que vinculem ao nome real da empresa serão apresentados por um nome fantasia, por tratar-se de atividade acadêmica com o propósito de simulaão de uma situação real de projeto.
 
 ## Links 📎
-
-[Link do Projeto no Figma - Versão Candidato/Navegador](https://www.figma.com/proto/Htu9VUBWhEUlelJZ1RKN3n/Vers%C3%A3o-Cliente-Computador-Navegador?node-id=7%3A6&scaling=min-zoom&page-id=0%3A1)
-
-[Link do Projeto no Figma - Versão Candidato/Mobile](https://www.figma.com/proto/jBBEs48VeDdrGyTH7KL38f/Vers%C3%A3o-Cliente-Mobile?scaling=scale-down&page-id=0%3A1&node-id=22%3A9)
-
-[Link do Projeto no Figma - Versão Departamento](https://www.figma.com/proto/m8ZSqOP3JYyjPY9HutjlZ6/Vers%C3%A3o-Departamento-Computador?scaling=contain&page-id=0%3A1&node-id=7%3A2)
-
-[Documento de Concepção do Sistema](https://fatecspgov.sharepoint.com/:w:/s/GrupodeTrabalhos/EYzCWS7D8cRBpuHo2AUFUoIBFH_ftfwreMwgW3rgXa9JRg?e=dYLdr3)
-
-
-
