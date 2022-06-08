@@ -62,6 +62,7 @@ public class CandidatoBuilder {
     public static CandidatoCompletoDTO buildDTOCompleto(Candidato candidato, List<FormacaoAcademicaDTO> formacaoAcademicaDTOList, List<ExperienciaProfissionalDTO> experienciaProfissionaDTOlList) {
 
         CandidatoCompletoDTO dto = new CandidatoCompletoDTO();
+        dto.setId(candidato.getId().toString());
         dto.setNome(candidato.getNome());
         dto.setCpf(candidato.getCpf());
         dto.setCelular(candidato.getCelular());

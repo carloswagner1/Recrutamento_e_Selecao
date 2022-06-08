@@ -228,4 +228,27 @@ public class ProcessoSeletivoService {
         emailService.sendTeste(processoSeletivo.getCargo().getNome(), dto, emailList);
     }
 
+    public List<CandidatoCompletoDTO> getCandidatosTesteById(Long id) {
+
+        ProcessoSeletivo processoSeletivo = this.getById(id);
+
+        List<Inscricao> inscricoes = inscricaoRepository.findAllByProcessoSeletivo(processoSeletivo);
+
+        return inscricoes.stream()
+                .filter(Objects::nonNull)
+                .filter(inscricao -> Objects.equals(inscricao.getStatus().getId(), StatusIndicator.TESTE.getId()))
+                .map(inscricao -> {
+
+                    Candidato candidato = inscricao.getCandidato();
+
+                    List<FormacaoAcademica> formacaoAcademicaoList = formacaoAcademicaService.getAllByCandidato(candidato);
+                    List<FormacaoAcademicaDTO> formacaoAcademicaoDTOList = FormacaoAcademicaBuilder.buildDTOList(formacaoAcademicaoList);
+
+                    List<ExperienciaProfissional> experienciaProfissionalList = experienciaProfissionalService.getAllByCandidato(candidato);
+                    List<ExperienciaProfissionalDTO> experienciaProfissionalDTOList = ExperienciaProfissionalBuilder.buildDTOList(experienciaProfissionalList);
+
+                    return CandidatoBuilder.buildDTOCompleto(candidato, formacaoAcademicaoDTOList, experienciaProfissionalDTOList);
+                })
+                .collect(Collectors.toList());
+    }
 }
