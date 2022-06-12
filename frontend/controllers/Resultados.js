@@ -133,8 +133,7 @@ class ResultadosController{
 
                     camposModal.forEach(item =>{
                         //testar campos vazios
-                        if(item.value === ''){
-                            
+                        if(item.value == ''){                            
                             msgError.innerHTML = " *Todos os campos devem ser preenchidos"
                             setTimeout(function(){
                                 msgError.innerHTML = "" 
