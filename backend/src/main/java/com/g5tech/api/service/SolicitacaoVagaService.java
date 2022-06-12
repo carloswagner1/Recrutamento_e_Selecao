@@ -2,11 +2,10 @@ package com.g5tech.api.service;
 
 import com.g5tech.api.builder.SolicitacaoResponseDTOBuilder;
 import com.g5tech.api.builder.SolicitacaoVagaBuilder;
+import com.g5tech.api.dto.ProcessoRequestDTO;
 import com.g5tech.api.dto.SolicitacaoRequestDTO;
 import com.g5tech.api.dto.SolicitacaoResponseDTO;
-import com.g5tech.api.exception.CargoNotFoundException;
 import com.g5tech.api.exception.SolicitacaoVagaNotFoundException;
-import com.g5tech.api.exception.UsuarioNotFoundException;
 import com.g5tech.api.model.Cargo;
 import com.g5tech.api.model.Departamento;
 import com.g5tech.api.model.SolicitacaoVaga;
@@ -26,6 +25,7 @@ import java.util.stream.Collectors;
 public class SolicitacaoVagaService {
 
     private static final String STATUS_EM_ANALISE = "Em Análise";
+    private static final String STATUS_APROVADA = "Aprovada";
 
     private final SolicitacaoVagaRepository solicitacaoVagaRepository;
     private final CargoRepository cargoRepository;
@@ -44,7 +44,24 @@ public class SolicitacaoVagaService {
         return Boolean.TRUE;
     }
 
-    public List<SolicitacaoResponseDTO> getAllByDepartamento(Long funcionarioId) {
+    public List<SolicitacaoVaga> getAllByDepartamento(Long funcionarioId) {
+
+        UsuarioFuncionario usuario = usuarioService.getUsuarioFuncionarioById(funcionarioId);
+
+        Departamento departamento = usuario.getDepartamento();
+
+        List<Cargo> cargoList = cargoService.getByDepartamento(departamento);
+
+        List<SolicitacaoVaga> solicitacaoVagaList = new ArrayList<>();
+
+        for (Cargo cargo : cargoList) {
+            solicitacaoVagaList.addAll(this.getAllByCargo(cargo));
+        }
+
+        return solicitacaoVagaList;
+    }
+
+    public List<SolicitacaoResponseDTO> getAllByDTODepartamento(Long funcionarioId) {
 
         UsuarioFuncionario usuario = usuarioService.getUsuarioFuncionarioById(funcionarioId);
 
@@ -65,8 +82,9 @@ public class SolicitacaoVagaService {
         return solicitacaoVagaRepository.findAllByCargo(cargo);
     }
 
-    public List<SolicitacaoResponseDTO> getAllEmAnaliseByDepartamento(Long id) {
-        List<SolicitacaoResponseDTO> solicitacaoResponseDTOList = this.getAllByDepartamento(id);
+    public List<SolicitacaoResponseDTO> getAllEmAnaliseByDepartamento(Long funcionarioId) {
+
+        List<SolicitacaoResponseDTO> solicitacaoResponseDTOList = this.getAllByDTODepartamento(funcionarioId);
 
         return solicitacaoResponseDTOList.stream()
                 .filter(dto -> dto.getStatus().equals(STATUS_EM_ANALISE))
@@ -91,7 +109,7 @@ public class SolicitacaoVagaService {
         solicitacaoVagaRepository.save(solicitacaoVaga);
     }
 
-    private SolicitacaoVaga getById(Long id) {
+    public SolicitacaoVaga getById(Long id) {
         Optional<SolicitacaoVaga> solicitacaoVagaOptional = solicitacaoVagaRepository.findById(id);
 
         if (!solicitacaoVagaOptional.isPresent()) {
@@ -99,5 +117,29 @@ public class SolicitacaoVagaService {
         }
 
         return solicitacaoVagaOptional.get();
+    }
+
+    public List<SolicitacaoResponseDTO> getAllAprovadasByDepartamento(Long funcionarioId) {
+
+        List<SolicitacaoResponseDTO> solicitacaoResponseDTOList = this.getAllByDTODepartamento(funcionarioId);
+
+        return solicitacaoResponseDTOList.stream()
+                .filter(dto -> dto.getStatus().equals(STATUS_APROVADA))
+                .collect(Collectors.toList());
+    }
+
+    public void updateToFinalizada(SolicitacaoVaga solicitacaoVaga) {
+        solicitacaoVaga.setStatus("Finalizada");
+        solicitacaoVagaRepository.save(solicitacaoVaga);
+    }
+
+    public void updateSolicicatao(SolicitacaoVaga solicitacaoVaga, ProcessoRequestDTO dto) {
+
+        solicitacaoVaga.setQuantidadeVagas(new Integer(dto.getQtdvagas()));
+        solicitacaoVaga.setLocal(dto.getLocalVaga());
+        solicitacaoVaga.setTipoContratacao(dto.getTipoVaga());
+        solicitacaoVaga.setRequisitosDesejaveis(dto.getRequisitos());
+
+        solicitacaoVagaRepository.save(solicitacaoVaga);
     }
 }

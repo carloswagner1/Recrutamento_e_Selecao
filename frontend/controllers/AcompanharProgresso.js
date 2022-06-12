@@ -23,7 +23,7 @@ class AcompanharProgresso {
             console.log(response);
 
             if (response.status == 200) {
-                let rate = response.body / 5;
+                let rate = response.body / 4;
 
                 addContentProgresso(response.body, rate)
                 addContentRow(response.body);
@@ -37,7 +37,7 @@ class AcompanharProgresso {
                 const contentProgresso = `
                 <div class="progresso-titulo">
                     <span>Meu progresso</span>
-                    <span>${status}/5</span>
+                    <span>${status}/4</span>
                 </div>
 
                 <div class="jss958 progresso-barra root jss959 jss961" role="progressbar" aria-valuenow="67">
@@ -163,7 +163,7 @@ class AcompanharProgresso {
                         `;
                         break;
 
-                    case 3:
+                    case 4:
                         contentRow = `
                         <div class="col-sm-1 col-md-6 side-content">
                             <div class="bs-vertical">

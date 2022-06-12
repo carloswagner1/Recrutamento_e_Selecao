@@ -1,41 +1,149 @@
-class GerenciarProcessoController{
-    constructor(containerID, solicitacoesTableId){
+import { sendRequest } from "../utils/ApiUtils.js";
+
+class GerenciarProcessoController {
+
+    constructor(containerID, solicitacoesTableId, processosTableId) {
         this.containerEl = document.getElementById(containerID);
-        this.solicitacoesTableEl = document.getElementById(solicitacoesTableId);        
+        this.solicitacoesTableEl = document.getElementById(solicitacoesTableId);  
+        this.processosTableEl = document.getElementById(processosTableId);              
         this.onLoad();                      
     }
     
-    onLoad(){        
-        var tabelaSolicitacoes = this.solicitacoesTableEl;        
-        var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');//pega todas solicitacoes
-        // filtrando para pegar somente as solicitações com statis "em análise"
-        var solicitacoesAprovadas = solicitacoes.filter(solicitacao => solicitacao._status === "Aprovada");               
-        
-        if (solicitacoesAprovadas.length === 0){
-            document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há solicitações aprovadas no momento</h2>`
-        }else{
-            solicitacoesAprovadas.forEach((solicitacao, index) => {                
-                var solicitacaoTr = montaTr(solicitacao, index);
-                tabelaSolicitacoes.appendChild(solicitacaoTr);
-            })            
-        }       
-    }    
-}
-let gerenciarProcessoController = new GerenciarProcessoController("main-container","tabela-solicitacoes")
+    onLoad() {    
+        this.loadSolicitacoes();
+        this.loadProcessos();
+    }
 
-function montaTr(solicitacao, index){
+    loadSolicitacoes() {
+
+        var tabelaSolicitacoes = this.solicitacoesTableEl;       
+        
+        // setting the url
+        const url = "/solicitacoes/usuarios/" + localStorage.getItem("id_usuario") + "/aprovadas";
+
+        // enviando a request e salvando a promise
+        const responsePromise = sendRequest('GET', url, "");
+
+        responsePromise.then(response => {
+
+            // log para debuggar
+            console.log(response);
+
+            if (response.status == 200) {
+
+                var solicitacoesAprovadas = response.body;
+
+                if (solicitacoesAprovadas.length === 0) {
+                    document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há solicitações aprovadas no momento</h2>`
+                }
+                else {
+                    solicitacoesAprovadas.forEach((solicitacao, index) => {                
+                        var solicitacaoTr = montaTrSolicitacao(solicitacao, index);
+                        tabelaSolicitacoes.appendChild(solicitacaoTr);
+                    })            
+                }
+            }
+            else {
+                document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há solicitações aprovadas no momento</h2>`
+            }
+        });
+
+    }
+
+    loadProcessos() {
+
+        var tabelaProcessos= this.processosTableEl;       
+        
+        // setting the url
+        const url = "/processos/usuarios/" + localStorage.getItem("id_usuario");
+
+        // enviando a request e salvando a promise
+        const responsePromise = sendRequest('GET', url, "");
+
+        responsePromise.then(response => {
+
+            // log para debuggar
+            console.log(response);
+
+            if (response.status == 200) {
+
+                var processos = response.body;
+
+                if (processos.length === 0) {
+                    document.getElementById('tabelaProcesso').innerHTML = `<h2 style="text-align:center">Não há processos seletivos no momento</h2>`
+                }
+                else {
+                    processos.forEach((processo, index) => {                
+                        var processoTr = montaTrProcesso(processo, index);
+                        tabelaProcessos.appendChild(processoTr);
+                    })            
+                }
+            }
+            else {
+                document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há processos seletivos no momento</h2>`
+            }
+
+            onClick(); 
+        });
+
+    }
+}
+
+function onClick() {
+
+    var btn = document.querySelectorAll('.button.blue.mobile.cadastrarprocesso');
+
+    btn.forEach((item, index) => {
+
+        item.addEventListener('click', () => {
+            var campo = item.parentNode;
+            let linhaTabela = index;
+            let numLinhas = btn.length;
+            localStorage.setItem('linhaTabela', JSON.stringify(linhaTabela));
+            localStorage.setItem('numLinhas', JSON.stringify(numLinhas));
+            var processo = getProcessoValues(campo, btn[index]);
+            fillFields(processo);
+            openModal();
+        })
+    })
+}
+
+let gerenciarProcessoController = new GerenciarProcessoController("main-container","tabela-solicitacoes", "tabela-processos")
+
+function montaTrSolicitacao(solicitacao, index){
     var solicitacaoTr = document.createElement("tr");
-    solicitacaoTr.classList.add('solicitacao');        
-    solicitacaoTr.appendChild(montaTd(solicitacao._departamento, "departamento"));
-    solicitacaoTr.appendChild(montaTd(solicitacao._cargo, "cargo"));
-    solicitacaoTr.appendChild(montaTd(solicitacao._tipoVaga, "tipoVaga"));
-    solicitacaoTr.appendChild(montaTd(solicitacao._localVaga, "localVaga"));
-    solicitacaoTr.appendChild(montaTd(solicitacao._qtdVagas, "qtdVagas"));
-    solicitacaoTr.appendChild(montaTd(solicitacao._requisitos, "requisitos"));
-    solicitacaoTr.appendChild(montaTd(solicitacao._motivo, "motivo"));
+    solicitacaoTr.classList.add('solicitacao'); 
+    solicitacaoTr.appendChild(montaTdHidden(solicitacao.id, "id"));         
+    solicitacaoTr.appendChild(montaTd(solicitacao.departamento, "departamento"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.cargo, "cargo"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.tipoVaga, "tipoVaga"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.localVaga, "localVaga"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.qtdVagas, "qtdVagas"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.requisitos, "requisitos"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.motivo, "motivo"));
     solicitacaoTr.appendChild(montaTdBtn(index));
 
-    return solicitacaoTr
+    return solicitacaoTr;
+}
+
+function montaTrProcesso(processo, index){
+    var solicitacaoTr = document.createElement("tr");
+    solicitacaoTr.classList.add('processo'); 
+    solicitacaoTr.appendChild(montaTdHidden(processo.id, "id"));         
+    solicitacaoTr.appendChild(montaTd(processo.departamento, "departamento"));
+    solicitacaoTr.appendChild(montaTd(processo.cargo, "cargo"));
+    solicitacaoTr.appendChild(montaTd(processo.areaVaga, "areaVaga"));
+    solicitacaoTr.appendChild(montaTd(processo.tipoVaga, "tipoVaga"));
+    solicitacaoTr.appendChild(montaTd(processo.localVaga, "localVaga"));
+    solicitacaoTr.appendChild(montaTd(processo.qtdVagas, "qtdVagas"));
+    solicitacaoTr.appendChild(montaTd(processo.requisitosDesejaveis, "requisitos"));
+    solicitacaoTr.appendChild(montaTd(processo.teste, "teste"));
+    solicitacaoTr.appendChild(montaTd(new Date(processo.dataInicio).toLocaleDateString(), "dataInicio"));
+    solicitacaoTr.appendChild(montaTd(new Date(processo.dataFinal).toLocaleDateString(), "dataFinal"));
+    solicitacaoTr.appendChild(montaTd(processo.status, "status"));
+    solicitacaoTr.appendChild(montaTdBtnProcesso(index));
+
+    return solicitacaoTr;
 }
 
 function montaTd(dado, classe){
@@ -45,6 +153,16 @@ function montaTd(dado, classe){
 
     return td;
 }
+
+function montaTdHidden(dado, classe){
+    var td = document.createElement("td");
+    td.textContent = dado;
+    td.hidden = "hidden";
+    td.classList.add(classe);   
+
+    return td;
+}
+
 function montaTdBtn(index){
     var td = document.createElement("td");
     td.innerHTML = `
@@ -54,11 +172,29 @@ function montaTdBtn(index){
     td.classList.add("blue");
     td.classList.add("mobile");
     td.classList.add("cadastrarprocesso");
-    td.setAttribute("type", "submit")    
+    td.setAttribute("type", "submit");
+
     return td;
 }
+
+function montaTdBtnProcesso(index) {
+
+    var td = document.createElement("td");
+
+    td.innerHTML = `
+        <td>
+            <button type="button" class="button green" id="edit-${index}">Editar</button>
+            <button type="button" class="button red" id="delete-${index}" >Excluir</button>
+        </td>
+    `;
+
+    return td;
+}
+
 function getProcessoValues(campo, btn) {
+
     let processoValues = {
+        solicitacaoId: '',
         nomeDepartamento: '',
         nomeCargo: '',
         area:'',
@@ -69,13 +205,19 @@ function getProcessoValues(campo, btn) {
         teste: '',
         dataInicio: '', 
         dataFinal:'',
-        status: '',
-        index: '',                
+        index:'',
+        usuarioId:''
     }
+
     var dados = campo.childNodes;
 
-    for(var i = 0; i < dados.length; i++){
-        switch(dados[i].className){
+    for(var i = 0; i < dados.length; i++) {
+
+        switch(dados[i].className) {
+
+            case 'id':
+                processoValues.solicitacaoId = dados[i].innerHTML;
+                break;
             case 'departamento':
                 processoValues.nomeDepartamento = dados[i].innerHTML;
                 break;
@@ -94,15 +236,14 @@ function getProcessoValues(campo, btn) {
             case 'requisitos':
                 processoValues.requisitos = dados[i].innerHTML;
                 break;
-            case 'motivo':
-                processoValues.motivo = dados[i].innerHTML;
-                break;
         }        
-    }   
-    processoValues.status = "Iniciado";
-    processoValues.index = 'new'        
+    } 
+
+    processoValues.index = 'new';    
+
     return processoValues;
 } 
+
 'use strict'
 
 const openModal = () => document.getElementById('modal')
@@ -113,28 +254,104 @@ const closeModal = () => {
     document.getElementById('modal').classList.remove('active')
 }
 
-const getLocalStorage = () => JSON.parse(localStorage.getItem('db_processo')) ?? []
-const setLocalStorage = (dbProcesso) => localStorage.setItem("db_processo", JSON.stringify(dbProcesso))
-
 // CRUD - create read update delete
-const deleteProcesso = (index) => {
-    const dbProcesso = readProcesso()
-    dbProcesso.splice(index, 1)
-    setLocalStorage(dbProcesso)
+const deleteProcesso = (processoId) => {
+    
+    // setting the url
+    const url = "/processos/" + processoId;
+
+    console.log(processoId);
+
+    // enviando a request e salvando a promise
+    const responsePromise = sendRequest('DELETE', url, "");
+
+    setTimeout(function() {
+        clearTable();
+        loadProcessos();
+    }, 5000);
+    
 }
 
-const updateProcesso = (index, processo) => {
-    const dbProcesso = readProcesso()
-    dbProcesso[index] = processo
-    setLocalStorage(dbProcesso)
-}
+const updateProcesso = (processo) => {    
+    
+    // setting the url
+    const url = "/processos";
 
-const readProcesso = () => getLocalStorage()
+    console.log("UPDATE");
+
+    console.log(processo);
+
+    // enviando a request e salvando a promise
+    const responsePromise = sendRequest('PUT', url, processo);
+
+    responsePromise.then(response => {
+
+        // log para debuggar
+        console.log(response);
+
+        if (response.status == 200) {
+            clearTable();
+            loadProcessos();
+        }
+    })
+
+}
 
 const createProcesso = (processo) => {
-    const dbProcesso = getLocalStorage()
-    dbProcesso.push (processo)
-    setLocalStorage(dbProcesso)
+
+    // setting the url
+    const url = "/processos";
+
+    console.log(processo);
+
+    // enviando a request e salvando a promise
+    const responsePromise = sendRequest('POST', url, processo);
+
+    responsePromise.then(response => {
+
+        // log para debuggar
+        console.log(response);
+
+        if (response.status == 201) {
+            clearTable();
+            loadProcessos();
+        }
+    })
+}
+
+function loadProcessos() {
+
+    var tabelaProcessos= document.getElementById("tabela-processos");
+    
+    // setting the url
+    const url = "/processos/usuarios/" + localStorage.getItem("id_usuario");
+
+    // enviando a request e salvando a promise
+    const responsePromise = sendRequest('GET', url, "");
+
+    responsePromise.then(response => {
+
+        // log para debuggar
+        console.log(response);
+
+        if (response.status == 200) {
+
+            var processos = response.body;
+
+            if (processos.length === 0) {
+                document.getElementById('tabelaProcesso').innerHTML = `<h2 style="text-align:center">Não há processos seletivos no momento</h2>`
+            }
+            else {
+                processos.forEach((processo, index) => {                
+                    var processoTr = montaTrProcesso(processo, index);
+                    tabelaProcessos.appendChild(processoTr);
+                })            
+            }
+        }
+        else {
+            document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há processos seletivos no momento</h2>`
+        }
+    });
 }
 
 const isValidFields = () => {
@@ -149,51 +366,54 @@ const clearFields = () => {
     document.getElementById('nomeDepartamento').dataset.index = 'new'
 }
 
+// Salva ou altera processo seletivo
+// -> a partir de uma Solicitacao salva um novo processo
+// -> a partir de um processo seletivo altera o processo seletivo
 const saveProcesso = () => {
   
     if (isValidFields()) {
-        const processo = {
+
+        let processo = {
             nomeDepartamento: document.getElementById('nomeDepartamento').value,
             nomeCargo: document.getElementById('nomeCargo').value,
             area: document.getElementById('area').value,
-            tipoVaga: document.getElementById('tipoVaga').value,
-            localVaga: document.getElementById('localVaga').value,            
-            qtdvagas: document.getElementById('qtdvagas').value,
-            requisitos: document.getElementById('requisitos').value,
             teste: document.getElementById('teste').value,
-            dataInicio: document.getElementById('dataInicio').value,
-            dataFinal: document.getElementById('dataFinal').value,
-            status: document.getElementById('status').value
+            dataInicio: new Date(document.getElementById('dataInicio').value),
+            dataFinal: new Date(document.getElementById('dataFinal').value),
         }
-        const index = document.getElementById('nomeDepartamento').dataset.index
-        if (index == 'new') {
+
+        if (processo.dataFinal < processo.dataInicio) {
+            console.log("ERROR dataFinal menor que a dataInicio");
+            document.getElementById('dataFinal').classList.add('has-error');
+            return;
+        }
+
+        console.log(processo.id);
+
+        if (!processo.id) {
+
+            processo.solicitacaoId = document.getElementById('solicitacaoId').value;
+
             createProcesso(processo)
-            updateTable()
-            updateSolicitacao()
             closeModal()
             removeLinha();
-        } else {
-            updateProcesso(index, processo)
-            updateTable()
+        }
+        else {
+
+            processo.id = document.getElementById('processoId').value;
+            processo.tipoVaga = document.getElementById('tipoVaga').value;
+            processo.localVaga = document.getElementById('localVaga').value;
+            processo.qtdvagas = document.getElementById('qtdvagas').value;
+            processo.requisitos = document.getElementById('requisitos').value;
+
+            updateProcesso(processo)
             closeModal()
         }
     }
 }
-const updateSolicitacao = () => {
-    const solicitacaoAtualizada = {
-        _cargo: document.getElementById('nomeCargo').value,
-        _status: 'Processo Iniciado',        
-    }
-    var solicitacoes = JSON.parse(localStorage.getItem('solicitacoes') || '[]');
-    solicitacoes.map(solicitacao =>{
-        if(solicitacao._cargo == solicitacaoAtualizada._cargo){
-            Object.assign(solicitacao, solicitacaoAtualizada);
-        }
-    })
 
-    localStorage.setItem("solicitacoes", JSON.stringify(solicitacoes));
-}
 const removeLinha = () => {
+
     //Excluir linha da tabela
     var table = document.getElementById('tabela-solicitacoes')
     var indice = localStorage.getItem('linhaTabela');
@@ -204,113 +424,129 @@ const removeLinha = () => {
         table.children[indice].remove();        
     }, 500)
                              
-    if(table.childElementCount === 1){
+    if (table.childElementCount === 1) {
         document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há solicitações aprovadas no momento</h2>`
     }
 }
-const createRow = (processo, index) => {
-    const newRow = document.createElement('tr')
-    newRow.innerHTML = `
-        <td>${processo.nomeDepartamento}</td>
-        <td>${processo.nomeCargo}</td>
-        <td>${processo.area}</td>
-        <td>${processo.tipoVaga}</td>
-        <td>${processo.localVaga}</td>
-        <td>${processo.qtdvagas}</td>
-        <td>${processo.requisitos}</td>
-        <td>${processo.teste}</td>
-        <td>${processo.dataInicio}</td>
-        <td>${processo.dataFinal}</td>
-        <td>${processo.status}</td>
-        
-        <td>
-            <button type="button" class="button green" id="edit-${index}">Editar</button>
-            <button type="button" class="button red" id="delete-${index}" >Excluir</button>
-        </td>
-    `
-    document.querySelector('#tableProcesso>tbody').appendChild(newRow)
-}
 
 const clearTable = () => {
-    const rows = document.querySelectorAll('#tableProcesso>tbody tr')
-    rows.forEach(row => row.parentNode.removeChild(row))
-}
-
-const updateTable = () => {
-    const dbProcesso = readProcesso()
-    clearTable()
-    dbProcesso.forEach(createRow)
+    const rows = document.querySelectorAll('#tabelaProcesso>tbody tr');
+    rows.forEach(row => row.parentNode.removeChild(row));
 }
 
 const fillFields = (processo) => {
-    document.getElementById('nomeDepartamento').value = processo.nomeDepartamento
-    document.getElementById('nomeCargo').value = processo.nomeCargo
-    document.getElementById('area').value = processo.area
-    document.getElementById('tipoVaga').value = processo.tipoVaga
-    document.getElementById('localVaga').value = processo.localVaga
-    document.getElementById('qtdvagas').value = processo.qtdvagas
-    document.getElementById('requisitos').value = processo.requisitos
-    document.getElementById('teste').value = processo.teste
-    document.getElementById('dataInicio').value = processo.dataInicio
-    document.getElementById('dataFinal').value = processo.dataFinal
-    document.getElementById('status').value = processo.status
-    document.getElementById('nomeDepartamento').dataset.index = processo.index
+
+    document.getElementById('nomeDepartamento').value = processo.nomeDepartamento;
+    document.getElementById('nomeDepartamento').disabled = true;
+
+    document.getElementById('nomeCargo').value = processo.nomeCargo;
+    document.getElementById('nomeCargo').disabled = true;
+
+    document.getElementById('tipoVaga').value = processo.tipoVaga;
+    document.getElementById('tipoVaga').disabled = true;
+
+    document.getElementById('localVaga').value = processo.localVaga;
+    document.getElementById('localVaga').disabled = true;
+
+    document.getElementById('qtdvagas').value = processo.qtdvagas;
+    document.getElementById('qtdvagas').disabled = true;
+
+    document.getElementById('requisitos').value = processo.requisitos;
+    document.getElementById('requisitos').disabled = true;
+
+    document.getElementById('solicitacaoId').value = processo.solicitacaoId;
+    document.getElementById('solicitacaoId').disabled = true;
 }
 
 
-const editProcesso = (index) => {
-    const processo = readProcesso()[index]
+const editProcesso = (processoHtml, index) => {
+
+    const processo = readProcesso(processoHtml)
     processo.index = index
-    fillFields(processo);
+    fillFieldsComplete(processo);
     openModal();
-    document.getElementById('salvar')
-    .addEventListener('click', saveProcesso)       
+    document.getElementById('salvar').addEventListener('click', saveProcesso)       
 }
+
+function readProcesso(processoHtml) {
+
+    let processo = {
+        id:                 processoHtml.getElementsByTagName("td")[0].textContent,
+        nomeDepartamento:   processoHtml.getElementsByTagName("td")[1].textContent,
+        nomeCargo:          processoHtml.getElementsByTagName("td")[2].textContent,
+        area:               processoHtml.getElementsByTagName("td")[3].textContent,
+        tipoVaga:           processoHtml.getElementsByTagName("td")[4].textContent,
+        localVaga:          processoHtml.getElementsByTagName("td")[5].textContent,
+        qtdvagas:           processoHtml.getElementsByTagName("td")[6].textContent,
+        requisitos:         processoHtml.getElementsByTagName("td")[7].textContent,
+        teste:              processoHtml.getElementsByTagName("td")[8].textContent,
+        dataInicio:         processoHtml.getElementsByTagName("td")[9].textContent, 
+        dataFinal:          processoHtml.getElementsByTagName("td")[10].textContent,
+    }
+
+    return processo;   
+}
+
+const fillFieldsComplete = (processo) => {
+
+    console.log(processo);
+
+    document.getElementById('processoId').value = processo.id;
+    document.getElementById('processoId').disabled = true;
+
+    document.getElementById('nomeDepartamento').value = processo.nomeDepartamento;
+    document.getElementById('nomeDepartamento').disabled = true;
+
+    document.getElementById('nomeCargo').value = processo.nomeCargo;
+    document.getElementById('nomeCargo').disabled = true;
+
+    document.getElementById('area').value = processo.area;
+    document.getElementById('tipoVaga').value = processo.tipoVaga;
+    document.getElementById('localVaga').value = processo.localVaga;
+    document.getElementById('qtdvagas').value = processo.qtdvagas;
+    document.getElementById('requisitos').value = processo.requisitos;
+    document.getElementById('teste').value = processo.teste;
+    document.getElementById('dataInicio').value = formataStringData(processo.dataInicio);
+    document.getElementById('dataFinal').value = formataStringData(processo.dataFinal);
+}
+
+function formataStringData(data) {
+    var mes  = data.split("/")[1];
+    var ano  = data.split("/")[2];
+  
+    return ano + '-' + ("0"+mes).slice(-2);
+  }
 
 const editDelete = (event) => {
+
+    let processo = event.target.parentNode.parentNode;
+
+    console.log(processo);
+
     if (event.target.type == 'button') {
 
         const [action, index] = event.target.id.split('-')
 
         if (action == 'edit') {
-            editProcesso(index)
-        } else {
-            const processo = readProcesso()[index]
-            const response = confirm(`Deseja realmente excluir este processo seletivo?`)
+            editProcesso(processo, index);
+        }
+        else {
+            const response = confirm(`Deseja realmente excluir este processo seletivo?`);
+
             if (response) {
-                deleteProcesso(index)
-                updateTable()
+
+                let processoId = processo.getElementsByTagName("td")[0].textContent;
+
+                deleteProcesso(processoId)
             }
         }
     }
 }
 
-updateTable()
-
-// Eventos
-var btn = document.querySelectorAll('.button.blue.mobile.cadastrarprocesso');
-
-btn.forEach((item, index) =>{
-    item.addEventListener('click', () =>{                              
-        var campo = item.parentNode;
-        let linhaTabela = index;
-        let numLinhas = btn.length;
-        localStorage.setItem('linhaTabela', JSON.stringify(linhaTabela));
-        localStorage.setItem('numLinhas', JSON.stringify(numLinhas));
-        var processo = getProcessoValues(campo, btn[index]);
-        fillFields(processo);
-        openModal();
-    }) 
-}) 
-
-
-
 document.getElementById('modalClose').addEventListener('click', closeModal)
 
 document.getElementById('salvar').addEventListener('click', saveProcesso)
 
-document.querySelector('#tableProcesso>tbody').addEventListener('click', editDelete)
+document.querySelector('#tabelaProcesso>tbody').addEventListener('click', editDelete)
 
 document.getElementById('cancelar').addEventListener('click', closeModal);
-
-

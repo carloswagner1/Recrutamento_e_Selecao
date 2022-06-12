@@ -8,9 +8,11 @@ import com.g5tech.api.exception.CandidatoCpfNotUniqueException;
 import com.g5tech.api.exception.CandidatoEmailNotUniqueException;
 import com.g5tech.api.exception.CandidatoNotFoundException;
 import com.g5tech.api.model.*;
+import com.g5tech.api.model.indicator.StatusIndicator;
 import com.g5tech.api.repository.CandidatoRepository;
 import com.g5tech.api.repository.ExperienciaProfissionalRepository;
 import com.g5tech.api.repository.FormacaoAcademicaRepository;
+import com.g5tech.api.repository.ProcessoSeletivoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.jasypt.util.text.StrongTextEncryptor;
@@ -36,6 +38,8 @@ public class CandidatoService {
     private final InscricaoService inscricaoService;
     private final ExperienciaProfissionalService experienciaProfissionalService;
     private final FormacaoAcademicaService formacaoAcademicaService;
+    private final StatusService statusService;
+    private final ProcessoSeletivoRepository processoSeletivoRepository;
 
     public Long save(UsuarioCandidatoDTO dto) throws JsonProcessingException {
 
@@ -179,4 +183,23 @@ public class CandidatoService {
         }
     }
 
+    public void updateSituacao(Long id, CandidatoStatusDTO dto) {
+
+        Candidato candidato = this.getById(id);
+        ProcessoSeletivo processoSeletivo = processoSeletivoRepository.findById(Long.valueOf(dto.getProcessoId())).get();
+
+        Inscricao inscricao = inscricaoService.getByCandidatoAndProcesso(candidato, processoSeletivo);
+
+        Status status;
+
+        if (dto.getSituacao().equals("classificado")) {
+            status = statusService.getById(StatusIndicator.ENTREVISTA.getId());
+        }
+        else {
+            status = statusService.getById(StatusIndicator.REPROVADO_TESTE.getId());
+        }
+
+        inscricao.setStatus(status);
+        inscricaoService.save(inscricao);
+    }
 }

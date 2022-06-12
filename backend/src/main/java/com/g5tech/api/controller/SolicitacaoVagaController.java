@@ -27,13 +27,19 @@ public class SolicitacaoVagaController {
     @Operation(summary = "Busca solicitações abertas para um departamento")
     @GetMapping("/usuarios/{id}")
     public ResponseEntity<List<SolicitacaoResponseDTO>> getAllByDepartamento(@PathVariable Long id) {
-        return new ResponseEntity<>(solicitacaoVagaService.getAllByDepartamento(id), HttpStatus.OK);
+        return new ResponseEntity<>(solicitacaoVagaService.getAllByDTODepartamento(id), HttpStatus.OK);
     }
 
     @Operation(summary = "Busca solicitações em análise para um departamento")
     @GetMapping("/usuarios/{id}/aprovacao")
     public ResponseEntity<List<SolicitacaoResponseDTO>> getAllEmAnaliseByDepartamento(@PathVariable Long id) {
         return new ResponseEntity<>(solicitacaoVagaService.getAllEmAnaliseByDepartamento(id), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Busca solicitações aprovadas para um departamento")
+    @GetMapping("/usuarios/{id}/aprovadas")
+    public ResponseEntity<List<SolicitacaoResponseDTO>> getAllAprovadasByDepartamento(@PathVariable Long id) {
+        return new ResponseEntity<>(solicitacaoVagaService.getAllAprovadasByDepartamento(id), HttpStatus.OK);
     }
 
     @Operation(summary = "Aprova uma solicitação")

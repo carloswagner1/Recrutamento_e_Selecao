@@ -59,6 +59,17 @@ public class CandidatoController {
         return new ResponseEntity<>(candidatoService.update(id, dto), HttpStatus.OK);
     }
 
+    @Operation(summary = "Altera situação do candidato pelo seu id")
+    @PostMapping("/{id}/classificar")
+    public ResponseEntity<Boolean> updateSituacao(
+            @PathVariable Long id,
+            @Valid @RequestBody CandidatoStatusDTO dto) {
+
+        candidatoService.updateSituacao(id, dto);
+
+        return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+    }
+
     @Operation(summary = "Deleta um candidato pelo seu id")
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable Long id) {

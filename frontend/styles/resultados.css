@@ -64,10 +64,13 @@
 
 .btn.btn-danger{
     display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.30);
+
 }
 
 .btn.btn-success{
     display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.30);
 }
 
 th{
@@ -184,6 +187,7 @@ form {
 
 #nota-teste{
     margin: auto;
+    border: 2px solid #e09c0a;
     border-radius: 10px;
     width: 70%;
     font-size: 30pt;

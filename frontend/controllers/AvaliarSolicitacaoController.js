@@ -42,7 +42,7 @@ class AvaliarSolicitacaoController {
             }
 
             this.onClick(); 
-        })    
+        });  
     }
 
     onClick() {
@@ -65,9 +65,6 @@ class AvaliarSolicitacaoController {
                     escolha = 'reprovar';
                 }
 
-                //var dados = campo.childNodes;
-                //var solicitacaoValues = getValues(campo, btn[index]);
-
                 //SALVAR NO BANCO DE DADOS COM O NOVO VALOR
 
                 // setting the url
@@ -88,7 +85,7 @@ class AvaliarSolicitacaoController {
                         //Excluir linha da tabela
                         (item.parentNode).parentNode.classList.add("fadeOut");
                                         
-                        setTimeout(function(){
+                        setTimeout(function() {
                             (item.parentNode).parentNode.remove();
                             //parentNode é o pai do alvo                    
                         }, 500)
@@ -110,7 +107,7 @@ let avaliarSolicitacaoController = new AvaliarSolicitacaoController("main-contai
 function montaTr(solicitacao){
     var solicitacaoTr = document.createElement("tr");
     solicitacaoTr.classList.add('solicitacao');      
-    solicitacaoTr.appendChild(montaTd(solicitacao.id, "id"));  
+    solicitacaoTr.appendChild(montaTdHidden(solicitacao.id, "id"));  
     solicitacaoTr.appendChild(montaTd(solicitacao.departamento, "departamento"));
     solicitacaoTr.appendChild(montaTd(solicitacao.cargo, "cargo"));
     solicitacaoTr.appendChild(montaTd(solicitacao.tipoVaga, "tipoVaga"));
@@ -131,6 +128,15 @@ function montaTd(dado, classe){
     return td;
 }
 
+function montaTdHidden(dado, classe){
+    var td = document.createElement("td");
+    td.textContent = dado;
+    td.hidden = "hidden";
+    td.classList.add(classe);   
+
+    return td;
+}
+
 function montaTdBtn(classe){
     var td = document.createElement("td");
     td.innerHTML = `
@@ -141,60 +147,3 @@ function montaTdBtn(classe){
     td.classList.add(classe); 
     return td;
 }
-
-function getValues(campo, btn) {
-
-    let solicitacaoValues = {
-        id: '',
-        departamento: '',
-        cargo: '',
-        tipoVaga: '',
-        localVaga: '',
-        qtdVagas: '',
-        requisitos: '',
-        motivo: '',
-        status: '',        
-    }
-
-    console.log(campo);
-    var dados = campo.childNodes;
-
-    for (var i = 0; i < dados.length; i++) {
-
-        switch(dados[i].className){
-            case 'id':
-                solicitacaoValues.id = dados[i].innerHTML;
-                break;
-            case 'departamento':
-                solicitacaoValues.departamento = dados[i].innerHTML;
-                break;
-            case 'cargo':
-                solicitacaoValues.cargo = dados[i].innerHTML;
-                break;
-            case 'tipoVaga':
-                solicitacaoValues.tipoVaga = dados[i].innerHTML;
-                break;
-            case 'localVaga':
-                solicitacaoValues.localVaga = dados[i].innerHTML;
-                break;
-            case 'qtdVagas':
-                solicitacaoValues.qtdVagas = dados[i].innerHTML;
-                break;     
-            case 'requisitos':
-                solicitacaoValues.requisitos = dados[i].innerHTML;
-                break;
-            case 'motivo':
-                solicitacaoValues.motivo = dados[i].innerHTML;
-                break;
-        }        
-    }
-
-    if (btn.value === 'Aprovado') {
-        solicitacaoValues.status = 'Aprovada';
-    }
-    else {
-        solicitacaoValues.status = 'Reprovada';
-    }
-       
-    return solicitacaoValues;
-} 
