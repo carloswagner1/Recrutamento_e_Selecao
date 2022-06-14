@@ -66,7 +66,8 @@ INSERT INTO tb_usuario_candidato VALUES (5, 'lucas@mail.com', '+rKLXWvIsjFOndd9j
 
 
 -- USUARIO_FUNCIONARIO
-INSERT INTO tb_usuario_funcionario VALUES (1, '97373313035', 'funcionario@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', 'funcionario', 1);
+INSERT INTO tb_usuario_funcionario VALUES (1, '15981196533', '97373313035', 'funcionario@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', 'Pedro Ferreira', 'Funcionário do RH', 1);
+INSERT INTO tb_usuario_funcionario VALUES (2, '15981196535', '93624904043', 'gestor@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', 'Amanda Carneiro', 'Gestor de Departamento', 1);
 
 -- EXPERIENCIA_PROFISSIONAL
 INSERT INTO tb_experiencia_profissional VALUES (1, 'Analista', '2021-01-01', '2022-05-31', 'GFT', 1);
