@@ -98,7 +98,7 @@ class GerenciarPerfilController {
     
             [...element.elements].forEach(function (field, index) {
     
-                if (["nome", "email", "senha", "cpf", "celular", "cep", "rua", "bairro","cidade", "estado", "pais", 'area', 'genero', 'dataNascimento' ].indexOf(field.name) > -1 && !field.value) {
+                if (["nome", "email", "senha", "cpf", "celular", "cep", "logradouro", "bairro","cidade", "estado", "pais", 'area', 'genero', 'dataNascimento' ].indexOf(field.name) > -1 && !field.value) {
                     field.parentElement.classList.add('has-error');
                     isValid = false;                
                 }
@@ -114,7 +114,7 @@ class GerenciarPerfilController {
 
             console.log()
             
-            let candidato = new Candidato(nome.value, email.value, senha.value, cpf.value, celular.value, cep.value, rua.value, bairro.value, cidade.value, estado.value, pais.value, area.value, dataNascimento.value, genero.value);
+            let candidato = new Candidato(nome.value, email.value, senha.value, cpf.value, celular.value, cep.value, logradouro.value, bairro.value, cidade.value, estado.value, pais.value, area.value, dataNascimento.value, genero.value);
     
             return candidato;
     

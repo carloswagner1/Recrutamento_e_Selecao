@@ -33,7 +33,7 @@ class LoginEmpresaController {
             body.tipo = tipo;
 
             // setting the url
-            const url = "/usuarios";
+            const url = "/usuarios/login";
 
             // enviando a request e salvando a promise
             const responsePromise = sendRequest('POST', url, body);

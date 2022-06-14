@@ -13,7 +13,7 @@ public class UsuarioCandidatoDTO {
     private String cpf;
     private String celular;
     private String cep;
-    private String rua;
+    private String logradouro;
     private String bairro;
     private String cidade;
     private String estado;

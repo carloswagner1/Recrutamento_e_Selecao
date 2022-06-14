@@ -294,7 +294,6 @@ const updateProcesso = (processo) => {
             loadProcessos();
         }
     })
-
 }
 
 const createProcesso = (processo) => {
@@ -374,6 +373,7 @@ const saveProcesso = () => {
     if (isValidFields()) {
 
         let processo = {
+            id: document.getElementById('processoId').value,
             nomeDepartamento: document.getElementById('nomeDepartamento').value,
             nomeCargo: document.getElementById('nomeCargo').value,
             area: document.getElementById('area').value,
@@ -461,11 +461,11 @@ const fillFields = (processo) => {
 
 const editProcesso = (processoHtml, index) => {
 
-    const processo = readProcesso(processoHtml)
-    processo.index = index
+    const processo = readProcesso(processoHtml);
+    processo.index = index;
     fillFieldsComplete(processo);
     openModal();
-    document.getElementById('salvar').addEventListener('click', saveProcesso)       
+    document.getElementById('salvar').addEventListener('click', saveProcesso);     
 }
 
 function readProcesso(processoHtml) {

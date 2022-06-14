@@ -1,8 +1,7 @@
 package com.g5tech.api.model;
 
 import com.g5tech.api.model.indicator.Perfil;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,6 +9,9 @@ import javax.persistence.*;
  * UsuarioFuncionario --- representa um usuario funcionário com acesso ao sistema.
  */
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_usuario_funcionario")
 @Getter
@@ -21,8 +23,14 @@ public class UsuarioFuncionario {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "nome")
+    private String nome;
+
     @Column(name = "cpf")
     private String cpf;
+
+    @Column(name = "celular")
+    private String celular;
 
     @Column(name = "email")
     private String email;
