@@ -1,13 +1,13 @@
 class Candidato {
 
-    constructor(nome, email, senha, cpf, celular, cep, rua, bairro, cidade, estado, pais, area, dataNascimento, genero) {
+    constructor(nome, email, senha, cpf, celular, cep, logradouro, bairro, cidade, estado, pais, area, dataNascimento, genero) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.cpf = cpf;
         this.celular = celular;
         this.cep = cep;
-        this.rua = rua;
+        this.logradouro = logradouro;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
