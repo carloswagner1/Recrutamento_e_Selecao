@@ -2,6 +2,7 @@ package com.g5tech.api.service;
 
 import com.g5tech.api.builder.InscricaoBuilder;
 import com.g5tech.api.dto.InscricaoRequestDTO;
+import com.g5tech.api.exception.CandidatoAlreadyInscritoException;
 import com.g5tech.api.exception.CandidatoNotFoundException;
 import com.g5tech.api.exception.InscricaoNotFoundException;
 import com.g5tech.api.exception.ProcessoSeletivoNotFoundException;
@@ -68,6 +69,12 @@ public class InscricaoService {
         Candidato candidato = this.getCandidatoById(dto.getIdCandidato());
 
         ProcessoSeletivo processoSeletivo = this.getProcessoSeletivoById(dto.getIdProcesso());
+
+        Optional<Inscricao> inscricaoOptional = inscricaoRepository.findByCandidatoAndProcessoSeletivo(candidato, processoSeletivo);
+
+        if (inscricaoOptional.isPresent()) {
+            throw new CandidatoAlreadyInscritoException();
+        }
 
         Status status = statusService.getById(StatusIndicator.INICIADO.getId());
 

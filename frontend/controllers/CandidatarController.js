@@ -78,9 +78,14 @@ class CandidatarController {
                     }, 1500)
         
                 }
+                else if (response.status == 403) {
+                    mensagem.innerHTML = "Candidato já inscrito no processo seletivo."
+                    mensagem.classList.remove("invisivel");
+                }
                 else {
                     // mensagem de erro
-                    mensagem.innerHTML = "Inscrição não pode ser efetuada"
+                    mensagem.innerHTML = "Inscrição não pode ser efetuada."
+                    mensagem.classList.remove("invisivel");
                 }
         
             })

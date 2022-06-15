@@ -110,4 +110,12 @@ public class ApiResponseEntityExceptionHandler extends ResponseEntityExceptionHa
         return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
+    @ExceptionHandler({ CandidatoAlreadyInscritoException.class })
+    public ResponseEntity<Object> handleCandidatoAlreadyInscritoException(CandidatoAlreadyInscritoException ex, WebRequest request) {
+
+        ErrorDTO error = new ErrorDTO("Candidato já inscrito no processo seletivo");
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.FORBIDDEN, request);
+    }
+
 }
