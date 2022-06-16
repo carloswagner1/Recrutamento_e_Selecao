@@ -97,9 +97,10 @@
                         <h3 class="box-title" id="box-title">Selecione um Processo Seletivo</h3><br>
                     </div>
                     <div class="box-body no-padding">
-                        <table class="table table-responsive table table-bordered table table-striped">
+                        <table id="tabelaCandidatos" class="table table-responsive table table-bordered table table-striped">
                             <thead id="thead" style="display:none">
                                 <tr>
+                                    <th scope="col" style="display:none;">id</th>
                                     <th>Nome</th>
                                     <th>E-mail</th>
                                     <th>Celular</th>
@@ -147,17 +148,15 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="enviar" class="btn btn-success">Enviar</button>
-                    <button type="button" id="enviar" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="cancelar" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../utils/bootstrap/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script src="../controllers/Resultados.js"></script>
+    <script src="../utils/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../controllers/Resultados.js" type="module"></script>
     <script src="../utils/Utils.js"></script>
 
 </body>

@@ -6,8 +6,8 @@ public enum StatusIndicator {
     ENTREVISTA(3L, "Entrevista"),
     CONCLUIDO(4L, "Concluído"),
     REPROVADO_TESTE(5L, "Reprovado no Teste"),
-    Reprovado(6L, "Reprovado"),
-    Aprovado(7L, "Aprovado"),
+    REPROVADO(6L, "Reprovado"),
+    APROVADO(7L, "Aprovado"),
     ;
 
     private Long id;

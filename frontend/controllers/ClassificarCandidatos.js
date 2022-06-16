@@ -10,9 +10,6 @@ class ClassificarCandidatosController {
         this.onSelect();        
     }
     
-            
-        //filtrar processsos para pegar processos != de encerrado
-
     onLoad() {    
         
         // setting the url
