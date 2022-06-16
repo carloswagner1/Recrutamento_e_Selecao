@@ -2,6 +2,7 @@ package com.g5tech.api.builder;
 
 import com.g5tech.api.dto.*;
 import com.g5tech.api.model.Candidato;
+import com.g5tech.api.model.Inscricao;
 
 import java.util.List;
 
@@ -89,5 +90,18 @@ public class CandidatoBuilder {
         dto.setSenha(senha);
 
         return dto;
+    }
+
+    public static CandidatoResultadoDTO buildResultadoDTO(Candidato candidato, Inscricao inscricao) {
+        return CandidatoResultadoDTO.builder()
+                .id(candidato.getId().toString())
+                .nome(candidato.getNome())
+                .email(candidato.getEmail())
+                .celular(candidato.getCelular())
+                .notaTeste(inscricao.getPontuacaoTeste().toString())
+                .dataEntrevista(inscricao.getDataEntrevista())
+                .horaEntrevista(inscricao.getHorarioEntrevista())
+                .situacao(inscricao.getStatus().getNome())
+                .build();
     }
 }

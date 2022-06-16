@@ -36,10 +36,48 @@ public class ProcessoSeletivoController {
         return new ResponseEntity<>(processoSeletivoService.getCandidatosById(id), HttpStatus.OK);
     }
 
+    @Operation(summary = "Agenda entrevista de um candidato pelo id do processo e id do candidato")
+    @PostMapping("/{id}/candidatos/{candidatoId}")
+    public ResponseEntity<Boolean> agendaEntrevista(
+            @PathVariable Long id,
+            @PathVariable Long candidatoId,
+            @RequestBody AgendarEntrevistaDTO dto) {
+        return new ResponseEntity<>(processoSeletivoService.agendaEntrevista(id, candidatoId, dto), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Aprova um candidato pelo id do processo e id do candidato")
+    @GetMapping("/{id}/candidatos/{candidatoId}/aprovar")
+    public ResponseEntity<Boolean> aprovaCandidato(
+            @PathVariable Long id,
+            @PathVariable Long candidatoId) {
+        return new ResponseEntity<>(processoSeletivoService.aprovaCandidato(id, candidatoId), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Reprova um candidato pelo id do processo e id do candidato")
+    @GetMapping("/{id}/candidatos/{candidatoId}/reprovar")
+    public ResponseEntity<Boolean> reprovaCandidato(
+            @PathVariable Long id,
+            @PathVariable Long candidatoId) {
+        return new ResponseEntity<>(processoSeletivoService.reprovaCandidato(id, candidatoId), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Agenda entrevista de um candidato pelo id do processo e id do candidato")
+    @GetMapping("/{id}/encerrar")
+    public ResponseEntity<Boolean> encerraProcesso(
+            @PathVariable Long id) {
+        return new ResponseEntity<>(processoSeletivoService.encerraProcesso(id), HttpStatus.OK);
+    }
+
     @Operation(summary = "Busca dados dos candidatos isncritos para um processo seletivo pelo id")
     @GetMapping("/{id}/candidatos/teste")
     public ResponseEntity<List<CandidatoCompletoDTO>> getCandidatosTesteById(@PathVariable Long id) {
         return new ResponseEntity<>(processoSeletivoService.getCandidatosTesteById(id), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Busca dados dos candidatos isncritos para um processo seletivo pelo id")
+    @GetMapping("/{id}/candidatos/ativos")
+    public ResponseEntity<ResultadosDTO> getCandidatosAtivosById(@PathVariable Long id) {
+        return new ResponseEntity<>(processoSeletivoService.getCandidatosAtivosById(id), HttpStatus.OK);
     }
 
     @Operation(summary = "Busca status de um processo seletivo pelo id")

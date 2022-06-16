@@ -44,18 +44,18 @@ INSERT INTO tb_candidato VALUES (1, 'TI', 'Jardim', '15981196538', '18021310', '
 INSERT INTO tb_candidato VALUES (2, 'TI', 'Jardim', '15981196530', '18021310', 'Sorocaba', '24611075800', '2001-09-10', 'carlos@mail.com', 'SP', 'Masculino', 'Carlos', 'Brasil', 'Rua Souza');
 INSERT INTO tb_candidato VALUES (3, 'TI', 'Jardim', '15981196531', '18021310', 'Sorocaba', '70595456030', '2001-09-10', 'jessica@mail.com', 'SP', 'Feminino', 'jessica', 'Brasil', 'Rua Souza');
 INSERT INTO tb_candidato VALUES (4, 'TI', 'Jardim', '15981196532', '18021310', 'Sorocaba', '72717632018', '2001-09-10', 'kelly@mail.com', 'SP', 'Feminino', 'kelly', 'Brasil', 'Rua Souza');
-INSERT INTO tb_candidato VALUES (5, 'TI', 'Jardim', '15981196535', '18021310', 'Sorocaba', '50834633000', '2001-09-10', 'lucas@mail.com', 'SP', 'Masculino', 'lucas', 'Brasil', 'Rua Souza');
+INSERT INTO tb_candidato VALUES (5, 'TI', 'Jardim', '15981196535', '18021310', 'Sorocaba', '50834633000', '2001-09-10', 'lucas@mail.com', 'SP', 'Masculino', 'Lucas', 'Brasil', 'Rua Souza');
 
 -- INSCRICAO
-INSERT INTO tb_inscricao VALUES (1, '2022-09-09', null, 1, 1, 1);
-INSERT INTO tb_inscricao VALUES (2, '2022-09-09', null, 1, 2, 1);
-INSERT INTO tb_inscricao VALUES (3, '2022-09-09', null, 2, 1, 1);
-INSERT INTO tb_inscricao VALUES (4, '2022-09-09', null, 2, 2, 1);
-INSERT INTO tb_inscricao VALUES (5, '2022-09-09', null, 3, 1, 1);
-INSERT INTO tb_inscricao VALUES (6, '2022-09-09', null, 3, 2, 1);
-INSERT INTO tb_inscricao VALUES (7, '2022-09-09', null, 4, 1, 1);
-INSERT INTO tb_inscricao VALUES (8, '2022-09-09', null, 4, 2, 1);
-INSERT INTO tb_inscricao VALUES (9, '2022-09-09', null, 5, 1, 1);
+INSERT INTO tb_inscricao VALUES (1, '2022-09-09', '15-06-2022', '17:30', 10.0, 1, 1, 3);
+INSERT INTO tb_inscricao VALUES (2, '2022-09-09', '15-06-2022', '17:30', null, 1, 2, 1);
+INSERT INTO tb_inscricao VALUES (3, '2022-09-09', null, null, 7.5, 2, 1, 3);
+INSERT INTO tb_inscricao VALUES (4, '2022-09-09', '15-06-2022', '17:30', null, 2, 2, 1);
+INSERT INTO tb_inscricao VALUES (5, '2022-09-09', '15-06-2022', '17:30', null, 3, 1, 1);
+INSERT INTO tb_inscricao VALUES (6, '2022-09-09', '15-06-2022', '17:30', null, 3, 2, 1);
+INSERT INTO tb_inscricao VALUES (7, '2022-09-09', '15-06-2022', '17:30', null, 4, 1, 1);
+INSERT INTO tb_inscricao VALUES (8, '2022-09-09', '15-06-2022', '17:30', null, 4, 2, 1);
+INSERT INTO tb_inscricao VALUES (9, '2022-09-09', '15-06-2022', '17:30', 8.5, 5, 1, 3);
 
 -- USUARIO_CANDIDATO
 INSERT INTO tb_usuario_candidato VALUES (1, 'diego@mail.com', '+rKLXWvIsjFOndd9jK7s6Q==', '1');

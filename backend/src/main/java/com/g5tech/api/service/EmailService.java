@@ -1,8 +1,10 @@
 package com.g5tech.api.service;
 
+import com.g5tech.api.dto.AgendarEntrevistaDTO;
 import com.g5tech.api.dto.TesteDTO;
 import com.g5tech.api.model.Candidato;
 import com.g5tech.api.model.Cargo;
+import com.g5tech.api.model.ProcessoSeletivo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.mail.MailException;
@@ -102,6 +104,30 @@ public class EmailService {
                 + "\nTema:" + dto.getTema() + "\n"
                 + "\nAssunto:" + dto.getAssunto() + "\n"
                 + "\nLink:" + dto.getLink() + "\n"
+                + "\nDesejamos sorte nessa etapa e ficamos a disposição.\n"
+                + "\nEquipe G5 Tech");
+
+        try {
+            mailSender.send(message);
+        } catch (MailException ex) {
+            log.error("EmailService sendProcessoEncerrado", ex);
+            throw ex;
+        }
+    }
+
+    public void sendEmailEntrevista(Candidato candidato, ProcessoSeletivo processoSeletivo, AgendarEntrevistaDTO dto) {
+
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setFrom(EMAIL_G5TECH);
+        message.setTo(candidato.getEmail());
+        message.setCc(dto.getEmail());
+        message.setSubject("Entrevista para o cargo: ".concat(processoSeletivo.getCargo().getNome()).concat(" foi agendada"));
+        message.setText("Olá!\n"
+                +"\nEntrevista para o cargo: " + processoSeletivo.getCargo().getNome() + " está agendada.\n"
+                + "\nData:" + dto.getDataEntrevista() + "\n"
+                + "\nHora:" + dto.getHoraEntrevista() + "\n"
+                + "\nLink:" + dto.getLinkEntrevista() + "\n"
                 + "\nDesejamos sorte nessa etapa e ficamos a disposição.\n"
                 + "\nEquipe G5 Tech");
 

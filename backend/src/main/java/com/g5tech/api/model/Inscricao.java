@@ -38,4 +38,10 @@ public class Inscricao {
 
     @Column(name = "pontuacao_teste")
     private Double pontuacaoTeste;
+
+    @Column(name = "data_entrevista")
+    private String dataEntrevista;
+
+    @Column(name = "hora_entrevista")
+    private String horarioEntrevista;
 }
