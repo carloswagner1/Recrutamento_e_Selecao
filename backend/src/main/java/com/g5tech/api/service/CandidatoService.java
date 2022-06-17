@@ -200,6 +200,7 @@ public class CandidatoService {
         }
 
         inscricao.setStatus(status);
+        inscricao.setPontuacaoTeste(Double.valueOf(dto.getPontuacaoTeste()));
         inscricaoService.save(inscricao);
     }
 }
