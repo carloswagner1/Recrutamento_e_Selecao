@@ -51,8 +51,8 @@ public class UsuarioController {
         return new ResponseEntity<>(usuarioService.create(dto), HttpStatus.CREATED);
     }
 
-    @Operation(summary = "Salva um usuário funcionário no sistema")
-    @PutMapping("/id{}")
+    @Operation(summary = "Altera um usuário funcionário no sistema")
+    @PutMapping("/{id}")
     public ResponseEntity<Boolean> update(@PathVariable Long id, @RequestBody UsuarioFuncionarioRequestDTO dto) {
         usuarioService.update(id, dto);
         return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);

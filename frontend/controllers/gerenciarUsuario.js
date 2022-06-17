@@ -157,7 +157,7 @@ const deleteUsuario = (usuarioId) => {
 const updateUsuario = (usuario) => {
 
         // setting the url
-        const url = "/usuarios";
+        const url = "/usuarios/" + usuario.id;
 
         console.log("UPDATE");
     
@@ -223,9 +223,11 @@ const saveUsuario = () => {
             email: document.getElementById('email').value,
             celular: document.getElementById('celular').value,            
             perfil: document.getElementById('perfil').value,
-            departamento: document.getElementById('departamento').value
+            departamento: document.getElementById('departamento').value,
+            senha: document.getElementById('password').value
         }
-        console.log(usuario.id);
+        
+        console.log(usuario);
 
         if (!usuario.id) {
             createUsuario(usuario);
@@ -244,6 +246,8 @@ const clearTable = () => {
 }
 
 const fillFields = (usuario) => {
+    console.log(usuario);
+    document.getElementById('usuarioId').value = usuario.id
     document.getElementById('nome').value = usuario.nome
     document.getElementById('cpf').value = usuario.cpf
     document.getElementById('email').value = usuario.email
@@ -258,7 +262,7 @@ const editUsuario = (usuarioHtml, index) => {
     usuario.index = index;
     fillFields(usuario);
     openModal();
-    document.getElementById('salvar').addEventListener('click', saveUsuario)       
+    document.getElementById('salvar').addEventListener('click', saveUsuario);       
 }
 
 const editDelete = (event) => {
@@ -295,7 +299,7 @@ function readUsuario(usuarioHtml) {
         email:          usuarioHtml.getElementsByTagName("td")[3].textContent,
         celular:        usuarioHtml.getElementsByTagName("td")[4].textContent,
         perfil:         usuarioHtml.getElementsByTagName("td")[5].textContent,
-        departamento:   usuarioHtml.getElementsByTagName("td")[6].textContent,
+        departamento:   usuarioHtml.getElementsByTagName("td")[6].textContent
     }
 
     return usuario;   
