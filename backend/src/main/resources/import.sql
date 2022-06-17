@@ -51,7 +51,7 @@ INSERT INTO tb_inscricao VALUES (1, '2022-09-09', '15-06-2022', '17:30', 10.0, 1
 INSERT INTO tb_inscricao VALUES (2, '2022-09-09', '15-06-2022', '17:30', null, 1, 2, 1);
 INSERT INTO tb_inscricao VALUES (3, '2022-09-09', null, null, 7.5, 2, 1, 3);
 INSERT INTO tb_inscricao VALUES (4, '2022-09-09', '15-06-2022', '17:30', null, 2, 2, 1);
-INSERT INTO tb_inscricao VALUES (5, '2022-09-09', '15-06-2022', '17:30', null, 3, 1, 1);
+INSERT INTO tb_inscricao VALUES (5, '2022-09-09', '15-06-2022', '17:30', null, 3, 1, 2);
 INSERT INTO tb_inscricao VALUES (6, '2022-09-09', '15-06-2022', '17:30', null, 3, 2, 1);
 INSERT INTO tb_inscricao VALUES (7, '2022-09-09', '15-06-2022', '17:30', null, 4, 1, 1);
 INSERT INTO tb_inscricao VALUES (8, '2022-09-09', '15-06-2022', '17:30', null, 4, 2, 1);
