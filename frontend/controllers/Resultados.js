@@ -262,8 +262,6 @@ const action = (event) => {
 
     let candidato = event.target.parentNode.parentNode.parentNode;
 
-    let btnAgendar = candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('button')[1];
-
     if (event.target.type == 'button') {
 
         const [action, index] = event.target.id.split('-');
@@ -351,8 +349,9 @@ function agendarEntrevista(candidato) {
                 candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('button')[0].textContent = 'Reagendar Entrevista';
 
                 setTimeout(function() {
-                    closeModal(); ; 
-                }, 3000); 
+                    closeModal();
+                    location.reload(); 
+                }, 2000); 
             }
             else {
                 msgError.innerHTML = "Não foi possível agendar a entrevista. Tente novamente.";
