@@ -213,6 +213,6 @@ public class UsuarioService {
 
         BeanUtils.copyProperties(usuarioFuncionario, usuarioFuncionarioSaved, "id");
 
-        usuarioFuncionarioRepository.save(usuarioFuncionario);
+        usuarioFuncionarioRepository.save(usuarioFuncionarioSaved);
     }
 }
