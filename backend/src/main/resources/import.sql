@@ -80,10 +80,9 @@ INSERT INTO tb_formacao_academica VALUES (2, 'Ciência da Computação', '2015-0
 INSERT INTO tb_formacao_academica VALUES (3, 'Mestrado Acadêmico em Ciência da Computação', '2021-02-01', '2022-05-31', 'UFSCAR - Universidade Federal de São Carlos', 'Mestrado', 2);
 INSERT INTO tb_formacao_academica VALUES (4, 'Analise e Desenvolvimento de Sistemas', '2020-01-01', '2022-12-01', 'FATEC - Faculdade de Tecnologia de Sorocaba', 'Tecnólogo', 3);
 
-
 -- EXPERIENCIA_PROFISSIONAL
 INSERT INTO tb_experiencia_profissional VALUES (1, 'Analista de Sistemas', '2021-01-01', '2022-05-31', 'Docshifter', 1);
-INSERT INTO tb_experiencia_profissional VALUES (1, 'Desenvolvedor de Software', '2020-01-01', '2020-11-25', 'GFT', 1);
-INSERT INTO tb_experiencia_profissional VALUES (1, 'Analista de Sistema', '2021-04-01', '2022-05-31', 'Alvin', 2);
-INSERT INTO tb_experiencia_profissional VALUES (1, 'Analista de Infraestrutura', '2019-01-01', '2021-01-24', 'Thoughtworks', 2);
-INSERT INTO tb_experiencia_profissional VALUES (1, 'Estágio em Desenvolvimento', '2021-01-01', '2022-05-31', 'Ifood', 3);
+INSERT INTO tb_experiencia_profissional VALUES (2, 'Desenvolvedor de Software', '2020-01-01', '2020-11-25', 'GFT', 1);
+INSERT INTO tb_experiencia_profissional VALUES (3, 'Analista de Sistema', '2021-04-01', '2022-05-31', 'Alvin', 2);
+INSERT INTO tb_experiencia_profissional VALUES (4, 'Analista de Infraestrutura', '2019-01-01', '2021-01-24', 'Thoughtworks', 2);
+INSERT INTO tb_experiencia_profissional VALUES (5, 'Estágio em Desenvolvimento', '2021-01-01', '2022-05-31', 'Ifood', 3);
