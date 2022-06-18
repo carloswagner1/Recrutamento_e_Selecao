@@ -40,7 +40,7 @@ INSERT INTO tb_solicitacao_vaga VALUES(6, 'Necessário', 'Pará', 1, 'Inglês in
 
 -- PROCESSO SELETIVO
 INSERT INTO tb_processo_seletivo VALUES(1, 'TI', '2022-09-09', '2022-08-09', 'Lógica de programação', 3, 1, 1);
-INSERT INTO tb_processo_seletivo VALUES(2, 'TI', '2022-09-09', '2022-08-09', 'Java 17', 3, 2, 1);
+INSERT INTO tb_processo_seletivo VALUES(2, 'TI', '2022-09-09', '2022-08-09', 'Java 17', 5, 2, 1);
 INSERT INTO tb_processo_seletivo VALUES(3, 'TI', '2022-09-09', '2022-08-09', 'Angular', 1, 3, 1);
 INSERT INTO tb_processo_seletivo VALUES(4, 'TI', '2022-09-09', '2022-08-09', 'Lógica de programação', 4, 4, 1);
 
