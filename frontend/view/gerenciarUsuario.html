@@ -50,24 +50,30 @@
         </div>
       </div>
     </header>
+  </header>
 
     <main class="container">
       <button type="button" class="button blue mobile" id="cadastrarUsuario">Cadastrar Usuário</button>
-      <table id="tableUsuario" class="records">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>E-mail</th>
-            <th>Celular</th>
-            <th>Tipo de Usuário</th>
-            <th>Departamento</th>
-            <th>Ação</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <div class="tabela">
+        <table id="tabela" class="records">
+          <thead>
+            <tr>
+              <th scope="col" style="display:none;">id</th>
+              <th scope="col">Nome</th>
+              <th scope="col">CPF</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Celular</th>
+              <th scope="col">Tipo de Usuário</th>
+              <th scope="col">Departamento</th>
+              <th scope="col">Ação</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-usuarios">
+
+          </tbody>
+        </table>
+      </div>
+
       <div class="modal" id="modal">
         <div class="modal-content">
           <header class="modal-header">
@@ -85,7 +91,7 @@
             <label for="E-mail">Celular</label>
             <input type="text" id="celular" class="modal-field" placeholder="(__)_____-____" required>
             <label for="tipo">Tipo de Usuário </label>
-            <select name="tipo" id="tipo" class="modal-field">
+            <select name="perfil" id="perfil" class="modal-field">
               <option selected disabled value="">Selecione</option>
               <option value="Gestor de Departamento">Gestor de Departamento</option>
               <option value="Funcionário do RH">Funcionário do RH</option>
@@ -110,8 +116,12 @@
             </select>
 
             <label for="exampleInputPassword1">Senha</label>
-            <input required type="password" class="modal-field" id="exampleInputPasswordUpdate"
+            <input required type="password" class="modal-field" id="password"
               placeholder="Crie uma senha" name="password">
+
+            <label for="usuarioId" style="display: none">UsuarioId</label>
+            <input type="text" id="usuarioId" class="modal-field"
+              placeholder="usuarioId"  style="display: none;">
 
           </form>
           <footer class="modal-footer">
@@ -121,8 +131,9 @@
         </div>
       </div>
     </main>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../controllers/gerenciarUsuario.js" defer></script>
+    <script src="../controllers/gerenciarUsuario.js" type="module"></script>
 </body>
 
 </html>

@@ -3,10 +3,7 @@ package com.g5tech.api.service;
 import com.g5tech.api.builder.DepartamentoCargoDTOBuilder;
 import com.g5tech.api.builder.UsuarioBuilder;
 import com.g5tech.api.builder.UsuarioResponseDTOBuilder;
-import com.g5tech.api.dto.DepartamentoCargoDTO;
-import com.g5tech.api.dto.UsuarioRedefineSenhaDTO;
-import com.g5tech.api.dto.UsuarioRequestDTO;
-import com.g5tech.api.dto.UsuarioResponseDTO;
+import com.g5tech.api.dto.*;
 import com.g5tech.api.exception.CandidatoNotFoundException;
 import com.g5tech.api.exception.SenhaInvalidaException;
 import com.g5tech.api.exception.UsuarioNotFoundException;
@@ -16,15 +13,14 @@ import com.g5tech.api.repository.CandidatoRepository;
 import com.g5tech.api.repository.UsuarioCandidatoRepository;
 import com.g5tech.api.repository.UsuarioFuncionarioRepository;
 import lombok.RequiredArgsConstructor;
-import net.bytebuddy.utility.RandomString;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.jasypt.util.text.StrongTextEncryptor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -36,6 +32,7 @@ public class UsuarioService {
     private final EmailService emailService;
     private final CandidatoRepository candidatoRepository;
     private final CargoService cargoService;
+    private final DepartamentoService departamentoService;
 
     public UsuarioCandidato saveNewUsuario(String email, String hashSenha, Candidato candidato) {
 
@@ -160,5 +157,62 @@ public class UsuarioService {
         }
 
         return usuarioFuncionarioOptional.get();
+    }
+
+    public List<UsuarioFuncionarioResponseDTO> buscaUsuariosFuncionarios() {
+
+        List<UsuarioFuncionario> usuarioFuncionarioList = usuarioFuncionarioRepository.findAll();
+
+        return usuarioFuncionarioList.stream()
+                .map(usuarioFuncionario ->
+                    UsuarioFuncionarioResponseDTO
+                        .builder()
+                        .id(usuarioFuncionario.getId().toString())
+                        .nome(usuarioFuncionario.getNome())
+                        .cpf(usuarioFuncionario.getCpf())
+                        .celular(usuarioFuncionario.getCelular())
+                        .email(usuarioFuncionario.getEmail())
+                        .perfil(usuarioFuncionario.getPerfil())
+                        .departamento(usuarioFuncionario.getDepartamento().getNome())
+                        .build()
+                )
+                .collect(Collectors.toList());
+    }
+
+    public Long create(UsuarioFuncionarioRequestDTO dto) {
+
+        String hashSenha = strongTextEncryptor.encrypt(dto.getSenha());
+
+        Departamento departamento = departamentoService.getDepartamentoByName(dto.getDepartamento());
+
+        UsuarioFuncionario usuarioFuncionario = UsuarioBuilder.buildUsuarioFuncionario(dto, hashSenha, departamento);
+
+        UsuarioFuncionario usuarioFuncionarioSaved = usuarioFuncionarioRepository.save(usuarioFuncionario);
+
+        return usuarioFuncionarioSaved.getId();
+    }
+
+    public void delete(Long id) {
+
+        // checando se inscricao existe no banco
+        UsuarioFuncionario usuarioFuncionario = this.getUsuarioFuncionarioById(id);
+
+        // Deletando
+        usuarioFuncionarioRepository.delete(usuarioFuncionario);
+    }
+
+    public void update(Long id, UsuarioFuncionarioRequestDTO dto) {
+
+        UsuarioFuncionario usuarioFuncionarioSaved = this.getUsuarioFuncionarioById(id);
+
+        String hashSenha = strongTextEncryptor.encrypt(dto.getSenha());
+
+        Departamento departamento = departamentoService.getDepartamentoByName(dto.getDepartamento());
+
+        UsuarioFuncionario usuarioFuncionario = UsuarioBuilder.buildUsuarioFuncionario(dto, hashSenha, departamento);
+
+        BeanUtils.copyProperties(usuarioFuncionario, usuarioFuncionarioSaved, "id");
+
+        usuarioFuncionarioRepository.save(usuarioFuncionarioSaved);
     }
 }

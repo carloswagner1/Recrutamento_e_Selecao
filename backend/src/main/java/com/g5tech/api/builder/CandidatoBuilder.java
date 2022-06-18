@@ -1,11 +1,8 @@
 package com.g5tech.api.builder;
 
 import com.g5tech.api.dto.*;
-import com.g5tech.api.model.ExperienciaProfissional;
-import com.g5tech.api.model.FormacaoAcademica;
-import com.g5tech.api.model.UsuarioCandidato;
-import com.g5tech.api.model.indicator.AreaVaga;
 import com.g5tech.api.model.Candidato;
+import com.g5tech.api.model.Inscricao;
 
 import java.util.List;
 
@@ -25,7 +22,7 @@ public class CandidatoBuilder {
         candidato.setCpf(dto.getCpf());
         candidato.setCelular(dto.getCelular());
         candidato.setCep(dto.getCep());
-        candidato.setRua(dto.getRua());
+        candidato.setRua(dto.getLogradouro());
         candidato.setBairro(dto.getBairro());
         candidato.setCidade(dto.getCidade());
         candidato.setEstado(dto.getEstado());
@@ -81,7 +78,7 @@ public class CandidatoBuilder {
         dto.setCpf(candidato.getCpf());
         dto.setCelular(candidato.getCelular());
         dto.setCep(candidato.getCep());
-        dto.setRua(candidato.getRua());
+        dto.setLogradouro(candidato.getRua());
         dto.setBairro(candidato.getBairro());
         dto.setCidade(candidato.getCidade());
         dto.setEstado(candidato.getEstado());
@@ -93,5 +90,18 @@ public class CandidatoBuilder {
         dto.setSenha(senha);
 
         return dto;
+    }
+
+    public static CandidatoResultadoDTO buildResultadoDTO(Candidato candidato, Inscricao inscricao) {
+        return CandidatoResultadoDTO.builder()
+                .id(candidato.getId().toString())
+                .nome(candidato.getNome())
+                .email(candidato.getEmail())
+                .celular(candidato.getCelular())
+                .notaTeste(inscricao.getPontuacaoTeste().toString())
+                .dataEntrevista(inscricao.getDataEntrevista())
+                .horaEntrevista(inscricao.getHorarioEntrevista())
+                .situacao(inscricao.getStatus().getNome())
+                .build();
     }
 }

@@ -31,6 +31,33 @@ margin-top: 10px;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   grid-gap: 30px;
 }
+
+.container-mensagem{
+ 
+  margin: 15% 25%;
+  background: #fff;
+  width: 50%;
+  height: 40vh;
+  justify-self: unset;
+  justify-content: center;
+  text-align: center;
+  border-radius: 6px;
+  padding: 20px 60px 30px 40px;
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.212);
+}
+
+.container-mensagem p{
+  color: var(--cinza);
+}
+.container-mensagem h1{
+color: var(--azul-escuro);
+margin: 30px; 
+}
+.container-mensagem a{
+text-decoration: none;
+color: var(--amarelo);
+letter-spacing: 2px;
+}
   
 .cards{
   background-color: #fff;
@@ -48,9 +75,7 @@ margin-top: 10px;
 }
 .content{
   padding: 60px 10px;
-  text-align: right;
-  
-  
+  text-align: right;  
 }
 
 .content h2{
@@ -109,7 +134,15 @@ margin-top: 10px;
     margin-top: 18%;
   }
 }
-@media only screen and (max-width: 300px) {
+@media screen and (max-width: 780px) {
+  .container-mensagem{
+   
+    margin: 25% 15%;
+    width: 70%;
+    height: 70vh;
+  }
+}
+  @media only screen and (max-width: 300px) {
   .titulo h1{
     padding: 0px 20px;
     font-size: 2rem;

@@ -1,3 +1,132 @@
+import { sendRequest } from "../utils/ApiUtils.js";
+
+class GerenciarUsuarios {
+
+    constructor(tabelaUsuariosId) {
+        this.tabelaUsuarios = document.getElementById(tabelaUsuariosId);
+        this.onLoad();
+    }
+
+    onLoad() {
+
+        var tabelaUsuarios = this.tabelaUsuarios;
+
+        // setting the url
+        const url = "/usuarios";
+
+        // enviando a request e salvando a promise
+        const responsePromise = sendRequest('GET', url, "");
+
+        responsePromise.then(response => {
+
+            // log para debuggar
+            console.log(response);
+
+            if (response.status == 200) {
+
+                var usuarios = response.body;
+
+                if (usuarios.length === 0) {
+                    document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há usuários cadastrados no momento</h2>`
+                }
+                else {
+                    usuarios.forEach((usuario, index) => {                
+                        var usuarioTr = montaTrSolicitacao(usuario, index);
+                        tabelaUsuarios.appendChild(usuarioTr);
+                    })    
+                }
+            }
+            else {
+                document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há usuários cadastrados no momento</h2>`
+            }
+        })
+    }
+
+
+}
+
+let gerenciarUsuarios = new GerenciarUsuarios("tabela-usuarios");
+
+function montaTrSolicitacao(usuario, index){
+    var solicitacaoTr = document.createElement("tr");
+    solicitacaoTr.classList.add('usuario'); 
+    solicitacaoTr.appendChild(montaTdHidden(usuario.id, "usuarioId"));         
+    solicitacaoTr.appendChild(montaTd(usuario.nome, "nome"));
+    solicitacaoTr.appendChild(montaTd(usuario.cpf, "cpf"));
+    solicitacaoTr.appendChild(montaTd(usuario.email, "email"));
+    solicitacaoTr.appendChild(montaTd(usuario.celular, "celular"));
+    solicitacaoTr.appendChild(montaTd(usuario.perfil, "perfil"));
+    solicitacaoTr.appendChild(montaTd(usuario.departamento, "departamento"));
+    solicitacaoTr.appendChild(montaTdBtn(index));
+
+    return solicitacaoTr;
+}
+
+function montaTd(dado, classe){
+    var td = document.createElement("td");
+    td.textContent = dado;
+    td.classList.add(classe);   
+
+    return td;
+}
+
+function montaTdHidden(dado, classe){
+    var td = document.createElement("td");
+    td.textContent = dado;
+    td.hidden = "hidden";
+    td.classList.add(classe);   
+
+    return td;
+}
+
+function montaTdBtn(index){
+    var td = document.createElement("td");
+
+    td.innerHTML = `
+        <td>
+            <button type="button" class="button green" id="edit-${index}">Editar</button>
+            <button type="button" class="button red" id="delete-${index}" >Excluir</button>
+        </td>
+    `;
+
+    return td;
+}
+
+function loadUsuarios() {
+
+    var tabelaUsuarios = document.getElementById("tabela-usuarios");
+
+    // setting the url
+    const url = "/usuarios";
+
+    // enviando a request e salvando a promise
+    const responsePromise = sendRequest('GET', url, "");
+
+    responsePromise.then(response => {
+
+        // log para debuggar
+        console.log(response);
+
+        if (response.status == 200) {
+
+            var usuarios = response.body;
+
+            if (usuarios.length === 0) {
+                document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há usuários cadastrados no momento</h2>`
+            }
+            else {
+                usuarios.forEach((usuario, index) => {                
+                    var usuarioTr = montaTrSolicitacao(usuario, index);
+                    tabelaUsuarios.appendChild(usuarioTr);
+                })    
+            }
+        }
+        else {
+            document.getElementById('tabela').innerHTML = `<h2 style="text-align:center">Não há usuários cadastrados no momento</h2>`
+        }
+    })
+}
+
 'use strict'
 
 const openModal = () => document.getElementById('modal')
@@ -8,29 +137,67 @@ const closeModal = () => {
     document.getElementById('modal').classList.remove('active')
 }
 
-
-const getLocalStorage = () => JSON.parse(localStorage.getItem('db_usuario')) ?? []
-const setLocalStorage = (dbUsuario) => localStorage.setItem("db_usuario", JSON.stringify(dbUsuario))
-
 // CRUD - create read update delete
-const deleteUsuario = (index) => {
-    const dbUsuario = readUsuario()
-    dbUsuario.splice(index, 1)
-    setLocalStorage(dbUsuario)
+const deleteUsuario = (usuarioId) => {
+
+    // setting the url
+    const url = "/usuarios/" + usuarioId;
+
+    console.log(usuarioId);
+
+    // enviando a request e salvando a promise
+    const responsePromise = sendRequest('DELETE', url, "");
+
+    setTimeout(function() {
+        clearTable();
+        loadUsuarios();
+    }, 3000);
 }
 
-const updateUsuario = (index, usuario) => {
-    const dbUsuario = readUsuario()
-    dbUsuario[index] = usuario
-    setLocalStorage(dbUsuario)
-}
+const updateUsuario = (usuario) => {
 
-const readUsuario = () => getLocalStorage()
+        // setting the url
+        const url = "/usuarios/" + usuario.id;
+
+        console.log("UPDATE");
+    
+        console.log(usuario);
+    
+        // enviando a request e salvando a promise
+        const responsePromise = sendRequest('PUT', url, usuario);
+    
+        responsePromise.then(response => {
+    
+            // log para debuggar
+            console.log(response);
+    
+            if (response.status == 200) {
+                clearTable();
+                loadUsuarios();
+            }
+        })    
+}
 
 const createUsuario = (usuario) => {
-    const dbUsuario = getLocalStorage()
-    dbUsuario.push (usuario)
-    setLocalStorage(dbUsuario)
+
+        // setting the url
+        const url = "/usuarios";
+    
+        // enviando a request e salvando a promise
+        const responsePromise = sendRequest('POST', url, usuario);
+    
+        responsePromise.then(response => {
+    
+            // log para debuggar
+            console.log(response);
+    
+            if (response.status == 201) {
+                clearTable();
+                loadUsuarios();
+            }
+        })
+
+
 }
 
 const isValidFields = () => {
@@ -46,90 +213,97 @@ const clearFields = () => {
 }
 
 const saveUsuario = () => {  
+
     if (isValidFields()) {
-        const usuario = {
+
+        let usuario = {
+            id: document.getElementById('usuarioId').value,
             nome: document.getElementById('nome').value,
             cpf: document.getElementById('cpf').value,
             email: document.getElementById('email').value,
             celular: document.getElementById('celular').value,            
-            tipo: document.getElementById('tipo').value
+            perfil: document.getElementById('perfil').value,
+            departamento: document.getElementById('departamento').value,
+            senha: document.getElementById('password').value
         }
-        const index = document.getElementById('nome').dataset.index
-        if (index == 'new') {
-            createUsuario(usuario)
-            updateTable()
+        
+        console.log(usuario);
+
+        if (!usuario.id) {
+            createUsuario(usuario);
             closeModal()
-        } else {
-            updateUsuario(index, usuario)
-            updateTable()
-            closeModal()
+        }
+        else {
+            updateUsuario(usuario);
+            closeModal();
         }
     }
 }
 
-const createRow = (usuario, index) => {
-    const newRow = document.createElement('tr')
-    newRow.innerHTML = `
-        <td>${usuario.nome}</td>
-        <td>${usuario.cpf}</td>
-        <td>${usuario.email}</td>
-        <td>${usuario.celular}</td>
-        <td>${usuario.tipo}</td>
-        
-        <td>
-            <button type="button" class="button green" id="edit-${index}">Editar</button>
-            <button type="button" class="button red" id="delete-${index}" >Excluir</button>
-        </td>
-    `
-    document.querySelector('#tableUsuario>tbody').appendChild(newRow)
-}
-
 const clearTable = () => {
-    const rows = document.querySelectorAll('#tableUsuario>tbody tr')
+    const rows = document.querySelectorAll('#tabela>tbody tr')
     rows.forEach(row => row.parentNode.removeChild(row))
 }
 
-const updateTable = () => {
-    const dbUsuario = readUsuario()
-    clearTable()
-    dbUsuario.forEach(createRow)
-}
-
 const fillFields = (usuario) => {
+    console.log(usuario);
+    document.getElementById('usuarioId').value = usuario.id
     document.getElementById('nome').value = usuario.nome
     document.getElementById('cpf').value = usuario.cpf
     document.getElementById('email').value = usuario.email
     document.getElementById('celular').value = usuario.celular
-    document.getElementById('tipo').value = usuario.tipo
+    document.getElementById('perfil').value = usuario.perfil
+    document.getElementById('departamento').value = usuario.departamento
     document.getElementById('nome').dataset.index = usuario.index
 }
 
-const editUsuario = (index) => {
-    const usuario = readUsuario()[index]
-    usuario.index = index
-    fillFields(usuario)
-    openModal()
+const editUsuario = (usuarioHtml, index) => {
+    const usuario = readUsuario(usuarioHtml);
+    usuario.index = index;
+    fillFields(usuario);
+    openModal();
+    document.getElementById('salvar').addEventListener('click', saveUsuario);       
 }
 
 const editDelete = (event) => {
+
+    let usuario = event.target.parentNode.parentNode;
+
+    console.log(usuario);
+
     if (event.target.type == 'button') {
 
         const [action, index] = event.target.id.split('-')
 
         if (action == 'edit') {
-            editUsuario(index)
-        } else {
-            const usuario = readUsuario()[index]
+            editUsuario(usuario, index)
+        }
+        else {
             const response = confirm(`Deseja realmente excluir o usuário ${usuario.nome}`)
+           
+
             if (response) {
-                deleteUsuario(index)
-                updateTable()
+                let usuarioId = usuario.getElementsByTagName("td")[0].textContent;
+                deleteUsuario(usuarioId);
             }
         }
     }
 }
 
-updateTable()
+function readUsuario(usuarioHtml) {
+
+    let usuario = {
+        id:             usuarioHtml.getElementsByTagName("td")[0].textContent,
+        nome:           usuarioHtml.getElementsByTagName("td")[1].textContent,
+        cpf:            usuarioHtml.getElementsByTagName("td")[2].textContent,
+        email:          usuarioHtml.getElementsByTagName("td")[3].textContent,
+        celular:        usuarioHtml.getElementsByTagName("td")[4].textContent,
+        perfil:         usuarioHtml.getElementsByTagName("td")[5].textContent,
+        departamento:   usuarioHtml.getElementsByTagName("td")[6].textContent
+    }
+
+    return usuario;   
+}
 
 // Eventos
 document.getElementById('cadastrarUsuario')
@@ -141,7 +315,7 @@ document.getElementById('modalClose')
 document.getElementById('salvar')
     .addEventListener('click', saveUsuario)
 
-document.querySelector('#tableUsuario>tbody')
+document.querySelector('#tabela>tbody')
     .addEventListener('click', editDelete)
 
 document.getElementById('cancelar')

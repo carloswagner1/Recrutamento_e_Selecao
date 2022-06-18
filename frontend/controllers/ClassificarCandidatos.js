@@ -10,9 +10,6 @@ class ClassificarCandidatosController {
         this.onSelect();        
     }
     
-            
-        //filtrar processsos para pegar processos != de encerrado
-
     onLoad() {    
         
         // setting the url
@@ -193,13 +190,27 @@ function updateInscricao(linha, btn, index) {
     // setting the url
     const url = "/candidatos/" + candidatoId + "/classificar";
 
+    let nota = document.getElementById(`nota${candidatoId}`).value;
+
+    if (!nota) {
+
+        msgError.innerHTML = " *Nota deve ser preenchida";
+
+        setTimeout(function() {
+            msgError.innerHTML = "" ;
+            return;
+        }, 5000); 
+
+        return;
+    }
+
     if (btn.value === 'classificado') {
-        inscricaoAtualizada.pontuacaoTeste = document.getElementById(`nota${candidatoId}`).value
+        inscricaoAtualizada.pontuacaoTeste = nota;
         inscricaoAtualizada.situacao = 'classificado'
 
     }
     else {
-        inscricaoAtualizada.pontuacaoTeste = document.getElementById(`nota${candidatoId}`).value
+        inscricaoAtualizada.pontuacaoTeste = nota;
         inscricaoAtualizada.situacao = 'reprovado'
     }
 

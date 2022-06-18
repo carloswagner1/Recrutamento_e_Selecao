@@ -13,7 +13,7 @@ class ListarCandidatosController {
     onLoad() { 
         
         // setting the url
-        const url = "/processos/usuarios/" + localStorage.getItem("id_usuario") + "/abertos";
+        const url = "/processos/usuarios/" + localStorage.getItem("id_usuario");
 
         // enviando a request e salvando a promise
         const responsePromise = sendRequest('GET', url, "");
@@ -74,16 +74,10 @@ class ListarCandidatosController {
                             
                             this.dadosCandidatoEl.innerHTML += nomeCandidato(candidato, index);
                             this.dadosCandidatoEl.appendChild(montarDados(candidato, index));
-
                         })                
                     }
                 }
-            })
-            
-
-                
-
-            
+            })        
         })
     }
     

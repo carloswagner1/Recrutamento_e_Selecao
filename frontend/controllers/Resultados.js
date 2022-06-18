@@ -1,461 +1,451 @@
-//para testes
+import { sendRequest } from "../utils/ApiUtils.js";
 
+class ResultadosController {
 
-
-var processos = JSON.parse(localStorage.getItem('processos') || '[]'); 
-var inscricoes = JSON.parse(localStorage.getItem('inscricoes') || '[]'); 
-var candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]'); 
-
-class ResultadosController{
-    constructor( procSelId, boxTitleId, tableCandidatosID){
+    constructor (procSelId, boxTitleId, tableCandidatosID) {
         this.procSelEl = document.getElementById(procSelId);
         this.boxTitleEl = document.getElementById(boxTitleId);
         this.tableCandidatosEl = document.getElementById(tableCandidatosID);
         this.onLoad();
-        this.onSelect();                        ;
     }
 
     onLoad(){        
           
         //filtrar processsos para pegar processos != de encerrado
         
-        var processsosEmAndamento = processos.filter(processo => processo.status !== "Encerrado");
-        var opcaoProcesso = localStorage.getItem('opcaoProcesso');
-                       
-        
-        if(processsosEmAndamento !== ''){
-            processsosEmAndamento.forEach(processo => this.procSelEl.appendChild(montarOption(processo.nomeCargo, processo.id)))         
-        }else{
-            this.boxTitleEl.innerHTML = 'Não há processos seletivos em andamento'
-        }
-        if(opcaoProcesso !== ''){
-            this.reload(opcaoProcesso);
-            localStorage.setItem('opcaoProcesso', '');
-        }
+        // setting the url
+        const url = "/processos/usuarios/" + localStorage.getItem("id_usuario");
+
+        // enviando a request
+        const responsePromise = sendRequest('GET', url, "");
+
+        responsePromise.then(response => {
+
+            // log para debuggar
+            console.log(response);
+
+            if (response.status == 200) {
+
+                let processsosEmAndamento = response.body;
+
+                if (processsosEmAndamento.length > 0) {
+                    let select = this.procSelEl;
+                    processsosEmAndamento.forEach(processo => select.appendChild(montarOption(processo)));
+                }
+                else {
+                    this.boxTitleEl.innerHTML = 'Não há processos seletivos em andamento';
+                }
+            }
+        })
+
+        this.onSelect();          
     }
 
-    onSelect(){
+    onSelect() {
+
         var filtrar = document.getElementById('filtrar');
 
         filtrar.addEventListener("click", event => {
+
             event.preventDefault();            
             var listaCandidatos = this.boxTitleEl;
             document.getElementById("thead").setAttribute("style", "display: ")
             this.boxTitleEl.innerHTML = 'Resultados do Processo Seletivo' 
             var tabelaCandidatos = this.tableCandidatosEl;
-            tabelaCandidatos.innerHTML = '' 
+            tabelaCandidatos.innerHTML = '';
 
-            //Pelo Processo Seletivo que foi selecionado, temos que buscar no banco os candidatos inscritos. Então, preciso de um inner join entre as tabelas processo_seletivo, tb_inscricao e tb_candidatos para trazer os candidatos inscritos do processso seletivo vai substituir este filtro aqui de baixo. Tem q colocar uma condição de inscricoes !== "reprovado" conforme status que estabelecemos. Lembrar de colocar o order by
+            let select = JSON.parse(document.getElementById('procSel').value);
 
-            var candidatosClassificados = []; 
-            var opcaoProcesso = this.procSelEl.options[this.procSelEl.selectedIndex].value;                        
-
-            var inscricoesDoProcesso = inscricoes.filter(inscricao => {   
-                
-                if(inscricao.idProcesso == opcaoProcesso && inscricao.situacao !== 'reprovado'){
-                     return inscricao;
-                }
-            })
-            var maiorNota = 0;           
-
-            inscricoesDoProcesso.forEach(inscricaoprocesso =>{
-                if(maiorNota < inscricaoprocesso.pontuacaoTeste){
-                    maiorNota = inscricaoprocesso.pontuacaoTeste;
-                }
-                candidatos.filter(candidato => {
-                    if(inscricaoprocesso.idCandidato == candidato.id){
-                        candidatosClassificados.push(candidato);
-                    }
-                })
-                
-            })
+            var processoId = select.id;
             
-            document.getElementById('nota-teste').innerHTML = maiorNota;
-            document.getElementById('btnConsultar').disabled=false
-            document.getElementById('btnEncerrar').disabled = false
+            // setting the url
+            const url = "/processos/" + processoId + "/candidatos/ativos";
 
-            //fim filtro
+            // enviando a request e salvando a promise
+            const responsePromise = sendRequest('GET', url, "");
 
-            //para cada candidato classificado, temos q preencheer o html
-            if(candidatosClassificados.length === 0){
-                //se não houver candidato classificado no processo
-                tabelaCandidatos.innerHTML = ''
-                listaCandidatos.innerHTML = 'Não há candidatos classificados neste processo seletivo'
-                document.getElementById("thead").setAttribute('style', 'display: none')
-            }else{                
-                candidatosClassificados.forEach((candidato, index) => {                  
-                    var notaCandidato;
-                    var dtEntrevistaCandidato;
-                    var hrEntrevistaCandidato;
-                    var situacaoCandidato;
-                    inscricoesDoProcesso.forEach(inscricao =>{
-                        if(inscricao.idCandidato == candidato.id){
-                            notaCandidato = inscricao.pontuacaoTeste;
-                            dtEntrevistaCandidato = inscricao.dataEntrevista;
-                            hrEntrevistaCandidato = inscricao.horaEntrevista;
-                            situacaoCandidato = inscricao.situacao;
-                        }
-                    })
-                    
-                    //estrutura para preencher o HTML
-                    var candidatoTr = montaTr(candidato, notaCandidato, dtEntrevistaCandidato, hrEntrevistaCandidato, situacaoCandidato);
-                    tabelaCandidatos.appendChild(candidatoTr);
-                })                                
-            }
-            this.btnAgendarEntrevista();
-            this.btnAprovar();
-            this.btnReprovar();
-            this.btnEncerrar(opcaoProcesso)            
-        })
-    }
-    btnAgendarEntrevista(){  
-        var opcaoProcesso = this.procSelEl.options[this.procSelEl.selectedIndex].value;
-         
+            responsePromise.then(response => {
 
-        var btn = document.getElementsByName
-        ('btn-agendar');        
-        btn.forEach((item, index) =>{
-            item.addEventListener('click', () =>{
-                        
-                var indice = index
-                console.log(indice)
-                localStorage.setItem('indice', indice);
-                var camposEmail = document.querySelectorAll('.email');
-                document.getElementById('email').value = camposEmail[indice].textContent;
-                var btnEnviar =  document.getElementById('enviar'); 
+                // log para debuggar
+                console.log(response);
 
-                btnEnviar.addEventListener('click', () =>{
-                                
-                    var camposModal = document.querySelectorAll('.modal-field');
-                    var msgError = document.getElementById('msgError');    
-                    var ids = document.querySelectorAll('.id');
+                if (response.status == 200) {
+                    var candidatosClassificados = response.body.candidatosClassificados;
 
+                    document.getElementById('nota-teste').innerHTML = response.body.maiorNota;
+                    document.getElementById('btnConsultar').disabled=false;
+                    document.getElementById('btnEncerrar').disabled = false;
 
-                    camposModal.forEach(item =>{
-                        //testar campos vazios
-                        if(item.value == ''){                            
-                            msgError.innerHTML = " *Todos os campos devem ser preenchidos"
-                            setTimeout(function(){
-                                msgError.innerHTML = "" 
-                            }, 5000);                            
-                        }else{
-                            //capturando dados para mensagem                            
-                            var email = document.getElementById('email');
-                            var mensagem = document.getElementById('mensagem');
-                            var dataEntrevista = document.getElementById('dataEntrevista');
-                            var horaEntrevista = document.getElementById('horarioEntrevista');
-                            var linkEntrevista = document.getElementById('linkEntrevista');
+                    if (select.status === 'Concluído') {
+                        document.getElementById('btnEncerrar').disabled = true;
+                    }
 
+                    //para cada candidato classificado, temos q preencheer o html
+                    if (candidatosClassificados.length === 0) {
+                        //se não houver candidato classificado no processo
+                        tabelaCandidatos.innerHTML = ''
+                        listaCandidatos.innerHTML = 'Não há candidatos classificados neste processo seletivo'
+                        document.getElementById("thead").setAttribute('style', 'display: none')
+                    }
+                    else {    
+                        candidatosClassificados.forEach((candidato, index) => {                  
+                            //estrutura para preencher o HTML
+                            var candidatoTr = montaTr(candidato, select.status, index);
+                            tabelaCandidatos.appendChild(candidatoTr);
 
-                            //preeenchendo provisoriamente a table com os dados marcado                            
-                            
-                   
-                            
-                            var body = new Object();
-                            body.email = email.value;
-                            body.mensagem = mensagem.value;
-                            body.dataEntrevista = dataEntrevista.value;
-                            body.horaEntrevista = horaEntrevista.value;
-                            body.linkEntrevista = linkEntrevista.value;   
-                                          
+                            this.btnEncerrar(processoId);
+                        });  
+                    }
 
-                            //acredito q aqui vc pega o body e manda mensagem para o candidato e para o email da empresa 
-                            
-                            var campoDataentrevista = document.querySelectorAll('.dataEntrevista');
-                            var candidatoDataEntrevista = campoDataentrevista[indice];
-                            var campoHoraEntrevista = document.querySelectorAll('.horaEntrevista');
-                            var candidatoHoraEntrevista = campoHoraEntrevista[indice];
-                           
-        
-                            candidatoDataEntrevista.textContent = dataEntrevista.value;                    
-                            var horaEntrevista = document.getElementById('horarioEntrevista');
-                            candidatoHoraEntrevista.innerHTML = horaEntrevista.value;  
-                            var idCandidato = ids[indice].textContent;
-                            updateEntrevista(dataEntrevista.value, horaEntrevista.value, idCandidato);
-                            btn[indice].innerHTML = 'Reagendar Entrevista'
-                            this.closeModal();     
-                            localStorage.setItem('opcaoProcesso', opcaoProcesso);
-                            
-                            setTimeout(function(){
-                                document.location.reload(true); 
-                            }, 10); 
-                        }
-                       
-                    })
-                })
-            })
+                }
+            })        
         })
     }
 
-    btnAprovar(){
-        var btnAprovar = document.getElementsByName('btn-aprovar');
-        var btnAgendar = document.getElementsByName('btn-agendar');
-        var btnReprovar = document.getElementsByName('btn-reprovar');
-        var resultado = document.getElementsByName('resultado');
-        var ids = document.querySelectorAll('.id');
-        btnAprovar.forEach((item, index) => {
-            var idCandidato = ids[index].textContent;
-            item.addEventListener('click', () =>{
-                updateResultado('Aprovado na Entrevista', idCandidato);
-                btnAgendar[index].setAttribute('style', 'display: none');
-                btnAprovar[index].setAttribute('style', 'display: none');
-                btnReprovar[index].setAttribute('style', 'display: none');
-                resultado[index].textContent = 'APROVADO';
-                resultado[index].setAttribute('style', 'display: block');
-                resultado[index].setAttribute('style', 'color: green');
-            })
-        })    
-        
-    }
-    btnReprovar(){
-        var btnAprovar = document.getElementsByName('btn-aprovar');
-        var btnAgendar = document.getElementsByName('btn-agendar');
-        var btnReprovar = document.getElementsByName('btn-reprovar');
-        var resultado = document.getElementsByName('resultado');
-        var ids = document.querySelectorAll('.id');
-        btnReprovar.forEach((item, index) => {
-            var idCandidato = ids[index].textContent;
-            item.addEventListener('click', () =>{
-                updateResultado('Reprovado na Entrevista', idCandidato);
-                btnAgendar[index].setAttribute('style', 'display: none');
-                btnAprovar[index].setAttribute('style', 'display: none');
-                btnReprovar[index].setAttribute('style', 'display: none');
-                resultado[index].textContent = 'REPROVADO';
-                resultado[index].setAttribute('style', 'display: block');
-                resultado[index].setAttribute('style', 'color: red');
-                
-            })
-        })    
-        
-    }
-    btnEncerrar(opcaoProcesso){
+    btnEncerrar(processoId) {
+
         var btnEncerrar = document.getElementById('btnEncerrar');
+
         btnEncerrar.addEventListener('click', event =>{
+
             event.preventDefault();
-            updateProcesso(opcaoProcesso);
             var mensagem = document.getElementById('mensagemProcesso');
-            mensagem.innerHTML = "Encerramento registrado com sucesso"
-            setTimeout(function(){
-                mensagem.innerHTML = "" 
-            }, 2000);  
+
+            // setting the url
+            const url = "/processos/" + processoId + "/encerrar";
+
+            // enviando a request e salvando a promise
+            const responsePromise = sendRequest('GET', url, "");
+
+            responsePromise.then(response => {
+
+                // log para debuggar
+                console.log(response);
+
+                if (response.status == 200) {
+                    mensagem.innerHTML = "Encerramento registrado com sucesso";
+                    setTimeout(function(){
+                        mensagem.innerHTML = "";
+                    }, 2000);
+                                                              
+                    setTimeout(function(){
+                        document.location.reload(true); 
+                    }, 2000); 
+                
+                }
+            });
 
         })
     }
-    reload(opcaoProcesso){
-        this.procSelEl.value = opcaoProcesso;
-        
-        var listaCandidatos = this.boxTitleEl;
-            document.getElementById("thead").setAttribute("style", "display: ")
-            this.boxTitleEl.innerHTML = 'Resultados do Processo Seletivo' 
-            var tabelaCandidatos = this.tableCandidatosEl;
-            tabelaCandidatos.innerHTML = '' 
-
-            //Pelo Processo Seletivo que foi selecionado, temos que buscar no banco os candidatos inscritos. Então, preciso de um inner join entre as tabelas processo_seletivo, tb_inscricao e tb_candidatos para trazer os candidatos inscritos do processso seletivo vai substituir este filtro aqui de baixo. Tem q colocar uma condição de inscricoes !== "reprovado" conforme status que estabelecemos. Lembrar de colocar o order by
-
-            var candidatosClassificados = [];             
-            var inscricoesDoProcesso = inscricoes.filter(inscricao => {   
-                
-                if(inscricao.idProcesso == opcaoProcesso && inscricao.situacao !== 'reprovado'){
-                     return inscricao;
-                }
-            })
-            var maiorNota = 0;           
-
-            inscricoesDoProcesso.forEach(inscricaoprocesso =>{
-                if(maiorNota < inscricaoprocesso.pontuacaoTeste){
-                    maiorNota = inscricaoprocesso.pontuacaoTeste;
-                }
-                candidatos.filter(candidato => {
-                    if(inscricaoprocesso.idCandidato == candidato.id){
-                        candidatosClassificados.push(candidato);
-                    }
-                })
-                
-            })
-            
-            document.getElementById('nota-teste').innerHTML = maiorNota;
-            document.getElementById('btnConsultar').disabled=false
-            document.getElementById('btnEncerrar').disabled = false
-
-            //fim filtro
-
-            //para cada candidato classificado, temos q preencheer o html
-            if(candidatosClassificados.length === 0){
-                //se não houver candidato classificado no processo
-                tabelaCandidatos.innerHTML = ''
-                listaCandidatos.innerHTML = 'Não há candidatos classificados neste processo seletivo'
-                document.getElementById("thead").setAttribute('style', 'display: none')
-            }else{                
-                candidatosClassificados.forEach((candidato, index) => {                  
-                    var notaCandidato;
-                    var dtEntrevistaCandidato;
-                    var hrEntrevistaCandidato;
-                    var situacaoCandidato;
-                    inscricoesDoProcesso.forEach(inscricao =>{
-                        if(inscricao.idCandidato == candidato.id){
-                            notaCandidato = inscricao.pontuacaoTeste;
-                            dtEntrevistaCandidato = inscricao.dataEntrevista;
-                            hrEntrevistaCandidato = inscricao.horaEntrevista;
-                            situacaoCandidato = inscricao.situacao;
-                        }
-                    })
-                    
-                    //estrutura para preencher o HTML
-                    var candidatoTr = montaTr(candidato, notaCandidato, dtEntrevistaCandidato, hrEntrevistaCandidato, situacaoCandidato);
-                    tabelaCandidatos.appendChild(candidatoTr);
-                })                                
-            }
-            
-            this.btnAgendarEntrevista();
-            this.btnAprovar();
-            this.btnReprovar();
-            this.btnEncerrar(opcaoProcesso);
-            
-
-    }
-    closeModal(){
-        var bodyTag = document.querySelector('body')
-        var myModal = document.getElementById('modal-entrevista');
-        myModal.classList.remove('show');
-        var node = document.querySelector('.modal-backdrop');
-        node.parentNode.removeChild(node);           
-        myModal.removeAttribute('aria-modal');
-        myModal.removeAttribute('role');
-        myModal.setAttribute('style', 'display:none');
-        myModal.setAttribute('aria-hidden', 'true');       
-        bodyTag.classList.remove('modal-open');
-        bodyTag.setAttribute('style', '');
-    }
-
-  
 }
 
-let resultadosController = new ResultadosController("procSel", "box-title", id="tabela-candidatos");
-
+let resultadosController = new ResultadosController("procSel", "box-title", "tabela-candidatos");
 
 //interação elementos HTML
-function montarOption(nomeCargo, id){
+function montarOption(processo) {
     var option = document.createElement("option");
-    option.setAttribute('value', `${id}`);
-    option.innerHTML = `${nomeCargo}`
-    return option
+    option.setAttribute('value', `{"id":"${processo.id}", "status":"${processo.status}"}`);
+    option.innerHTML = `${processo.cargo}`;
+    return option;
 }
 
-function montaTr(candidato, nota, data, hora, situacao){
+function montaTr(candidato, status, index) {
     var candidatoTr = document.createElement("tr");
     candidatoTr.classList.add('candidato');        
     candidatoTr.appendChild(montaTd(candidato.nome, "nome", "Nome"));
     candidatoTr.appendChild(montaTd(candidato.email, "email", "Email"));    
     candidatoTr.appendChild(montaTd(candidato.celular, "celular", "Celular"));
-    candidatoTr.appendChild(montaTd(nota, "notaTeste", "Nota do Teste"));
-    candidatoTr.appendChild(montaTd(data, "dataEntrevista", "DataEntrevista"));
-    candidatoTr.appendChild(montaTd(hora, "horaEntrevista", "HoraEntrevista"));
+    candidatoTr.appendChild(montaTd(candidato.notaTeste, "notaTeste", "Nota do Teste"));
+    candidatoTr.appendChild(montaTd(candidato.dataEntrevista, "dataEntrevista", "DataEntrevista"));
+    candidatoTr.appendChild(montaTd(candidato.horaEntrevista, "horaEntrevista", "HoraEntrevista"));
     candidatoTr.appendChild(montaTd(candidato.id, "id", "Id"));
-    candidatoTr.appendChild(montaTdBtn("acoes", "Ações", data, situacao));    
-    return candidatoTr
+    candidatoTr.appendChild(montaTdBtn("acoes", "Ações", candidato.dataEntrevista, candidato.situacao, status, index));    
+    return candidatoTr;
 }
-function montaTd(dado, classe, dataTitle){
+
+function montaTd(dado, classe, dataTitle) {
+
     var td = document.createElement("td");
     td.textContent = dado;
     td.classList.add(classe);
     td.setAttribute("data-title", dataTitle);
-    if(classe === 'id'){
+
+    if (classe === 'id') {
         td.setAttribute('style', 'display: none')
     }
+
     return td;
 }
 
-function montaTdBtn(classe, dataTitle, data, situacao){
+function montaTdBtn(classe, dataTitle, data, situacao, status, index) {
+
+    console.log(data);
+
     var td = document.createElement("td");
-    if(situacao === 'Aprovado na Entrevista'){
+
+    if (status === 'Concluído') {
+        if (situacao === 'Aprovado') {
+            td.innerHTML = `
+                <div>
+                    <button type="button" class="btn btn-primary" name="btn-agendar" id="agendar-${index}" data-bs-toggle="modal"
+                        data-bs-target="#modal-entrevista" style="display:none">Reagendar Entrevista</button>
+                    <button type="button" class="btn btn-success" name="btn-aprovar" id="aprovar-${index}" style="display:none">Aprovar</button>                
+                    <button type="button" class="btn btn-danger" name="btn-reprovar" id="reprovar-${index}" style="display:none">Reprovar</button>
+                    <h5 class="resultado" name="resultado" style="color: green; display: block; font-weight: bold">APROVADO</h5>  
+                </div>
+            `;
+        }
+        else {
+            td.innerHTML = `
+                <div>
+                    <button type="button" class="btn btn-primary" name="btn-agendar" id="agendar-${index}" data-bs-toggle="modal"
+                        data-bs-target="#modal-entrevista" style="display:none">Reagendar Entrevista</button>
+                    <button type="button" class="btn btn-success" name="btn-aprovar" id="aprovar-${index}" style="display:none">Aprovar</button>                
+                    <button type="button" class="btn btn-danger" name="btn-reprovar" id="reprovar-${index}" style="display:none">Reprovar</button>
+                    <h5 class="resultado" name="resultado" style="color: red; display: block; font-weight: bold"">REPROVADO</h5>  
+                </div>
+            `;
+        }
+    }
+    else if (situacao === 'Aprovado') {
         td.innerHTML = `
             <div>
-                <button type="button" class="btn btn-primary" name="btn-agendar" data-bs-toggle="modal"
+                <button type="button" class="btn btn-primary" name="btn-agendar" id="agendar-${index}" data-bs-toggle="modal"
                     data-bs-target="#modal-entrevista" style="display:none">Reagendar Entrevista</button>
-                <button type="button" class="btn btn-success" name="btn-aprovar" style="display:none">Aprovar</button>                
-                <button type="button" class="btn btn-danger" name="btn-reprovar" style="display:none">Reprovar</button>
+                <button type="button" class="btn btn-success" name="btn-aprovar" id="aprovar-${index}" style="display:none">Aprovar</button>                
+                <button type="button" class="btn btn-danger" name="btn-reprovar" id="reprovar-${index}" style="display:none">Reprovar</button>
                 <h5 class="resultado" name="resultado" style="color: green; display: block; font-weight: bold">APROVADO</h5>  
             </div>
         `;
-    }else if(situacao === 'Reprovado na Entrevista'){
+    }
+    else if (situacao === 'Reprovado') {
         td.innerHTML = `
             <div>
-                <button type="button" class="btn btn-primary" name="btn-agendar" data-bs-toggle="modal"
+                <button type="button" class="btn btn-primary" name="btn-agendar" id="agendar-${index}" data-bs-toggle="modal"
                     data-bs-target="#modal-entrevista" style="display:none">Reagendar Entrevista</button>
-                <button type="button" class="btn btn-success" name="btn-aprovar" style="display:none">Aprovar</button>                
-                <button type="button" class="btn btn-danger" name="btn-reprovar" style="display:none">Reprovar</button>
+                <button type="button" class="btn btn-success" name="btn-aprovar" id="aprovar-${index}" style="display:none">Aprovar</button>                
+                <button type="button" class="btn btn-danger" name="btn-reprovar" id="reprovar-${index}" style="display:none">Reprovar</button>
                 <h5 class="resultado" name="resultado" style="color: red; display: block; font-weight: bold"">REPROVADO</h5>  
             </div>
         `;
-    }else if(data != ''){
+    }
+    else if (data) {
         td.innerHTML = `
             <div>
-                <button type="button" class="btn btn-primary" name="btn-agendar" data-bs-toggle="modal"
+                <button type="button" class="btn btn-primary" name="btn-agendar" id="agendar-${index}" data-bs-toggle="modal"
                     data-bs-target="#modal-entrevista">Reagendar Entrevista</button>
-                <button type="button" class="btn btn-success" name="btn-aprovar">Aprovar</button>                
-                <button type="button" class="btn btn-danger" name="btn-reprovar">Reprovar</button>
+                <button type="button" class="btn btn-success" name="btn-aprovar" id="aprovar-${index}">Aprovar</button>                
+                <button type="button" class="btn btn-danger" name="btn-reprovar" id="reprovar-${index}">Reprovar</button>
                 <h5 class="resultado" name="resultado"></h5>  
             </div>
         `;
-    }else{
-    td.innerHTML = `
-        <div>
-            <button type="button" class="btn btn-primary" name="btn-agendar" data-bs-toggle="modal"
-                data-bs-target="#modal-entrevista">Agendar Entrevista</button>
-            <button type="button" class="btn btn-success" name="btn-aprovar">Aprovar</button>            
-            <button type="button" class="btn btn-danger" name="btn-reprovar">Reprovar</button>
-            <h5 class="resultado" name="resultado"></h5>
-        </div>
-    `;}
+    }
+    else {
+        td.innerHTML = `
+            <div>
+                <button type="button" class="btn btn-primary" name="btn-agendar" id="agendar-${index}" data-bs-toggle="modal"
+                    data-bs-target="#modal-entrevista">Agendar Entrevista</button>
+                <button type="button" class="btn btn-success" name="btn-aprovar" id="aprovar-${index}">Aprovar</button>            
+                <button type="button" class="btn btn-danger" name="btn-reprovar" id="reprovar-${index}">Reprovar</button>
+                <h5 class="resultado" name="resultado"></h5>
+            </div>
+        `;
+    }
+
     td.classList.add(classe); 
     td.setAttribute("data-title", dataTitle);
+
     return td;
 }
 
+const action = (event) => {
 
-//interação com os dados
-function updateEntrevista(data, hora, id) {
-    
-    const inscricaoAtualizada = {
-        idCandidato : id,
-        dataEntrevista: data,
-        horaEntrevista: hora,
+    let candidato = event.target.parentNode.parentNode.parentNode;
+
+    if (event.target.type == 'button') {
+
+        const [action, index] = event.target.id.split('-');
+
+        if (action == 'agendar') {
+            agendarEntrevista(candidato);
+        }
+        else if (action == 'aprovar') {
+            const response = confirm(`Deseja realmente aprovar esse candidato?`);
+
+            if (response) {
+                aprovar(candidato);
+            }
+        }
+        else if (action == 'reprovar') {
+            const response = confirm(`Deseja realmente reprovar esse candidato?`);
+
+            if (response) {
+                reprovar(candidato);
+            }
+        }
+        else {
+            console.log("Action inesperada. action: " + action);
+        }
     }
+}
+
+function agendarEntrevista(candidato) {   
             
-    inscricoes.map(inscricao =>{
-        if(inscricao.idCandidato == inscricaoAtualizada.idCandidato){
-            Object.assign(inscricao, inscricaoAtualizada);
-        }
-    })
+    let idCandidato = candidato.getElementsByTagName("td")[6].textContent;
+    let email = candidato.getElementsByTagName("td")[1].textContent;
 
-    localStorage.setItem("inscricoes", JSON.stringify(inscricoes));     
-}
+    document.getElementById('email').value = email;
+    var btnEnviar =  document.getElementById('enviar');
 
-function updateResultado(situacao, id) {
-    
-    const inscricaoAtualizada = {
-        idCandidato : id,
-        situacao: situacao,
-    }
+    btnEnviar.addEventListener('click', () => {
+                    
+        var camposModal = document.querySelectorAll('.modal-field');
+        var msgError = document.getElementById('msgError');    
+
+        camposModal.forEach(item => {
+
+            //testar campos vazios
+            if (item.value == '') {  
+
+                msgError.innerHTML = " *Todos os campos devem ser preenchidos";
+
+                setTimeout(function() {
+                    msgError.innerHTML = "" ;
+                    return;
+                }, 5000);                            
+            }
+        })
+        
+        //capturando dados para mensagem                            
+        var email = document.getElementById('email');
+        var mensagem = document.getElementById('mensagem');
+        var dataEntrevista = document.getElementById('dataEntrevista');
+        var horaEntrevista = document.getElementById('horarioEntrevista');
+        var linkEntrevista = document.getElementById('linkEntrevista');
+
+        var processoId = (JSON.parse(document.getElementById('procSel').value)).id;
+
+        //preeenchendo provisoriamente a table com os dados marcado                            
+        var body = new Object();
+        body.email = email.value;
+        body.mensagem = mensagem.value;
+        body.dataEntrevista = dataEntrevista.value;
+        body.horaEntrevista = horaEntrevista.value;
+        body.linkEntrevista = linkEntrevista.value;   
+        
+        // setting the url
+        const url = "/processos/" + processoId + "/candidatos/" + idCandidato;
+
+        // enviando a request e salvando a promise
+        const responsePromise = sendRequest('POST', url, body);
+
+        responsePromise.then(response => {
+
+            if (response.status == 200) {
+
+                // setting dataEntrevista, horaEntrevista e mudando nome do botão
+                candidato.getElementsByTagName('td')[4].textContent = dataEntrevista.value;
+                candidato.getElementsByTagName('td')[5].textContent = horaEntrevista.value;
+                candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('button')[0].textContent = 'Reagendar Entrevista';
+
+                setTimeout(function() {
+                    closeModal();
+                    location.reload(); 
+                }, 2000); 
+            }
+            else {
+                msgError.innerHTML = "Não foi possível agendar a entrevista. Tente novamente.";
+
+                setTimeout(function() {
+                    msgError.innerHTML = "" 
+                }, 5000); 
+            }
+        })
             
-    inscricoes.map(inscricao =>{
-        if(inscricao.idCandidato == inscricaoAtualizada.idCandidato){
-            Object.assign(inscricao, inscricaoAtualizada);
-        }
+            
     })
 
-    localStorage.setItem("inscricoes", JSON.stringify(inscricoes));     
-}
-//atualiza o status do processo seletivo
-function updateProcesso(opcaoProcesso){
-    const processoAtualizado = {
-        status: 'Concluído',
-    }
-    processos.map(processo => {
-        if(processo.id == opcaoProcesso){
-            Object.assign(processo, processoAtualizado)
-        }
-    })
-    localStorage.setItem("processos", JSON.stringify(processos)); 
 }
 
+function closeModal() {
+    var bodyTag = document.querySelector('body')
+    var myModal = document.getElementById('modal-entrevista');
+    myModal.classList.remove('show');
+    var node = document.querySelector('.modal-backdrop');
+    node.parentNode.removeChild(node);           
+    myModal.removeAttribute('aria-modal');
+    myModal.removeAttribute('role');
+    myModal.setAttribute('style', 'display:none');
+    myModal.setAttribute('aria-hidden', 'true');       
+    bodyTag.classList.remove('modal-open');
+    bodyTag.setAttribute('style', '');
+}
+
+function aprovar(candidato) {
+
+    let idCandidato = candidato.getElementsByTagName("td")[6].textContent;
+
+    var processoId = (JSON.parse(document.getElementById('procSel').value)).id;
+
+    let btnAgendar = candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('button')[0];
+    let btnAprovar = candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('button')[1];
+    let btnReprovar = candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('button')[2];
+    let resultado = candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('h5')[0];
+    
+    // setting the url
+    const url = "/processos/" + processoId + "/candidatos/" + idCandidato + "/aprovar";
+
+    // enviando a request e salvando a promise
+    const responsePromise = sendRequest('GET', url, "");
+
+    responsePromise.then(response => {
+
+        // log para debuggar
+        console.log(response);
+
+        if (response.status == 200) {
+            btnAgendar.setAttribute('style', 'display: none');
+            btnAprovar.setAttribute('style', 'display: none');
+            btnReprovar.setAttribute('style', 'display: none');
+            resultado.textContent = 'APROVADO';
+            resultado.setAttribute('style', 'display: block');
+            resultado.setAttribute('style', 'color: green');   
+        }
+    })   
+}
+
+function reprovar(candidato) {
+
+    let idCandidato = candidato.getElementsByTagName("td")[6].textContent;
+
+    var processoId = (JSON.parse(document.getElementById('procSel').value)).id;
+
+    let btnAgendar = candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('button')[0];
+    let btnAprovar = candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('button')[1];
+    let btnReprovar = candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('button')[2];
+    let resultado = candidato.getElementsByTagName('td')[7].getElementsByTagName('div')[0].getElementsByTagName('h5')[0];
+    
+    // setting the url
+    const url = "/processos/" + processoId + "/candidatos/" + idCandidato + "/reprovar";
+
+    // enviando a request e salvando a promise
+    const responsePromise = sendRequest('GET', url, "");
+
+    responsePromise.then(response => {
+
+        // log para debuggar
+        console.log(response);
+
+        if (response.status == 200) {
+            btnAgendar.setAttribute('style', 'display: none');
+            btnAprovar.setAttribute('style', 'display: none');
+            btnReprovar.setAttribute('style', 'display: none');
+            resultado.textContent = 'REPROVADO';
+            resultado.setAttribute('style', 'display: block');
+            resultado.setAttribute('style', 'color: red');
+        }
+    })
+      
+}
+
+document.querySelector('#tabelaCandidatos>tbody').addEventListener('click', action);                

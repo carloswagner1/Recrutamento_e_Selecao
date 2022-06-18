@@ -24,8 +24,20 @@ class MinhasVagas {
 
                 // salvando o body da resposta
                 let responseBody = response.body;
+                if(response.body == 0){
+                    const titulo = document.getElementById('titulo');
+                    titulo.setAttribute('style', 'display: none');
+                    const container = document.getElementById('minhas-vagas');
+                    container.classList.remove('container')
+                    container.classList.add('container-mensagem')
+                    container.innerHTML = `
+                    <h1>Bem-vindo!</h1>
+                    <p>Você ainda não se inscreveu em nenhum processo seletivo. <br>
+                    Para se increver, consulte as vagas disponíveis na aba <a href="../view/oportunidades.html">Oportunidades</a> :)
+                    </p>
+                    `
 
-                if (response.status == 200) {
+                }else if (response.status == 200) {
                     const container = document.getElementById('minhas-vagas');
 
                     responseBody.forEach((result, index) => {
